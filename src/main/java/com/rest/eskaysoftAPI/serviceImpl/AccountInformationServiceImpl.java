@@ -27,7 +27,6 @@ public class AccountInformationServiceImpl implements AccountInformationService 
 
     @Override
 	public AccountInformation getAccountInformationById(Long id) {
-    	System.out.println("****************"+id);
 		return accountInformationDao.findById(id)
                 .orElseThrow(() -> new NotFoundException(String.format("accountInformationDao %d not found", id)));
     }

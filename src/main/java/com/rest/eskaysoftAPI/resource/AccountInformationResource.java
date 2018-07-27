@@ -21,42 +21,41 @@ import com.rest.eskaysoftAPI.service.AccountInformationService;
 public class AccountInformationResource {
 
 	@Autowired
-    AccountInformationService accountInformationService;
+	AccountInformationService accountInformationService;
 
 	@GET
 	@Produces("application/json")
-    public Iterable<AccountInformation> findAll(){
-        return accountInformationService.listAllAccountInformation();
-    }
-	
+	public Iterable<AccountInformation> findAll() {
+		return accountInformationService.listAllAccountInformation();
+	}
+
 	@GET
 	@Path("/{id}")
 	@Produces("application/json")
-	public AccountInformation findOne(@PathParam("id") long id){
-        return accountInformationService.getAccountInformationById(id);
+	public AccountInformation findOne(@PathParam("id") long id) {
+		return accountInformationService.getAccountInformationById(id);
 
-    }
+	}
 
-    @POST
-    @Consumes("application/json")
-    @Produces("application/json")
-    public AccountInformation create(@RequestBody AccountInformation accountInformation){
-        return accountInformationService.create(accountInformation);
-    }
+	@POST
+	@Consumes("application/json")
+	@Produces("application/json")
+	public AccountInformation create(@RequestBody AccountInformation accountInformation) {
+		return accountInformationService.create(accountInformation);
+	}
 
-    @PUT
-    @Consumes("application/json")
-    @Produces("application/json")
-    public AccountInformation update(@RequestBody AccountInformation accountInformation){
-        return accountInformationService.saveAccountInformation(accountInformation);
-    }
-    @DELETE
-    @Path("/{id}")
-    @Produces("application/json")
-    public AccountInformation delete(@PathParam("id") long id)
-    {
-        return accountInformationService.deleteAccountInformation(id);
-    }
+	@PUT
+	@Consumes("application/json")
+	@Produces("application/json")
+	public AccountInformation update(@RequestBody AccountInformation accountInformation) {
+		return accountInformationService.saveAccountInformation(accountInformation);
+	}
 
+	@DELETE
+	@Path("/{id}")
+	@Produces("application/json")
+	public AccountInformation delete(@PathParam("id") long id) {
+		return accountInformationService.deleteAccountInformation(id);
+	}
 
 }

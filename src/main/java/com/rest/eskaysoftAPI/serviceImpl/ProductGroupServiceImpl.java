@@ -35,15 +35,17 @@ public class ProductGroupServiceImpl implements ProductGroupService {
 		return productgroupDao.save(productgroup);
 	}
 
-	@Override
-	public ProductGroup deleteProductGroup(Long id) {
-		ProductGroup productgroup = getProductGroupById(id);
-		if (productgroup != null) {
-			productgroupDao.delete(productgroup);
+	 @Override
+		public boolean deleteProductGroup(Long id) {
+			boolean status = false;
+			ProductGroup productgroup = getProductGroupById(id);
+			if (productgroup != null) {
+				status = true;
+				productgroupDao.delete(productgroup);
+			}
+			return status;
 		}
-		return productgroup;
-	}
-
+	 
 	@Override
 	public ProductGroup create(ProductGroup productgroup) {
 

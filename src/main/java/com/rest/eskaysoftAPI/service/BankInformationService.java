@@ -10,8 +10,7 @@ public interface BankInformationService {
 
     BankInformation savebankinformation(BankInformation bankinformation);
 
-    BankInformation deletebankinformation(Long id);
-
+    boolean deletebankinformation(Long id);
     BankInformation create(BankInformation bankinformation);
 
 }

@@ -1,57 +1,38 @@
-package com.rest.eskaysoftAPI.entity;
+package com.rest.eskaysoftAPI.dto;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "schedules")
-public class Schedule implements Serializable {
-	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class SceduleDto implements Serializable{
+	
+	private static final long serialVersionUID = -6220814147830004035L;
 	private Long id;
-
 	private String scheduleName;
 	private int scheduleIndex;	
 	private String scheduleType;
-
-	
 	public Long getId() {
-		return this.id;
+		return id;
 	}
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 	public String getScheduleName() {
 		return scheduleName;
 	}
-
 	public void setScheduleName(String scheduleName) {
 		this.scheduleName = scheduleName;
 	}
-
 	public int getScheduleIndex() {
 		return scheduleIndex;
 	}
-
 	public void setScheduleIndex(int scheduleIndex) {
 		this.scheduleIndex = scheduleIndex;
 	}
-
 	public String getScheduleType() {
-		return this.scheduleType;
+		return scheduleType;
 	}
-
 	public void setScheduleType(String scheduleType) {
 		this.scheduleType = scheduleType;
 	}
 	
-
+	
 }

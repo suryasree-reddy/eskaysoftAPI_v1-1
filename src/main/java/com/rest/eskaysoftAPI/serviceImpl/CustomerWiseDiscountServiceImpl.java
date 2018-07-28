@@ -38,15 +38,17 @@ public class CustomerWiseDiscountServiceImpl implements CustomerWiseDiscountsSer
         return customerWiseDiscountsDao.save(customerWiseDiscounts);
     }
 
+
     @Override
-    public CustomerWiseDiscounts deleteCustomerWiseDiscounts(Long id) {
+    public boolean deleteCustomerWiseDiscounts(Long id) {
+    	boolean status = false;
     	CustomerWiseDiscounts customerWiseDiscounts = getCustomerWiseDiscountsById(id);
         if(customerWiseDiscounts != null){
+        	status = true;
         	customerWiseDiscountsDao.delete(customerWiseDiscounts);
         }
-        return customerWiseDiscounts;
+        return status;
     }
-
 
     @Override
     public CustomerWiseDiscounts create(CustomerWiseDiscounts customerWiseDiscounts) {

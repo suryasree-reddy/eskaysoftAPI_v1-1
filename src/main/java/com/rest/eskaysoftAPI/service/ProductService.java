@@ -10,7 +10,7 @@ public interface ProductService {
 
     Product saveProduct(Product schedule);
 
-    Product deleteProduct(Long id);
+    boolean deleteProduct(Long id);
 
     Product create(Product schedule);
 

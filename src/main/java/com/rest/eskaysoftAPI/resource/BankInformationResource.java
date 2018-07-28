@@ -54,7 +54,7 @@ public class BankInformationResource {
 	@DELETE
 	@Path("/{id}")
 	@Produces("application/json")
-	public BankInformation delete(@PathParam("id") long id) {
+	public boolean delete(@PathParam("id") long id) {
 		return bankInformationService.deletebankinformation(id);
 	}
 

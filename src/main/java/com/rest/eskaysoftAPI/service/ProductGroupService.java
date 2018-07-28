@@ -13,7 +13,7 @@ public interface ProductGroupService {
 
     ProductGroup saveProductGroup(ProductGroup productgroup);
 
-    ProductGroup deleteProductGroup(Long id);
-
+    boolean deleteProductGroup(Long id);
+    
     ProductGroup create(ProductGroup productgroup);
 }

@@ -51,11 +51,11 @@ public class AccountInformationResource {
 		return accountInformationService.saveAccountInformation(accountInformation);
 	}
 
-	@DELETE
-	@Path("/{id}")
-	@Produces("application/json")
-	public AccountInformation delete(@PathParam("id") long id) {
-		return accountInformationService.deleteAccountInformation(id);
-	}
-
+    @DELETE
+    @Path("/{id}")
+    @Produces("application/json")
+    public boolean delete(@PathParam("id") long id)
+    {
+        return accountInformationService.deleteAccountInformation(id);
+    }
 }

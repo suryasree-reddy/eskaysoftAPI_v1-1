@@ -38,12 +38,14 @@ public class ManfacturerServiceImpl implements ManfacturerService {
     }
 
     @Override
-    public Manfacturer delete(Long id) {
+    public boolean delete(Long id) {
+    	boolean status = false;
     	Manfacturer manfacturer = getManfacturerById(id);
         if(manfacturer != null){
         	manfacturerDao.delete(manfacturer);
+        	status = true;
         }
-        return manfacturer;
+        return status;
     }
 
 

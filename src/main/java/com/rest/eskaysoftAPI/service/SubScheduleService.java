@@ -1,17 +1,20 @@
 package com.rest.eskaysoftAPI.service;
 
+import java.util.Set;
+
+import com.rest.eskaysoftAPI.dto.SubScheduleDto;
 import com.rest.eskaysoftAPI.entity.SubSchedule;
 
 public interface SubScheduleService {
 
-    Iterable<SubSchedule> listAllSubSchedules();
+	Set<SubScheduleDto> listAllSubSchedules();
 
-    SubSchedule getSubScheduleById(Long id);
+	SubScheduleDto getSubScheduleById(Long id);
 
-    SubSchedule saveSubSchedule(SubSchedule subschedule);
+	SubSchedule saveSubSchedule(SubSchedule subschedule);
 
-    SubSchedule deleteSubSchedule(Long id);
+	boolean deleteSubSchedule(Long id);
 
-    SubSchedule create(SubSchedule schedule);
+	SubSchedule create(SubSchedule schedule);
 
 }

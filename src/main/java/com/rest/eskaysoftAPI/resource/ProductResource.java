@@ -50,10 +50,12 @@ public class ProductResource {
     public Product update(@RequestBody Product product){
         return productService.saveProduct(product);
     }
+
+
     @DELETE
     @Path("/{id}")
     @Produces("application/json")
-    public Product delete(@PathParam("id") long id)
+    public boolean delete(@PathParam("id") long id)
     {
         return productService.deleteProduct(id);
     }

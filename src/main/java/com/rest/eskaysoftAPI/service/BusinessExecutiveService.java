@@ -10,8 +10,7 @@ public interface BusinessExecutiveService {
 
     BusinessExecutive saveBusinessExecutive(BusinessExecutive businessexecutive);
 
-    BusinessExecutive deleteBusinessExecutive(Long id);
-
+    boolean deleteBusinessExecutive(Long id);
     BusinessExecutive create(BusinessExecutive businessexecutive);
 
 }

@@ -10,7 +10,8 @@ public interface CompanyGroupService {
 
     CompanyGroup saveCompanygroup(CompanyGroup companygroup);
 
-    CompanyGroup deleteCompanygroup(Long id);
+    boolean deleteCompanygroup(Long id);
+
 
     CompanyGroup create(CompanyGroup companygroup);
 

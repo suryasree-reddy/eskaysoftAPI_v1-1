@@ -35,14 +35,16 @@ public class DistrictServiceImpl implements DistrictService {
 		return districtsDao.save(districts);
 	}
 
-	@Override
-	public Districts delete(Long id) {
-		Districts districts = getdistrictsById(id);
-		if (districts != null) {
-			districtsDao.delete(districts);
+	 @Override
+		public boolean delete(Long id) {
+			boolean status = false;
+			Districts districts = getdistrictsById(id);
+			if (districts != null) {
+				status = true;
+				districtsDao.delete(districts);
+			}
+			return status;
 		}
-		return districts;
-	}
 
 	@Override
 	public Districts create(Districts manfacturer) {

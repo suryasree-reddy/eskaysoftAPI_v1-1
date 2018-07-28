@@ -10,7 +10,7 @@ public interface PurchaseEntryService {
 
     PurchaseEntry savePurchaseEntry(PurchaseEntry purchaseEntry);
 
-    PurchaseEntry deletePurchaseEntry(Long id);
+    boolean deletePurchaseEntry(Long id);
 
     PurchaseEntry create(PurchaseEntry purchaseEntry);
 }

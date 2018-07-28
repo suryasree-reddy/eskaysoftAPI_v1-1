@@ -35,14 +35,17 @@ public class CompanyGroupServiceImpl implements CompanyGroupService {
 		return companygroupDao.save(companygroup);
 	}
 
-	@Override
-	public CompanyGroup deleteCompanygroup(Long id) {
-		CompanyGroup companygroup = getCompanygroupById(id);
-		if (companygroup != null) {
-			companygroupDao.delete(companygroup);
+	 @Override
+		public boolean deleteCompanygroup(Long id) {
+			boolean status = false;
+			CompanyGroup companygroup = getCompanygroupById(id);
+			if (companygroup != null) {
+				status = true;
+				companygroupDao.delete(companygroup);
+			}
+			return status;
 		}
-		return companygroup;
-	}
+
 
 	@Override
 	public CompanyGroup create(CompanyGroup companygroup) {

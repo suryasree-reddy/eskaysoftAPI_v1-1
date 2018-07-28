@@ -1,6 +1,5 @@
 package com.rest.eskaysoftAPI.serviceImpl;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,53 +11,44 @@ import com.rest.eskaysoftAPI.service.AccountInformationService;
 @Service
 public class AccountInformationServiceImpl implements AccountInformationService {
 
-    private AccountInformationDao accountInformationDao;
+	private AccountInformationDao accountInformationDao;
 
-    @Autowired
-    public void setAccountInformationDao(AccountInformationDao accountInformationDao) {
-        this.accountInformationDao = accountInformationDao;
-    }
+	@Autowired
+	public void setAccountInformationDao(AccountInformationDao accountInformationDao) {
+		this.accountInformationDao = accountInformationDao;
+	}
 
+	@Override
+	public Iterable<AccountInformation> listAllAccountInformation() {
+		return accountInformationDao.findAll();
+	}
 
-    @Override
-    public Iterable<AccountInformation> listAllAccountInformation() {
-        return accountInformationDao.findAll();
-    }
-
-    @Override
+	@Override
 	public AccountInformation getAccountInformationById(Long id) {
 		return accountInformationDao.findById(id)
-                .orElseThrow(() -> new NotFoundException(String.format("accountInformationDao %d not found", id)));
-    }
+				.orElseThrow(() -> new NotFoundException(String.format("accountInformationDao %d not found", id)));
+	}
 
-    @Override
-    public AccountInformation saveAccountInformation(AccountInformation accountInformation) {
-        return accountInformationDao.save(accountInformation);
-    }
+	@Override
+	public AccountInformation saveAccountInformation(AccountInformation accountInformation) {
+		return accountInformationDao.save(accountInformation);
+	}
 
-    @Override
-    public AccountInformation deleteAccountInformation(Long id) {
-        AccountInformation accountInformation = getAccountInformationById(id);
-        if(accountInformation != null){
-        	accountInformationDao.delete(accountInformation);
-        }
-        return accountInformation;
-    }
+	@Override
+	public boolean deleteAccountInformation(Long id) {
+		boolean status = false;
+		AccountInformation accountInformation = getAccountInformationById(id);
+		if (accountInformation != null) {
+			accountInformationDao.delete(accountInformation);
+			status = true;
+		}
+		return status;
+	}
 
+	@Override
+	public AccountInformation create(AccountInformation accountInformation) {
 
-    @Override
-    public AccountInformation create(AccountInformation accountInformation) {
-
-            return accountInformationDao.save(accountInformation);
-        }
-
-
-	
-
-
-
-	
-
-
+		return accountInformationDao.save(accountInformation);
+	}
 
 }

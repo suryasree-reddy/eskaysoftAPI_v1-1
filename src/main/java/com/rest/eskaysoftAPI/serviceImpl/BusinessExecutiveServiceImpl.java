@@ -35,14 +35,17 @@ public class BusinessExecutiveServiceImpl implements BusinessExecutiveService {
 		return businessExecutiveDao.save(businessExecutive);
 	}
 
-	@Override
-	public BusinessExecutive deleteBusinessExecutive(Long id) {
+    @Override
+	public boolean deleteBusinessExecutive(Long id) {
+		boolean status = false;
 		BusinessExecutive businessExecutive = getBusinessExecutiveById(id);
 		if (businessExecutive != null) {
+			status = true;
 			businessExecutiveDao.delete(businessExecutive);
 		}
-		return businessExecutive;
+		return status;
 	}
+
 
 	@Override
 	public BusinessExecutive create(BusinessExecutive businessExecutive) {

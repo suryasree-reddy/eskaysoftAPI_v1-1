@@ -10,8 +10,7 @@ public interface AreaService {
 
     Area saveArea(Area area);
 
-    Area deleteArea(Long id);
-
+    boolean deleteArea(Long id);
     Area create(Area area);
 
 }

@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.rest.eskaysoftAPI.entity.Company;
-import com.rest.eskaysoftAPI.entity.Schedule;
 import com.rest.eskaysoftAPI.service.CompanyService;
 
 @Resource(name = "company")
@@ -30,7 +29,6 @@ public class CompanyResource {
 		return companyService.listAllCompany();
 	}
 
-	
 	@POST
 	@Consumes("application/json")
 	@Produces("application/json")
@@ -44,18 +42,20 @@ public class CompanyResource {
 	public Company update(@RequestBody Company company) {
 		return companyService.save(company);
 	}
+
 	@GET
 	@Path("/{id}")
 	@Produces("application/json")
-	public Company findOne(@PathParam("id") long id){
-        return companyService.getCompanyById(id);
+	public Company findOne(@PathParam("id") long id) {
+		return companyService.getCompanyById(id);
 
-    }
-	 @DELETE
-	    @Path("/{id}")
-	    @Produces("application/json")
-	    public Company delete(@PathParam("id") long id)
-	    {
-	        return companyService.deleteCompany(id);
-	    }
+	}
+
+	@DELETE
+	@Path("/{id}")
+	@Produces("application/json")
+	public boolean delete(@PathParam("id") long id) {
+		return companyService.deleteCompany(id);
+	}
+
 }

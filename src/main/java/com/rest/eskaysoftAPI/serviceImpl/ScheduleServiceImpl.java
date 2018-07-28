@@ -27,7 +27,6 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     @Override
 	public Schedule getScheduleById(Long id) {
-    	System.out.println("****************"+id);
 		return scheduleDao.findById(id)
                 .orElseThrow(() -> new NotFoundException(String.format("Schedule %d not found", id)));
     }
@@ -38,15 +37,16 @@ public class ScheduleServiceImpl implements ScheduleService {
     }
 
     @Override
-    public Schedule deleteSchedule(Long id) {
+    public boolean deleteSchedule(Long id) {
+    	boolean status = false;
         Schedule schedule = getScheduleById(id);
         if(schedule != null){
             scheduleDao.delete(schedule);
+            status = true;
         }
-        return schedule;
-    }
-
-
+        return status;
+       }
+    
     @Override
     public Schedule create(Schedule schedule) {
 

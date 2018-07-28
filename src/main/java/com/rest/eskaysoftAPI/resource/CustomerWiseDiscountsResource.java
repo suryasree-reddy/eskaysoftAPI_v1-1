@@ -50,13 +50,16 @@ public class CustomerWiseDiscountsResource {
     public CustomerWiseDiscounts update(@RequestBody CustomerWiseDiscounts customerWiseDiscounts){
         return customerWiseDiscountsService.saveCustomerWiseDiscounts(customerWiseDiscounts);
     }
+
+
     @DELETE
     @Path("/{id}")
     @Produces("application/json")
-    public CustomerWiseDiscounts deleteCustomerWiseDiscounts(@PathParam("id") long id)
+    public boolean deleteCustomerWiseDiscounts(@PathParam("id") long id)
     {
         return customerWiseDiscountsService.deleteCustomerWiseDiscounts(id);
     }
+
 
 
 }

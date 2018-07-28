@@ -21,42 +21,41 @@ import com.rest.eskaysoftAPI.service.PurchaseEntryService;
 public class PurchaseEntryResource {
 
 	@Autowired
-    PurchaseEntryService purchaseEntryService;
+	PurchaseEntryService purchaseEntryService;
 
 	@GET
 	@Produces("application/json")
-    public Iterable<PurchaseEntry> findAll(){
-        return purchaseEntryService.listAllPurchaseEntries();
-    }
-	
+	public Iterable<PurchaseEntry> findAll() {
+		return purchaseEntryService.listAllPurchaseEntries();
+	}
+
 	@GET
 	@Path("/{id}")
 	@Produces("application/json")
-	public PurchaseEntry findOne(@PathParam("id") long id){
-        return purchaseEntryService.getPurchaseEntryById(id);
+	public PurchaseEntry findOne(@PathParam("id") long id) {
+		return purchaseEntryService.getPurchaseEntryById(id);
 
-    }
+	}
 
-    @POST
-    @Consumes("application/json")
-    @Produces("application/json")
-    public PurchaseEntry create(@RequestBody PurchaseEntry purchaseEntry){
-        return purchaseEntryService.create(purchaseEntry);
-    }
+	@POST
+	@Consumes("application/json")
+	@Produces("application/json")
+	public PurchaseEntry create(@RequestBody PurchaseEntry purchaseEntry) {
+		return purchaseEntryService.create(purchaseEntry);
+	}
 
-    @PUT
-    @Consumes("application/json")
-    @Produces("application/json")
-    public PurchaseEntry update(@RequestBody PurchaseEntry purchaseEntry){
-        return purchaseEntryService.savePurchaseEntry(purchaseEntry);
-    }
-    @DELETE
+	@PUT
+	@Consumes("application/json")
+	@Produces("application/json")
+	public PurchaseEntry update(@RequestBody PurchaseEntry purchaseEntry) {
+		return purchaseEntryService.savePurchaseEntry(purchaseEntry);
+	}
+
+	@DELETE
     @Path("/{id}")
     @Produces("application/json")
-    public PurchaseEntry delete(@PathParam("id") long id)
+    public boolean delete(@PathParam("id") long id)
     {
         return purchaseEntryService.deletePurchaseEntry(id);
     }
-
-
 }

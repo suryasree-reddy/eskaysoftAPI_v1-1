@@ -36,12 +36,14 @@ public class BankInformationServiceImpl implements BankInformationService {
 	}
 
 	@Override
-	public BankInformation deletebankinformation(Long id) {
+	public boolean deletebankinformation(Long id) {
+		boolean status = false;
 		BankInformation bankinformation = getbankinformationById(id);
 		if (bankinformation != null) {
 			bankInfromationDao.delete(bankinformation);
+			status = true;
 		}
-		return bankinformation;
+		return status;
 	}
 
 	@Override

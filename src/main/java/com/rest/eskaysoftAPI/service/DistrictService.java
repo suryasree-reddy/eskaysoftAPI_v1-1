@@ -10,7 +10,9 @@ public interface DistrictService {
 
 	Districts save(Districts districts);
 
-	Districts delete(Long id);
+
+    boolean delete(Long id);
+
 
 	Districts create(Districts districts);
 

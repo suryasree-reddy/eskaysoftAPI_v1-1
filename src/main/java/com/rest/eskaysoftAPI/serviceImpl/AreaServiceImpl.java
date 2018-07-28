@@ -38,14 +38,15 @@ public class AreaServiceImpl implements AreaService {
     }
 
     @Override
-    public Area deleteArea(Long id) {
+    public boolean deleteArea(Long id) {
+    	boolean status = false;
         Area area = getAreaById(id);
         if(area != null){
+        	status = true;
         	areaDao.delete(area);
         }
-        return area;
+        return status;
     }
-
 
     @Override
     public Area create(Area area) {

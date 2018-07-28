@@ -54,10 +54,12 @@ public class ScheduleResource {
     public Schedule update(@RequestBody Schedule schedule){
         return scheduleService.saveSchedule(schedule);
     }
+
+
     @DELETE
     @Path("/{id}")
     @Produces("application/json")
-    public Schedule delete(@PathParam("id") long id)
+    public boolean delete(@PathParam("id") long id)
     {
         return scheduleService.deleteSchedule(id);
     }

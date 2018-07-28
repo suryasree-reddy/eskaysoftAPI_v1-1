@@ -10,7 +10,9 @@ public interface ScheduleService {
 
     Schedule saveSchedule(Schedule schedule);
 
-    Schedule deleteSchedule(Long id);
+
+    boolean deleteSchedule(Long id);
+
 
     Schedule create(Schedule schedule);
 

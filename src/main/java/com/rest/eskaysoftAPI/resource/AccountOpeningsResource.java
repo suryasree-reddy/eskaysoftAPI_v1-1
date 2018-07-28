@@ -51,13 +51,13 @@ public class AccountOpeningsResource {
     public AccountOpenings update(@RequestBody AccountOpenings accountopenings){
         return accountOpeningsService.saveAccountOpenings(accountopenings);
     }
+    
     @DELETE
     @Path("/{id}")
     @Produces("application/json")
-    public AccountOpenings delete(@PathParam("id") long id)
+    public boolean delete(@PathParam("id") long id)
     {
         return accountOpeningsService.deleteAccountOpenings(id);
     }
-
 
 }

@@ -53,7 +53,7 @@ public class StatesResource {
     @DELETE
     @Path("/{id}")
     @Produces("application/json")
-    public States delete(@PathParam("id") long id)
+    public boolean delete(@PathParam("id") long id)
     {
         return stateService.deleteState(id);
     }

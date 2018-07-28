@@ -53,7 +53,7 @@ public class ProductCategoryResource {
     @DELETE
     @Path("/{id}")
     @Produces("application/json")
-    public ProductCategory delete(@PathParam("id") long id)
+    public boolean delete(@PathParam("id") long id)
     {
         return productcategoryService.deleteProductCategory(id);
     }

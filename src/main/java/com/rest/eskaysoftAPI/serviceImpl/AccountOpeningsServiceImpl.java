@@ -39,12 +39,14 @@ public class AccountOpeningsServiceImpl implements AccountOpeningsService {
     }
 
     @Override
-    public AccountOpenings deleteAccountOpenings(Long id) {
+    public boolean deleteAccountOpenings(Long id) {
+    	boolean status = false;
     	AccountOpenings accountopenings = getAccountOpeningsById(id);
         if(accountopenings != null){
         	accountOpeningsDao.delete(accountopenings);
+        	status = true;
         }
-        return accountopenings;
+        return status;
     }
 
 

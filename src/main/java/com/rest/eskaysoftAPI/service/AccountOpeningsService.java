@@ -10,7 +10,8 @@ public interface AccountOpeningsService {
 
     AccountOpenings saveAccountOpenings(AccountOpenings accountopenings);
 
-    AccountOpenings deleteAccountOpenings(Long id);
+    boolean deleteAccountOpenings(Long id);
+
 
     AccountOpenings create(AccountOpenings accountopenings);
 

@@ -33,14 +33,18 @@ public class CompanyServiceImpl implements CompanyService {
 		return companyDao.save(company);
 	}
 
-	@Override
-	public Company deleteCompany(Long id) {
+    @Override
+	public boolean deleteCompany(Long id) {
+		boolean status = false;
 		Company company = getCompanyById(id);
 		if (company != null) {
+			status = true;
 			companyDao.delete(company);
 		}
-		return company;
+		return status;
 	}
+
+
 
 	@Override
 	public Company getCompanyById(Long id) {

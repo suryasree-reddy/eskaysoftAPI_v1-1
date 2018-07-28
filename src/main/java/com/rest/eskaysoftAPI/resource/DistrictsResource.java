@@ -58,7 +58,7 @@ public class DistrictsResource {
 	@DELETE
 	@Path("/{id}")
 	@Produces("application/json")
-	public Districts delete(@PathParam("id") long id) {
+	public boolean delete(@PathParam("id") long id) {
 		return districtService.delete(id);
 	}
 

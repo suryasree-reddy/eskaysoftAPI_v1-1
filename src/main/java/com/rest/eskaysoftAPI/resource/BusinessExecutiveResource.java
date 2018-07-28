@@ -51,11 +51,12 @@ public class BusinessExecutiveResource {
 		return bankInformationService.saveBusinessExecutive(bankinformation);
 	}
 
-	@DELETE
+    @DELETE
 	@Path("/{id}")
 	@Produces("application/json")
-	public BusinessExecutive delete(@PathParam("id") long id) {
+	public boolean delete(@PathParam("id") long id) {
 		return bankInformationService.deleteBusinessExecutive(id);
 	}
+
 
 }

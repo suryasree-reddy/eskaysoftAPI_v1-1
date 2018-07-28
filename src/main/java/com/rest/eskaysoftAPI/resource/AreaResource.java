@@ -50,13 +50,13 @@ public class AreaResource {
     public Area update(@RequestBody Area area){
         return areaService.saveArea(area);
     }
+    
     @DELETE
     @Path("/{id}")
     @Produces("application/json")
-    public Area delete(@PathParam("id") long id)
+    public boolean delete(@PathParam("id") long id)
     {
         return areaService.deleteArea(id);
     }
-
 
 }

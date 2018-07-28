@@ -35,14 +35,17 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 		return productcategoryDao.save(productcategory);
 	}
 
-	@Override
-	public ProductCategory deleteProductCategory(Long id) {
-		ProductCategory productcategory = getProductCategoryById(id);
-		if (productcategory != null) {
-			productcategoryDao.delete(productcategory);
+	  @Override
+		public boolean deleteProductCategory(Long id) {
+			boolean status = false;
+			ProductCategory productcategory = getProductCategoryById(id);
+			if (productcategory != null) {
+				status = true;
+				productcategoryDao.delete(productcategory);
+			}
+			return status;
 		}
-		return productcategory;
-	}
+
 
 	@Override
 	public ProductCategory create(ProductCategory productcategory) {

@@ -38,14 +38,15 @@ public class StatesServiceImpl implements StatesService {
     }
 
     @Override
-    public States deleteState(Long id) {
+    public boolean deleteState(Long id) {
+    	boolean status = false;
         States state = getStateById(id);
         if(state != null){
         	stateDao.delete(state);
+        	status = true;
         }
-        return state;
-    }
-
+         return status;
+       }
 
     @Override
     public States create(States state) {

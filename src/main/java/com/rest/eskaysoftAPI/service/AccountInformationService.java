@@ -4,14 +4,14 @@ import com.rest.eskaysoftAPI.entity.AccountInformation;
 
 public interface AccountInformationService {
 
-    Iterable<AccountInformation> listAllAccountInformation();
+	Iterable<AccountInformation> listAllAccountInformation();
 
-    AccountInformation getAccountInformationById(Long id);
+	AccountInformation getAccountInformationById(Long id);
 
-    AccountInformation saveAccountInformation(AccountInformation accountInformation);
+	AccountInformation saveAccountInformation(AccountInformation accountInformation);
 
-    AccountInformation deleteAccountInformation(Long id);
+	boolean deleteAccountInformation(Long id);
 
-    AccountInformation create(AccountInformation accountInformation);
+	AccountInformation create(AccountInformation accountInformation);
 
 }

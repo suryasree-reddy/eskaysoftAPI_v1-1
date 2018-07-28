@@ -8,7 +8,7 @@ public interface CompanyService {
 
 	Company getCompanyById(Long id);
 
-	Company deleteCompany(Long id);
+	boolean deleteCompany(Long id);
 
 	Company save(Company company);
 

@@ -10,7 +10,7 @@ public interface ManfacturerService {
 
     Manfacturer save(Manfacturer manfacturer);
 
-    Manfacturer delete(Long id);
+    boolean delete(Long id);
 
     Manfacturer create(Manfacturer manfacturer);
 

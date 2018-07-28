@@ -10,8 +10,8 @@ public interface CustomerWiseDiscountsService {
 
     CustomerWiseDiscounts saveCustomerWiseDiscounts(CustomerWiseDiscounts customerWiseDiscounts);
 
-    CustomerWiseDiscounts deleteCustomerWiseDiscounts(Long id);
 
+    boolean deleteCustomerWiseDiscounts(Long id);
     CustomerWiseDiscounts create(CustomerWiseDiscounts customerWiseDiscounts);
 
 }

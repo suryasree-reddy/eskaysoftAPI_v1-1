@@ -11,7 +11,6 @@ public interface ProductCategoryService {
 
 	ProductCategory saveProductCategory(ProductCategory productcategory);
 
-	ProductCategory deleteProductCategory(Long id);
-
+	 boolean deleteProductCategory(Long id);
 	ProductCategory create(ProductCategory productcategory);
 }

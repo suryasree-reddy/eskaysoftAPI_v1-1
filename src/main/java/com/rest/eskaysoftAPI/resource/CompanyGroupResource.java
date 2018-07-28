@@ -54,7 +54,7 @@ public class CompanyGroupResource {
 	@DELETE
 	@Path("/{id}")
 	@Produces("application/json")
-	public CompanyGroup delete(@PathParam("id") long id) {
+	public boolean delete(@PathParam("id") long id) {
 		return companyGroupService.deleteCompanygroup(id);
 	}
 

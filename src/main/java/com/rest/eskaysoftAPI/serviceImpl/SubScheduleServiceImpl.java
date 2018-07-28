@@ -40,14 +40,12 @@ public class SubScheduleServiceImpl implements SubScheduleService {
 			sceduleDto = new SceduleDto();
 			subSceduleDto = new SubScheduleDto();
 			sceduleDto.setId(schedule.getId());
-			sceduleDto.setScheduleIndex(schedule.getScheduleIndex());
 			sceduleDto.setScheduleName(schedule.getScheduleName());
-			sceduleDto.setScheduleType(schedule.getScheduleType());			
+			
 			subSceduleDto.setSchedule(sceduleDto);
 			subSceduleDto.setSubScheduleId(s.getScheduleId());
 			subSceduleDto.setSubScheduleIndex(s.getSubScheduleId());
 			subSceduleDto.setSubScheduleName(s.getSubScheduleName());
-			subSceduleDto.setSubScheduleType(s.getSubScheduleType());
 			subSchedules.add(subSceduleDto);
 		}
 		return subSchedules;
@@ -62,14 +60,11 @@ public class SubScheduleServiceImpl implements SubScheduleService {
 		sceduleDto = new SceduleDto();
 		subSceduleDto = new SubScheduleDto();
 		sceduleDto.setId(schedule.getId());
-		sceduleDto.setScheduleIndex(schedule.getScheduleIndex());
 		sceduleDto.setScheduleName(schedule.getScheduleName());
-		sceduleDto.setScheduleType(schedule.getScheduleType());			
 		subSceduleDto.setSchedule(sceduleDto);
 		subSceduleDto.setSubScheduleId(s.getScheduleId());
 		subSceduleDto.setSubScheduleIndex(s.getSubScheduleId());
 		subSceduleDto.setSubScheduleName(s.getSubScheduleName());
-		subSceduleDto.setSubScheduleType(s.getSubScheduleType());
 		return subSceduleDto;
 	}
 

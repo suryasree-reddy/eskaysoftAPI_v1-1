@@ -13,10 +13,8 @@ public class SubSchedule {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long subScheduleId;
 	private String subScheduleName;
-	private String subScheduleType;
 	private Long subScheduleIndex;
-	private float credit;
-	private float debit;
+	
 	
 	private Long scheduleId;
 
@@ -54,29 +52,8 @@ public class SubSchedule {
 		this.subScheduleIndex = subScheduleIndex;
 	}
 
+
+
 	
-	public String getSubScheduleType() {
-		return subScheduleType;
-	}
-
-	public void setSubScheduleType(String subScheduleType) {
-		this.subScheduleType = subScheduleType;
-	}
-
-	public float getCredit() {
-		return credit;
-	}
-
-	public void setCredit(float credit) {
-		this.credit = credit;
-	}
-
-	public float getDebit() {
-		return debit;
-	}
-
-	public void setDebit(float debit) {
-		this.debit = debit;
-	}
 	
 }

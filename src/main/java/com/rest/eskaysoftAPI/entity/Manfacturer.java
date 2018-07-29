@@ -25,11 +25,13 @@ public class Manfacturer implements Serializable {
 		this.id = id;
 	}
 	public String getManfacturerName() {
-		return this.manfacturerName;
+		return manfacturerName;
 	}
 	public void setManfacturerName(String manfacturerName) {
 		this.manfacturerName = manfacturerName;
 	}
+	
+	
 
 	
 

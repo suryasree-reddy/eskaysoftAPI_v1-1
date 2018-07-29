@@ -1,6 +1,8 @@
 package com.rest.eskaysoftAPI.serviceImpl;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +52,24 @@ public class SubScheduleServiceImpl implements SubScheduleService {
 		}
 		return subSchedules;
 	}
-
+	
+	
+	/*@Override
+	public Set<SceduleDto> listAllSchedules() {
+		List<Schedule> schedules = new ArrayList<>(scheduleDao.findAll());
+		Set<SceduleDto> scheduleList = null;
+		if (schedules != null) {
+			scheduleList = new HashSet<>();
+			for (Schedule schedule : schedules) {
+				SceduleDto scheduleDTO = new SceduleDto();
+				scheduleDTO.setId(schedule.getId());
+				scheduleDTO.setScheduleName(schedule.getScheduleName());	
+				scheduleList.add(scheduleDTO);
+			}}
+		
+		return scheduleList;
+	}
+*/
 	@Override
 	public SubScheduleDto getSubScheduleById(Long id) {
 		SubScheduleDto subSceduleDto = null;
@@ -90,4 +109,6 @@ public class SubScheduleServiceImpl implements SubScheduleService {
 		return subscheduleDao.save(subschedule);
 	}
 
+
+	
 }

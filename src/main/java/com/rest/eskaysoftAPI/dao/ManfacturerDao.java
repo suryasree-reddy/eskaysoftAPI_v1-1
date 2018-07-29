@@ -9,7 +9,7 @@ import com.rest.eskaysoftAPI.entity.Manfacturer;
 
 
 
-@Repository ("disctrictsDao")
+@Repository ("manfacturerDao")
 @Transactional
 public interface ManfacturerDao extends JpaRepository<Manfacturer, Long> {
 

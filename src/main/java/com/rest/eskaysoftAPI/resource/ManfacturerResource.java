@@ -53,7 +53,7 @@ public class ManfacturerResource {
     @DELETE
     @Path("/{id}")
     @Produces("application/json")
-    public boolean deletemanfacturer(@PathParam("id") long id)
+    public boolean delete(@PathParam("id") long id)
     {
         return manfacturerService.delete(id);
     }

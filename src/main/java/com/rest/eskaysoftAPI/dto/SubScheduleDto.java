@@ -1,6 +1,7 @@
 package com.rest.eskaysoftAPI.dto;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class SubScheduleDto implements Serializable{
 	

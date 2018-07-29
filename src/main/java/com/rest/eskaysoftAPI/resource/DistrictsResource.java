@@ -18,7 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.rest.eskaysoftAPI.dto.DistrictDto;
-import com.rest.eskaysoftAPI.dto.SubScheduleDto;
 import com.rest.eskaysoftAPI.entity.Districts;
 import com.rest.eskaysoftAPI.service.DistrictService;
 

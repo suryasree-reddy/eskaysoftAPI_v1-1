@@ -22,19 +22,19 @@ public class BankInformation implements Serializable {
 	private String Address;
 	
 	public Long getBankId() {
-		return bankId;
+		return this.bankId;
 	}
 	public void setBankId(Long bankId) {
 		this.bankId = bankId;
 	}
 	public String getName() {
-		return Name;
+		return this.Name;
 	}
 	public void setName(String name) {
 		Name = name;
 	}
 	public String getAddress() {
-		return Address;
+		return this.Address;
 	}
 	public void setAddress(String address) {
 		Address = address;

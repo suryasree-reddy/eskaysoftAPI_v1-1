@@ -61,7 +61,7 @@ public class PurchaseEntry {
 	 * @return the purchaseId
 	 */
 	public Long getPurchaseId() {
-		return PurchaseId;
+		return this.PurchaseId;
 	}
 
 	/**
@@ -76,7 +76,7 @@ public class PurchaseEntry {
 	 * @return the purchaseNumber
 	 */
 	public Long getPurchaseNumber() {
-		return PurchaseNumber;
+		return this.PurchaseNumber;
 	}
 
 	/**
@@ -91,7 +91,7 @@ public class PurchaseEntry {
 	 * @return the invoiceNumber
 	 */
 	public Long getInvoiceNumber() {
-		return InvoiceNumber;
+		return this.InvoiceNumber;
 	}
 
 	/**
@@ -106,7 +106,7 @@ public class PurchaseEntry {
 	 * @return the supplier
 	 */
 	public String getSupplier() {
-		return Supplier;
+		return this.Supplier;
 	}
 
 	/**
@@ -121,7 +121,7 @@ public class PurchaseEntry {
 	 * @return the gSTIN
 	 */
 	public String getGSTIN() {
-		return GSTIN;
+		return this.GSTIN;
 	}
 
 	/**
@@ -136,7 +136,7 @@ public class PurchaseEntry {
 	 * @return the wayBillNumber
 	 */
 	public Long getWayBillNumber() {
-		return WayBillNumber;
+		return this.WayBillNumber;
 	}
 
 	/**
@@ -151,7 +151,7 @@ public class PurchaseEntry {
 	 * @return the transport
 	 */
 	public String getTransport() {
-		return Transport;
+		return this.Transport;
 	}
 
 	/**
@@ -166,7 +166,7 @@ public class PurchaseEntry {
 	 * @return the cS
 	 */
 	public String getCS() {
-		return CS;
+		return this.CS;
 	}
 
 	/**
@@ -181,7 +181,7 @@ public class PurchaseEntry {
 	 * @return the date
 	 */
 	public String getDate() {
-		return Date;
+		return this.Date;
 	}
 
 	/**
@@ -196,7 +196,7 @@ public class PurchaseEntry {
 	 * @return the invoiceDate
 	 */
 	public String getInvoiceDate() {
-		return InvoiceDate;
+		return this.InvoiceDate;
 	}
 
 	/**
@@ -211,7 +211,7 @@ public class PurchaseEntry {
 	 * @return the mode
 	 */
 	public String getMode() {
-		return Mode;
+		return this.Mode;
 	}
 
 	/**
@@ -226,7 +226,7 @@ public class PurchaseEntry {
 	 * @return the lRNumber
 	 */
 	public Long getLRNumber() {
-		return LRNumber;
+		return this.LRNumber;
 	}
 
 	/**
@@ -241,7 +241,7 @@ public class PurchaseEntry {
 	 * @return the lRDate
 	 */
 	public String getLRDate() {
-		return LRDate;
+		return this.LRDate;
 	}
 
 	/**
@@ -256,7 +256,7 @@ public class PurchaseEntry {
 	 * @return the deliveredForm
 	 */
 	public String getDeliveredForm() {
-		return DeliveredForm;
+		return this.DeliveredForm;
 	}
 
 	/**
@@ -271,7 +271,7 @@ public class PurchaseEntry {
 	 * @return the product
 	 */
 	public Product getProduct() {
-		return product;
+		return this.product;
 	}
 
 	/**
@@ -286,7 +286,7 @@ public class PurchaseEntry {
 	 * @return the batch
 	 */
 	public String getBatch() {
-		return Batch;
+		return this.Batch;
 	}
 
 	/**
@@ -301,7 +301,7 @@ public class PurchaseEntry {
 	 * @return the expiry
 	 */
 	public String getExpiry() {
-		return Expiry;
+		return this.Expiry;
 	}
 
 	/**
@@ -316,7 +316,7 @@ public class PurchaseEntry {
 	 * @return the quantity
 	 */
 	public String getQuantity() {
-		return Quantity;
+		return this.Quantity;
 	}
 
 	/**
@@ -331,7 +331,7 @@ public class PurchaseEntry {
 	 * @return the otherCharges
 	 */
 	public float getOtherCharges() {
-		return OtherCharges;
+		return this.OtherCharges;
 	}
 
 	/**
@@ -346,7 +346,7 @@ public class PurchaseEntry {
 	 * @return the grsValue
 	 */
 	public float getGrsValue() {
-		return GrsValue;
+		return this.GrsValue;
 	}
 
 	/**
@@ -361,7 +361,7 @@ public class PurchaseEntry {
 	 * @return the discount
 	 */
 	public float getDiscount() {
-		return Discount;
+		return this.Discount;
 	}
 
 	/**
@@ -376,7 +376,7 @@ public class PurchaseEntry {
 	 * @return the pTD
 	 */
 	public float getPTD() {
-		return PTD;
+		return this.PTD;
 	}
 
 	/**
@@ -391,7 +391,7 @@ public class PurchaseEntry {
 	 * @return the saleRate
 	 */
 	public float getSaleRate() {
-		return SaleRate;
+		return this.SaleRate;
 	}
 
 	/**
@@ -406,7 +406,7 @@ public class PurchaseEntry {
 	 * @return the hSN
 	 */
 	public String getHSN() {
-		return HSN;
+		return this.HSN;
 	}
 
 	/**
@@ -421,7 +421,7 @@ public class PurchaseEntry {
 	 * @return the mRP
 	 */
 	public float getMRP() {
-		return MRP;
+		return this.MRP;
 	}
 
 	/**
@@ -436,7 +436,7 @@ public class PurchaseEntry {
 	 * @return the mfgName
 	 */
 	public String getMfgName() {
-		return MfgName;
+		return this.MfgName;
 	}
 
 	/**
@@ -451,7 +451,7 @@ public class PurchaseEntry {
 	 * @return the grossValue
 	 */
 	public float getGrossValue() {
-		return GrossValue;
+		return this.GrossValue;
 	}
 
 	/**
@@ -466,7 +466,7 @@ public class PurchaseEntry {
 	 * @return the discountValue
 	 */
 	public float getDiscountValue() {
-		return DiscountValue;
+		return this.DiscountValue;
 	}
 
 	/**
@@ -481,7 +481,7 @@ public class PurchaseEntry {
 	 * @return the taxValue
 	 */
 	public float getTaxValue() {
-		return TaxValue;
+		return this.TaxValue;
 	}
 
 	/**
@@ -496,7 +496,7 @@ public class PurchaseEntry {
 	 * @return the netValue
 	 */
 	public float getNetValue() {
-		return NetValue;
+		return this.NetValue;
 	}
 
 	/**
@@ -511,7 +511,7 @@ public class PurchaseEntry {
 	 * @return the gSTPercent
 	 */
 	public float getGSTPercent() {
-		return GSTPercent;
+		return this.GSTPercent;
 	}
 
 	/**
@@ -526,7 +526,7 @@ public class PurchaseEntry {
 	 * @return the taxable
 	 */
 	public String getTaxable() {
-		return Taxable;
+		return this.Taxable;
 	}
 
 	/**
@@ -541,7 +541,7 @@ public class PurchaseEntry {
 	 * @return the cGSTAmount
 	 */
 	public float getCGSTAmount() {
-		return CGSTAmount;
+		return this.CGSTAmount;
 	}
 
 	/**
@@ -556,7 +556,7 @@ public class PurchaseEntry {
 	 * @return the sGSTAmount
 	 */
 	public float getSGSTAmount() {
-		return SGSTAmount;
+		return this.SGSTAmount;
 	}
 
 	/**
@@ -571,7 +571,7 @@ public class PurchaseEntry {
 	 * @return the debitAdjustmentLedger
 	 */
 	public Long getDebitAdjustmentLedger() {
-		return DebitAdjustmentLedger;
+		return this.DebitAdjustmentLedger;
 	}
 
 	/**
@@ -586,7 +586,7 @@ public class PurchaseEntry {
 	 * @return the creditAdjustmentLedger
 	 */
 	public Long getCreditAdjustmentLedger() {
-		return CreditAdjustmentLedger;
+		return this.CreditAdjustmentLedger;
 	}
 
 	/**
@@ -601,7 +601,7 @@ public class PurchaseEntry {
 	 * @return the remarks
 	 */
 	public String getRemarks() {
-		return Remarks;
+		return this.Remarks;
 	}
 
 	/**
@@ -616,7 +616,7 @@ public class PurchaseEntry {
 	 * @return the debitAdjustmentValue
 	 */
 	public float getDebitAdjustmentValue() {
-		return DebitAdjustmentValue;
+		return this.DebitAdjustmentValue;
 	}
 
 	/**
@@ -631,7 +631,7 @@ public class PurchaseEntry {
 	 * @return the creditAdjustmentValue
 	 */
 	public float getCreditAdjustmentValue() {
-		return CreditAdjustmentValue;
+		return this.CreditAdjustmentValue;
 	}
 
 	/**
@@ -646,7 +646,7 @@ public class PurchaseEntry {
 	 * @return the invoiceValue
 	 */
 	public float getInvoiceValue() {
-		return InvoiceValue;
+		return this.InvoiceValue;
 	}
 
 

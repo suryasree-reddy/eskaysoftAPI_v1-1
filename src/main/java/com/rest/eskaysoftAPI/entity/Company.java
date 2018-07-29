@@ -33,7 +33,7 @@ public class Company implements Serializable {
     }
 
 	public String getCompanyCode() {
-		return companyCode;
+		return this.companyCode;
 	}
 
 	public void setCompanyCode(String companyCode) {
@@ -41,7 +41,7 @@ public class Company implements Serializable {
 	}
 
 	public String getCompanyGroup() {
-		return companyGroup;
+		return this.companyGroup;
 	}
 
 	public void setCompanyGroup(String companyGroup) {
@@ -49,7 +49,7 @@ public class Company implements Serializable {
 	}
 
 	public String getCompanyStatus() {
-		return companyStatus;
+		return this.companyStatus;
 	}
 
 	public void setCompanyStatus(String companyStatus) {
@@ -57,7 +57,7 @@ public class Company implements Serializable {
 	}
 
 	public String getInvGenType() {
-		return invGenType;
+		return this.invGenType;
 	}
 
 	public void setInvGenType(String invGenType) {
@@ -65,7 +65,7 @@ public class Company implements Serializable {
 	}
 
 	public String getInvPrefix() {
-		return invPrefix;
+		return this.invPrefix;
 	}
 
 	public void setInvPrefix(String invPrefix) {
@@ -73,7 +73,7 @@ public class Company implements Serializable {
 	}
 
 	public String getCompanyType() {
-		return companyType;
+		return this.companyType;
 	}
 
 	public void setCompanyType(String companyType) {

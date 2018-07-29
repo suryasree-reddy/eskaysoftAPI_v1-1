@@ -23,7 +23,7 @@ public class AccountOpenings implements Serializable {
 	private String type;
 
 	public Long getAccountOpeningsId() {
-		return accountOpeningsId;
+		return this.accountOpeningsId;
 	}
 
 	public void setAccountOpeningsId(Long accountOpeningsId) {
@@ -31,7 +31,7 @@ public class AccountOpenings implements Serializable {
 	}
 
 	public Long getId() {
-		return accountOpeningsId;
+		return this.accountOpeningsId;
 	}
 
 	public void setId(Long id) {
@@ -39,7 +39,7 @@ public class AccountOpenings implements Serializable {
 	}
 
 	public String getCode() {
-		return code;
+		return this.code;
 	}
 
 	public void setCode(String code) {
@@ -47,7 +47,7 @@ public class AccountOpenings implements Serializable {
 	}
 
 	public String getAccountName() {
-		return accountName;
+		return this.accountName;
 	}
 
 	public void setAccountName(String accountName) {
@@ -55,7 +55,7 @@ public class AccountOpenings implements Serializable {
 	}
 
 	public String getTown() {
-		return town;
+		return this.town;
 	}
 
 	public void setTown(String town) {
@@ -63,7 +63,7 @@ public class AccountOpenings implements Serializable {
 	}
 
 	public String getOpenigs() {
-		return openigs;
+		return this.openigs;
 	}
 
 	public void setOpenigs(String openigs) {
@@ -71,7 +71,7 @@ public class AccountOpenings implements Serializable {
 	}
 
 	public String getType() {
-		return type;
+		return this.type;
 	}
 
 	public void setType(String type) {

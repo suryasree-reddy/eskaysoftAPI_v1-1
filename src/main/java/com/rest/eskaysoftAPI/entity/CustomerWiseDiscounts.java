@@ -22,7 +22,7 @@ public class CustomerWiseDiscounts implements Serializable {
 	private String disc;
 	
 	public Long getId() {
-		return customerWiseDiscountsId;
+		return this.customerWiseDiscountsId;
 	}
 
 	public void setId(Long id) {
@@ -30,7 +30,7 @@ public class CustomerWiseDiscounts implements Serializable {
 	}
 
 	public Long getCustomerWiseDiscountsId() {
-		return customerWiseDiscountsId;
+		return this.customerWiseDiscountsId;
 	}
 
 	public void setCustomerWiseDiscountsId(Long customerWiseDiscountsId) {
@@ -38,7 +38,7 @@ public class CustomerWiseDiscounts implements Serializable {
 	}
 
 	public String getCustomer() {
-		return customer;
+		return this.customer;
 	}
 
 	public void setCustomer(String customer) {
@@ -46,7 +46,7 @@ public class CustomerWiseDiscounts implements Serializable {
 	}
 
 	public String getCompanyOption() {
-		return companyOption;
+		return this.companyOption;
 	}
 
 	public void setCompanyOption(String companyOption) {
@@ -54,7 +54,7 @@ public class CustomerWiseDiscounts implements Serializable {
 	}
 
 	public String getDiscount() {
-		return discount;
+		return this.discount;
 	}
 
 	public void setDiscount(String discount) {
@@ -62,7 +62,7 @@ public class CustomerWiseDiscounts implements Serializable {
 	}
 
 	public String getCompanyDiscription() {
-		return companyDiscription;
+		return this.companyDiscription;
 	}
 
 	public void setCompanyDiscription(String companyDiscription) {
@@ -70,7 +70,7 @@ public class CustomerWiseDiscounts implements Serializable {
 	}
 
 	public String getDisc() {
-		return disc;
+		return this.disc;
 	}
 
 	public void setDisc(String disc) {

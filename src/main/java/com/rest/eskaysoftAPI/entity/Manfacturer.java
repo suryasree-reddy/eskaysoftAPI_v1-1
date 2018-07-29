@@ -25,7 +25,7 @@ public class Manfacturer implements Serializable {
 		this.id = id;
 	}
 	public String getManfacturerName() {
-		return manfacturerName;
+		return this.manfacturerName;
 	}
 	public void setManfacturerName(String manfacturerName) {
 		this.manfacturerName = manfacturerName;

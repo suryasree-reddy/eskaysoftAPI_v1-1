@@ -1,12 +1,9 @@
 package com.rest.eskaysoftAPI.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,28 +12,13 @@ public class Districts {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long districtId;
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "stateId")
-	private States state;
 
 	private String districtName;
 
-	public Districts() {
-	}
-
-	public void setState(States state) {
-		this.state = state;
-	}
-
-	/**
-	 * @return the state
-	 */
-	public States getState() {
-		return state;
-	}
+	private Long statesId;
 
 	public Long getDistrictId() {
-		return districtId;
+		return this.districtId;
 	}
 
 	public void setDistrictId(Long districtId) {
@@ -44,30 +26,20 @@ public class Districts {
 	}
 
 	public String getDistrictName() {
-		return districtName;
+		return this.districtName;
 	}
 
 	public void setDistrictName(String districtName) {
 		this.districtName = districtName;
 	}
 
-	public States setStateName(States state) {
-		return this.state = state;
+	public Long getStatesId() {
+		return this.statesId;
 	}
 
-	/**
-	 * @return the id
-	 */
-	public Long getId() {
-		return districtId;
+	public void setStatesId(Long statesId) {
+		this.statesId = statesId;
 	}
 
-	/**
-	 * @param id
-	 *            the id to set
-	 */
-	public void setId(Long id) {
-		this.districtId = id;
-	}
 
 }

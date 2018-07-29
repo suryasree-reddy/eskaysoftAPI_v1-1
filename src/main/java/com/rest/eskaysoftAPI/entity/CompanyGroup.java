@@ -17,7 +17,7 @@ public class CompanyGroup implements Serializable {
 	 */
 	private static final long serialVersionUID = 6959309821416613726L;
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Long id) {
@@ -25,7 +25,7 @@ public class CompanyGroup implements Serializable {
 	}
 
 	public String getCompanyGroup() {
-		return companyGroup;
+		return this.companyGroup;
 	}
 
 	public void setCompanyGroup(String companyGroup) {

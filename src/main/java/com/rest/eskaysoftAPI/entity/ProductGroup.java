@@ -23,7 +23,7 @@ public class ProductGroup implements Serializable {
 	 * @return the productGroupId
 	 */
 	public Long getProductGroupId() {
-		return productGroupId;
+		return this.productGroupId;
 	}
 
 	/**
@@ -38,7 +38,7 @@ public class ProductGroup implements Serializable {
 	 * @return the productGroupName
 	 */
 	public String getProductGroupName() {
-		return productGroupName;
+		return this.productGroupName;
 	}
 
 	/**

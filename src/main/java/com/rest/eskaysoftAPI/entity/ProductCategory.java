@@ -25,7 +25,7 @@ public class ProductCategory implements Serializable {
 	 * @return the productCategoryId
 	 */
 	public Long getProductCategoryId() {
-		return productCategoryId;
+		return this.productCategoryId;
 	}
 
 	/**
@@ -40,7 +40,7 @@ public class ProductCategory implements Serializable {
 	 * @return the productCategoryName
 	 */
 	public String getProductCategoryName() {
-		return productCategoryName;
+		return this.productCategoryName;
 	}
 
 	/**

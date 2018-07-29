@@ -30,25 +30,25 @@ public class BusinessExecutive implements Serializable {
 		this.businessexecutiveid = businessexecutiveid;
 	}
 	public String getName() {
-		return name;
+		return this.name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
 	public String getAddress() {
-		return address;
+		return this.address;
 	}
 	public void setAddress(String address) {
 		this.address = address;
 	}
 	public String getTown() {
-		return town;
+		return this.town;
 	}
 	public void setTown(String town) {
 		this.town = town;
 	}
 	public Long getMobile() {
-		return mobile;
+		return this.mobile;
 	}
 	public void setMobile(Long mobile) {
 		this.mobile = mobile;

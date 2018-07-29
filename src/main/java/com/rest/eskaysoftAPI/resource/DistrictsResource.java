@@ -1,5 +1,7 @@
 package com.rest.eskaysoftAPI.resource;
 
+import java.util.Set;
+
 import javax.annotation.Resource;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -15,6 +17,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.rest.eskaysoftAPI.dto.DistrictDto;
+import com.rest.eskaysoftAPI.dto.SubScheduleDto;
 import com.rest.eskaysoftAPI.entity.Districts;
 import com.rest.eskaysoftAPI.service.DistrictService;
 
@@ -28,7 +32,7 @@ public class DistrictsResource {
 
 	@GET
 	@Produces("application/json")
-	public Iterable<Districts> findAll() {
+	public Set<DistrictDto> findAll() {
 		logger.info("findAll districs");
 		return districtService.listAllDistricts();
 	}
@@ -36,7 +40,7 @@ public class DistrictsResource {
 	@GET
 	@Path("/{id}")
 	@Produces("application/json")
-	public Districts findOne(@PathParam("id") long id) {
+	public DistrictDto findOne(@PathParam("id") long id) {
 		return districtService.getdistrictsById(id);
 
 	}

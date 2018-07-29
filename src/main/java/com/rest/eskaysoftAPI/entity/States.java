@@ -31,7 +31,7 @@ public class States implements Serializable {
     }
 
 	public String getStateName() {
-		return stateName;
+		return this.stateName;
 	}
 
 	public void setStateName(String stateName) {
@@ -39,7 +39,7 @@ public class States implements Serializable {
 	}
 
 	public Long getStateCode() {
-		return stateCode;
+		return this.stateCode;
 	}
 
 	public void setStateCode(Long stateCode) {
@@ -47,7 +47,7 @@ public class States implements Serializable {
 	}
 
 	public String getZone() {
-		return zone;
+		return this.zone;
 	}
 
 	public void setZone(String zone) {

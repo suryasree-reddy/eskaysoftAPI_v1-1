@@ -25,13 +25,13 @@ public class Area implements Serializable {
 		this.id = id;
 	}
 	public String getAreaName() {
-		return areaName;
+		return this.areaName;
 	}
 	public void setAreaName(String areaName) {
 		this.areaName = areaName;
 	}
 	public String getExecutiveName() {
-		return executiveName;
+		return this.executiveName;
 	}
 	public void setExecutiveName(String executiveName) {
 		this.executiveName = executiveName;

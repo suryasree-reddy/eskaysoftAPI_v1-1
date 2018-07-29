@@ -1,12 +1,15 @@
 package com.rest.eskaysoftAPI.service;
 
+import java.util.Set;
+
+import com.rest.eskaysoftAPI.dto.DistrictDto;
 import com.rest.eskaysoftAPI.entity.Districts;
 
 public interface DistrictService {
 
-	Iterable<Districts> listAllDistricts();
+	Set<DistrictDto> listAllDistricts();
 
-	Districts getdistrictsById(Long id);
+	DistrictDto getdistrictsById(Long id);
 
 	Districts save(Districts districts);
 

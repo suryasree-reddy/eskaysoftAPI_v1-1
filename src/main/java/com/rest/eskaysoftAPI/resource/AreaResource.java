@@ -21,42 +21,41 @@ import com.rest.eskaysoftAPI.service.AreaService;
 public class AreaResource {
 
 	@Autowired
-    AreaService areaService;
+	AreaService areaService;
 
 	@GET
 	@Produces("application/json")
-    public Iterable<Area> findAll(){
-        return areaService.listAllArea();
-    }
-	
+	public Iterable<Area> findAll() {
+		return areaService.listAllArea();
+	}
+
 	@GET
 	@Path("/{id}")
 	@Produces("application/json")
-	public Area findOne(@PathParam("id") long id){
-        return areaService.getAreaById(id);
+	public Area findOne(@PathParam("id") long id) {
+		return areaService.getAreaById(id);
 
-    }
+	}
 
-    @POST
-    @Consumes("application/json")
-    @Produces("application/json")
-    public Area create(@RequestBody Area area){
-        return areaService.create(area);
-    }
+	@POST
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Area create(@RequestBody Area area) {
+		return areaService.create(area);
+	}
 
-    @PUT
-    @Consumes("application/json")
-    @Produces("application/json")
-    public Area update(@RequestBody Area area){
-        return areaService.saveArea(area);
-    }
-    
-    @DELETE
-    @Path("/{id}")
-    @Produces("application/json")
-    public boolean delete(@PathParam("id") long id)
-    {
-        return areaService.deleteArea(id);
-    }
+	@PUT
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Area update(@RequestBody Area area) {
+		return areaService.saveArea(area);
+	}
+
+	@DELETE
+	@Path("/{id}")
+	@Produces("application/json")
+	public boolean delete(@PathParam("id") long id) {
+		return areaService.delete(id);
+	}
 
 }

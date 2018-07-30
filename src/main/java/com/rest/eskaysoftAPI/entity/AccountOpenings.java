@@ -15,27 +15,22 @@ public class AccountOpenings implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long accountOpeningsId;
+	private Long id;
 	private String code;
 	private String accountName;
 	private String town;
 	private String openigs;
 	private String type;
 
-	public Long getAccountOpeningsId() {
-		return this.accountOpeningsId;
-	}
 
-	public void setAccountOpeningsId(Long accountOpeningsId) {
-		this.accountOpeningsId = accountOpeningsId;
-	}
+
 
 	public Long getId() {
-		return this.accountOpeningsId;
+		return id;
 	}
 
 	public void setId(Long id) {
-		accountOpeningsId = id;
+		this.id = id;
 	}
 
 	public String getCode() {

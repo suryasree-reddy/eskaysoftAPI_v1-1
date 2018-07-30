@@ -17,17 +17,18 @@ public class BusinessExecutive implements Serializable {
 
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long businessexecutiveid;
+	private Long id;
 	private String name;
 	private String address;
 	private String town;
 	private Long mobile;
 	
-	public Long getBusinessexecutiveid() {
-		return businessexecutiveid;
+	
+	public Long getId() {
+		return id;
 	}
-	public void setBusinessexecutiveid(Long businessexecutiveid) {
-		this.businessexecutiveid = businessexecutiveid;
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public String getName() {
 		return this.name;

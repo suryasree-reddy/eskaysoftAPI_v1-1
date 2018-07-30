@@ -14,27 +14,21 @@ public class CustomerWiseDiscounts implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long customerWiseDiscountsId;
+	private Long id;
 	private String customer;
 	private String companyOption;
 	private String discount;
 	private String companyDiscription;
 	private String disc;
 	
+	
+
 	public Long getId() {
-		return this.customerWiseDiscountsId;
+		return id;
 	}
 
 	public void setId(Long id) {
-		customerWiseDiscountsId = id;
-	}
-
-	public Long getCustomerWiseDiscountsId() {
-		return this.customerWiseDiscountsId;
-	}
-
-	public void setCustomerWiseDiscountsId(Long customerWiseDiscountsId) {
-		this.customerWiseDiscountsId = customerWiseDiscountsId;
+		this.id = id;
 	}
 
 	public String getCustomer() {

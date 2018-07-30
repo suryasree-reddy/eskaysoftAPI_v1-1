@@ -24,45 +24,50 @@ public class ScheduleResource {
 	private static final Logger logger = LoggerFactory.getLogger(ScheduleResource.class);
 
 	@Autowired
-    ScheduleService scheduleService;
+	ScheduleService scheduleService;
 
 	@GET
 	@Produces("application/json")
-    public Iterable<Schedule> findAll(){
-		logger.info("findAll schedules");
-        return scheduleService.listAllSchedules();
-    }
-	
+	public Iterable<Schedule> findAll() {
+		return scheduleService.listAllSchedules();
+	}
+
 	@GET
 	@Path("/{id}")
 	@Produces("application/json")
-	public Schedule findOne(@PathParam("id") long id){
-        return scheduleService.getScheduleById(id);
+	public Schedule findOne(@PathParam("id") long id) {
+		if (logger.isDebugEnabled()) {
+			logger.debug("Requsted ID = " + id);
+		}
+		return scheduleService.getScheduleById(id);
 
-    }
+	}
 
-    @POST
-    @Consumes("application/json")
-    @Produces("application/json")
-    public Schedule create(@RequestBody Schedule schedule){
-        return scheduleService.create(schedule);
-    }
+	@POST
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Schedule create(@RequestBody Schedule schedule) {
+		if (logger.isDebugEnabled()) {
+			logger.debug("Requsted Schedule = " + schedule);
+		}
+		return scheduleService.create(schedule);
+	}
 
-    @PUT
-    @Consumes("application/json")
-    @Produces("application/json")
-    public Schedule update(@RequestBody Schedule schedule){
-        return scheduleService.saveSchedule(schedule);
-    }
+	@PUT
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Schedule update(@RequestBody Schedule schedule) {
+		if (logger.isDebugEnabled()) {
+			logger.debug("Requsted Schedule = " + schedule);
+		}
+		return scheduleService.saveSchedule(schedule);
+	}
 
-
-    @DELETE
-    @Path("/{id}")
-    @Produces("application/json")
-    public boolean delete(@PathParam("id") long id)
-    {
-        return scheduleService.deleteSchedule(id);
-    }
-
+	@DELETE
+	@Path("/{id}")
+	@Produces("application/json")
+	public boolean delete(@PathParam("id") long id) {
+		return scheduleService.deleteSchedule(id);
+	}
 
 }

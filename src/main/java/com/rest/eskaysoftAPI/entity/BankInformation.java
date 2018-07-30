@@ -17,15 +17,16 @@ public class BankInformation implements Serializable {
 
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long bankId;
+	private Long id;
 	private String Name;
 	private String Address;
 	
-	public Long getBankId() {
-		return this.bankId;
+	
+	public Long getId() {
+		return id;
 	}
-	public void setBankId(Long bankId) {
-		this.bankId = bankId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public String getName() {
 		return this.Name;

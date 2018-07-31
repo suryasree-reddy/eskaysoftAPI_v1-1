@@ -1,5 +1,6 @@
 package com.rest.eskaysoftAPI.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,91 +8,150 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "product")
+@Table(name = "Products")
 public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	private Long id;
-	private String ProductCode;
-	private String ProductName;
-	private String Packing;
-	private Long BoxQty;
-	/*@ManyToOne(cascade = CascadeType.ALL)
-	private ProductGroup group;*/
-	private Long CaseQty;
-	/*@ManyToOne(cascade = CascadeType.ALL)
-	private ProductCategory category;*/
-	private Long NetRate;
-	private String IsNetRateItem;
-	private Long SchemeQty;
-	private String Free;
-	private float Tax;
+	private String Code;
+
+	private String name;
+
+	private String packing;
+
+	private float boxQty;
+
+	private Long productGroupId;
+
+	private Long caseQty;
+
+	private Long productCategoruId;
+
+	private float netRate;
+
+	private String isNetRateItem;
+
+	private float schemeQty;
+
+	private int free;
+	@Column(name = "Contents", length = 20)
+	private String contents;
+
+	private float tax;
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getProductCode() {
-		return ProductCode;
-	}
-	public void setProductCode(String productCode) {
-		ProductCode = productCode;
-	}
-	public String getProductName() {
-		return ProductName;
-	}
-	public void setProductName(String productName) {
-		ProductName = productName;
-	}
-	public String getPacking() {
-		return Packing;
-	}
-	public void setPacking(String packing) {
-		Packing = packing;
-	}
-	public Long getBoxQty() {
-		return BoxQty;
-	}
-	public void setBoxQty(Long boxQty) {
-		BoxQty = boxQty;
-	}
-	public Long getCaseQty() {
-		return CaseQty;
-	}
-	public void setCaseQty(Long caseQty) {
-		CaseQty = caseQty;
-	}
-	public Long getNetRate() {
-		return NetRate;
-	}
-	public void setNetRate(Long netRate) {
-		NetRate = netRate;
-	}
-	public String getIsNetRateItem() {
-		return IsNetRateItem;
-	}
-	public void setIsNetRateItem(String isNetRateItem) {
-		IsNetRateItem = isNetRateItem;
-	}
-	public Long getSchemeQty() {
-		return SchemeQty;
-	}
-	public void setSchemeQty(Long schemeQty) {
-		SchemeQty = schemeQty;
-	}
-	public String getFree() {
-		return Free;
-	}
-	public void setFree(String free) {
-		Free = free;
-	}
-	public float getTax() {
-		return Tax;
-	}
-	public void setTax(float tax) {
-		Tax = tax;
+
+	public String getCode() {
+		return Code;
 	}
 
+	public void setCode(String code) {
+		Code = code;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPacking() {
+		return packing;
+	}
+
+	public void setPacking(String packing) {
+		this.packing = packing;
+	}
+
+	public float getBoxQty() {
+		return boxQty;
+	}
+
+	public void setBoxQty(float boxQty) {
+		this.boxQty = boxQty;
+	}
+
+	public Long getProductGroupId() {
+		return productGroupId;
+	}
+
+	public void setProductGroupId(Long productGroupId) {
+		this.productGroupId = productGroupId;
+	}
+
+	public void setProductCategoruId(Long productCategoruId) {
+		this.productCategoruId = productCategoruId;
+	}
+
+	public Long getCaseQty() {
+		return caseQty;
+	}
+
+	public void setCaseQty(Long caseQty) {
+		this.caseQty = caseQty;
+	}
+
+	
+
+	public Long getProductCategoruId() {
+		return productCategoruId;
+	}
+
+	public float getNetRate() {
+		return netRate;
+	}
+
+	public void setNetRate(float netRate) {
+		this.netRate = netRate;
+	}
+
+	public String getIsNetRateItem() {
+		return isNetRateItem;
+	}
+
+	public void setIsNetRateItem(String isNetRateItem) {
+		this.isNetRateItem = isNetRateItem;
+	}
+
+	public float getSchemeQty() {
+		return schemeQty;
+	}
+
+	public void setSchemeQty(float schemeQty) {
+		this.schemeQty = schemeQty;
+	}
+
+	public int getFree() {
+		return free;
+	}
+
+	public void setFree(int free) {
+		this.free = free;
+	}
+
+	public String getContents() {
+		return contents;
+	}
+
+	public void setContents(String contents) {
+		this.contents = contents;
+	}
+
+	public float getTax() {
+		return tax;
+	}
+
+	public void setTax(float tax) {
+		this.tax = tax;
+	}
 
 }

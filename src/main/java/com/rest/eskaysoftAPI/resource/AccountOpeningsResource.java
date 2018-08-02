@@ -1,5 +1,7 @@
 package com.rest.eskaysoftAPI.resource;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import javax.ws.rs.Consumes;
@@ -15,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.rest.eskaysoftAPI.entity.AccountOpenings;
+import com.rest.eskaysoftAPI.model.AccountOpeningsDto;
 import com.rest.eskaysoftAPI.service.AccountOpeningsService;
 
 @Resource(name = "accountopenings")
@@ -26,7 +29,7 @@ public class AccountOpeningsResource {
 
 	@GET
 	@Produces("application/json")
-    public Iterable<AccountOpenings> findAll(){
+    public List<AccountOpeningsDto> findAll(){
         return accountOpeningsService.listAllAccountOpenings();
     }
 	

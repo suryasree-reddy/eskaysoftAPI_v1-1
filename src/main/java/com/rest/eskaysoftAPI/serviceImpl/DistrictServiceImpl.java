@@ -1,11 +1,17 @@
 package com.rest.eskaysoftAPI.serviceImpl;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rest.eskaysoftAPI.dao.DistrictsDao;
 import com.rest.eskaysoftAPI.entity.Districts;
 import com.rest.eskaysoftAPI.exception.NotFoundException;
+import com.rest.eskaysoftAPI.model.DistrictsDto;
 import com.rest.eskaysoftAPI.service.DistrictService;
 
 @Service
@@ -19,8 +25,15 @@ public class DistrictServiceImpl implements DistrictService {
 	}
 
 	@Override
-	public Iterable<Districts> listAllDistricts() {
-		return districtsDao.findAll();
+	public List<DistrictsDto> listAllDistricts() {
+		List<DistrictsDto> districtsList = new ArrayList<>();
+		districtsDao.findAll().forEach(districts -> {
+			DistrictsDto districtsModel = new DistrictsDto();
+			BeanUtils.copyProperties(districts, districtsModel);
+			districtsList.add(districtsModel);
+		});
+		Collections.sort(districtsList);
+		return districtsList;
 	}
 
 	@Override

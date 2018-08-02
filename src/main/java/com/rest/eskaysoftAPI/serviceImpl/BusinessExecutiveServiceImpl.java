@@ -1,11 +1,18 @@
 package com.rest.eskaysoftAPI.serviceImpl;
 
+import java.util.ArrayList;
+
+import java.util.Collections;
+import java.util.List;
+
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rest.eskaysoftAPI.dao.BusinessExecutiveDao;
 import com.rest.eskaysoftAPI.entity.BusinessExecutive;
 import com.rest.eskaysoftAPI.exception.NotFoundException;
+import com.rest.eskaysoftAPI.model.BusinessExecutiveDto;
 import com.rest.eskaysoftAPI.service.BusinessExecutiveService;
 
 @Service
@@ -26,10 +33,16 @@ public class BusinessExecutiveServiceImpl implements BusinessExecutiveService {
 	}
 
 	@Override
-	public Iterable<BusinessExecutive> listAllBusinessExecutive() {
-		return businessExecutiveDao.findAll();
+	public List<BusinessExecutiveDto> listAllBusinessExecutive() {
+		List<BusinessExecutiveDto> businessexecutiveList = new ArrayList<>();
+		businessExecutiveDao.findAll().forEach(businessexecutive ->{
+			BusinessExecutiveDto businessexecutiveModel = new BusinessExecutiveDto();	
+			BeanUtils.copyProperties(businessexecutive, businessexecutiveModel);
+			businessexecutiveList.add(businessexecutiveModel);
+		});
+		Collections.sort(businessexecutiveList);
+		return businessexecutiveList;
 	}
-
 	@Override
 	public BusinessExecutive saveBusinessExecutive(BusinessExecutive businessExecutive) {
 		return businessExecutiveDao.save(businessExecutive);

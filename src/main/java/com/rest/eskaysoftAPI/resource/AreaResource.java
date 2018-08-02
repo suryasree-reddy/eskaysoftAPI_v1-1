@@ -1,6 +1,9 @@
 package com.rest.eskaysoftAPI.resource;
 
+import java.util.List;
+
 import javax.annotation.Resource;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -13,7 +16,9 @@ import javax.ws.rs.Produces;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 
+
 import com.rest.eskaysoftAPI.entity.Area;
+import com.rest.eskaysoftAPI.model.AreaDto;
 import com.rest.eskaysoftAPI.service.AreaService;
 
 @Resource(name = "area")
@@ -25,7 +30,7 @@ public class AreaResource {
 
 	@GET
 	@Produces("application/json")
-	public Iterable<Area> findAll() {
+	public List<AreaDto> findAll() {
 		return areaService.listAllArea();
 	}
 

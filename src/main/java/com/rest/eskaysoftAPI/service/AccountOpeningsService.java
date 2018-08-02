@@ -1,10 +1,13 @@
 package com.rest.eskaysoftAPI.service;
 
+import java.util.List;
+
 import com.rest.eskaysoftAPI.entity.AccountOpenings;
+import com.rest.eskaysoftAPI.model.AccountOpeningsDto;
 
 public interface AccountOpeningsService {
 
-    Iterable<AccountOpenings> listAllAccountOpenings();
+    List<AccountOpeningsDto> listAllAccountOpenings();
 
     AccountOpenings getAccountOpeningsById(Long id);
 

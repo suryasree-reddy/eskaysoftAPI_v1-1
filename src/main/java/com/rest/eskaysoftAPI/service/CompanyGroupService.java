@@ -1,10 +1,13 @@
 package com.rest.eskaysoftAPI.service;
 
+import java.util.List;
+
 import com.rest.eskaysoftAPI.entity.CompanyGroup;
+import com.rest.eskaysoftAPI.model.CompanyGroupDto;
 
 public interface CompanyGroupService {
 
-    Iterable<CompanyGroup> listAllCompanygroup();
+    List<CompanyGroupDto> listAllCompanygroup();
 
     CompanyGroup getCompanygroupById(Long id);
 

@@ -1,5 +1,7 @@
 package com.rest.eskaysoftAPI.resource;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -14,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.rest.eskaysoftAPI.entity.ProductGroup;
+import com.rest.eskaysoftAPI.model.ProductGroupDto;
 import com.rest.eskaysoftAPI.service.ProductGroupService;
 
 @Resource(name = "productgroup")
@@ -25,7 +28,7 @@ public class ProductGroupResource {
 
 	@GET
 	@Produces("application/json")
-    public Iterable<ProductGroup> findAll(){
+    public List<ProductGroupDto> findAll(){
         return productGroupService.listAllProductGroups();
     }
 	

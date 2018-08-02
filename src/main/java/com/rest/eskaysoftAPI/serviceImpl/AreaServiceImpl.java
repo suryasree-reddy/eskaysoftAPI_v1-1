@@ -1,11 +1,18 @@
 package com.rest.eskaysoftAPI.serviceImpl;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rest.eskaysoftAPI.dao.AreaDao;
 import com.rest.eskaysoftAPI.entity.Area;
 import com.rest.eskaysoftAPI.exception.NotFoundException;
+import com.rest.eskaysoftAPI.model.AreaDto;
+import com.rest.eskaysoftAPI.model.DistrictsDto;
 import com.rest.eskaysoftAPI.service.AreaService;
 
 @Service
@@ -19,10 +26,16 @@ public class AreaServiceImpl implements AreaService {
 	}
 
 	@Override
-	public Iterable<Area> listAllArea() {
-		return areaDao.findAll();
+	public List<AreaDto> listAllArea() {
+		List<AreaDto> areaList = new ArrayList<>();
+		areaDao.findAll().forEach(area ->{
+			AreaDto areaModel = new AreaDto();	
+			BeanUtils.copyProperties(area, areaModel);
+			areaList.add(areaModel);
+		});
+		Collections.sort(areaList);
+		return areaList;
 	}
-
 	@Override
 	public Area getAreaById(Long id) {
 		System.out.println("****************" + id);

@@ -1,10 +1,13 @@
 package com.rest.eskaysoftAPI.service;
 
+import java.util.List;
+
 import com.rest.eskaysoftAPI.entity.Product;
+import com.rest.eskaysoftAPI.model.ProductDto;
 
 public interface ProductService {
 
-    Iterable<Product> listAllProduct();
+    List<ProductDto> listAllProduct();
 
     Product getProductById(Long id);
 

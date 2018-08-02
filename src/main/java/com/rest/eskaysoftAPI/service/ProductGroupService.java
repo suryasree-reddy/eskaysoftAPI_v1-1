@@ -2,12 +2,17 @@
 
 package com.rest.eskaysoftAPI.service;
 
+import java.util.List;
+
 import com.rest.eskaysoftAPI.entity.ProductGroup;
+import com.rest.eskaysoftAPI.model.ProductGroupDto;
+
+
 
 
 public interface ProductGroupService {
 
-    Iterable<ProductGroup> listAllProductGroups();
+    List<ProductGroupDto> listAllProductGroups();
 
     ProductGroup getProductGroupById(Long id);
 

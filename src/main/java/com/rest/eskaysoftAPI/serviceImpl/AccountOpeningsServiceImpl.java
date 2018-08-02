@@ -2,7 +2,14 @@ package com.rest.eskaysoftAPI.serviceImpl;
 
 import com.rest.eskaysoftAPI.service.AccountOpeningsService;
 import com.rest.eskaysoftAPI.exception.NotFoundException;
+import com.rest.eskaysoftAPI.model.AccountOpeningsDto;
+import com.rest.eskaysoftAPI.model.AreaDto;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,9 +28,16 @@ public class AccountOpeningsServiceImpl implements AccountOpeningsService {
 
 
     @Override
-    public Iterable<AccountOpenings> listAllAccountOpenings() {
-        return accountOpeningsDao.findAll();
-    }
+	public List<AccountOpeningsDto> listAllAccountOpenings() {
+		List<AccountOpeningsDto> accountopeningList = new ArrayList<>();
+		accountOpeningsDao.findAll().forEach(accountopenings ->{
+			AccountOpeningsDto accountopeningModel = new AccountOpeningsDto();	
+			BeanUtils.copyProperties(accountopenings, accountopeningModel);
+			accountopeningList.add(accountopeningModel);
+		});
+		Collections.sort(accountopeningList);
+		return accountopeningList;
+	}
 
     @Override
 	public AccountOpenings getAccountOpeningsById(Long id) {

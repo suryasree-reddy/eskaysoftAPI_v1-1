@@ -1,10 +1,13 @@
 package com.rest.eskaysoftAPI.service;
 
+import java.util.List;
+
 import com.rest.eskaysoftAPI.entity.States;
+import com.rest.eskaysoftAPI.model.StatesDto;
 
 public interface StatesService {
 
-	Iterable<States> listAllStates();
+	List<StatesDto> listAllStates();
 
 	States getStateById(Long id);
 

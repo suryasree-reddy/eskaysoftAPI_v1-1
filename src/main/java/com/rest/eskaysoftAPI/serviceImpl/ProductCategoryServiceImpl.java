@@ -1,11 +1,18 @@
 package com.rest.eskaysoftAPI.serviceImpl;
 
+import java.util.ArrayList;
+
+import java.util.Collections;
+import java.util.List;
+
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rest.eskaysoftAPI.dao.ProductCategoryDao;
 import com.rest.eskaysoftAPI.entity.ProductCategory;
 import com.rest.eskaysoftAPI.exception.NotFoundException;
+import com.rest.eskaysoftAPI.model.ProductCategoryDto;
 import com.rest.eskaysoftAPI.service.ProductCategoryService;
 
 @Service
@@ -19,10 +26,16 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 	}
 
 	@Override
-	public Iterable<ProductCategory> listAllProductcategories() {
-		return productcategoryDao.findAll();
+	public List<ProductCategoryDto> listAllProductcategories() {
+		List<ProductCategoryDto> productcategoryList = new ArrayList<>();
+		productcategoryDao.findAll().forEach(productcategories ->{
+			ProductCategoryDto productcategoryModel = new ProductCategoryDto();	
+			BeanUtils.copyProperties(productcategories, productcategoryModel);
+			productcategoryList.add(productcategoryModel);
+		});
+		Collections.sort(productcategoryList);
+		return productcategoryList;
 	}
-
 	@Override
 	public ProductCategory getProductCategoryById(Long id) {
 		System.out.println("****************" + id);

@@ -1,10 +1,13 @@
 package com.rest.eskaysoftAPI.service;
 
+import java.util.List;
+
 import com.rest.eskaysoftAPI.entity.AccountInformation;
+import com.rest.eskaysoftAPI.model.AccountInformationDto;
 
 public interface AccountInformationService {
 
-	Iterable<AccountInformation> listAllAccountInformation();
+	List<AccountInformationDto> listAllAccountInformation();
 
 	AccountInformation getAccountInformationById(Long id);
 

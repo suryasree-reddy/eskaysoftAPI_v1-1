@@ -1,5 +1,7 @@
 package com.rest.eskaysoftAPI.resource;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -14,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.rest.eskaysoftAPI.entity.BankInformation;
+import com.rest.eskaysoftAPI.model.BankInformationDto;
 import com.rest.eskaysoftAPI.service.BankInformationService;
 
 @Resource(name = "bankinformation")
@@ -25,7 +28,7 @@ public class BankInformationResource {
 
 	@GET
 	@Produces("application/json")
-	public Iterable<BankInformation> findAll() {
+	public List<BankInformationDto> findAll() {
 		return bankInformationService.listAllBankInformation();
 	}
 

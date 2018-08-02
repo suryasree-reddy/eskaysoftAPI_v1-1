@@ -1,10 +1,13 @@
 package com.rest.eskaysoftAPI.service;
 
+import java.util.List;
+
 import com.rest.eskaysoftAPI.entity.SubSchedule;
+import com.rest.eskaysoftAPI.model.SubScheduleDto;
 
 public interface SubScheduleService {
 
-	Iterable<SubSchedule> listAllSubSchedules();
+	List<SubScheduleDto> listAllSubSchedules();
 
 	SubSchedule getSubScheduleById(Long id);
 

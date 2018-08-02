@@ -1,10 +1,13 @@
 package com.rest.eskaysoftAPI.service;
 
+import java.util.List;
+
 import com.rest.eskaysoftAPI.entity.BusinessExecutive;
+import com.rest.eskaysoftAPI.model.BusinessExecutiveDto;
 
 public interface BusinessExecutiveService {
 
-    Iterable<BusinessExecutive> listAllBusinessExecutive();
+    List<BusinessExecutiveDto> listAllBusinessExecutive();
 
     BusinessExecutive getBusinessExecutiveById(Long id);
 

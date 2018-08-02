@@ -1,11 +1,17 @@
 package com.rest.eskaysoftAPI.serviceImpl;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rest.eskaysoftAPI.dao.SubScheduleDao;
 import com.rest.eskaysoftAPI.entity.SubSchedule;
 import com.rest.eskaysoftAPI.exception.NotFoundException;
+import com.rest.eskaysoftAPI.model.SubScheduleDto;
 import com.rest.eskaysoftAPI.service.SubScheduleService;
 
 @Service
@@ -19,8 +25,15 @@ public class SubScheduleServiceImpl implements SubScheduleService {
 	}
 
 	@Override
-	public Iterable<SubSchedule> listAllSubSchedules() {
-		return subscheduleDao.findAll();
+	public List<SubScheduleDto> listAllSubSchedules() {
+		List<SubScheduleDto> subschList = new ArrayList<>();
+		subscheduleDao.findAll().forEach(subschedule -> {
+			SubScheduleDto subschModel = new SubScheduleDto();
+			BeanUtils.copyProperties(subschedule, subschModel);
+			subschList.add(subschModel);
+		});
+		Collections.sort(subschList);
+		return subschList;
 	}
 
 	@Override

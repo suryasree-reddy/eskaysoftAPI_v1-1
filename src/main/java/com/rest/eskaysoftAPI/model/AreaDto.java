@@ -1,27 +1,22 @@
-package com.rest.eskaysoftAPI.entity;
+package com.rest.eskaysoftAPI.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Entity
-@Table(name = "area")
-public class Area implements Serializable {
+public class AreaDto implements Serializable ,Comparable<AreaDto>{
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long areaId;
-
-	private Long businessexecutiveId;
-
+	
 	private String areaName;
 
+	private Long businessexecutiveId;
 
 	public Long getAreaId() {
 		return this.areaId;
@@ -46,5 +41,12 @@ public class Area implements Serializable {
 	public void setAreaName(String areaName) {
 		this.areaName = areaName;
 	}
+
+	@Override
+	public int compareTo(AreaDto area) {
+		
+		return this.areaName.compareTo(area.getAreaName());
+	}
+
 	
 }

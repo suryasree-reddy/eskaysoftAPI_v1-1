@@ -1,5 +1,7 @@
 package com.rest.eskaysoftAPI.resource;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -14,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.rest.eskaysoftAPI.entity.Manfacturer;
+import com.rest.eskaysoftAPI.model.ManfacturerDto;
 import com.rest.eskaysoftAPI.service.ManfacturerService;
 
 @Resource(name = "manfacturer")
@@ -25,7 +28,7 @@ public class ManfacturerResource {
 
 	@GET
 	@Produces("application/json")
-    public Iterable<Manfacturer> findAll(){
+    public List<ManfacturerDto> findAll(){
         return manfacturerService.listAllManfacturer();
     }
 	

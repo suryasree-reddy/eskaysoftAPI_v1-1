@@ -1,10 +1,13 @@
 package com.rest.eskaysoftAPI.service;
 
+import java.util.List;
+
 import com.rest.eskaysoftAPI.entity.CustomerWiseDiscounts;
+import com.rest.eskaysoftAPI.model.CustomerWiseDiscountsDto;
 
 public interface CustomerWiseDiscountsService {
 
-    Iterable<CustomerWiseDiscounts> listAllCustomerWiseDiscounts();
+    List<CustomerWiseDiscountsDto> listAllCustomerWiseDiscounts();
 
     CustomerWiseDiscounts getCustomerWiseDiscountsById(Long id);
 

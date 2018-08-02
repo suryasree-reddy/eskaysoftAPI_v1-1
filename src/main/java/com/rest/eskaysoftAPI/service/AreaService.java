@@ -1,10 +1,13 @@
 package com.rest.eskaysoftAPI.service;
 
+import java.util.List;
+
 import com.rest.eskaysoftAPI.entity.Area;
+import com.rest.eskaysoftAPI.model.AreaDto;
 
 public interface AreaService {
 
-	Iterable<Area> listAllArea();
+	List<AreaDto> listAllArea();
 
 	Area getAreaById(Long id);
 

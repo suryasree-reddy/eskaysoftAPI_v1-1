@@ -1,11 +1,14 @@
 
 package com.rest.eskaysoftAPI.service;
 
+import java.util.List;
+
 import com.rest.eskaysoftAPI.entity.ProductCategory;
+import com.rest.eskaysoftAPI.model.ProductCategoryDto;
 
 public interface ProductCategoryService {
 
-	Iterable<ProductCategory> listAllProductcategories();
+	List<ProductCategoryDto> listAllProductcategories();
 
 	ProductCategory getProductCategoryById(Long id);
 

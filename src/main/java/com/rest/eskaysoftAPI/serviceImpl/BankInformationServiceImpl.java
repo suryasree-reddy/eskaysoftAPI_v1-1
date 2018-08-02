@@ -1,38 +1,51 @@
 package com.rest.eskaysoftAPI.serviceImpl;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rest.eskaysoftAPI.dao.BankInformationDao;
 import com.rest.eskaysoftAPI.entity.BankInformation;
 import com.rest.eskaysoftAPI.exception.NotFoundException;
+import com.rest.eskaysoftAPI.model.BankInformationDto;
 import com.rest.eskaysoftAPI.service.BankInformationService;
 
 @Service
 public class BankInformationServiceImpl implements BankInformationService {
 
-	private BankInformationDao bankInfromationDao;
+	private BankInformationDao bankInformationDao;
 
 	@Autowired
-	public void setAccountInformationDao(BankInformationDao bankInfromationDao) {
-		this.bankInfromationDao = bankInfromationDao;
+	public void setAccountInformationDao(BankInformationDao bankInformationDao) {
+		this.bankInformationDao = bankInformationDao;
 	}
 
 	@Override
 	public BankInformation getbankinformationById(Long id) {
 		System.out.println("****************" + id);
-		return bankInfromationDao.findById(id)
+		return bankInformationDao.findById(id)
 				.orElseThrow(() -> new NotFoundException(String.format("bankInfromation %d not found", id)));
 	}
 
 	@Override
-	public Iterable<BankInformation> listAllBankInformation() {
-		return bankInfromationDao.findAll();
+	public List<BankInformationDto> listAllBankInformation() {
+		List<BankInformationDto> bankinformationList = new ArrayList<>();
+		bankInformationDao.findAll().forEach(bankinformation ->{
+			BankInformationDto bankinformationModel = new BankInformationDto();	
+			BeanUtils.copyProperties(bankinformation, bankinformationModel);
+			bankinformationList.add(bankinformationModel);
+		});
+		Collections.sort(bankinformationList);
+		return bankinformationList;
 	}
 
 	@Override
 	public BankInformation savebankinformation(BankInformation bankinformation) {
-		return bankInfromationDao.save(bankinformation);
+		return bankInformationDao.save(bankinformation);
 	}
 
 	@Override
@@ -40,7 +53,7 @@ public class BankInformationServiceImpl implements BankInformationService {
 		boolean status = false;
 		BankInformation bankinformation = getbankinformationById(id);
 		if (bankinformation != null) {
-			bankInfromationDao.delete(bankinformation);
+			bankInformationDao.delete(bankinformation);
 			status = true;
 		}
 		return status;
@@ -48,7 +61,7 @@ public class BankInformationServiceImpl implements BankInformationService {
 
 	@Override
 	public BankInformation create(BankInformation bankinformation) {
-		return bankInfromationDao.save(bankinformation);
+		return bankInformationDao.save(bankinformation);
 	}
 
 }

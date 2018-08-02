@@ -1,5 +1,7 @@
 package com.rest.eskaysoftAPI.resource;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -16,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.rest.eskaysoftAPI.entity.Schedule;
+import com.rest.eskaysoftAPI.model.ScheduleDto;
 import com.rest.eskaysoftAPI.service.ScheduleService;
 
 @Resource(name = "schedules")
@@ -28,7 +31,7 @@ public class ScheduleResource {
 
 	@GET
 	@Produces("application/json")
-	public Iterable<Schedule> findAll() {
+	public List<ScheduleDto> findAll() {
 		return scheduleService.listAllSchedules();
 	}
 

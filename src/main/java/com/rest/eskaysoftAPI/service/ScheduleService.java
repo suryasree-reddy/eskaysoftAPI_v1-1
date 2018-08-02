@@ -1,10 +1,13 @@
 package com.rest.eskaysoftAPI.service;
 
+import java.util.List;
+
 import com.rest.eskaysoftAPI.entity.Schedule;
+import com.rest.eskaysoftAPI.model.ScheduleDto;
 
 public interface ScheduleService {
 
-    Iterable<Schedule> listAllSchedules();
+	List<ScheduleDto> listAllSchedules();
 
     Schedule getScheduleById(Long id);
 

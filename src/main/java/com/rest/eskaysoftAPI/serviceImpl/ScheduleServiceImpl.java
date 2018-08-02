@@ -1,12 +1,19 @@
 package com.rest.eskaysoftAPI.serviceImpl;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rest.eskaysoftAPI.dao.ScheduleDao;
 import com.rest.eskaysoftAPI.entity.Schedule;
 import com.rest.eskaysoftAPI.exception.NotFoundException;
+import com.rest.eskaysoftAPI.model.ScheduleDto;
 import com.rest.eskaysoftAPI.service.ScheduleService;
+
 
 @Service
 public class ScheduleServiceImpl implements ScheduleService {
@@ -19,8 +26,15 @@ public class ScheduleServiceImpl implements ScheduleService {
 	}
 
 	@Override
-	public Iterable<Schedule> listAllSchedules() {
-		return scheduleDao.findAll();
+	public List<ScheduleDto> listAllSchedules() {
+		List<ScheduleDto> schList = new ArrayList<>();
+		scheduleDao.findAll().forEach(sch ->{
+			ScheduleDto schModel = new ScheduleDto();	
+			BeanUtils.copyProperties(sch, schModel);
+			schList.add(schModel);
+		});
+		Collections.sort(schList);
+		return schList;
 	}
 
 	@Override

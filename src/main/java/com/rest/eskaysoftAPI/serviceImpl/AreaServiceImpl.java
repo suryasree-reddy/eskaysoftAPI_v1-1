@@ -12,7 +12,6 @@ import com.rest.eskaysoftAPI.dao.AreaDao;
 import com.rest.eskaysoftAPI.entity.Area;
 import com.rest.eskaysoftAPI.exception.NotFoundException;
 import com.rest.eskaysoftAPI.model.AreaDto;
-import com.rest.eskaysoftAPI.model.DistrictsDto;
 import com.rest.eskaysoftAPI.service.AreaService;
 
 @Service
@@ -28,14 +27,15 @@ public class AreaServiceImpl implements AreaService {
 	@Override
 	public List<AreaDto> listAllArea() {
 		List<AreaDto> areaList = new ArrayList<>();
-		areaDao.findAll().forEach(area ->{
-			AreaDto areaModel = new AreaDto();	
+		areaDao.findAll().forEach(area -> {
+			AreaDto areaModel = new AreaDto();
 			BeanUtils.copyProperties(area, areaModel);
 			areaList.add(areaModel);
 		});
 		Collections.sort(areaList);
 		return areaList;
 	}
+
 	@Override
 	public Area getAreaById(Long id) {
 		System.out.println("****************" + id);

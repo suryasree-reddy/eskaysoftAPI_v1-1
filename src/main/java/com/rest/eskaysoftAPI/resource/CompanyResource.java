@@ -1,6 +1,9 @@
 package com.rest.eskaysoftAPI.resource;
 
+import java.util.List;
+
 import javax.annotation.Resource;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -14,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.rest.eskaysoftAPI.entity.Company;
+import com.rest.eskaysoftAPI.model.CompanyDto;
 import com.rest.eskaysoftAPI.service.CompanyService;
 
 @Resource(name = "company")
@@ -25,7 +29,7 @@ public class CompanyResource {
 
 	@GET
 	@Produces("application/json")
-	public Iterable<Company> findAll() {
+	public List<CompanyDto> findAll() {
 		return companyService.listAllCompany();
 	}
 

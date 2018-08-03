@@ -1,21 +1,16 @@
 package com.rest.eskaysoftAPI.model;
 
+import java.io.Serializable;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+public class SubScheduleDto implements Serializable, Comparable<SubScheduleDto> {
 
-public class SubScheduleDto implements Comparable<SubScheduleDto> {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private static final long serialVersionUID = 655159852262403024L;
+
 	private Long subScheduleId;
 	private String subScheduleName;
 	private Long subScheduleIndex;
-	
-	
+
 	private Long scheduleId;
-
-
 
 	public Long getScheduleId() {
 		return scheduleId;
@@ -44,18 +39,15 @@ public class SubScheduleDto implements Comparable<SubScheduleDto> {
 	public Long getSubScheduleIndex() {
 		return subScheduleIndex;
 	}
-    
+
 	public void setSubScheduleIndex(Long subScheduleIndex) {
 		this.subScheduleIndex = subScheduleIndex;
 	}
 
-
 	@Override
 	public int compareTo(SubScheduleDto subschedule) {
-		
+
 		return this.subScheduleName.compareTo(subschedule.getSubScheduleName());
 	}
 
-	
-	
 }

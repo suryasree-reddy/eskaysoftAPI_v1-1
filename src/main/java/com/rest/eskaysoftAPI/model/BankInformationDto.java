@@ -9,7 +9,7 @@ import javax.persistence.Id;
   
 public class BankInformationDto implements Serializable,Comparable<BankInformationDto>{
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 655159852262403024L;
 
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

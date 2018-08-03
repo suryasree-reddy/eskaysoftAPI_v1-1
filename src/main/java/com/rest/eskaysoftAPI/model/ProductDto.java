@@ -1,16 +1,11 @@
 package com.rest.eskaysoftAPI.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-
-
-public class ProductDto implements Comparable<ProductDto> {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ProductDto implements Serializable, Comparable<ProductDto> {
+	private static final long serialVersionUID = 655159852262403024L;
 
 	private Long id;
 	private String Code;
@@ -99,8 +94,6 @@ public class ProductDto implements Comparable<ProductDto> {
 		this.caseQty = caseQty;
 	}
 
-	
-
 	public Long getProductCategoruId() {
 		return productCategoruId;
 	}
@@ -153,11 +146,9 @@ public class ProductDto implements Comparable<ProductDto> {
 		this.tax = tax;
 	}
 
-
 	@Override
 	public int compareTo(ProductDto product) {
-		
+
 		return this.name.compareTo(product.getName());
 	}
 }
-

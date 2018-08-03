@@ -2,23 +2,14 @@ package com.rest.eskaysoftAPI.model;
 
 import java.io.Serializable;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-
-public class CustomerWiseDiscountsDto implements Serializable,Comparable<CustomerWiseDiscountsDto> {
-	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class CustomerWiseDiscountsDto implements Serializable, Comparable<CustomerWiseDiscountsDto> {
+	private static final long serialVersionUID = 655159852262403024L;
 	private Long id;
 	private String customer;
 	private String companyOption;
 	private String discount;
 	private String companyDiscription;
 	private String disc;
-	
-	
 
 	public Long getId() {
 		return id;
@@ -67,10 +58,10 @@ public class CustomerWiseDiscountsDto implements Serializable,Comparable<Custome
 	public void setDisc(String disc) {
 		this.disc = disc;
 	}
-	
+
 	@Override
 	public int compareTo(CustomerWiseDiscountsDto cus) {
-		
+
 		return this.customer.compareTo(cus.getCustomer());
 	}
 

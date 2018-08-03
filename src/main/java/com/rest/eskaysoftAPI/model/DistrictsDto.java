@@ -1,13 +1,10 @@
 package com.rest.eskaysoftAPI.model;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.io.Serializable;
 
+public class DistrictsDto implements Serializable, Comparable<DistrictsDto> {
+	private static final long serialVersionUID = 655159852262403024L;
 
-public class DistrictsDto implements Comparable<DistrictsDto> {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long districtId;
 
 	private String districtName;
@@ -37,9 +34,10 @@ public class DistrictsDto implements Comparable<DistrictsDto> {
 	public void setStatesId(Long statesId) {
 		this.statesId = statesId;
 	}
+
 	@Override
 	public int compareTo(DistrictsDto districts) {
-		
+
 		return this.districtName.compareTo(districts.getDistrictName());
 	}
 

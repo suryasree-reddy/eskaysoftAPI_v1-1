@@ -1,11 +1,18 @@
 package com.rest.eskaysoftAPI.serviceImpl;
 
+import java.util.ArrayList;
+
+import java.util.Collections;
+import java.util.List;
+
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rest.eskaysoftAPI.dao.CompanyDao;
 import com.rest.eskaysoftAPI.entity.Company;
 import com.rest.eskaysoftAPI.exception.NotFoundException;
+import com.rest.eskaysoftAPI.model.CompanyDto;
 import com.rest.eskaysoftAPI.service.CompanyService;
 
 @Service
@@ -19,9 +26,17 @@ public class CompanyServiceImpl implements CompanyService {
 	}
 
 	@Override
-	public Iterable<Company> listAllCompany() {
-		return companyDao.findAll();
+	public List<CompanyDto> listAllCompany() {
+		List<CompanyDto> companyList = new ArrayList<>();
+		companyDao.findAll().forEach(company ->{
+			CompanyDto companyModel = new CompanyDto();	
+			BeanUtils.copyProperties(company, companyModel);
+			companyList.add(companyModel);
+		});
+		Collections.sort(companyList);
+		return companyList;
 	}
+
 
 	@Override
 	public Company save(Company company) {

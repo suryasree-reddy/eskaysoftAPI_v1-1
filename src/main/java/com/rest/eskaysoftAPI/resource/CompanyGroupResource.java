@@ -43,15 +43,15 @@ public class CompanyGroupResource {
 	@POST
 	@Consumes("application/json")
 	@Produces("application/json")
-	public CompanyGroup create(@RequestBody CompanyGroup bankinformation) {
-		return companyGroupService.create(bankinformation);
+	public CompanyGroup create(@RequestBody CompanyGroup companygroup) {
+		return companyGroupService.create(companygroup);
 	}
 
 	@PUT
 	@Consumes("application/json")
 	@Produces("application/json")
-	public CompanyGroup update(@RequestBody CompanyGroup bankinformation) {
-		return companyGroupService.saveCompanygroup(bankinformation);
+	public CompanyGroup update(@RequestBody CompanyGroup companygroup) {
+		return companyGroupService.saveCompanygroup(companygroup);
 	}
 
 	@DELETE

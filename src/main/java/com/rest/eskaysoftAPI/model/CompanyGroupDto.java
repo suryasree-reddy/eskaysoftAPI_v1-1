@@ -2,16 +2,15 @@ package com.rest.eskaysoftAPI.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Id;
 
 public class CompanyGroupDto implements Serializable, Comparable<CompanyGroupDto> {
 
 	private static final long serialVersionUID = 6959309821416613726L;
-	@Id
+	
 	private Long id;
 	private String companyGroup;
 
-	Long getId() {
+	public Long getId() {
 		return this.id;
 	}
 

@@ -12,10 +12,13 @@ import javax.persistence.Table;
 @Table(name = "companygroup")
 public class CompanyGroup implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 6959309821416613726L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	private String companyGroup;
+	
 	public Long getId() {
 		return this.id;
 	}
@@ -32,9 +35,6 @@ public class CompanyGroup implements Serializable {
 		this.companyGroup = companyGroup;
 	}
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String companyGroup;
+	
 
 }

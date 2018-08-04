@@ -1,7 +1,6 @@
 package com.rest.eskaysoftAPI.serviceImpl;
 
 import java.util.ArrayList;
-
 import java.util.Collections;
 import java.util.List;
 
@@ -21,7 +20,7 @@ public class CompanyGroupServiceImpl implements CompanyGroupService {
 	private CompanyGroupDao companygroupDao;
 
 	@Autowired
-	public void setAccountInformationDao(CompanyGroupDao companygroupDao) {
+	public void setCompanyGroupDao(CompanyGroupDao companygroupDao) {
 		this.companygroupDao = companygroupDao;
 	}
 
@@ -35,8 +34,8 @@ public class CompanyGroupServiceImpl implements CompanyGroupService {
 	@Override
 	public List<CompanyGroupDto> listAllCompanygroup() {
 		List<CompanyGroupDto> companygroupList = new ArrayList<>();
-		companygroupDao.findAll().forEach(companygroup ->{
-			CompanyGroupDto companygroupModel = new CompanyGroupDto();	
+		companygroupDao.findAll().forEach(companygroup -> {
+			CompanyGroupDto companygroupModel = new CompanyGroupDto();
 			BeanUtils.copyProperties(companygroup, companygroupModel);
 			companygroupList.add(companygroupModel);
 		});
@@ -49,17 +48,16 @@ public class CompanyGroupServiceImpl implements CompanyGroupService {
 		return companygroupDao.save(companygroup);
 	}
 
-	 @Override
-		public boolean deleteCompanygroup(Long id) {
-			boolean status = false;
-			CompanyGroup companygroup = getCompanygroupById(id);
-			if (companygroup != null) {
-				status = true;
-				companygroupDao.delete(companygroup);
-			}
-			return status;
+	@Override
+	public boolean deleteCompanygroup(Long id) {
+		boolean status = false;
+		CompanyGroup companygroup = getCompanygroupById(id);
+		if (companygroup != null) {
+			status = true;
+			companygroupDao.delete(companygroup);
 		}
-
+		return status;
+	}
 
 	@Override
 	public CompanyGroup create(CompanyGroup companygroup) {

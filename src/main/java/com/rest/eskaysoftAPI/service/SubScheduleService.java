@@ -11,10 +11,10 @@ public interface SubScheduleService {
 
 	SubSchedule getSubScheduleById(Long id);
 
-	SubSchedule saveSubSchedule(SubSchedule subschedule);
+	SubScheduleDto saveSubSchedule(SubScheduleDto subschedule);
 
 	boolean deleteSubSchedule(Long id);
 
-	SubSchedule create(SubSchedule schedule);
+	SubScheduleDto create(SubScheduleDto schedule);
 
 }

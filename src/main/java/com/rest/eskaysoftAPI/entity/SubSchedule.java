@@ -3,9 +3,12 @@ package com.rest.eskaysoftAPI.entity;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,16 +21,16 @@ public class SubSchedule  implements Serializable {
 	private String subScheduleName;
 	private Long subScheduleIndex;
 	
-	
-	private Long scheduleId;
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "scheduleId", nullable = false)     
+	private Schedule scheduleId;
 
 
-
-	public Long getScheduleId() {
-		return scheduleId;
+	public Schedule getScheduleId() {
+		return this.scheduleId;
 	}
 
-	public void setScheduleId(Long scheduleId) {
+	public void setScheduleId(Schedule scheduleId) {
 		this.scheduleId = scheduleId;
 	}
 

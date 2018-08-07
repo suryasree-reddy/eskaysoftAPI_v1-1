@@ -43,14 +43,14 @@ public class SubScheduleResource {
 	@POST
 	@Consumes("application/json")
 	@Produces("application/json")
-	public SubSchedule create(@RequestBody SubSchedule subschedule) {
+	public SubScheduleDto create(@RequestBody SubScheduleDto subschedule) {
 		return subscheduleService.create(subschedule);
 	}
 
 	@PUT
 	@Consumes("application/json")
 	@Produces("application/json")
-	public SubSchedule update(@RequestBody SubSchedule subschedule) {
+	public SubScheduleDto update(@RequestBody SubScheduleDto subschedule) {
 		return subscheduleService.saveSubSchedule(subschedule);
 	}
 

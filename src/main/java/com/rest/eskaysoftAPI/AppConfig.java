@@ -42,7 +42,6 @@ public class AppConfig extends ResourceConfig {
 		register(ProductGroupResource.class);
 		register(PurchaseEntryResource.class);
 		register(SubScheduleResource.class);
-		register(DistrictsResource.class);
 		register(AccountOpeningsResource.class);
 		register(CustomerWiseDiscountsResource.class);
 		register(ManfacturerResource.class);

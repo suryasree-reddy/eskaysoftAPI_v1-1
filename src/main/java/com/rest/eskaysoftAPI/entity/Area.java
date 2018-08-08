@@ -3,9 +3,12 @@ package com.rest.eskaysoftAPI.entity;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,10 +21,11 @@ public class Area implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long areaId;
 
-	private Long businessexecutiveId;
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "businessExecutiveId", nullable = false)
+	private BusinessExecutive businessExecutiveId;
 
 	private String areaName;
-
 
 	public Long getAreaId() {
 		return this.areaId;
@@ -31,12 +35,12 @@ public class Area implements Serializable {
 		this.areaId = areaId;
 	}
 
-	public Long getBusinessexecutiveId() {
-		return this.businessexecutiveId;
+	public BusinessExecutive getBusinessExecutiveId() {
+		return this.businessExecutiveId;
 	}
 
-	public void setBusinessexecutiveId(Long businessexecutiveId) {
-		this.businessexecutiveId = businessexecutiveId;
+	public void setBusinessExecutiveId(BusinessExecutive businessExecutiveId) {
+		this.businessExecutiveId = businessExecutiveId;
 	}
 
 	public String getAreaName() {
@@ -46,5 +50,5 @@ public class Area implements Serializable {
 	public void setAreaName(String areaName) {
 		this.areaName = areaName;
 	}
-	
+
 }

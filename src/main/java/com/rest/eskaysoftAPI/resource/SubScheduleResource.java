@@ -15,7 +15,6 @@ import javax.ws.rs.Produces;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.rest.eskaysoftAPI.entity.SubSchedule;
 import com.rest.eskaysoftAPI.model.SubScheduleDto;
 import com.rest.eskaysoftAPI.service.SubScheduleService;
 
@@ -35,7 +34,7 @@ public class SubScheduleResource {
 	@GET
 	@Path("/{id}")
 	@Produces("application/json")
-	public SubSchedule findOne(@PathParam("id") long id) {
+	public SubScheduleDto findOne(@PathParam("id") long id) {
 		return subscheduleService.getSubScheduleById(id);
 
 	}

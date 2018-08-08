@@ -17,7 +17,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.rest.eskaysoftAPI.entity.Districts;
 import com.rest.eskaysoftAPI.model.DistrictsDto;
 import com.rest.eskaysoftAPI.service.DistrictService;
 
@@ -39,7 +38,7 @@ public class DistrictsResource {
 	@GET
 	@Path("/{id}")
 	@Produces("application/json")
-	public Districts findOne(@PathParam("id") long id) {
+	public DistrictsDto findOne(@PathParam("id") long id) {
 		return districtService.getdistrictsById(id);
 
 	}
@@ -47,14 +46,14 @@ public class DistrictsResource {
 	@POST
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Districts create(@RequestBody Districts districs) {
+	public DistrictsDto create(@RequestBody DistrictsDto districs) {
 		return districtService.create(districs);
 	}
 
 	@PUT
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Districts update(@RequestBody Districts districs) {
+	public DistrictsDto update(@RequestBody DistrictsDto districs) {
 		return districtService.save(districs);
 	}
 

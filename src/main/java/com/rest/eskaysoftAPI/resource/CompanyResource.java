@@ -3,7 +3,6 @@ package com.rest.eskaysoftAPI.resource;
 import java.util.List;
 
 import javax.annotation.Resource;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -16,7 +15,6 @@ import javax.ws.rs.Produces;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.rest.eskaysoftAPI.entity.Company;
 import com.rest.eskaysoftAPI.model.CompanyDto;
 import com.rest.eskaysoftAPI.service.CompanyService;
 
@@ -36,21 +34,21 @@ public class CompanyResource {
 	@POST
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Company create(@RequestBody Company company) {
+	public CompanyDto create(@RequestBody CompanyDto company) {
 		return companyService.create(company);
 	}
 
 	@PUT
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Company update(@RequestBody Company company) {
+	public CompanyDto update(@RequestBody CompanyDto company) {
 		return companyService.save(company);
 	}
 
 	@GET
 	@Path("/{id}")
 	@Produces("application/json")
-	public Company findOne(@PathParam("id") long id) {
+	public CompanyDto findOne(@PathParam("id") long id) {
 		return companyService.getCompanyById(id);
 
 	}

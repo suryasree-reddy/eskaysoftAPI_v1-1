@@ -13,18 +13,17 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "subschedules")
-public class SubSchedule  implements Serializable {
+public class SubSchedule implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long subScheduleId;
 	private String subScheduleName;
 	private Long subScheduleIndex;
-	
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "scheduleId", nullable = false)     
-	private Schedule scheduleId;
 
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "scheduleId", nullable = false)
+	private Schedule scheduleId;
 
 	public Schedule getScheduleId() {
 		return this.scheduleId;
@@ -53,13 +52,9 @@ public class SubSchedule  implements Serializable {
 	public Long getSubScheduleIndex() {
 		return subScheduleIndex;
 	}
-    
+
 	public void setSubScheduleIndex(Long subScheduleIndex) {
 		this.subScheduleIndex = subScheduleIndex;
 	}
 
-
-
-	
-	
 }

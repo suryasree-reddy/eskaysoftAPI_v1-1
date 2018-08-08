@@ -3,7 +3,6 @@ package com.rest.eskaysoftAPI.resource;
 import java.util.List;
 
 import javax.annotation.Resource;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -16,8 +15,6 @@ import javax.ws.rs.Produces;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 
-
-import com.rest.eskaysoftAPI.entity.Area;
 import com.rest.eskaysoftAPI.model.AreaDto;
 import com.rest.eskaysoftAPI.service.AreaService;
 
@@ -37,7 +34,7 @@ public class AreaResource {
 	@GET
 	@Path("/{id}")
 	@Produces("application/json")
-	public Area findOne(@PathParam("id") long id) {
+	public AreaDto findOne(@PathParam("id") long id) {
 		return areaService.getAreaById(id);
 
 	}
@@ -45,14 +42,14 @@ public class AreaResource {
 	@POST
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Area create(@RequestBody Area area) {
+	public AreaDto create(@RequestBody AreaDto area) {
 		return areaService.create(area);
 	}
 
 	@PUT
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Area update(@RequestBody Area area) {
+	public AreaDto update(@RequestBody AreaDto area) {
 		return areaService.saveArea(area);
 	}
 

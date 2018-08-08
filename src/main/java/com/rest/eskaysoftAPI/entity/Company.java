@@ -3,9 +3,12 @@ package com.rest.eskaysoftAPI.entity;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,11 +22,15 @@ public class Company implements Serializable {
 	private Long id;
 	private String companyCode;
 	private String companyName;
-	private Long companyGroupId;
+
 	private String companyStatus;
 	private String invGenType;
 	private String invPrefix;
 	private String companyType;
+
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "companyGroupId", nullable = false)
+	private CompanyGroup companyGroupId;
 
 	public Long getId() {
 		return id;
@@ -41,7 +48,6 @@ public class Company implements Serializable {
 		this.companyCode = companyCode;
 	}
 
-	
 	public String getCompanyName() {
 		return companyName;
 	}
@@ -50,11 +56,11 @@ public class Company implements Serializable {
 		this.companyName = companyName;
 	}
 
-	public Long getCompanyGroupId() {
+	public CompanyGroup getCompanyGroupId() {
 		return companyGroupId;
 	}
 
-	public void setCompanyGroupId(Long companyGroupId) {
+	public void setCompanyGroupId(CompanyGroup companyGroupId) {
 		this.companyGroupId = companyGroupId;
 	}
 

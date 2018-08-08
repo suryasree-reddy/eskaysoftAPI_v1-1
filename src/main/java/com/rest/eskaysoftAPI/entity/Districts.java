@@ -1,9 +1,12 @@
 package com.rest.eskaysoftAPI.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,7 +18,10 @@ public class Districts {
 
 	private String districtName;
 
-	private Long statesId;
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "statesId", nullable = false)     
+	private States statesId;
+
 
 	public Long getDistrictId() {
 		return this.districtId;
@@ -33,13 +39,14 @@ public class Districts {
 		this.districtName = districtName;
 	}
 
-	public Long getStatesId() {
+	public States getStatesId() {
 		return this.statesId;
 	}
 
-	public void setStatesId(Long statesId) {
+	public void setStatesId(States statesId) {
 		this.statesId = statesId;
 	}
 
+	
 
 }

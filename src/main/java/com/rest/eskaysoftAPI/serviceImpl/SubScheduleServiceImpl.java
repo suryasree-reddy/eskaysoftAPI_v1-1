@@ -30,20 +30,35 @@ public class SubScheduleServiceImpl implements SubScheduleService {
 	public List<SubScheduleDto> listAllSubSchedules() {
 		List<SubScheduleDto> subschList = new ArrayList<>();
 		subscheduleDao.findAll().forEach(subschedule -> {
+			
 			SubScheduleDto subschModel = new SubScheduleDto();
 			BeanUtils.copyProperties(subschedule, subschModel);
+			
+			subschModel.setScheduleId(subschedule.getScheduleId().getId());
 			subschList.add(subschModel);
 		});
 		Collections.sort(subschList);
 		return subschList;
 	}
 
+	
 	@Override
-	public SubSchedule getSubScheduleById(Long id) {
-		return subscheduleDao.findById(id)
-				.orElseThrow(() -> new NotFoundException(String.format("subschedule %d not found", id)));
+	public SubScheduleDto getSubScheduleById(Long id) {
+		SubSchedule subschedule = subscheduleDao.findById(id).orElseThrow(() -> new NotFoundException(String.format("subschedule %d not found", id)));
+		if (subschedule != null) {
+			SubScheduleDto subschModel = new SubScheduleDto();
+			BeanUtils.copyProperties(subschedule, subschModel);
+			subschModel.setScheduleId(subschedule.getScheduleId().getId());
+			subschModel.setSubScheduleId(subschedule.getSubScheduleId());
+			subschModel.setSubScheduleIndex(subschedule.getSubScheduleIndex());
+			subschModel.setSubScheduleName(subschedule.getSubScheduleName());
+			return subschModel;
+			
+		}
+		return null;
+			
+			
 	}
-
 	@Override
 	public SubScheduleDto saveSubSchedule(SubScheduleDto subschModel) {
 		Schedule sch = scheduleDao.findById(subschModel.getScheduleId())

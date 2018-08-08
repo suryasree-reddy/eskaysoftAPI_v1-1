@@ -1,5 +1,6 @@
 package com.rest.eskaysoftAPI.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -15,13 +16,13 @@ public class Districts {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long districtId;
-
+	
+	@Column(name = "districtName", nullable = false, length = 20)
 	private String districtName;
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "statesId", nullable = false)     
+	@JoinColumn(name = "statesId", nullable = false)
 	private States statesId;
-
 
 	public Long getDistrictId() {
 		return this.districtId;
@@ -46,7 +47,5 @@ public class Districts {
 	public void setStatesId(States statesId) {
 		this.statesId = statesId;
 	}
-
-	
 
 }

@@ -8,8 +8,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.rest.eskaysoftAPI.dao.CompanyGroupDao;
 import com.rest.eskaysoftAPI.dao.CompanyDao;
+import com.rest.eskaysoftAPI.dao.CompanyGroupDao;
 import com.rest.eskaysoftAPI.entity.Company;
 import com.rest.eskaysoftAPI.entity.CompanyGroup;
 import com.rest.eskaysoftAPI.exception.NotFoundException;
@@ -44,21 +44,11 @@ public class CompanyServiceImpl implements CompanyService {
 	public CompanyDto getCompanyById(Long id) {
 		Company company = companyDao.findById(id)
 				.orElseThrow(() -> new NotFoundException(String.format("company %d not found", id)));
-		if (company != null) {
-			CompanyDto companyModel = new CompanyDto();
-			BeanUtils.copyProperties(company, companyModel);
-			companyModel.setCompanyGroupId(company.getCompanyGroupId().getId());
-			companyModel.setId(company.getId());
-			companyModel.setCompanyCode(company.getCompanyCode());
-			companyModel.setCompanyName(company.getCompanyName());
-			companyModel.setCompanyStatus(company.getCompanyStatus());
-			companyModel.setCompanyType(company.getCompanyType());
-			companyModel.setInvGenType(company.getInvGenType());
-			companyModel.setInvPrefix(company.getInvPrefix());
-			return companyModel;
+		CompanyDto companyModel = new CompanyDto();
+		BeanUtils.copyProperties(company, companyModel);
+		companyModel.setCompanyGroupId(company.getCompanyGroupId().getId());
 
-		}
-		return null;
+		return companyModel;
 
 	}
 
@@ -95,8 +85,8 @@ public class CompanyServiceImpl implements CompanyService {
 		BeanUtils.copyProperties(companyModel, company);
 		company.setCompanyGroupId(companygroup);
 		company = companyDao.save(company);
-		companyModel.setId(company.getId());
-		return companyModel;
+		companyModel.setCompanyId(company.getCompanyId());
+			return companyModel;
 	}
 
 }

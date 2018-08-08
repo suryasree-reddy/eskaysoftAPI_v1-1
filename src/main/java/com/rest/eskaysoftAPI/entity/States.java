@@ -3,6 +3,7 @@ package com.rest.eskaysoftAPI.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,8 +19,14 @@ public class States implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    @Column(name = "stateName", nullable = false, length = 40)
     private String stateName;
+    
+    @Column(name = "stateCode", nullable = false)
 	private Long stateCode;
+    
+    @Column(name = "zone", nullable = false, length = 7)
 	private String zone;
 
     public Long getId() {

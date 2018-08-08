@@ -2,6 +2,7 @@ package com.rest.eskaysoftAPI.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -18,7 +19,11 @@ public class SubSchedule implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long subScheduleId;
+	
+	@Column(name = "subScheduleName", nullable = false, length = 40)
 	private String subScheduleName;
+	
+	@Column(name = "subScheduleIndex", nullable = false)
 	private Long subScheduleIndex;
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)

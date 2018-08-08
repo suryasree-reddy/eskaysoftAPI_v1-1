@@ -82,18 +82,12 @@ public class DistrictServiceImpl implements DistrictService {
 	public DistrictsDto getdistrictsById(Long id) {
 		Districts districts = districtsDao.findById(id)
 				.orElseThrow(() -> new NotFoundException(String.format("districts %d not found", id)));
+		DistrictsDto disModel = new DistrictsDto();
+		BeanUtils.copyProperties(districts, disModel);
+		disModel.setStatesId(districts.getStatesId().getId());
+		disModel.setDistrictId(districts.getDistrictId());
 
-		if (districts != null) {
-			DistrictsDto disModel = new DistrictsDto();
-			BeanUtils.copyProperties(districts, disModel);
-			disModel.setStatesId(districts.getStatesId().getId());
-			disModel.setDistrictId(districts.getDistrictId());
-			disModel.setDistrictName(districts.getDistrictName());
-
-			return disModel;
-
-		}
-		return null;
+		return disModel;
 
 	}
 }

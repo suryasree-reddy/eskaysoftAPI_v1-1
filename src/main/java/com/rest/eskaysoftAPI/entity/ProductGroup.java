@@ -2,6 +2,7 @@ package com.rest.eskaysoftAPI.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,38 +17,27 @@ public class ProductGroup implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long productGroupId;
-	private String productGroupName;
+	private Long id;
 	
-	/**
-	 * @return the productGroupId
-	 */
-	public Long getProductGroupId() {
-		return this.productGroupId;
+	@Column(name = "productGroupName", nullable = false, length = 40)
+	private String productGroupName;
+
+	
+
+	public Long getId() {
+		return id;
 	}
 
-	/**
-	 * @param productGroupId
-	 *            the productGroupId to set
-	 */
-	public void setProductGroupId(Long productGroupId) {
-		this.productGroupId = productGroupId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	/**
-	 * @return the productGroupName
-	 */
 	public String getProductGroupName() {
 		return this.productGroupName;
 	}
 
-	/**
-	 * @param productGroupName
-	 *            the productGroupName to set
-	 */
 	public void setProductGroupName(String productGroupName) {
 		this.productGroupName = productGroupName;
 	}
 
-	
 }

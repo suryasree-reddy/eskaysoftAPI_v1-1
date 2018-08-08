@@ -2,6 +2,7 @@ package com.rest.eskaysoftAPI.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -24,7 +25,8 @@ public class Area implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "businessExecutiveId", nullable = false)
 	private BusinessExecutive businessExecutiveId;
-
+	
+	@Column(name = "areaName", nullable = false, length = 20)
 	private String areaName;
 
 	public Long getAreaId() {

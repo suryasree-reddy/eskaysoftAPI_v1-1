@@ -21,19 +21,18 @@ public class SubScheduleServiceImpl implements SubScheduleService {
 
 	@Autowired
 	private SubScheduleDao subscheduleDao;
-	
+
 	@Autowired
 	private ScheduleDao scheduleDao;
-
 
 	@Override
 	public List<SubScheduleDto> listAllSubSchedules() {
 		List<SubScheduleDto> subschList = new ArrayList<>();
 		subscheduleDao.findAll().forEach(subschedule -> {
-			
+
 			SubScheduleDto subschModel = new SubScheduleDto();
 			BeanUtils.copyProperties(subschedule, subschModel);
-			
+
 			subschModel.setScheduleId(subschedule.getScheduleId().getId());
 			subschList.add(subschModel);
 		});
@@ -41,28 +40,20 @@ public class SubScheduleServiceImpl implements SubScheduleService {
 		return subschList;
 	}
 
-	
 	@Override
 	public SubScheduleDto getSubScheduleById(Long id) {
-		SubSchedule subschedule = subscheduleDao.findById(id).orElseThrow(() -> new NotFoundException(String.format("subschedule %d not found", id)));
-		if (subschedule != null) {
-			SubScheduleDto subschModel = new SubScheduleDto();
-			BeanUtils.copyProperties(subschedule, subschModel);
-			subschModel.setScheduleId(subschedule.getScheduleId().getId());
-			subschModel.setSubScheduleId(subschedule.getSubScheduleId());
-			subschModel.setSubScheduleIndex(subschedule.getSubScheduleIndex());
-			subschModel.setSubScheduleName(subschedule.getSubScheduleName());
-			return subschModel;
-			
-		}
-		return null;
-			
-			
+		SubSchedule subschedule = subscheduleDao.findById(id)
+				.orElseThrow(() -> new NotFoundException(String.format("subschedule %d not found", id)));
+		SubScheduleDto subschModel = new SubScheduleDto();
+		BeanUtils.copyProperties(subschedule, subschModel);
+		subschModel.setScheduleId(subschedule.getScheduleId().getId());
+		return subschModel;
 	}
+
 	@Override
 	public SubScheduleDto saveSubSchedule(SubScheduleDto subschModel) {
-		Schedule sch = scheduleDao.findById(subschModel.getScheduleId())
-				.orElseThrow(() -> new NotFoundException(String.format("Schedule %d not found", subschModel.getScheduleId())));
+		Schedule sch = scheduleDao.findById(subschModel.getScheduleId()).orElseThrow(
+				() -> new NotFoundException(String.format("Schedule %d not found", subschModel.getScheduleId())));
 		SubSchedule subschedule = new SubSchedule();
 		BeanUtils.copyProperties(subschModel, subschedule);
 		subschedule.setScheduleId(sch);
@@ -84,8 +75,8 @@ public class SubScheduleServiceImpl implements SubScheduleService {
 
 	@Override
 	public SubScheduleDto create(SubScheduleDto subschModel) {
-		Schedule sch = scheduleDao.findById(subschModel.getScheduleId())
-				.orElseThrow(() -> new NotFoundException(String.format("Schedule %d not found", subschModel.getScheduleId())));
+		Schedule sch = scheduleDao.findById(subschModel.getScheduleId()).orElseThrow(
+				() -> new NotFoundException(String.format("Schedule %d not found", subschModel.getScheduleId())));
 		SubSchedule subschedule = new SubSchedule();
 		BeanUtils.copyProperties(subschModel, subschedule);
 		subschedule.setScheduleId(sch);

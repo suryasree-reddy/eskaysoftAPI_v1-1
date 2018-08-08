@@ -3,6 +3,7 @@ package com.rest.eskaysoftAPI.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,9 +19,17 @@ public class BusinessExecutive implements Serializable {
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+    
+    @Column(name = "name", nullable = false, length = 20)
 	private String name;
-	private String address;
+    
+    @Column(name = "address", nullable = false, length = 20)
+   	private String address;
+    
+    @Column(name = "town", nullable = false, length = 20)
 	private String town;
+    
+    @Column(name = "mobile", nullable = false, length = 10)
 	private Long mobile;
 	
 	

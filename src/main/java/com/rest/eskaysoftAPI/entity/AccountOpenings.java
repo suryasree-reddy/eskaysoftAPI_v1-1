@@ -2,6 +2,7 @@ package com.rest.eskaysoftAPI.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,24 +10,32 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "accountOpenings")
+@Table(name = "AccountOpenings")
 public class AccountOpenings implements Serializable {
 	private static final long serialVersionUID = 2099654952913091298L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "AccountOpeningId", length = 20)
 	private Long id;
+	
+	@Column(name = "code", length = 6, nullable = false)
 	private String code;
+		
+	@Column(name = "accountName", length = 40, nullable = false)
 	private String accountName;
+	
+	@Column(name = "town", length = 20, nullable = false)
 	private String town;
-	private String openigs;
+	
+	@Column(name = "openig", nullable = false)
+	private Double openig;
+	
+	@Column(name = "type", length = 8, nullable = false)
 	private String type;
 
-
-
-
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Long id) {
@@ -57,12 +66,12 @@ public class AccountOpenings implements Serializable {
 		this.town = town;
 	}
 
-	public String getOpenigs() {
-		return this.openigs;
+	public Double getOpenig() {
+		return this.openig;
 	}
 
-	public void setOpenigs(String openigs) {
-		this.openigs = openigs;
+	public void setOpenig(Double openig) {
+		this.openig = openig;
 	}
 
 	public String getType() {

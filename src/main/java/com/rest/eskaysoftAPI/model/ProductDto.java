@@ -2,37 +2,36 @@ package com.rest.eskaysoftAPI.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-
 public class ProductDto implements Serializable, Comparable<ProductDto> {
 	private static final long serialVersionUID = 655159852262403024L;
 
 	private Long id;
-	private String Code;
+
+	private String code;
 
 	private String name;
 
 	private String packing;
 
-	private float boxQty;
+	private Integer boxQty;
 
 	private Long productGroupId;
 
 	private Long caseQty;
 
-	private Long productCategoruId;
+	private Long productCategoryId;
 
-	private float netRate;
+	private Double netRate;
 
 	private String isNetRateItem;
 
-	private float schemeQty;
+	private Double schemeQty;
 
-	private int free;
-	@Column(name = "Contents", length = 20)
+	private Integer free;
+
 	private String contents;
 
-	private float tax;
+	private Double tax;
 
 	public Long getId() {
 		return id;
@@ -43,11 +42,11 @@ public class ProductDto implements Serializable, Comparable<ProductDto> {
 	}
 
 	public String getCode() {
-		return Code;
+		return code;
 	}
 
 	public void setCode(String code) {
-		Code = code;
+		this.code = code;
 	}
 
 	public String getName() {
@@ -66,11 +65,11 @@ public class ProductDto implements Serializable, Comparable<ProductDto> {
 		this.packing = packing;
 	}
 
-	public float getBoxQty() {
+	public Integer getBoxQty() {
 		return boxQty;
 	}
 
-	public void setBoxQty(float boxQty) {
+	public void setBoxQty(Integer boxQty) {
 		this.boxQty = boxQty;
 	}
 
@@ -82,10 +81,6 @@ public class ProductDto implements Serializable, Comparable<ProductDto> {
 		this.productGroupId = productGroupId;
 	}
 
-	public void setProductCategoruId(Long productCategoruId) {
-		this.productCategoruId = productCategoruId;
-	}
-
 	public Long getCaseQty() {
 		return caseQty;
 	}
@@ -94,15 +89,19 @@ public class ProductDto implements Serializable, Comparable<ProductDto> {
 		this.caseQty = caseQty;
 	}
 
-	public Long getProductCategoruId() {
-		return productCategoruId;
+	public Long getProductCategoryId() {
+		return productCategoryId;
 	}
 
-	public float getNetRate() {
+	public void setProductCategoryId(Long productCategoryId) {
+		this.productCategoryId = productCategoryId;
+	}
+
+	public Double getNetRate() {
 		return netRate;
 	}
 
-	public void setNetRate(float netRate) {
+	public void setNetRate(Double netRate) {
 		this.netRate = netRate;
 	}
 
@@ -114,19 +113,19 @@ public class ProductDto implements Serializable, Comparable<ProductDto> {
 		this.isNetRateItem = isNetRateItem;
 	}
 
-	public float getSchemeQty() {
+	public Double getSchemeQty() {
 		return schemeQty;
 	}
 
-	public void setSchemeQty(float schemeQty) {
+	public void setSchemeQty(Double schemeQty) {
 		this.schemeQty = schemeQty;
 	}
 
-	public int getFree() {
+	public Integer getFree() {
 		return free;
 	}
 
-	public void setFree(int free) {
+	public void setFree(Integer free) {
 		this.free = free;
 	}
 
@@ -138,17 +137,17 @@ public class ProductDto implements Serializable, Comparable<ProductDto> {
 		this.contents = contents;
 	}
 
-	public float getTax() {
+	public Double getTax() {
 		return tax;
 	}
 
-	public void setTax(float tax) {
+	public void setTax(Double tax) {
 		this.tax = tax;
 	}
 
 	@Override
-	public int compareTo(ProductDto product) {
-
-		return this.name.compareTo(product.getName());
+	public int compareTo(ProductDto o) {
+		return this.name.compareTo(o.getName());
 	}
+
 }

@@ -2,24 +2,36 @@ package com.rest.eskaysoftAPI.model;
 
 import java.io.Serializable;
 
+
+
 public class CompanyDto implements Serializable, Comparable<CompanyDto> {
 
 	private static final long serialVersionUID = 655159852262403024L;
-	private Long id;
+	
+	private Long companyId;
+	
 	private String companyCode;
+	
 	private String companyName;
-	private Long companyGroupId;
+
 	private String companyStatus;
+
 	private String invGenType;
-	private String companyType;
+	
 	private String invPrefix;
 
-	public Long getId() {
-		return id;
+	private String companyType;
+	
+	private Long companyGroupId;
+	
+	
+
+	public Long getCompanyId() {
+		return companyId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setCompanyId(Long companyId) {
+		this.companyId = companyId;
 	}
 
 	public String getCompanyCode() {

@@ -10,7 +10,7 @@ public class AreaDto implements Serializable, Comparable<AreaDto> {
 
 	private String areaName;
 
-	private Long businessexecutiveId;
+	private Long businessExecutiveId;
 
 	public Long getAreaId() {
 		return this.areaId;
@@ -20,12 +20,12 @@ public class AreaDto implements Serializable, Comparable<AreaDto> {
 		this.areaId = areaId;
 	}
 
-	public Long getBusinessexecutiveId() {
-		return this.businessexecutiveId;
+	public Long getBusinessExecutiveId() {
+		return businessExecutiveId;
 	}
 
-	public void setBusinessexecutiveId(Long businessexecutiveId) {
-		this.businessexecutiveId = businessexecutiveId;
+	public void setBusinessExecutiveId(Long businessExecutiveId) {
+		this.businessExecutiveId = businessExecutiveId;
 	}
 
 	public String getAreaName() {

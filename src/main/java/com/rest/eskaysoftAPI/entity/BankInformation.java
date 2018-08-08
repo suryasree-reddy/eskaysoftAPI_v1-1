@@ -3,6 +3,7 @@ package com.rest.eskaysoftAPI.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,8 +19,12 @@ public class BankInformation implements Serializable {
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String Name;
-	private String Address;
+    
+	@Column(name = "name", nullable = false, length = 20)
+	private String name;
+	
+	@Column(name = "address", nullable = false, length = 40)
+	private String address;
 	
 	
 	public Long getId() {
@@ -29,16 +34,16 @@ public class BankInformation implements Serializable {
 		this.id = id;
 	}
 	public String getName() {
-		return this.Name;
+		return name;
 	}
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 	public String getAddress() {
-		return this.Address;
+		return address;
 	}
 	public void setAddress(String address) {
-		Address = address;
+		this.address = address;
 	}
 	
 

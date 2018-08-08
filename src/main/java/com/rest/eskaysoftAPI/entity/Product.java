@@ -1,5 +1,7 @@
 package com.rest.eskaysoftAPI.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,36 +11,50 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Products")
-public class Product {
+public class Product implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
 	private Long id;
-	private String Code;
-
+	
+	@Column(name = "code", nullable = false)
+	private String code;
+	
+	@Column(name = "name", length = 20, nullable = false)
 	private String name;
-
+	
+	@Column(name = "packing", length = 4, nullable = false)
 	private String packing;
-
-	private float boxQty;
-
+	
+	@Column(name = "boxQty", nullable = false)
+	private Integer boxQty;
+	
 	private Long productGroupId;
-
+	
+	@Column(name = "caseQty", nullable = false)
 	private Long caseQty;
-
-	private Long productCategoruId;
-
-	private float netRate;
-
+	
+	private Long productCategoryId;
+	
+	@Column(name = "netRate",nullable = false)
+	private Double netRate;
+	@Column(name = "isNetRateItem", nullable = false)
+	
 	private String isNetRateItem;
-
-	private float schemeQty;
-
-	private int free;
-	@Column(name = "Contents", length = 20)
+	@Column(name = "schemeQty", nullable = false)
+	
+	private Double schemeQty;
+	
+	@Column(name = "free",nullable = false)
+	private Integer free;
+	
+	@Column(name = "contents",nullable = false)
 	private String contents;
-
-	private float tax;
+	
+	@Column(name = "tax", nullable = false)
+	private Double tax;
 
 	public Long getId() {
 		return id;
@@ -49,11 +65,11 @@ public class Product {
 	}
 
 	public String getCode() {
-		return Code;
+		return code;
 	}
 
 	public void setCode(String code) {
-		Code = code;
+		this.code = code;
 	}
 
 	public String getName() {
@@ -72,11 +88,11 @@ public class Product {
 		this.packing = packing;
 	}
 
-	public float getBoxQty() {
+	public Integer getBoxQty() {
 		return boxQty;
 	}
 
-	public void setBoxQty(float boxQty) {
+	public void setBoxQty(Integer boxQty) {
 		this.boxQty = boxQty;
 	}
 
@@ -88,10 +104,6 @@ public class Product {
 		this.productGroupId = productGroupId;
 	}
 
-	public void setProductCategoruId(Long productCategoruId) {
-		this.productCategoruId = productCategoruId;
-	}
-
 	public Long getCaseQty() {
 		return caseQty;
 	}
@@ -100,17 +112,19 @@ public class Product {
 		this.caseQty = caseQty;
 	}
 
-	
-
-	public Long getProductCategoruId() {
-		return productCategoruId;
+	public Long getProductCategoryId() {
+		return productCategoryId;
 	}
 
-	public float getNetRate() {
+	public void setProductCategoryId(Long productCategoryId) {
+		this.productCategoryId = productCategoryId;
+	}
+
+	public Double getNetRate() {
 		return netRate;
 	}
 
-	public void setNetRate(float netRate) {
+	public void setNetRate(Double netRate) {
 		this.netRate = netRate;
 	}
 
@@ -122,19 +136,19 @@ public class Product {
 		this.isNetRateItem = isNetRateItem;
 	}
 
-	public float getSchemeQty() {
+	public Double getSchemeQty() {
 		return schemeQty;
 	}
 
-	public void setSchemeQty(float schemeQty) {
+	public void setSchemeQty(Double schemeQty) {
 		this.schemeQty = schemeQty;
 	}
 
-	public int getFree() {
+	public Integer getFree() {
 		return free;
 	}
 
-	public void setFree(int free) {
+	public void setFree(Integer free) {
 		this.free = free;
 	}
 
@@ -146,12 +160,13 @@ public class Product {
 		this.contents = contents;
 	}
 
-	public float getTax() {
+	public Double getTax() {
 		return tax;
 	}
 
-	public void setTax(float tax) {
+	public void setTax(Double tax) {
 		this.tax = tax;
 	}
-
+	
+	
 }

@@ -1,135 +1,49 @@
-package com.rest.eskaysoftAPI.entity;
+package com.rest.eskaysoftAPI.model;
 
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "PurchaseEntry")
-public class PurchaseEntry implements Serializable {
+public class PurchaseEntryDto implements Serializable {
 	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	private Long id;
-	
-	@Column(name = "purchaseNumber", nullable = false)
 	private Integer purchaseNumber;
-	
-	@Column(name = "invoiceNumber", length = 16,nullable = false)
 	private String invoiceNumber;
-
-	@Column(name = "date", nullable = false)
 	private Date date;
-	
-	@Column(name = "gstin", nullable = false)
 	private String gstin;
-	
-	@Column(name = "wayBill", length = 15, nullable = false)
 	private String wayBill;
-	
-	@Column(name = "transport", length = 20, nullable = false)
 	private String transport;
-	
-	@Column(name = "numberOfCases",nullable = false)
 	private Integer numberOfCases;
-	
-	@Column(name = "invoiceDate",nullable = false)
 	private Date invoiceDate;
-
-	@Column(name = "mode", length = 6,nullable = false)
 	private String mode;
-	
-	@Column(name = "lrNumber", length = 15,nullable = false)
 	private String lrNumber;
-	
-	@Column(name = "lrDate",nullable = false)
 	private Date lrDate;
-	
-	@Column(name = "delvFrom", length = 20,nullable = false)
 	private String delvFrom;
-	
-	@Column(name = "productCode", length = 5,nullable = false)
 	private String productCode;
-	
-	@Column(name = "productName", length = 30, nullable = false)
 	private String productName;
-	
-	@Column(name = "batch", length = 12, nullable = false)
 	private String batch;
-	
-	@Column(name = "expiry", nullable = false)
 	private Date expiry;
-	
-	@Column(name = "qty",nullable = false)
 	private Double qty;
-	
-	@Column(name = "othCharges",nullable = false)
 	private Double othCharges;
-	
-	@Column(name = "grsValue", nullable = false)
 	private Double grsValue;
-	
-	@Column(name = "discount", nullable = false)
 	private Double discount;
-	
-	@Column(name = "ptd", nullable = false)
 	private Double ptd;
-	
-	@Column(name = "saleRate",nullable = false)
 	private Double saleRate;
-	
-	@Column(name = "tax",nullable = false)
 	private Double tax;
-	
-	@Column(name = "hsn", nullable = false)
 	private Long hsn;
-	
-	@Column(name = "mrp", nullable = false)
 	private Double mrp;
-	
-	@Column(name = "mfgName", length = 20,nullable = false)
 	private String mfgName;
-	
-	@Column(name = "purRate", nullable = false)
 	private Double purRate;
-	
-	@Column(name = "free", nullable = false)
 	private Double free;
-	
-	@Column(name = "grossValue",nullable = false)
 	private Double grossValue;
-	
-	@Column(name = "discountValue", nullable = false)
 	private Double discountValue;
-	
-	@Column(name = "taxValue",nullable = false)
 	private Double taxValue;
-	
-	@Column(name = "netValue", nullable = false)
 	private Double netValue;
-	
-	@Column(name = "debitAdjustmentLedger", nullable = false)
 	private Double debitAdjustmentLedger;
-	
-	@Column(name = "creditAdjustmentLedger",nullable = false)
-	private Double creditAdjustmentLedger;
-	
-	@Column(name = "remarks", length = 50,nullable = false)
+	private Double CreditAdjustmentLedger;
 	private String remarks;
-	
-	@Column(name = "debitAdjustmentValue", nullable = false)
-	private Double debitAdjustmentValue;
-	
-	@Column(name = "creditAdjustmentValue", nullable = false)
+	private Double DebitAdjustmentValue;
 	private Double creditAdjustmentValue;
-	
-	@Column(name = "invoiceValue", nullable = false)
 	private Double invoiceValue;
 
 	public Long getId() {
@@ -404,14 +318,12 @@ public class PurchaseEntry implements Serializable {
 		this.debitAdjustmentLedger = debitAdjustmentLedger;
 	}
 
-	
-
 	public Double getCreditAdjustmentLedger() {
-		return creditAdjustmentLedger;
+		return CreditAdjustmentLedger;
 	}
 
 	public void setCreditAdjustmentLedger(Double creditAdjustmentLedger) {
-		this.creditAdjustmentLedger = creditAdjustmentLedger;
+		CreditAdjustmentLedger = creditAdjustmentLedger;
 	}
 
 	public String getRemarks() {
@@ -422,14 +334,12 @@ public class PurchaseEntry implements Serializable {
 		this.remarks = remarks;
 	}
 
-	
-
 	public Double getDebitAdjustmentValue() {
-		return debitAdjustmentValue;
+		return DebitAdjustmentValue;
 	}
 
 	public void setDebitAdjustmentValue(Double debitAdjustmentValue) {
-		this.debitAdjustmentValue = debitAdjustmentValue;
+		DebitAdjustmentValue = debitAdjustmentValue;
 	}
 
 	public Double getCreditAdjustmentValue() {

@@ -33,7 +33,7 @@ public class AreaServiceImpl implements AreaService {
 			AreaDto areaModel = new AreaDto();
 			BeanUtils.copyProperties(area, areaModel);
 
-			areaModel.setBusinessexecutiveId(area.getBusinessExecutiveId().getId());
+			areaModel.setBusinessExecutiveId(area.getBusinessExecutiveId().getId());
 			areaList.add(areaModel);
 		});
 		Collections.sort(areaList);
@@ -45,24 +45,18 @@ public class AreaServiceImpl implements AreaService {
 
 		Area area = areaDao.findById(id)
 				.orElseThrow(() -> new NotFoundException(String.format("area %d not found", id)));
-		if (area != null) {
-			AreaDto areaModel = new AreaDto();
-			BeanUtils.copyProperties(area, areaModel);
-			areaModel.setAreaId(area.getAreaId());
-			areaModel.setAreaName(area.getAreaName());
-			areaModel.setBusinessexecutiveId(area.getBusinessExecutiveId().getId());
-			return areaModel;
-
-		}
-		return null;
+		AreaDto areaModel = new AreaDto();
+		BeanUtils.copyProperties(area, areaModel);
+		areaModel.setBusinessExecutiveId(area.getBusinessExecutiveId().getId());
+		return areaModel;
 
 	}
 
 	@Override
 	public AreaDto saveArea(AreaDto areaModel) {
-		BusinessExecutive businessexecutive = businessExecutiveDao.findById(areaModel.getBusinessexecutiveId())
+		BusinessExecutive businessexecutive = businessExecutiveDao.findById(areaModel.getBusinessExecutiveId())
 				.orElseThrow(() -> new NotFoundException(
-						String.format("BusinessExecutive %d not found", areaModel.getBusinessexecutiveId())));
+						String.format("BusinessExecutive %d not found", areaModel.getBusinessExecutiveId())));
 		Area area = new Area();
 		BeanUtils.copyProperties(areaModel, area);
 		area.setBusinessExecutiveId(businessexecutive);
@@ -84,9 +78,9 @@ public class AreaServiceImpl implements AreaService {
 
 	@Override
 	public AreaDto create(AreaDto areaModel) {
-		BusinessExecutive businessexecutive = businessExecutiveDao.findById(areaModel.getBusinessexecutiveId())
+		BusinessExecutive businessexecutive = businessExecutiveDao.findById(areaModel.getBusinessExecutiveId())
 				.orElseThrow(() -> new NotFoundException(
-						String.format("BusinessExecutive %d not found", areaModel.getBusinessexecutiveId())));
+						String.format("BusinessExecutive %d not found", areaModel.getBusinessExecutiveId())));
 		Area area = new Area();
 		BeanUtils.copyProperties(areaModel, area);
 		area.setBusinessExecutiveId(businessexecutive);

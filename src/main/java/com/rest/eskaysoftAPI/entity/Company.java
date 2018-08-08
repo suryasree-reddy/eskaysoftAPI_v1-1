@@ -2,6 +2,7 @@ package com.rest.eskaysoftAPI.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -19,27 +20,33 @@ public class Company implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long companyId;
+	
+	 @Column(name = "companyCode", nullable = false, length = 20)
 	private String companyCode;
+	 
+	 @Column(name = "companyName", nullable = false, length = 20)
 	private String companyName;
-
+	 
+	 @Column(name = "companyStatus", nullable = false, length = 20)
 	private String companyStatus;
+	 
+	 @Column(name = "invGenType", nullable = false, length = 20)
 	private String invGenType;
+	 
+	 @Column(name = "invPrefix", nullable = false, length = 20)
 	private String invPrefix;
+	 
+	 @Column(name = "companyType", nullable = false, length = 20)
 	private String companyType;
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "companyGroupId", nullable = false)
 	private CompanyGroup companyGroupId;
 
-	public Long getId() {
-		return id;
-	}
+	
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
+	
 	public String getCompanyCode() {
 		return this.companyCode;
 	}
@@ -96,4 +103,15 @@ public class Company implements Serializable {
 		this.companyType = companyType;
 	}
 
+	public Long getCompanyId() {
+		return companyId;
+	}
+
+	public void setCompanyId(Long companyId) {
+		this.companyId = companyId;
+	}
+
+	
+	
+	
 }

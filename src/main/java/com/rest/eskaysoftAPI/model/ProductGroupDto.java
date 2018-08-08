@@ -6,15 +6,16 @@ public class ProductGroupDto implements Serializable, Comparable<ProductGroupDto
 
 	private static final long serialVersionUID = 1L;
 
-	private Long productGroupId;
+	private Long id;
+
 	private String productGroupName;
 
-	public Long getProductGroupId() {
-		return this.productGroupId;
+	public Long getId() {
+		return id;
 	}
 
-	public void setProductGroupId(Long productGroupId) {
-		this.productGroupId = productGroupId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getProductGroupName() {

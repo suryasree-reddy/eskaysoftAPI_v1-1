@@ -2,6 +2,7 @@ package com.rest.eskaysoftAPI.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,13 +16,17 @@ public class CustomerWiseDiscounts implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String customer;
-	private String companyOption;
-	private String discount;
-	private String companyDiscription;
-	private String disc;
+
+	@Column(name = "accountInformationId")
+	private Long accountInformationId;
+
+	@Column(name = "companiId")
+	private Long companiId;
+
 	
-	
+
+	@Column(name = "Disc")
+	private Double disc;
 
 	public Long getId() {
 		return id;
@@ -31,44 +36,32 @@ public class CustomerWiseDiscounts implements Serializable {
 		this.id = id;
 	}
 
-	public String getCustomer() {
-		return this.customer;
+	public Long getAccountInformationId() {
+		return accountInformationId;
 	}
 
-	public void setCustomer(String customer) {
-		this.customer = customer;
+	public void setAccountInformationId(Long accountInformationId) {
+		this.accountInformationId = accountInformationId;
 	}
 
-	public String getCompanyOption() {
-		return this.companyOption;
+	public Long getCompaniId() {
+		return companiId;
 	}
 
-	public void setCompanyOption(String companyOption) {
-		this.companyOption = companyOption;
+	public void setCompaniId(Long companiId) {
+		this.companiId = companiId;
 	}
 
-	public String getDiscount() {
-		return this.discount;
+	
+	public Double getDisc() {
+		return disc;
 	}
 
-	public void setDiscount(String discount) {
-		this.discount = discount;
-	}
-
-	public String getCompanyDiscription() {
-		return this.companyDiscription;
-	}
-
-	public void setCompanyDiscription(String companyDiscription) {
-		this.companyDiscription = companyDiscription;
-	}
-
-	public String getDisc() {
-		return this.disc;
-	}
-
-	public void setDisc(String disc) {
+	public void setDisc(Double disc) {
 		this.disc = disc;
 	}
+	
+	
 
+	
 }

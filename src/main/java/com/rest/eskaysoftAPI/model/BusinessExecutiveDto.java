@@ -7,9 +7,13 @@ public class BusinessExecutiveDto implements Serializable, Comparable<BusinessEx
 	private static final long serialVersionUID = 655159852262403024L;
 
 	private Long id;
+
 	private String name;
+
 	private String address;
+
 	private String town;
+
 	private Long mobile;
 
 	public Long getId() {

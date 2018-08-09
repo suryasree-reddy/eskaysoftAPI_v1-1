@@ -51,7 +51,7 @@ public class ScheduleResource {
 	@Produces("application/json")
 	public Schedule create(@RequestBody Schedule schedule) {
 		if (logger.isDebugEnabled()) {
-			logger.debug("Requsted Schedule = " + schedule);
+			logger.debug("Requsted Schedule = " + schedule.getScheduleName());
 		}
 		return scheduleService.create(schedule);
 	}
@@ -61,7 +61,7 @@ public class ScheduleResource {
 	@Produces("application/json")
 	public Schedule update(@RequestBody Schedule schedule) {
 		if (logger.isDebugEnabled()) {
-			logger.debug("Requsted Schedule = " + schedule);
+			logger.debug("Requsted Schedule = " + schedule.getId());
 		}
 		return scheduleService.saveSchedule(schedule);
 	}

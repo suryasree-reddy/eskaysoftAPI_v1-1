@@ -12,6 +12,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -22,6 +24,8 @@ import com.rest.eskaysoftAPI.service.ProductCategoryService;
 @Resource(name = "productcategory")
 @Path("/productcategory")
 public class ProductCategoryResource {
+	private static final Logger logger = LoggerFactory.getLogger(ProductCategoryResource.class);
+
 
 	@Autowired
 	ProductCategoryService productcategoryService;
@@ -36,6 +40,9 @@ public class ProductCategoryResource {
 	@Path("/{id}")
 	@Produces("application/json")
 	public ProductCategory findOne(@PathParam("id") long id){
+		if (logger.isDebugEnabled()) {
+			logger.debug("Requsted ID = " + id);
+		}
         return productcategoryService.getProductCategoryById(id);
 
     }
@@ -44,6 +51,9 @@ public class ProductCategoryResource {
     @Consumes("application/json")
     @Produces("application/json")
     public ProductCategory create(@RequestBody ProductCategory productcategory){
+    	if (logger.isDebugEnabled()) {
+			logger.debug("Requsted productcategory = " + productcategory.getProductCategoryName());
+		}
         return productcategoryService.create(productcategory);
     }
 
@@ -51,6 +61,9 @@ public class ProductCategoryResource {
     @Consumes("application/json")
     @Produces("application/json")
     public ProductCategory update(@RequestBody ProductCategory productcategory){
+    	if (logger.isDebugEnabled()) {
+			logger.debug("Requsted productcategory = " + productcategory.getProductCategoryId());
+		}
         return productcategoryService.saveProductCategory(productcategory);
     }
     @DELETE

@@ -13,6 +13,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -23,6 +25,8 @@ import com.rest.eskaysoftAPI.service.AccountOpeningsService;
 @Resource(name = "accountopenings")
 @Path("/accountopenings")
 public class AccountOpeningsResource {
+	private static final Logger logger = LoggerFactory.getLogger(AccountOpeningsResource.class);
+
 
 	@Autowired
 	AccountOpeningsService accountOpeningsService;
@@ -37,6 +41,9 @@ public class AccountOpeningsResource {
 	@Path("/{id}")
 	@Produces("application/json")
 	public AccountOpenings findOne(@PathParam("id") long id){
+		if (logger.isDebugEnabled()) {
+			logger.debug("Requsted ID = " + id);
+		}
         return accountOpeningsService.getAccountOpeningsById(id);
 
     }
@@ -45,6 +52,9 @@ public class AccountOpeningsResource {
     @Consumes("application/json")
     @Produces("application/json")
     public AccountOpenings create(@RequestBody AccountOpenings accountopenings){
+    	if (logger.isDebugEnabled()) {
+			logger.debug("Requsted AccountOpenings = " + accountopenings.getAccountName());
+		}
         return accountOpeningsService.create(accountopenings);
     }
 
@@ -52,6 +62,9 @@ public class AccountOpeningsResource {
     @Consumes("application/json")
     @Produces("application/json")
     public AccountOpenings update(@RequestBody AccountOpenings accountopenings){
+    	if (logger.isDebugEnabled()) {
+			logger.debug("Requsted AccountOpenings = " + accountopenings.getId());
+		}
         return accountOpeningsService.saveAccountOpenings(accountopenings);
     }
     

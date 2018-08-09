@@ -12,6 +12,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -22,6 +24,8 @@ import com.rest.eskaysoftAPI.service.BusinessExecutiveService;
 @Resource(name = "businessexecutive")
 @Path("/businessexecutive")
 public class BusinessExecutiveResource {
+	private static final Logger logger = LoggerFactory.getLogger(BusinessExecutiveResource.class);
+
 
 	@Autowired
 	BusinessExecutiveService bankInformationService;
@@ -36,6 +40,9 @@ public class BusinessExecutiveResource {
 	@Path("/{id}")
 	@Produces("application/json")
 	public BusinessExecutive findOne(@PathParam("id") long id) {
+		if (logger.isDebugEnabled()) {
+			logger.debug("Requsted ID = " + id);
+		}
 		return bankInformationService.getBusinessExecutiveById(id);
 
 	}
@@ -43,15 +50,21 @@ public class BusinessExecutiveResource {
 	@POST
 	@Consumes("application/json")
 	@Produces("application/json")
-	public BusinessExecutive create(@RequestBody BusinessExecutive bankinformation) {
-		return bankInformationService.create(bankinformation);
+	public BusinessExecutive create(@RequestBody BusinessExecutive businessexecutive) {
+		if (logger.isDebugEnabled()) {
+			logger.debug("Requsted Bankinformation = " + businessexecutive.getName());
+		}
+		return bankInformationService.create(businessexecutive);
 	}
 
 	@PUT
 	@Consumes("application/json")
 	@Produces("application/json")
-	public BusinessExecutive update(@RequestBody BusinessExecutive bankinformation) {
-		return bankInformationService.saveBusinessExecutive(bankinformation);
+	public BusinessExecutive update(@RequestBody BusinessExecutive businessexecutive) {
+		if (logger.isDebugEnabled()) {
+			logger.debug("Requsted BusinessExecutive = " + businessexecutive.getId());
+		}
+		return bankInformationService.saveBusinessExecutive(businessexecutive);
 	}
 
     @DELETE

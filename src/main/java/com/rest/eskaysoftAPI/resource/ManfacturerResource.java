@@ -12,6 +12,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -22,6 +24,7 @@ import com.rest.eskaysoftAPI.service.ManfacturerService;
 @Resource(name = "manfacturer")
 @Path("/manfacturer")
 public class ManfacturerResource {
+	private static final Logger logger = LoggerFactory.getLogger(ManfacturerResource.class);
 
 	@Autowired
     ManfacturerService manfacturerService;
@@ -36,6 +39,9 @@ public class ManfacturerResource {
 	@Path("/{id}")
 	@Produces("application/json")
 	public Manfacturer findOne(@PathParam("id") long id){
+		if (logger.isDebugEnabled()) {
+			logger.debug("Requsted ID = " + id);
+		}
         return manfacturerService.getManfacturerById(id);
 
     }
@@ -44,6 +50,9 @@ public class ManfacturerResource {
     @Consumes("application/json")
     @Produces("application/json")
     public Manfacturer create(@RequestBody Manfacturer manfacturer){
+    	if (logger.isDebugEnabled()) {
+			logger.debug("Requsted manfacturer = " + manfacturer.getManfacturerName());
+		}
         return manfacturerService.create(manfacturer);
     }
 
@@ -51,6 +60,9 @@ public class ManfacturerResource {
     @Consumes("application/json")
     @Produces("application/json")
     public Manfacturer update(@RequestBody Manfacturer manfacturer){
+    	if (logger.isDebugEnabled()) {
+			logger.debug("Requsted manfacturer = " + manfacturer.getId());
+		}
         return manfacturerService.save(manfacturer);
     }
     @DELETE

@@ -13,6 +13,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -23,6 +25,7 @@ import com.rest.eskaysoftAPI.service.AccountInformationService;
 @Resource(name = "accountinformation")
 @Path("/accountinformation")
 public class AccountInformationResource {
+	private static final Logger logger = LoggerFactory.getLogger(AccountInformationResource.class);
 
 	@Autowired
 	AccountInformationService accountInformationService;
@@ -37,6 +40,9 @@ public class AccountInformationResource {
 	@Path("/{id}")
 	@Produces("application/json")
 	public AccountInformation findOne(@PathParam("id") long id) {
+		if (logger.isDebugEnabled()) {
+			logger.debug("Requsted ID = " + id);
+		}
 		return accountInformationService.getAccountInformationById(id);
 
 	}
@@ -45,6 +51,9 @@ public class AccountInformationResource {
 	@Consumes("application/json")
 	@Produces("application/json")
 	public AccountInformation create(@RequestBody AccountInformation accountInformation) {
+		if (logger.isDebugEnabled()) {
+			logger.debug("Requsted AccountInformation = " + accountInformation.getAccountName());
+		}
 		return accountInformationService.create(accountInformation);
 	}
 
@@ -52,6 +61,9 @@ public class AccountInformationResource {
 	@Consumes("application/json")
 	@Produces("application/json")
 	public AccountInformation update(@RequestBody AccountInformation accountInformation) {
+		if (logger.isDebugEnabled()) {
+			logger.debug("Requsted AccountInformation = " + accountInformation.getId());
+		}
 		return accountInformationService.saveAccountInformation(accountInformation);
 	}
 

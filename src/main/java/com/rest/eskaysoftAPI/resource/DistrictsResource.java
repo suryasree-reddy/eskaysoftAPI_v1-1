@@ -39,6 +39,9 @@ public class DistrictsResource {
 	@Path("/{id}")
 	@Produces("application/json")
 	public DistrictsDto findOne(@PathParam("id") long id) {
+		if (logger.isDebugEnabled()) {
+			logger.debug("Requsted ID = " + id);
+		}
 		return districtService.getdistrictsById(id);
 
 	}
@@ -47,6 +50,9 @@ public class DistrictsResource {
 	@Consumes("application/json")
 	@Produces("application/json")
 	public DistrictsDto create(@RequestBody DistrictsDto districs) {
+		if (logger.isDebugEnabled()) {
+			logger.debug("Requsted districs = " + districs.getDistrictName());
+		}
 		return districtService.create(districs);
 	}
 
@@ -54,6 +60,9 @@ public class DistrictsResource {
 	@Consumes("application/json")
 	@Produces("application/json")
 	public DistrictsDto update(@RequestBody DistrictsDto districs) {
+		if (logger.isDebugEnabled()) {
+			logger.debug("Requsted districs = " + districs.getDistrictId());
+		}
 		return districtService.save(districs);
 	}
 

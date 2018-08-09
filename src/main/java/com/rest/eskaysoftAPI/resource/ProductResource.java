@@ -13,6 +13,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -23,6 +25,7 @@ import com.rest.eskaysoftAPI.service.ProductService;
 @Resource(name = "product")
 @Path("/product")
 public class ProductResource {
+	private static final Logger logger = LoggerFactory.getLogger(ProductResource.class);
 
 	@Autowired
     ProductService productService;
@@ -37,6 +40,9 @@ public class ProductResource {
 	@Path("/{id}")
 	@Produces("application/json")
 	public Product findOne(@PathParam("id") long id){
+		if (logger.isDebugEnabled()) {
+			logger.debug("Requsted ID = " + id);
+		}
         return productService.getProductById(id);
 
     }
@@ -45,6 +51,9 @@ public class ProductResource {
     @Consumes("application/json")
     @Produces("application/json")
     public Product create(@RequestBody Product product){
+    	if (logger.isDebugEnabled()) {
+			logger.debug("Requsted product = " + product.getName());
+		}
         return productService.create(product);
     }
 
@@ -52,6 +61,9 @@ public class ProductResource {
     @Consumes("application/json")
     @Produces("application/json")
     public Product update(@RequestBody Product product){
+    	if (logger.isDebugEnabled()) {
+			logger.debug("Requsted product = " + product.getId());
+		}
         return productService.saveProduct(product);
     }
 

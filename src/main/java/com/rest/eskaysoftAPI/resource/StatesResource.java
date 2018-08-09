@@ -12,6 +12,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -22,6 +24,7 @@ import com.rest.eskaysoftAPI.service.StatesService;
 @Resource(name = "states")
 @Path("/states")
 public class StatesResource {
+	private static final Logger logger = LoggerFactory.getLogger(StatesResource.class);
 
 	@Autowired
     StatesService stateService;
@@ -36,6 +39,9 @@ public class StatesResource {
 	@Path("/{id}")
 	@Produces("application/json")
 	public States findOne(@PathParam("id") long id){
+		if (logger.isDebugEnabled()) {
+			logger.debug("Requsted ID = " + id);
+		}
         return stateService.getStateById(id);
 
     }
@@ -44,6 +50,9 @@ public class StatesResource {
     @Consumes("application/json")
     @Produces("application/json")
     public States create(@RequestBody States State){
+    	if (logger.isDebugEnabled()) {
+			logger.debug("Requsted State = " + State.getStateName());
+		}
         return stateService.create(State);
     }
 
@@ -51,6 +60,9 @@ public class StatesResource {
     @Consumes("application/json")
     @Produces("application/json")
     public States update(@RequestBody States State){
+    	if (logger.isDebugEnabled()) {
+			logger.debug("Requsted State = " + State.getId());
+		}
         return stateService.saveState(State);
     }
     @DELETE

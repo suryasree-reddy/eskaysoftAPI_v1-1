@@ -12,6 +12,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -21,6 +23,7 @@ import com.rest.eskaysoftAPI.service.SubScheduleService;
 @Resource(name = "subschedules")
 @Path("/subschedules")
 public class SubScheduleResource {
+	private static final Logger logger = LoggerFactory.getLogger(SubScheduleResource.class);
 
 	@Autowired
 	SubScheduleService subscheduleService;
@@ -35,6 +38,9 @@ public class SubScheduleResource {
 	@Path("/{id}")
 	@Produces("application/json")
 	public SubScheduleDto findOne(@PathParam("id") long id) {
+		if (logger.isDebugEnabled()) {
+			logger.debug("Requsted ID = " + id);
+		}
 		return subscheduleService.getSubScheduleById(id);
 
 	}
@@ -43,6 +49,9 @@ public class SubScheduleResource {
 	@Consumes("application/json")
 	@Produces("application/json")
 	public SubScheduleDto create(@RequestBody SubScheduleDto subschedule) {
+		if (logger.isDebugEnabled()) {
+			logger.debug("Requsted Schedule = " + subschedule.getSubScheduleName());
+		}
 		return subscheduleService.create(subschedule);
 	}
 
@@ -50,6 +59,9 @@ public class SubScheduleResource {
 	@Consumes("application/json")
 	@Produces("application/json")
 	public SubScheduleDto update(@RequestBody SubScheduleDto subschedule) {
+		if (logger.isDebugEnabled()) {
+			logger.debug("Requsted subschedule = " + subschedule.getScheduleId());
+		}
 		return subscheduleService.saveSubSchedule(subschedule);
 	}
 

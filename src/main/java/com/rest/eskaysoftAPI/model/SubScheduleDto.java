@@ -2,7 +2,7 @@ package com.rest.eskaysoftAPI.model;
 
 import java.io.Serializable;
 
-public class SubScheduleDto implements Serializable, Comparable<SubScheduleDto> {
+public class SubScheduleDto implements Serializable {
 
 	private static final long serialVersionUID = 655159852262403024L;
 
@@ -44,10 +44,5 @@ public class SubScheduleDto implements Serializable, Comparable<SubScheduleDto> 
 		this.subScheduleIndex = subScheduleIndex;
 	}
 
-	@Override
-	public int compareTo(SubScheduleDto subschedule) {
-
-		return this.subScheduleName.compareTo(subschedule.getSubScheduleName());
-	}
 
 }

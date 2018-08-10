@@ -28,7 +28,7 @@ public class SubScheduleServiceImpl implements SubScheduleService {
 	@Override
 	public List<SubScheduleDto> listAllSubSchedules() {
 		List<SubScheduleDto> subschList = new ArrayList<>();
-		subscheduleDao.findAll().forEach(subschedule -> {
+		subscheduleDao.findAllByOrderBySubScheduleNameAsc().forEach(subschedule -> {
 
 			SubScheduleDto subschModel = new SubScheduleDto();
 			BeanUtils.copyProperties(subschedule, subschModel);
@@ -36,7 +36,6 @@ public class SubScheduleServiceImpl implements SubScheduleService {
 			subschModel.setScheduleId(subschedule.getScheduleId().getId());
 			subschList.add(subschModel);
 		});
-		Collections.sort(subschList);
 		return subschList;
 	}
 

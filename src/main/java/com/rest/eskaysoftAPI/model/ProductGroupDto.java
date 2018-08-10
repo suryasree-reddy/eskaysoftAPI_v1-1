@@ -2,7 +2,7 @@ package com.rest.eskaysoftAPI.model;
 
 import java.io.Serializable;
 
-public class ProductGroupDto implements Serializable, Comparable<ProductGroupDto> {
+public class ProductGroupDto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -24,12 +24,6 @@ public class ProductGroupDto implements Serializable, Comparable<ProductGroupDto
 
 	public void setProductGroupName(String productGroupName) {
 		this.productGroupName = productGroupName;
-	}
-
-	@Override
-	public int compareTo(ProductGroupDto productgroups) {
-
-		return this.productGroupName.compareTo(productgroups.getProductGroupName());
 	}
 
 }

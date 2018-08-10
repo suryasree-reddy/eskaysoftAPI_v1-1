@@ -18,16 +18,19 @@ public class CustomerWiseDiscounts implements Serializable {
 	private Long id;
 
 	@Column(name = "accountInformationId")
-	private Long accountInformationId;
+	private AccountInformation accountInformationId;
 
 	@Column(name = "companiId")
-	private Long companiId;
+	private Company companiId;
 
 	
 
-	@Column(name = "Disc")
+	@Column(name = "Disc", nullable = false)
 	private Double disc;
 
+
+
+	
 	public Long getId() {
 		return id;
 	}
@@ -36,23 +39,25 @@ public class CustomerWiseDiscounts implements Serializable {
 		this.id = id;
 	}
 
-	public Long getAccountInformationId() {
+	
+
+	
+	public AccountInformation getAccountInformationId() {
 		return accountInformationId;
 	}
 
-	public void setAccountInformationId(Long accountInformationId) {
+	public void setAccountInformationId(AccountInformation accountInformationId) {
 		this.accountInformationId = accountInformationId;
 	}
 
-	public Long getCompaniId() {
+	public Company getCompaniId() {
 		return companiId;
 	}
 
-	public void setCompaniId(Long companiId) {
+	public void setCompaniId(Company companiId) {
 		this.companiId = companiId;
 	}
 
-	
 	public Double getDisc() {
 		return disc;
 	}

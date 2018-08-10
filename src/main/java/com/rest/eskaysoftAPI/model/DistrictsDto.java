@@ -2,8 +2,9 @@ package com.rest.eskaysoftAPI.model;
 
 import java.io.Serializable;
 
-public class DistrictsDto implements Serializable, Comparable<DistrictsDto> {
-	private static final long serialVersionUID = 655159852262403024L;
+public class DistrictsDto implements Serializable {
+
+	private static final long serialVersionUID = 1694531969479034978L;
 
 	private Long districtId;
 
@@ -33,12 +34,6 @@ public class DistrictsDto implements Serializable, Comparable<DistrictsDto> {
 
 	public void setStatesId(Long statesId) {
 		this.statesId = statesId;
-	}
-
-	@Override
-	public int compareTo(DistrictsDto districts) {
-
-		return this.districtName.compareTo(districts.getDistrictName());
 	}
 
 }

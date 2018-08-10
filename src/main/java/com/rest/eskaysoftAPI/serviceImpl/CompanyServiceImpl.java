@@ -1,7 +1,6 @@
 package com.rest.eskaysoftAPI.serviceImpl;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
@@ -28,7 +27,7 @@ public class CompanyServiceImpl implements CompanyService {
 	@Override
 	public List<CompanyDto> listAllCompany() {
 		List<CompanyDto> companyList = new ArrayList<>();
-		companyDao.findAll().forEach(company -> {
+		companyDao.findAllByOrderByCompanyNameAsc().forEach(company -> {
 
 			CompanyDto companyModel = new CompanyDto();
 			BeanUtils.copyProperties(company, companyModel);
@@ -36,7 +35,7 @@ public class CompanyServiceImpl implements CompanyService {
 			companyModel.setCompanyGroupId(company.getCompanyGroupId().getId());
 			companyList.add(companyModel);
 		});
-		Collections.sort(companyList);
+
 		return companyList;
 	}
 
@@ -86,7 +85,7 @@ public class CompanyServiceImpl implements CompanyService {
 		company.setCompanyGroupId(companygroup);
 		company = companyDao.save(company);
 		companyModel.setCompanyId(company.getCompanyId());
-			return companyModel;
+		return companyModel;
 	}
 
 }

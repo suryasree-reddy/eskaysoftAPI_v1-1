@@ -1,7 +1,6 @@
 package com.rest.eskaysoftAPI.serviceImpl;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
@@ -34,12 +33,12 @@ public class BankInformationServiceImpl implements BankInformationService {
 	@Override
 	public List<BankInformationDto> listAllBankInformation() {
 		List<BankInformationDto> bankinformationList = new ArrayList<>();
-		bankInformationDao.findAll().forEach(bankinformation ->{
-			BankInformationDto bankinformationModel = new BankInformationDto();	
+		bankInformationDao.findAllByOrderByNameAsc().forEach(bankinformation -> {
+			BankInformationDto bankinformationModel = new BankInformationDto();
 			BeanUtils.copyProperties(bankinformation, bankinformationModel);
 			bankinformationList.add(bankinformationModel);
 		});
-		Collections.sort(bankinformationList);
+
 		return bankinformationList;
 	}
 

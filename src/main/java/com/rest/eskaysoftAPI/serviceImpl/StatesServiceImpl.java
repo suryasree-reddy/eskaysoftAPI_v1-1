@@ -1,7 +1,6 @@
 package com.rest.eskaysoftAPI.serviceImpl;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
@@ -27,12 +26,12 @@ public class StatesServiceImpl implements StatesService {
 	@Override
 	public List<StatesDto> listAllStates() {
 		List<StatesDto> stateList = new ArrayList<>();
-		stateDao.findAll().forEach(states -> {
+		stateDao.findAllByOrderByStateNameAsc().forEach(states -> {
 			StatesDto stateModel = new StatesDto();
 			BeanUtils.copyProperties(states, stateModel);
 			stateList.add(stateModel);
 		});
-		Collections.sort(stateList);
+
 		return stateList;
 	}
 

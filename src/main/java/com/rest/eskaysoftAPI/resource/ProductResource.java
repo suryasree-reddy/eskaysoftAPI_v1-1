@@ -3,7 +3,6 @@ package com.rest.eskaysoftAPI.resource;
 import java.util.List;
 
 import javax.annotation.Resource;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;

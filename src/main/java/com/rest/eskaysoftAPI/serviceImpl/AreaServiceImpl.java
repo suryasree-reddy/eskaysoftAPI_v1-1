@@ -1,7 +1,6 @@
 package com.rest.eskaysoftAPI.serviceImpl;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
@@ -28,7 +27,7 @@ public class AreaServiceImpl implements AreaService {
 	@Override
 	public List<AreaDto> listAllArea() {
 		List<AreaDto> areaList = new ArrayList<>();
-		areaDao.findAll().forEach(area -> {
+		areaDao.findAllByOrderByAreaNameAsc().forEach(area -> {
 
 			AreaDto areaModel = new AreaDto();
 			BeanUtils.copyProperties(area, areaModel);
@@ -36,7 +35,7 @@ public class AreaServiceImpl implements AreaService {
 			areaModel.setBusinessExecutiveId(area.getBusinessExecutiveId().getId());
 			areaList.add(areaModel);
 		});
-		Collections.sort(areaList);
+
 		return areaList;
 	}
 

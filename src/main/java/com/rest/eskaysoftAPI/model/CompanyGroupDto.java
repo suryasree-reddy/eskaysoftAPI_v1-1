@@ -3,7 +3,7 @@ package com.rest.eskaysoftAPI.model;
 import java.io.Serializable;
 
 
-public class CompanyGroupDto implements Serializable, Comparable<CompanyGroupDto> {
+public class CompanyGroupDto implements Serializable{
 
 	private static final long serialVersionUID = 6959309821416613726L;
 	
@@ -26,10 +26,6 @@ public class CompanyGroupDto implements Serializable, Comparable<CompanyGroupDto
 		this.companyGroup = companyGroup;
 	}
 
-	@Override
-	public int compareTo(CompanyGroupDto companygroup) {
-
-		return this.companyGroup.compareTo(companygroup.getCompanyGroup());
-	}
+	
 
 }

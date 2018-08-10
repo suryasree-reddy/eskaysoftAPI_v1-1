@@ -1,7 +1,6 @@
 package com.rest.eskaysoftAPI.serviceImpl;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
@@ -27,12 +26,12 @@ public class CustomerWiseDiscountServiceImpl implements CustomerWiseDiscountsSer
 	@Override
 	public List<CustomerWiseDiscountsDto> listAllCustomerWiseDiscounts() {
 		List<CustomerWiseDiscountsDto> cusList = new ArrayList<>();
-		customerWiseDiscountsDao.findAll().forEach(cus -> {
+		customerWiseDiscountsDao.findAllByOrderByDiscAsc().forEach(cus -> {
 			CustomerWiseDiscountsDto cusModel = new CustomerWiseDiscountsDto();
 			BeanUtils.copyProperties(cus, cusModel);
 			cusList.add(cusModel);
 		});
-		Collections.sort(cusList);
+
 		return cusList;
 	}
 

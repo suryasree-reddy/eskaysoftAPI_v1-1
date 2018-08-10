@@ -1,8 +1,6 @@
 package com.rest.eskaysoftAPI.serviceImpl;
 
 import java.util.ArrayList;
-
-import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
@@ -28,14 +26,15 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 	@Override
 	public List<ProductCategoryDto> listAllProductcategories() {
 		List<ProductCategoryDto> productcategoryList = new ArrayList<>();
-		productcategoryDao.findAll().forEach(productcategories ->{
-			ProductCategoryDto productcategoryModel = new ProductCategoryDto();	
+		productcategoryDao.findAllByOrderByProductCategoryNameAsc().forEach(productcategories -> {
+			ProductCategoryDto productcategoryModel = new ProductCategoryDto();
 			BeanUtils.copyProperties(productcategories, productcategoryModel);
 			productcategoryList.add(productcategoryModel);
 		});
-		Collections.sort(productcategoryList);
+
 		return productcategoryList;
 	}
+
 	@Override
 	public ProductCategory getProductCategoryById(Long id) {
 		System.out.println("****************" + id);
@@ -48,17 +47,16 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 		return productcategoryDao.save(productcategory);
 	}
 
-	  @Override
-		public boolean deleteProductCategory(Long id) {
-			boolean status = false;
-			ProductCategory productcategory = getProductCategoryById(id);
-			if (productcategory != null) {
-				status = true;
-				productcategoryDao.delete(productcategory);
-			}
-			return status;
+	@Override
+	public boolean deleteProductCategory(Long id) {
+		boolean status = false;
+		ProductCategory productcategory = getProductCategoryById(id);
+		if (productcategory != null) {
+			status = true;
+			productcategoryDao.delete(productcategory);
 		}
-
+		return status;
+	}
 
 	@Override
 	public ProductCategory create(ProductCategory productcategory) {

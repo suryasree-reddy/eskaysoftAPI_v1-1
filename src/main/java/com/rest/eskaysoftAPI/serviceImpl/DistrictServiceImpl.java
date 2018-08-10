@@ -1,7 +1,6 @@
 package com.rest.eskaysoftAPI.serviceImpl;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
@@ -33,13 +32,13 @@ public class DistrictServiceImpl implements DistrictService {
 	@Override
 	public List<DistrictsDto> listAllDistricts() {
 		List<DistrictsDto> districtsList = new ArrayList<>();
-		districtsDao.findAll().forEach(districts -> {
+		districtsDao.findAllByOrderByDistrictNameAsc().forEach(districts -> {
 			DistrictsDto districtsModel = new DistrictsDto();
 			BeanUtils.copyProperties(districts, districtsModel);
 			districtsModel.setStatesId(districts.getStatesId().getId());
 			districtsList.add(districtsModel);
 		});
-		Collections.sort(districtsList);
+
 		return districtsList;
 	}
 

@@ -1,8 +1,6 @@
 package com.rest.eskaysoftAPI.serviceImpl;
 
 import java.util.ArrayList;
-
-import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
@@ -28,14 +26,15 @@ public class ProductGroupServiceImpl implements ProductGroupService {
 	@Override
 	public List<ProductGroupDto> listAllProductGroups() {
 		List<ProductGroupDto> productgroupList = new ArrayList<>();
-		productgroupDao.findAll().forEach(productgroups ->{
-			ProductGroupDto productgroupModel = new ProductGroupDto();	
+		productgroupDao.findAllByOrderByProductGroupNameAsc().forEach(productgroups -> {
+			ProductGroupDto productgroupModel = new ProductGroupDto();
 			BeanUtils.copyProperties(productgroups, productgroupModel);
 			productgroupList.add(productgroupModel);
 		});
-		Collections.sort(productgroupList);
+
 		return productgroupList;
 	}
+
 	@Override
 	public ProductGroup getProductGroupById(Long id) {
 		System.out.println("****************" + id);
@@ -48,17 +47,17 @@ public class ProductGroupServiceImpl implements ProductGroupService {
 		return productgroupDao.save(productgroup);
 	}
 
-	 @Override
-		public boolean deleteProductGroup(Long id) {
-			boolean status = false;
-			ProductGroup productgroup = getProductGroupById(id);
-			if (productgroup != null) {
-				status = true;
-				productgroupDao.delete(productgroup);
-			}
-			return status;
+	@Override
+	public boolean deleteProductGroup(Long id) {
+		boolean status = false;
+		ProductGroup productgroup = getProductGroupById(id);
+		if (productgroup != null) {
+			status = true;
+			productgroupDao.delete(productgroup);
 		}
-	 
+		return status;
+	}
+
 	@Override
 	public ProductGroup create(ProductGroup productgroup) {
 

@@ -2,7 +2,7 @@ package com.rest.eskaysoftAPI.model;
 
 import java.io.Serializable;
 
-public class StatesDto implements Serializable, Comparable<StatesDto> {
+public class StatesDto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -41,12 +41,6 @@ public class StatesDto implements Serializable, Comparable<StatesDto> {
 
 	public void setZone(String zone) {
 		this.zone = zone;
-	}
-
-	@Override
-	public int compareTo(StatesDto states) {
-
-		return this.stateName.compareTo(states.getStateName());
 	}
 
 }

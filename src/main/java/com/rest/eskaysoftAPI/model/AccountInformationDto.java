@@ -3,7 +3,7 @@ package com.rest.eskaysoftAPI.model;
 import java.io.Serializable;
 import java.util.Date;
 
-public class AccountInformationDto implements Serializable,Comparable<AccountInformationDto> {
+public class AccountInformationDto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -360,10 +360,6 @@ public class AccountInformationDto implements Serializable,Comparable<AccountInf
 		this.specialRemarks = specialRemarks;
 	}
 
-	@Override
-	public int compareTo(AccountInformationDto o) {
-		
-		return this.accountName.compareTo(o.getAccountName());
-	}
+	
 
 }

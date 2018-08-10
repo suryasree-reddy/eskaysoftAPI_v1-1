@@ -27,12 +27,12 @@ public class AccountInformationServiceImpl implements AccountInformationService 
 	@Override
 	public List<AccountInformationDto> listAllAccountInformation() {
 		List<AccountInformationDto> accountinformationList = new ArrayList<>();
-		accountInformationDao.findAll().forEach(accountinformation -> {
+		accountInformationDao.findAllByOrderByAccountNameAsc().forEach(accountinformation -> {
 			AccountInformationDto accountinformationModel = new AccountInformationDto();
 			BeanUtils.copyProperties(accountinformation, accountinformationModel);
 			accountinformationList.add(accountinformationModel);
 		});
-		Collections.sort(accountinformationList);
+		
 		return accountinformationList;
 	}
 

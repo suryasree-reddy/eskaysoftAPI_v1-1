@@ -1,7 +1,6 @@
 package com.rest.eskaysoftAPI.serviceImpl;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
@@ -27,12 +26,12 @@ public class ManfacturerServiceImpl implements ManfacturerService {
 	@Override
 	public List<ManfacturerDto> listAllManfacturer() {
 		List<ManfacturerDto> manfacturerList = new ArrayList<>();
-		manfacturerDao.findAll().forEach(manfacturer -> {
+		manfacturerDao.findAllByOrderByManfacturerNameAsc().forEach(manfacturer -> {
 			ManfacturerDto manfacturerModel = new ManfacturerDto();
 			BeanUtils.copyProperties(manfacturer, manfacturerModel);
 			manfacturerList.add(manfacturerModel);
 		});
-		Collections.sort(manfacturerList);
+
 		return manfacturerList;
 	}
 

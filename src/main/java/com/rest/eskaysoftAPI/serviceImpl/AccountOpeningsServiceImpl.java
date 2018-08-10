@@ -27,12 +27,12 @@ public class AccountOpeningsServiceImpl implements AccountOpeningsService {
 	@Override
 	public List<AccountOpeningsDto> listAllAccountOpenings() {
 		List<AccountOpeningsDto> accountopeningList = new ArrayList<>();
-		accountOpeningsDao.findAll().forEach(accountopenings -> {
+		accountOpeningsDao.findAllByOrderByAccountNameAsc().forEach(accountopenings -> {
 			AccountOpeningsDto accountopeningModel = new AccountOpeningsDto();
 			BeanUtils.copyProperties(accountopenings, accountopeningModel);
 			accountopeningList.add(accountopeningModel);
 		});
-		Collections.sort(accountopeningList);
+		
 		return accountopeningList;
 	}
 

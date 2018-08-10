@@ -2,7 +2,7 @@ package com.rest.eskaysoftAPI.model;
 
 import java.io.Serializable;
 
-public class ProductCategoryDto implements Serializable, Comparable<ProductCategoryDto> {
+public class ProductCategoryDto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -25,10 +25,5 @@ public class ProductCategoryDto implements Serializable, Comparable<ProductCateg
 		this.productCategoryName = productCategoryName;
 	}
 
-	@Override
-	public int compareTo(ProductCategoryDto productcategories) {
-
-		return this.productCategoryName.compareTo(productcategories.getProductCategoryName());
-	}
-
+	
 }

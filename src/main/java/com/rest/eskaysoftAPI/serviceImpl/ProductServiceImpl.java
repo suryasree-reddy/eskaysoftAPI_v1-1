@@ -1,7 +1,6 @@
 package com.rest.eskaysoftAPI.serviceImpl;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
@@ -27,15 +26,14 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<ProductDto> listAllProduct() {
 		List<ProductDto> productList = new ArrayList<>();
-		productDao.findAll().forEach(product ->{
-			ProductDto productModel = new ProductDto();	
+		productDao.findAllByOrderByNameAsc().forEach(product -> {
+			ProductDto productModel = new ProductDto();
 			BeanUtils.copyProperties(product, productModel);
 			productList.add(productModel);
 		});
-		Collections.sort(productList);
+
 		return productList;
 	}
-	
 
 	@Override
 	public Product getProductById(Long id) {
@@ -65,7 +63,5 @@ public class ProductServiceImpl implements ProductService {
 
 		return productDao.save(product);
 	}
-
-
 
 }

@@ -1,7 +1,6 @@
 package com.rest.eskaysoftAPI.serviceImpl;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
@@ -34,12 +33,12 @@ public class CompanyGroupServiceImpl implements CompanyGroupService {
 	@Override
 	public List<CompanyGroupDto> listAllCompanygroup() {
 		List<CompanyGroupDto> companygroupList = new ArrayList<>();
-		companygroupDao.findAll().forEach(companygroup -> {
+		companygroupDao.findAllByOrderByCompanyGroupAsc().forEach(companygroup -> {
 			CompanyGroupDto companygroupModel = new CompanyGroupDto();
 			BeanUtils.copyProperties(companygroup, companygroupModel);
 			companygroupList.add(companygroupModel);
 		});
-		Collections.sort(companygroupList);
+
 		return companygroupList;
 	}
 

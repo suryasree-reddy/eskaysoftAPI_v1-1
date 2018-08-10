@@ -1,8 +1,6 @@
 package com.rest.eskaysoftAPI.serviceImpl;
 
 import java.util.ArrayList;
-
-import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
@@ -35,20 +33,21 @@ public class BusinessExecutiveServiceImpl implements BusinessExecutiveService {
 	@Override
 	public List<BusinessExecutiveDto> listAllBusinessExecutive() {
 		List<BusinessExecutiveDto> businessexecutiveList = new ArrayList<>();
-		businessExecutiveDao.findAll().forEach(businessexecutive ->{
-			BusinessExecutiveDto businessexecutiveModel = new BusinessExecutiveDto();	
+		businessExecutiveDao.findAllByOrderByNameAsc().forEach(businessexecutive -> {
+			BusinessExecutiveDto businessexecutiveModel = new BusinessExecutiveDto();
 			BeanUtils.copyProperties(businessexecutive, businessexecutiveModel);
 			businessexecutiveList.add(businessexecutiveModel);
 		});
-		Collections.sort(businessexecutiveList);
+
 		return businessexecutiveList;
 	}
+
 	@Override
 	public BusinessExecutive saveBusinessExecutive(BusinessExecutive businessExecutive) {
 		return businessExecutiveDao.save(businessExecutive);
 	}
 
-    @Override
+	@Override
 	public boolean deleteBusinessExecutive(Long id) {
 		boolean status = false;
 		BusinessExecutive businessExecutive = getBusinessExecutiveById(id);
@@ -58,7 +57,6 @@ public class BusinessExecutiveServiceImpl implements BusinessExecutiveService {
 		}
 		return status;
 	}
-
 
 	@Override
 	public BusinessExecutive create(BusinessExecutive businessExecutive) {

@@ -2,7 +2,7 @@ package com.rest.eskaysoftAPI.model;
 
 import java.io.Serializable;
 
-public class ManfacturerDto implements Serializable, Comparable<ManfacturerDto> {
+public class ManfacturerDto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -26,10 +26,5 @@ public class ManfacturerDto implements Serializable, Comparable<ManfacturerDto> 
 
 	}
 
-	@Override
-	public int compareTo(ManfacturerDto manfacturer) {
-
-		return this.manfacturerName.compareTo(manfacturer.getManfacturerName());
-
-	}
+	
 }

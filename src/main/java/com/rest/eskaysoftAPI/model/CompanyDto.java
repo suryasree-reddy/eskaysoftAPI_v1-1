@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 
 
-public class CompanyDto implements Serializable, Comparable<CompanyDto> {
+public class CompanyDto implements Serializable {
 
 	private static final long serialVersionUID = 655159852262403024L;
 	
@@ -90,9 +90,6 @@ public class CompanyDto implements Serializable, Comparable<CompanyDto> {
 		this.companyType = companyType;
 	}
 
-	@Override
-	public int compareTo(CompanyDto arg0) {
-		return this.companyName.compareTo(arg0.getCompanyName());
-	}
+	
 
 }

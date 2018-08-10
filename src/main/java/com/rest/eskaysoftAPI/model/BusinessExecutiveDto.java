@@ -2,7 +2,7 @@ package com.rest.eskaysoftAPI.model;
 
 import java.io.Serializable;
 
-public class BusinessExecutiveDto implements Serializable, Comparable<BusinessExecutiveDto> {
+public class BusinessExecutiveDto implements Serializable {
 
 	private static final long serialVersionUID = 655159852262403024L;
 
@@ -56,10 +56,6 @@ public class BusinessExecutiveDto implements Serializable, Comparable<BusinessEx
 		this.mobile = mobile;
 	}
 
-	@Override
-	public int compareTo(BusinessExecutiveDto businessexecutive) {
-
-		return this.name.compareTo(businessexecutive.getName());
-	}
+	
 
 }

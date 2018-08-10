@@ -2,14 +2,12 @@ package com.rest.eskaysoftAPI.model;
 
 import java.io.Serializable;
 
-public class CustomerWiseDiscountsDto implements Serializable, Comparable<CustomerWiseDiscountsDto> {
+public class CustomerWiseDiscountsDto implements Serializable{
 	private static final long serialVersionUID = 655159852262403024L;
 	private Long id;
-	private String customer;
-	private String companyOption;
-	private String discount;
-	private String companyDiscription;
-	private String disc;
+	private Long accountInformationId;
+	private Long companiId;
+	private Double disc;
 
 	public Long getId() {
 		return id;
@@ -19,50 +17,29 @@ public class CustomerWiseDiscountsDto implements Serializable, Comparable<Custom
 		this.id = id;
 	}
 
-	public String getCustomer() {
-		return this.customer;
+	public Long getAccountInformationId() {
+		return accountInformationId;
 	}
 
-	public void setCustomer(String customer) {
-		this.customer = customer;
+	public void setAccountInformationId(Long accountInformationId) {
+		this.accountInformationId = accountInformationId;
 	}
 
-	public String getCompanyOption() {
-		return this.companyOption;
+	public Long getCompaniId() {
+		return companiId;
 	}
 
-	public void setCompanyOption(String companyOption) {
-		this.companyOption = companyOption;
+	public void setCompaniId(Long companiId) {
+		this.companiId = companiId;
 	}
 
-	public String getDiscount() {
-		return this.discount;
+	public Double getDisc() {
+		return disc;
 	}
 
-	public void setDiscount(String discount) {
-		this.discount = discount;
-	}
-
-	public String getCompanyDiscription() {
-		return this.companyDiscription;
-	}
-
-	public void setCompanyDiscription(String companyDiscription) {
-		this.companyDiscription = companyDiscription;
-	}
-
-	public String getDisc() {
-		return this.disc;
-	}
-
-	public void setDisc(String disc) {
+	public void setDisc(Double disc) {
 		this.disc = disc;
 	}
 
-	@Override
-	public int compareTo(CustomerWiseDiscountsDto cus) {
-
-		return this.customer.compareTo(cus.getCustomer());
-	}
-
+	
 }

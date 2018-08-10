@@ -2,7 +2,7 @@ package com.rest.eskaysoftAPI.model;
 
 import java.io.Serializable;
 
-public class BankInformationDto implements Serializable, Comparable<BankInformationDto> {
+public class BankInformationDto implements Serializable{
 
 	private static final long serialVersionUID = 655159852262403024L;
 
@@ -34,10 +34,6 @@ public class BankInformationDto implements Serializable, Comparable<BankInformat
 		this.address = address;
 	}
 
-	@Override
-	public int compareTo(BankInformationDto bankinformation) {
-
-		return this.name.compareTo(bankinformation.getName());
-	}
+	
 
 }

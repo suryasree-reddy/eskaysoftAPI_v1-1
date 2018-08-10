@@ -1,7 +1,6 @@
 package com.rest.eskaysoftAPI.serviceImpl;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
@@ -28,12 +27,11 @@ public class ScheduleServiceImpl implements ScheduleService {
 	@Override
 	public List<ScheduleDto> listAllSchedules() {
 		List<ScheduleDto> schList = new ArrayList<>();
-		scheduleDao.findAll().forEach(sch ->{
+		scheduleDao.findAllByOrderByScheduleNameAsc().forEach(sch ->{
 			ScheduleDto schModel = new ScheduleDto();	
 			BeanUtils.copyProperties(sch, schModel);
 			schList.add(schModel);
 		});
-		Collections.sort(schList);
 		return schList;
 	}
 

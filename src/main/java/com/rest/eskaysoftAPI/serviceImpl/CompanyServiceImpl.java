@@ -7,27 +7,27 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.rest.eskaysoftAPI.dao.CompanyDao;
-import com.rest.eskaysoftAPI.dao.CompanyGroupDao;
 import com.rest.eskaysoftAPI.entity.Company;
 import com.rest.eskaysoftAPI.entity.CompanyGroup;
 import com.rest.eskaysoftAPI.exception.NotFoundException;
 import com.rest.eskaysoftAPI.model.CompanyDto;
+import com.rest.eskaysoftAPI.repository.CompanyRepository;
+import com.rest.eskaysoftAPI.repository.CompanyGroupRepository;
 import com.rest.eskaysoftAPI.service.CompanyService;
 
 @Service
 public class CompanyServiceImpl implements CompanyService {
 
 	@Autowired
-	private CompanyDao companyDao;
+	private CompanyRepository cpmprepo;
 
 	@Autowired
-	private CompanyGroupDao companygroupDao;
+	private CompanyGroupRepository compgrprepo;
 
 	@Override
 	public List<CompanyDto> listAllCompany() {
 		List<CompanyDto> companyList = new ArrayList<>();
-		companyDao.findAllByOrderByCompanyNameAsc().forEach(company -> {
+		cpmprepo.findAllByOrderByCompanyNameAsc().forEach(company -> {
 
 			CompanyDto companyModel = new CompanyDto();
 			BeanUtils.copyProperties(company, companyModel);
@@ -41,7 +41,7 @@ public class CompanyServiceImpl implements CompanyService {
 
 	@Override
 	public CompanyDto getCompanyById(Long id) {
-		Company company = companyDao.findById(id)
+		Company company = cpmprepo.findById(id)
 				.orElseThrow(() -> new NotFoundException(String.format("company %d not found", id)));
 		CompanyDto companyModel = new CompanyDto();
 		BeanUtils.copyProperties(company, companyModel);
@@ -53,23 +53,23 @@ public class CompanyServiceImpl implements CompanyService {
 
 	@Override
 	public CompanyDto save(CompanyDto companyModel) {
-		CompanyGroup companygroup = companygroupDao.findById(companyModel.getCompanyGroupId())
+		CompanyGroup companygroup = compgrprepo.findById(companyModel.getCompanyGroupId())
 				.orElseThrow(() -> new NotFoundException(
 						String.format("CompanyGroup %d not found", companyModel.getCompanyGroupId())));
 		Company company = new Company();
 		BeanUtils.copyProperties(companyModel, company);
 		company.setCompanyGroupId(companygroup);
-		company = companyDao.save(company);
+		company = cpmprepo.save(company);
 		return companyModel;
 	}
 
 	@Override
 	public boolean deleteCompany(Long id) {
 		boolean status = false;
-		Company company = companyDao.findById(id)
+		Company company = cpmprepo.findById(id)
 				.orElseThrow(() -> new NotFoundException(String.format("company %d not found", id)));
 		if (company != null) {
-			companyDao.delete(company);
+			cpmprepo.delete(company);
 			status = true;
 		}
 		return status;
@@ -77,13 +77,13 @@ public class CompanyServiceImpl implements CompanyService {
 
 	@Override
 	public CompanyDto create(CompanyDto companyModel) {
-		CompanyGroup companygroup = companygroupDao.findById(companyModel.getCompanyGroupId())
+		CompanyGroup companygroup = compgrprepo.findById(companyModel.getCompanyGroupId())
 				.orElseThrow(() -> new NotFoundException(
 						String.format("CompanyGroup %d not found", companyModel.getCompanyGroupId())));
 		Company company = new Company();
 		BeanUtils.copyProperties(companyModel, company);
 		company.setCompanyGroupId(companygroup);
-		company = companyDao.save(company);
+		company = cpmprepo.save(company);
 		companyModel.setCompanyId(company.getCompanyId());
 		return companyModel;
 	}

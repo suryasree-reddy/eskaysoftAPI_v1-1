@@ -1,4 +1,4 @@
-package com.rest.eskaysoftAPI.dao;
+package com.rest.eskaysoftAPI.repository;
 
 import java.util.List;
 
@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 
 import com.rest.eskaysoftAPI.entity.Product;
 
-@Repository("productDao")
+@Repository("productRepository")
 @Transactional
-public interface ProductDao extends JpaRepository<Product, Long> {
+public interface ProductRepository extends JpaRepository<Product, Long> {
 	public List<Product> findAllByOrderByNameAsc();
 }

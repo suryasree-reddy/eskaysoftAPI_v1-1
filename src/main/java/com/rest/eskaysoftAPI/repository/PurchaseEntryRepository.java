@@ -1,4 +1,4 @@
-package com.rest.eskaysoftAPI.dao;
+package com.rest.eskaysoftAPI.repository;
 
 import javax.transaction.Transactional;
 
@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 
 import com.rest.eskaysoftAPI.entity.PurchaseEntry;
 
-@Repository("PurchaseEntryDao")
+@Repository("purchaseEntryRepository")
 @Transactional
-public interface PurchaseEntryDao extends JpaRepository<PurchaseEntry, Long> {
+public interface PurchaseEntryRepository extends JpaRepository<PurchaseEntry, Long> {
 
 }

@@ -7,33 +7,33 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.rest.eskaysoftAPI.dao.BusinessExecutiveDao;
 import com.rest.eskaysoftAPI.entity.BusinessExecutive;
 import com.rest.eskaysoftAPI.exception.NotFoundException;
 import com.rest.eskaysoftAPI.model.BusinessExecutiveDto;
+import com.rest.eskaysoftAPI.repository.BusinessExecutiveRepository;
 import com.rest.eskaysoftAPI.service.BusinessExecutiveService;
 
 @Service
 public class BusinessExecutiveServiceImpl implements BusinessExecutiveService {
 
-	private BusinessExecutiveDao businessExecutiveDao;
+	private BusinessExecutiveRepository busExrepo;
 
 	@Autowired
-	public void setAccountInformationDao(BusinessExecutiveDao businessExecutiveDao) {
-		this.businessExecutiveDao = businessExecutiveDao;
+	public void setAccountInformationDao(BusinessExecutiveRepository busExrepo) {
+		this.busExrepo = busExrepo;
 	}
 
 	@Override
 	public BusinessExecutive getBusinessExecutiveById(Long id) {
 		System.out.println("****************" + id);
-		return businessExecutiveDao.findById(id)
+		return busExrepo.findById(id)
 				.orElseThrow(() -> new NotFoundException(String.format("bankInfromation %d not found", id)));
 	}
 
 	@Override
 	public List<BusinessExecutiveDto> listAllBusinessExecutive() {
 		List<BusinessExecutiveDto> businessexecutiveList = new ArrayList<>();
-		businessExecutiveDao.findAllByOrderByNameAsc().forEach(businessexecutive -> {
+		busExrepo.findAllByOrderByNameAsc().forEach(businessexecutive -> {
 			BusinessExecutiveDto businessexecutiveModel = new BusinessExecutiveDto();
 			BeanUtils.copyProperties(businessexecutive, businessexecutiveModel);
 			businessexecutiveList.add(businessexecutiveModel);
@@ -44,7 +44,7 @@ public class BusinessExecutiveServiceImpl implements BusinessExecutiveService {
 
 	@Override
 	public BusinessExecutive saveBusinessExecutive(BusinessExecutive businessExecutive) {
-		return businessExecutiveDao.save(businessExecutive);
+		return busExrepo.save(businessExecutive);
 	}
 
 	@Override
@@ -53,14 +53,14 @@ public class BusinessExecutiveServiceImpl implements BusinessExecutiveService {
 		BusinessExecutive businessExecutive = getBusinessExecutiveById(id);
 		if (businessExecutive != null) {
 			status = true;
-			businessExecutiveDao.delete(businessExecutive);
+			busExrepo.delete(businessExecutive);
 		}
 		return status;
 	}
 
 	@Override
 	public BusinessExecutive create(BusinessExecutive businessExecutive) {
-		return businessExecutiveDao.save(businessExecutive);
+		return busExrepo.save(businessExecutive);
 	}
 
 }

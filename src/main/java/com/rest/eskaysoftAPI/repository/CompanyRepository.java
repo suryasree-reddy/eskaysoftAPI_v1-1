@@ -1,4 +1,4 @@
-package com.rest.eskaysoftAPI.dao;
+package com.rest.eskaysoftAPI.repository;
 
 import java.util.List;
 
@@ -9,9 +9,9 @@ import org.springframework.stereotype.Repository;
 
 import com.rest.eskaysoftAPI.entity.Company;
 
-@Repository("companyDao")
+@Repository("companyRepository")
 @Transactional
-public interface CompanyDao extends JpaRepository<Company, Long> {
+public interface CompanyRepository extends JpaRepository<Company, Long> {
 	public List<Company> findAllByOrderByCompanyNameAsc();
 
 }

@@ -7,26 +7,26 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.rest.eskaysoftAPI.dao.ProductGroupDao;
 import com.rest.eskaysoftAPI.entity.ProductGroup;
 import com.rest.eskaysoftAPI.exception.NotFoundException;
 import com.rest.eskaysoftAPI.model.ProductGroupDto;
+import com.rest.eskaysoftAPI.repository.ProductGroupRepository;
 import com.rest.eskaysoftAPI.service.ProductGroupService;
 
 @Service
 public class ProductGroupServiceImpl implements ProductGroupService {
 
-	private ProductGroupDao productgroupDao;
+	private ProductGroupRepository proGrpRepo;
 
 	@Autowired
-	public void setproductgroupDao(ProductGroupDao productgroupDao) {
-		this.productgroupDao = productgroupDao;
+	public void setproductgroupDao(ProductGroupRepository proGrpRepo) {
+		this.proGrpRepo = proGrpRepo;
 	}
 
 	@Override
 	public List<ProductGroupDto> listAllProductGroups() {
 		List<ProductGroupDto> productgroupList = new ArrayList<>();
-		productgroupDao.findAllByOrderByProductGroupNameAsc().forEach(productgroups -> {
+		proGrpRepo.findAllByOrderByProductGroupNameAsc().forEach(productgroups -> {
 			ProductGroupDto productgroupModel = new ProductGroupDto();
 			BeanUtils.copyProperties(productgroups, productgroupModel);
 			productgroupList.add(productgroupModel);
@@ -38,13 +38,13 @@ public class ProductGroupServiceImpl implements ProductGroupService {
 	@Override
 	public ProductGroup getProductGroupById(Long id) {
 		System.out.println("****************" + id);
-		return productgroupDao.findById(id)
+		return proGrpRepo.findById(id)
 				.orElseThrow(() -> new NotFoundException(String.format("company %d not found", id)));
 	}
 
 	@Override
 	public ProductGroup saveProductGroup(ProductGroup productgroup) {
-		return productgroupDao.save(productgroup);
+		return proGrpRepo.save(productgroup);
 	}
 
 	@Override
@@ -53,7 +53,7 @@ public class ProductGroupServiceImpl implements ProductGroupService {
 		ProductGroup productgroup = getProductGroupById(id);
 		if (productgroup != null) {
 			status = true;
-			productgroupDao.delete(productgroup);
+			proGrpRepo.delete(productgroup);
 		}
 		return status;
 	}
@@ -61,7 +61,7 @@ public class ProductGroupServiceImpl implements ProductGroupService {
 	@Override
 	public ProductGroup create(ProductGroup productgroup) {
 
-		return productgroupDao.save(productgroup);
+		return proGrpRepo.save(productgroup);
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.rest.eskaysoftAPI.dao;
+package com.rest.eskaysoftAPI.repository;
 
 import java.util.List;
 
@@ -9,9 +9,9 @@ import org.springframework.stereotype.Repository;
 
 import com.rest.eskaysoftAPI.entity.AccountOpenings;
 
-@Repository("accountOpeningsDao")
+@Repository("accountOpeningsRepository")
 @Transactional
-public interface AccountOpeningsDao extends JpaRepository<AccountOpenings, Long> {
+public interface AccountOpeningsRepository extends JpaRepository<AccountOpenings, Long> {
 	public List<AccountOpenings> findAllByOrderByAccountNameAsc();
 
 }

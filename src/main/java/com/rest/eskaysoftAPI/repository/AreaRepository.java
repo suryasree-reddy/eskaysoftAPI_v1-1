@@ -1,4 +1,4 @@
-package com.rest.eskaysoftAPI.dao;
+package com.rest.eskaysoftAPI.repository;
 
 import java.util.List;
 
@@ -9,9 +9,9 @@ import org.springframework.stereotype.Repository;
 
 import com.rest.eskaysoftAPI.entity.Area;
 
-@Repository("areaDao")
+@Repository("areaRepository")
 @Transactional
-public interface AreaDao extends JpaRepository<Area, Long> {
+public interface AreaRepository extends JpaRepository<Area, Long> {
 	public List<Area> findAllByOrderByAreaNameAsc();
 
 }

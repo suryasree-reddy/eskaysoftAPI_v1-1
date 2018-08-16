@@ -1,4 +1,4 @@
-package com.rest.eskaysoftAPI.dao;
+package com.rest.eskaysoftAPI.repository;
 
 import java.util.List;
 
@@ -9,9 +9,9 @@ import org.springframework.stereotype.Repository;
 
 import com.rest.eskaysoftAPI.entity.BusinessExecutive;
 
-@Repository("businessExecutiveDao")
+@Repository("businessExecutiveRepository")
 @Transactional
-public interface BusinessExecutiveDao extends JpaRepository<BusinessExecutive, Long> {
+public interface BusinessExecutiveRepository extends JpaRepository<BusinessExecutive, Long> {
 	public List<BusinessExecutive> findAllByOrderByNameAsc();
 
 }

@@ -7,26 +7,26 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.rest.eskaysoftAPI.dao.StatesDao;
 import com.rest.eskaysoftAPI.entity.States;
 import com.rest.eskaysoftAPI.exception.NotFoundException;
 import com.rest.eskaysoftAPI.model.StatesDto;
+import com.rest.eskaysoftAPI.repository.StatesRepository;
 import com.rest.eskaysoftAPI.service.StatesService;
 
 @Service
 public class StatesServiceImpl implements StatesService {
 
-	private StatesDao stateDao;
+	private StatesRepository statesRepo;
 
 	@Autowired
-	public void setscheduleDao(StatesDao stateDao) {
-		this.stateDao = stateDao;
+	public void setscheduleDao(StatesRepository statesrepo) {
+		this.statesRepo = statesrepo;
 	}
 
 	@Override
 	public List<StatesDto> listAllStates() {
 		List<StatesDto> stateList = new ArrayList<>();
-		stateDao.findAllByOrderByStateNameAsc().forEach(states -> {
+		statesRepo.findAllByOrderByStateNameAsc().forEach(states -> {
 			StatesDto stateModel = new StatesDto();
 			BeanUtils.copyProperties(states, stateModel);
 			stateList.add(stateModel);
@@ -38,12 +38,12 @@ public class StatesServiceImpl implements StatesService {
 	@Override
 	public States getStateById(Long id) {
 		System.out.println("****************" + id);
-		return stateDao.findById(id).orElseThrow(() -> new NotFoundException(String.format("state %d not found", id)));
+		return statesRepo.findById(id).orElseThrow(() -> new NotFoundException(String.format("state %d not found", id)));
 	}
 
 	@Override
 	public States saveState(States state) {
-		return stateDao.save(state);
+		return statesRepo.save(state);
 	}
 
 	@Override
@@ -51,7 +51,7 @@ public class StatesServiceImpl implements StatesService {
 		boolean status = false;
 		States state = getStateById(id);
 		if (state != null) {
-			stateDao.delete(state);
+			statesRepo.delete(state);
 			status = true;
 		}
 		return status;
@@ -60,7 +60,7 @@ public class StatesServiceImpl implements StatesService {
 	@Override
 	public States create(States state) {
 
-		return stateDao.save(state);
+		return statesRepo.save(state);
 	}
 
 }

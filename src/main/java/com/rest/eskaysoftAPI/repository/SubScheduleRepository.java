@@ -1,5 +1,5 @@
 
-package com.rest.eskaysoftAPI.dao;
+package com.rest.eskaysoftAPI.repository;
 
 import java.util.List;
 
@@ -10,9 +10,9 @@ import org.springframework.stereotype.Repository;
 
 import com.rest.eskaysoftAPI.entity.SubSchedule;
 
-@Repository("subScheduleDao")
+@Repository("subscheduleRepository")
 @Transactional
-public interface SubScheduleDao extends JpaRepository<SubSchedule, Long> {
+public interface SubScheduleRepository extends JpaRepository<SubSchedule, Long> {
 	public List<SubSchedule> findAllByOrderBySubScheduleNameAsc();
 
 }

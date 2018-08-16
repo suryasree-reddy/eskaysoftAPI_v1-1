@@ -1,4 +1,4 @@
-package com.rest.eskaysoftAPI.dao;
+package com.rest.eskaysoftAPI.repository;
 
 import java.util.List;
 
@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 
 import com.rest.eskaysoftAPI.entity.Manfacturer;
 
-@Repository("manfacturerDao")
+@Repository("manfacturerRepository")
 @Transactional
-public interface ManfacturerDao extends JpaRepository<Manfacturer, Long> {
+public interface ManfacturerRepository extends JpaRepository<Manfacturer, Long> {
 	public List<Manfacturer> findAllByOrderByManfacturerNameAsc();
 }

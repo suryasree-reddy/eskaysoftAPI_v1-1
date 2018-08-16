@@ -3,36 +3,36 @@ package com.rest.eskaysoftAPI.serviceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.rest.eskaysoftAPI.dao.PurchaseEntryDao;
 import com.rest.eskaysoftAPI.entity.PurchaseEntry;
 import com.rest.eskaysoftAPI.exception.NotFoundException;
+import com.rest.eskaysoftAPI.repository.PurchaseEntryRepository;
 import com.rest.eskaysoftAPI.service.PurchaseEntryService;
 
 @Service
 public class PurchaseEntryServiceImpl implements PurchaseEntryService {
 
-	private PurchaseEntryDao purchaseEntryDao;
+	private PurchaseEntryRepository purchrepo;
 
 	@Autowired
-	public void setpurchaseEntryDao(PurchaseEntryDao purchaseEntryDao) {
-		this.purchaseEntryDao = purchaseEntryDao;
+	public void setpurchaseEntryDao(PurchaseEntryRepository purchrepo) {
+		this.purchrepo = purchrepo;
 	}
 
 	@Override
 	public Iterable<PurchaseEntry> listAllPurchaseEntries() {
-		return purchaseEntryDao.findAll();
+		return purchrepo.findAll();
 	}
 
 	@Override
 	public PurchaseEntry getPurchaseEntryById(Long id) {
 		System.out.println("****************" + id);
-		return purchaseEntryDao.findById(id)
+		return purchrepo.findById(id)
 				.orElseThrow(() -> new NotFoundException(String.format("product %d not found", id)));
 	}
 
 	@Override
 	public PurchaseEntry savePurchaseEntry(PurchaseEntry purchaseEntry) {
-		return purchaseEntryDao.save(purchaseEntry);
+		return purchrepo.save(purchaseEntry);
 	}
 
 	@Override
@@ -40,7 +40,7 @@ public class PurchaseEntryServiceImpl implements PurchaseEntryService {
     	boolean status = false;
     	PurchaseEntry purchaseEntry = getPurchaseEntryById(id);
         if(purchaseEntry != null){
-        	purchaseEntryDao.delete(purchaseEntry);
+        	purchrepo.delete(purchaseEntry);
         	status = true;
         }
         return status;
@@ -52,7 +52,7 @@ public class PurchaseEntryServiceImpl implements PurchaseEntryService {
 	@Override
 	public PurchaseEntry create(PurchaseEntry purchaseEntry) {
 
-		return purchaseEntryDao.save(purchaseEntry);
+		return purchrepo.save(purchaseEntry);
 	}
 
 }

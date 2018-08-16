@@ -7,32 +7,32 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.rest.eskaysoftAPI.dao.DistrictsDao;
-import com.rest.eskaysoftAPI.dao.StatesDao;
 import com.rest.eskaysoftAPI.entity.Districts;
 import com.rest.eskaysoftAPI.entity.States;
 import com.rest.eskaysoftAPI.exception.NotFoundException;
 import com.rest.eskaysoftAPI.model.DistrictsDto;
+import com.rest.eskaysoftAPI.repository.DistrictsRepository;
+import com.rest.eskaysoftAPI.repository.StatesRepository;
 import com.rest.eskaysoftAPI.service.DistrictService;
 
 @Service
 public class DistrictServiceImpl implements DistrictService {
 
 	@Autowired
-	private DistrictsDao districtsDao;
+	private DistrictsRepository DisRepo;
 
 	@Autowired
-	private StatesDao statesDao;
+	private StatesRepository statesRepo;
 
 	@Autowired
-	public void setdistrictsDao(DistrictsDao districtsDao) {
-		this.districtsDao = districtsDao;
+	public void setdistrictsDao(DistrictsRepository districtsDao) {
+		this.DisRepo = districtsDao;
 	}
 
 	@Override
 	public List<DistrictsDto> listAllDistricts() {
 		List<DistrictsDto> districtsList = new ArrayList<>();
-		districtsDao.findAllByOrderByDistrictNameAsc().forEach(districts -> {
+		DisRepo.findAllByOrderByDistrictNameAsc().forEach(districts -> {
 			DistrictsDto districtsModel = new DistrictsDto();
 			BeanUtils.copyProperties(districts, districtsModel);
 			districtsModel.setStatesId(districts.getStatesId().getId());
@@ -45,10 +45,10 @@ public class DistrictServiceImpl implements DistrictService {
 	@Override
 	public boolean delete(Long id) {
 		boolean status = false;
-		Districts districts = districtsDao.findById(id)
+		Districts districts = DisRepo.findById(id)
 				.orElseThrow(() -> new NotFoundException(String.format("districts %d not found", id)));
 		if (districts != null) {
-			districtsDao.delete(districts);
+			DisRepo.delete(districts);
 			status = true;
 		}
 		return status;
@@ -56,30 +56,30 @@ public class DistrictServiceImpl implements DistrictService {
 
 	@Override
 	public DistrictsDto create(DistrictsDto dischModel) {
-		States sts = statesDao.findById(dischModel.getStatesId()).orElseThrow(
+		States sts = statesRepo.findById(dischModel.getStatesId()).orElseThrow(
 				() -> new NotFoundException(String.format("states %d not found", dischModel.getStatesId())));
 		Districts districts = new Districts();
 		BeanUtils.copyProperties(dischModel, districts);
 		districts.setStatesId(sts);
-		districts = districtsDao.save(districts);
+		districts = DisRepo.save(districts);
 		dischModel.setDistrictId(districts.getDistrictId());
 		return dischModel;
 	}
 
 	@Override
 	public DistrictsDto save(DistrictsDto dischModel) {
-		States sts = statesDao.findById(dischModel.getStatesId()).orElseThrow(
+		States sts = statesRepo.findById(dischModel.getStatesId()).orElseThrow(
 				() -> new NotFoundException(String.format("states %d not found", dischModel.getStatesId())));
 		Districts districts = new Districts();
 		BeanUtils.copyProperties(dischModel, districts);
 		districts.setStatesId(sts);
-		districts = districtsDao.save(districts);
+		districts = DisRepo.save(districts);
 		return dischModel;
 	}
 
 	@Override
 	public DistrictsDto getdistrictsById(Long id) {
-		Districts districts = districtsDao.findById(id)
+		Districts districts = DisRepo.findById(id)
 				.orElseThrow(() -> new NotFoundException(String.format("districts %d not found", id)));
 		DistrictsDto disModel = new DistrictsDto();
 		BeanUtils.copyProperties(districts, disModel);

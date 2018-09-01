@@ -29,7 +29,7 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.util.Collections;
 
-@CrossOrigin(maxAge = 3600)
+//@CrossOrigin(maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {

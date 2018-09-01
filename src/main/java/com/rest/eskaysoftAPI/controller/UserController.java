@@ -12,7 +12,6 @@ import com.rest.eskaysoftAPI.repository.UserRepository;
 import com.rest.eskaysoftAPI.security.CurrentUser;
 import com.rest.eskaysoftAPI.security.UserPrincipal;
 
-@CrossOrigin(maxAge = 3600)
 @RestController
 @RequestMapping("/api")
 public class UserController {

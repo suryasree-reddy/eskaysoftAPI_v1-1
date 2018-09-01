@@ -28,7 +28,6 @@ import com.rest.eskaysoftAPI.resource.SubScheduleResource;
 public class AppConfig extends ResourceConfig {
 
 	public AppConfig() {
-		register(CORSResponseFilter.class);
 		register(ProductResource.class);
 		register(StatesResource.class);
 		register(AccountInformationResource.class);

@@ -22,7 +22,7 @@ public class CORSResponseFilter implements   ContainerResponseFilter{
         headers.add("Access-Control-Allow-Origin", "*");
         //headers.add("Access-Control-Allow-Origin","http://eskaysoft.org"); //allows CORS requests only coming fromabcd.org
         headers.add("Access-Control-Allow-Methods", "GET, POST, PUT,DELETE, OPTIONS, HEAD");
-        headers.add("Access-Control-Allow-Headers", "X-Requested-With,Content-Type, X-Codingpedia");
+        headers.add("Access-Control-Allow-Headers", "access-control-allow-headers, access-control-allow-methods, access-control-allow-origin, authorization, content-type");
         headers.add("Access-Control-Max-Age",ACCESS_CONTROL_MAX_AGE_IN_SECONDS);
 
     }

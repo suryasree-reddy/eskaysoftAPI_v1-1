@@ -10,6 +10,7 @@ public class ScheduleDto implements Serializable {
 	private String scheduleName;
 	private int scheduleIndex;	
 	private String scheduleType;
+	private boolean deleteFlag;
 	
 	public Long getId() {
 		return this.id;
@@ -34,6 +35,12 @@ public class ScheduleDto implements Serializable {
 	}
 	public void setScheduleType(String scheduleType) {
 		this.scheduleType = scheduleType;
+	}
+	public boolean isDeleteFlag() {
+		return this.deleteFlag;
+	}
+	public void setDeleteFlag(boolean deleteFlag) {
+		this.deleteFlag = deleteFlag;
 	}
 	
 }

@@ -14,5 +14,6 @@ import com.rest.eskaysoftAPI.entity.SubSchedule;
 @Transactional
 public interface SubScheduleRepository extends JpaRepository<SubSchedule, Long> {
 	public List<SubSchedule> findAllByOrderBySubScheduleNameAsc();
+	public List<SubSchedule> findAllByScheduleIdId(Long id);
 
 }

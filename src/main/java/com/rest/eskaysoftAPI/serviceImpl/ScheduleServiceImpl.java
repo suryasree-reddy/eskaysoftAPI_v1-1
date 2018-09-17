@@ -8,21 +8,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rest.eskaysoftAPI.entity.Schedule;
+import com.rest.eskaysoftAPI.entity.SubSchedule;
 import com.rest.eskaysoftAPI.exception.NotFoundException;
 import com.rest.eskaysoftAPI.model.ScheduleDto;
+import com.rest.eskaysoftAPI.model.SubScheduleDto;
 import com.rest.eskaysoftAPI.repository.ScheduleRepository;
+import com.rest.eskaysoftAPI.repository.SubScheduleRepository;
 import com.rest.eskaysoftAPI.service.ScheduleService;
 
 
 @Service
 public class ScheduleServiceImpl implements ScheduleService {
 
+	@Autowired
 	private ScheduleRepository schedrepo;
 
 	@Autowired
-	public void setscheduleDao(ScheduleRepository schedrepo) {
-		this.schedrepo = schedrepo;
-	}
+	private SubScheduleRepository subschrepo;
 
 	@Override
 	public List<ScheduleDto> listAllSchedules() {
@@ -30,6 +32,10 @@ public class ScheduleServiceImpl implements ScheduleService {
 		schedrepo.findAllByOrderByScheduleNameAsc().forEach(sch ->{
 			ScheduleDto schModel = new ScheduleDto();	
 			BeanUtils.copyProperties(sch, schModel);
+			List<SubSchedule> subschList = subschrepo.findAllByScheduleIdId(sch.getId());
+			if(null == subschList || subschList.isEmpty()) {
+				schModel.setDeleteFlag(true);
+			}
 			schList.add(schModel);
 		});
 		return schList;

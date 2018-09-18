@@ -8,9 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "schedules")
+@Table(name = "schedules", uniqueConstraints = { @UniqueConstraint(columnNames = {"scheduleIndex"})})
 public class Schedule implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -22,7 +23,10 @@ public class Schedule implements Serializable {
 	private String scheduleName;
 	
 	@Column(name = "scheduleIndex", nullable = false)
-	private int scheduleIndex;	
+	private Integer scheduleIndex;	
+	
+	@Column(name = "deleteFlag", nullable = false)
+	private boolean deleteFlag = true;
 	
 	@Column(name = "scheduleType", nullable = false, length = 15)
 	private String scheduleType;
@@ -44,11 +48,11 @@ public class Schedule implements Serializable {
 		this.scheduleName = scheduleName;
 	}
 
-	public int getScheduleIndex() {
+	public Integer getScheduleIndex() {
 		return scheduleIndex;
 	}
 
-	public void setScheduleIndex(int scheduleIndex) {
+	public void setScheduleIndex(Integer scheduleIndex) {
 		this.scheduleIndex = scheduleIndex;
 	}
 
@@ -58,6 +62,14 @@ public class Schedule implements Serializable {
 
 	public void setScheduleType(String scheduleType) {
 		this.scheduleType = scheduleType;
+	}
+
+	public Boolean getDeleteFlag() {
+		return this.deleteFlag;
+	}
+
+	public void setDeleteFlag(Boolean deleteFlag) {
+		this.deleteFlag = deleteFlag;
 	}
 	
 

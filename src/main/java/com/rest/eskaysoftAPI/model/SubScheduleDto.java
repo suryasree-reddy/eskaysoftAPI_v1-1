@@ -9,7 +9,7 @@ public class SubScheduleDto implements Serializable {
 	private Long subScheduleId;
 	private String subScheduleName;
 	private Long subScheduleIndex;
-
+	private String scheduleName;
 	private Long scheduleId;
 
 	public Long getScheduleId() {
@@ -42,6 +42,14 @@ public class SubScheduleDto implements Serializable {
 
 	public void setSubScheduleIndex(Long subScheduleIndex) {
 		this.subScheduleIndex = subScheduleIndex;
+	}
+
+	public String getScheduleName() {
+		return this.scheduleName;
+	}
+
+	public void setScheduleName(String scheduleName) {
+		this.scheduleName = scheduleName;
 	}
 
 

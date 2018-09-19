@@ -31,7 +31,7 @@ public class SubScheduleServiceImpl implements SubScheduleService {
 
 			SubScheduleDto subschModel = new SubScheduleDto();
 			BeanUtils.copyProperties(subschedule, subschModel);
-
+			subschModel.setScheduleName(subschedule.getScheduleId().getScheduleName());
 			subschModel.setScheduleId(subschedule.getScheduleId().getId());
 			subschList.add(subschModel);
 		});

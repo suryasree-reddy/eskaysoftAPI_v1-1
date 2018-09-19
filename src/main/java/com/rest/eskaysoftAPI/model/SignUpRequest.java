@@ -1,6 +1,12 @@
 package com.rest.eskaysoftAPI.model;
 
-import javax.validation.constraints.*;
+import java.util.Set;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+import com.rest.eskaysoftAPI.entity.RoleName;
 
 
 public class SignUpRequest {
@@ -21,6 +27,8 @@ public class SignUpRequest {
     @Size(min = 6, max = 20)
     private String password;
 
+    private Set<RoleName> roles;
+    
     public String getName() {
         return name;
     }
@@ -52,4 +60,13 @@ public class SignUpRequest {
     public void setPassword(String password) {
         this.password = password;
     }
+
+	public Set<RoleName> getRoles() {
+		return this.roles;
+	}
+
+	public void setRoles(Set<RoleName> roles) {
+		this.roles = roles;
+	}
+    
 }

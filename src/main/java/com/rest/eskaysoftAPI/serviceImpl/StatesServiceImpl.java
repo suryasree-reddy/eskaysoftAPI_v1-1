@@ -37,7 +37,6 @@ public class StatesServiceImpl implements StatesService {
 
 	@Override
 	public States getStateById(Long id) {
-		System.out.println("****************" + id);
 		return statesRepo.findById(id).orElseThrow(() -> new NotFoundException(String.format("state %d not found", id)));
 	}
 

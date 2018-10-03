@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "schedules", uniqueConstraints = { @UniqueConstraint(columnNames = {"scheduleIndex"})})
+@Table(name = "schedules", uniqueConstraints = { @UniqueConstraint(columnNames = {"scheduleIndex", "scheduleName"})})
 public class Schedule implements Serializable {
 	
 	private static final long serialVersionUID = 1L;

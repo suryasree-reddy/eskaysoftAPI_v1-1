@@ -18,8 +18,12 @@ public class CompanyGroup implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	 @Column(name = "companyGroup", nullable = false, length = 20)
+	
+	@Column(name = "companyGroup", nullable = false, length = 20)
 	private String companyGroup;
+	 
+	@Column(name = "deleteFlag", nullable = false)
+	private boolean deleteFlag = true;
 	
 	public Long getId() {
 		return this.id;
@@ -37,6 +41,12 @@ public class CompanyGroup implements Serializable {
 		this.companyGroup = companyGroup;
 	}
 
-	
+	public Boolean getDeleteFlag() {
+		return this.deleteFlag;
+	}
+
+	public void setDeleteFlag(Boolean deleteFlag) {
+		this.deleteFlag = deleteFlag;
+	}
 
 }

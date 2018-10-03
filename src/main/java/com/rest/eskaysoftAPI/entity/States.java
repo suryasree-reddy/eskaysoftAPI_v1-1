@@ -28,6 +28,9 @@ public class States implements Serializable {
     
     @Column(name = "zone", nullable = false, length = 7)
 	private String zone;
+    
+    @Column(name = "deleteFlag", nullable = false)
+	private boolean deleteFlag = true;
 
     public Long getId() {
         return id;
@@ -61,6 +64,12 @@ public class States implements Serializable {
 		this.zone = zone;
 	}
 
-   
+	public Boolean getDeleteFlag() {
+		return this.deleteFlag;
+	}
+
+	public void setDeleteFlag(Boolean deleteFlag) {
+		this.deleteFlag = deleteFlag;
+	}
 
 }

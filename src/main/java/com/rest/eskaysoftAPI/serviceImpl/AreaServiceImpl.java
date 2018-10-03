@@ -31,7 +31,7 @@ public class AreaServiceImpl implements AreaService {
 
 			AreaDto areaModel = new AreaDto();
 			BeanUtils.copyProperties(area, areaModel);
-
+			areaModel.setBusinessExecutiveName(area.getBusinessExecutiveId().getName());
 			areaModel.setBusinessExecutiveId(area.getBusinessExecutiveId().getId());
 			areaList.add(areaModel);
 		});
@@ -58,6 +58,10 @@ public class AreaServiceImpl implements AreaService {
 						String.format("BusinessExecutive %d not found", areaModel.getBusinessExecutiveId())));
 		Area area = new Area();
 		BeanUtils.copyProperties(areaModel, area);
+		if(businessexecutive.getDeleteFlag()) {
+			businessexecutive.setDeleteFlag(false);
+			busExrepo.save(businessexecutive);
+		}
 		area.setBusinessExecutiveId(businessexecutive);
 		area = areaRepository.save(area);
 		return areaModel;
@@ -82,6 +86,10 @@ public class AreaServiceImpl implements AreaService {
 						String.format("BusinessExecutive %d not found", areaModel.getBusinessExecutiveId())));
 		Area area = new Area();
 		BeanUtils.copyProperties(areaModel, area);
+		if(businessexecutive.getDeleteFlag()) {
+			businessexecutive.setDeleteFlag(false);
+			busExrepo.save(businessexecutive);
+		}
 		area.setBusinessExecutiveId(businessexecutive);
 		area = areaRepository.save(area);
 		areaModel.setAreaId(area.getAreaId());

@@ -10,6 +10,7 @@ public class StatesDto implements Serializable {
 	private String stateName;
 	private Long stateCode;
 	private String zone;
+	private boolean deleteFlag;
 
 	public Long getId() {
 		return id;
@@ -43,4 +44,10 @@ public class StatesDto implements Serializable {
 		this.zone = zone;
 	}
 
+	public boolean isDeleteFlag() {
+		return this.deleteFlag;
+	}
+	public void setDeleteFlag(boolean deleteFlag) {
+		this.deleteFlag = deleteFlag;
+	}
 }

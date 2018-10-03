@@ -15,6 +15,8 @@ public class BusinessExecutiveDto implements Serializable {
 	private String town;
 
 	private Long mobile;
+	
+	private boolean deleteFlag;
 
 	public Long getId() {
 		return id;
@@ -56,6 +58,11 @@ public class BusinessExecutiveDto implements Serializable {
 		this.mobile = mobile;
 	}
 
-	
+	public boolean isDeleteFlag() {
+		return this.deleteFlag;
+	}
+	public void setDeleteFlag(boolean deleteFlag) {
+		this.deleteFlag = deleteFlag;
+	}
 
 }

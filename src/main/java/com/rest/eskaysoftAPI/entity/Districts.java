@@ -20,7 +20,7 @@ public class Districts {
 	@Column(name = "districtName", nullable = false, length = 20)
 	private String districtName;
 
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "statesId", nullable = false)
 	private States statesId;
 

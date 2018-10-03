@@ -32,6 +32,8 @@ public class BusinessExecutive implements Serializable {
     @Column(name = "mobile", nullable = false, length = 10)
 	private Long mobile;
 	
+    @Column(name = "deleteFlag", nullable = false)
+	private boolean deleteFlag = true;
 	
 	public Long getId() {
 		return id;
@@ -64,6 +66,12 @@ public class BusinessExecutive implements Serializable {
 		this.mobile = mobile;
 	}
 	
-	
+	public Boolean getDeleteFlag() {
+		return this.deleteFlag;
+	}
+
+	public void setDeleteFlag(Boolean deleteFlag) {
+		this.deleteFlag = deleteFlag;
+	}
 
 }

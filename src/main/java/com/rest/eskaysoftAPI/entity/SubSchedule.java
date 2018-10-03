@@ -26,7 +26,7 @@ public class SubSchedule implements Serializable {
 	@Column(name = "subScheduleIndex", nullable = false)
 	private Long subScheduleIndex;
 
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "scheduleId", nullable = false)
 	private Schedule scheduleId;
 

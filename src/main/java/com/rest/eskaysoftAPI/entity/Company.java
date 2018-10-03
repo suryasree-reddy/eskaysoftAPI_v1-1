@@ -40,11 +40,9 @@ public class Company implements Serializable {
 	 @Column(name = "companyType", nullable = false, length = 20)
 	private String companyType;
 
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "companyGroupId", nullable = false)
-	private CompanyGroup companyGroupId;
-
-	
+	private CompanyGroup companyGroupId;	
 
 	
 	public String getCompanyCode() {

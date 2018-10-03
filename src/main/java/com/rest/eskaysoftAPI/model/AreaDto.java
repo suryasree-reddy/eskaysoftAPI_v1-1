@@ -11,6 +11,8 @@ public class AreaDto implements Serializable {
 	private String areaName;
 
 	private Long businessExecutiveId;
+	
+	private String businessExecutiveName;
 
 	public Long getAreaId() {
 		return this.areaId;
@@ -34,6 +36,14 @@ public class AreaDto implements Serializable {
 
 	public void setAreaName(String areaName) {
 		this.areaName = areaName;
+	}
+
+	public String getBusinessExecutiveName() {
+		return this.businessExecutiveName;
+	}
+
+	public void setBusinessExecutiveName(String businessExecutiveName) {
+		this.businessExecutiveName = businessExecutiveName;
 	}
 
 	

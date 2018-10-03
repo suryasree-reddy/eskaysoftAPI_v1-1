@@ -11,6 +11,16 @@ public class DistrictsDto implements Serializable {
 	private String districtName;
 
 	private Long statesId;
+	
+	private String statesName;
+
+	public String getStatesName() {
+		return this.statesName;
+	}
+
+	public void setStatesName(String statesName) {
+		this.statesName = statesName;
+	}
 
 	public Long getDistrictId() {
 		return this.districtId;

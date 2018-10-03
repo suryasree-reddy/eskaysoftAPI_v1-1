@@ -35,6 +35,7 @@ public class DistrictServiceImpl implements DistrictService {
 		DisRepo.findAllByOrderByDistrictNameAsc().forEach(districts -> {
 			DistrictsDto districtsModel = new DistrictsDto();
 			BeanUtils.copyProperties(districts, districtsModel);
+			districtsModel.setStatesName(districts.getStatesId().getStateName());
 			districtsModel.setStatesId(districts.getStatesId().getId());
 			districtsList.add(districtsModel);
 		});
@@ -60,6 +61,10 @@ public class DistrictServiceImpl implements DistrictService {
 				() -> new NotFoundException(String.format("states %d not found", dischModel.getStatesId())));
 		Districts districts = new Districts();
 		BeanUtils.copyProperties(dischModel, districts);
+		if(sts.getDeleteFlag()) {
+			sts.setDeleteFlag(false);
+			statesRepo.save(sts);
+		}
 		districts.setStatesId(sts);
 		districts = DisRepo.save(districts);
 		dischModel.setDistrictId(districts.getDistrictId());
@@ -72,6 +77,10 @@ public class DistrictServiceImpl implements DistrictService {
 				() -> new NotFoundException(String.format("states %d not found", dischModel.getStatesId())));
 		Districts districts = new Districts();
 		BeanUtils.copyProperties(dischModel, districts);
+		if(sts.getDeleteFlag()) {
+			sts.setDeleteFlag(false);
+			statesRepo.save(sts);
+		}
 		districts.setStatesId(sts);
 		districts = DisRepo.save(districts);
 		return dischModel;

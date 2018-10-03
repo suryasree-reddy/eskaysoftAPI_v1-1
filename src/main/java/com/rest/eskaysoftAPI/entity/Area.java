@@ -22,7 +22,7 @@ public class Area implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long areaId;
 
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "businessExecutiveId", nullable = false)
 	private BusinessExecutive businessExecutiveId;
 	

@@ -24,7 +24,7 @@ public class CompanyDto implements Serializable {
 	
 	private Long companyGroupId;
 	
-	
+	private String companyGroupName;
 
 	public Long getCompanyId() {
 		return companyId;
@@ -88,6 +88,14 @@ public class CompanyDto implements Serializable {
 
 	public void setCompanyType(String companyType) {
 		this.companyType = companyType;
+	}
+
+	public String getCompanyGroupName() {
+		return this.companyGroupName;
+	}
+
+	public void setCompanyGroupName(String companyGroupName) {
+		this.companyGroupName = companyGroupName;
 	}
 
 	

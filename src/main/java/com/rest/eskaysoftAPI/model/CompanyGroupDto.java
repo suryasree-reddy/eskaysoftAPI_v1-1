@@ -9,7 +9,8 @@ public class CompanyGroupDto implements Serializable{
 	
 	private Long id;
 	private String companyGroup;
-
+	private boolean deleteFlag;
+	
 	public Long getId() {
 		return this.id;
 	}
@@ -26,6 +27,11 @@ public class CompanyGroupDto implements Serializable{
 		this.companyGroup = companyGroup;
 	}
 
-	
+	public boolean isDeleteFlag() {
+		return this.deleteFlag;
+	}
+	public void setDeleteFlag(boolean deleteFlag) {
+		this.deleteFlag = deleteFlag;
+	}
 
 }

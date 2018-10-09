@@ -40,11 +40,11 @@ public class Product implements Serializable {
 	
 	@Column(name = "netRate",nullable = false)
 	private Double netRate;
+	
 	@Column(name = "isNetRateItem", nullable = false)
-	
 	private String isNetRateItem;
-	@Column(name = "schemeQty", nullable = false)
 	
+	@Column(name = "schemeQty", nullable = false)
 	private Double schemeQty;
 	
 	@Column(name = "free",nullable = false)

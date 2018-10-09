@@ -8,9 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "AccountOpenings")
+@Table(name = "AccountOpenings",uniqueConstraints = { @UniqueConstraint(columnNames = {"code", "accountName","opening"})})
 public class AccountOpenings implements Serializable {
 	private static final long serialVersionUID = 2099654952913091298L;
 
@@ -28,8 +29,8 @@ public class AccountOpenings implements Serializable {
 	@Column(name = "town", length = 20, nullable = false)
 	private String town;
 	
-	@Column(name = "openig", nullable = false)
-	private Double openig;
+	@Column(name = "opening", nullable = false)
+	private Double opening;
 	
 	@Column(name = "type", length = 8, nullable = false)
 	private String type;
@@ -66,12 +67,12 @@ public class AccountOpenings implements Serializable {
 		this.town = town;
 	}
 
-	public Double getOpenig() {
-		return this.openig;
+	public Double getOpening() {
+		return this.opening;
 	}
 
-	public void setOpenig(Double openig) {
-		this.openig = openig;
+	public void setOpening(Double opening) {
+		this.opening = opening;
 	}
 
 	public String getType() {

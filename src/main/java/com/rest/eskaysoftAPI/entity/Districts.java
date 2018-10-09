@@ -9,9 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "districts")
+@Table(name = "districts",uniqueConstraints = { @UniqueConstraint(columnNames = {"districtName"})})
 public class Districts {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

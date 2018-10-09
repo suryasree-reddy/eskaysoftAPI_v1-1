@@ -8,9 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "companygroup")
+@Table(name = "companygroup",uniqueConstraints = { @UniqueConstraint(columnNames = {"companyGroup"})})
 public class CompanyGroup implements Serializable {
 
 	private static final long serialVersionUID = 6959309821416613726L;

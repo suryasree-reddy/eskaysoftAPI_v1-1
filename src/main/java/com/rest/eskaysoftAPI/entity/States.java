@@ -9,9 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
   
 @Entity
-@Table(name = "states")
+@Table(name = "states", uniqueConstraints = { @UniqueConstraint(columnNames = {"stateName", "stateCode"})})
 public class States implements Serializable {
 
     private static final long serialVersionUID = 1L;

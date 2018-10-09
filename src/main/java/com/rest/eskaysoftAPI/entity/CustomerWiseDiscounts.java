@@ -23,14 +23,9 @@ public class CustomerWiseDiscounts implements Serializable {
 	@Column(name = "companiId")
 	private Company companiId;
 
-	
-
 	@Column(name = "Disc", nullable = false)
 	private Double disc;
 
-
-
-	
 	public Long getId() {
 		return id;
 	}
@@ -39,9 +34,6 @@ public class CustomerWiseDiscounts implements Serializable {
 		this.id = id;
 	}
 
-	
-
-	
 	public AccountInformation getAccountInformationId() {
 		return accountInformationId;
 	}
@@ -65,8 +57,5 @@ public class CustomerWiseDiscounts implements Serializable {
 	public void setDisc(Double disc) {
 		this.disc = disc;
 	}
-	
-	
 
-	
 }

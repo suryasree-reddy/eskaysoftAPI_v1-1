@@ -21,108 +21,106 @@ public class AccountInformation implements Serializable {
 	private Long id;
 	@Column(name = "accountname", length = 50, nullable = false)
 	private String accountName;
-	
+
 	private Long subScheduleId;
 	private Long scheduleId;
 	private Long stateId;
 	private Long areaId;
 	private Long districtId;
-	
+
 	@Column(name = "address1", length = 50, nullable = false)
 	private String address1;
-	
+
 	@Column(name = "address2", length = 50, nullable = false)
 	private String address2;
-	
+
 	@Column(name = "town", length = 20, nullable = false)
 	private String town;
-	
+
 	@Column(name = "pin", nullable = false)
 	private Integer pin;
-	
-	
-	
+
 	@Column(name = "phone", nullable = false)
 	private Long phone;
-	
+
 	@Column(name = "mobile", nullable = false)
 	private Long mobile;
-	
+
 	@Column(name = "email", nullable = false)
 	private String email;
-	
+
 	@Column(name = "shortName", length = 6, nullable = false)
 	private String shortName;
-	
+
 	@Column(name = "licNo1", length = 25, nullable = false)
 	private String licNo1;
-	
+
 	@Column(name = "licNo2", length = 25, nullable = false)
 	private String licNo2;
-	
+
 	@Column(name = "licExpiry", nullable = false)
 	private Date licExpiry;
-	
+
 	@Column(name = "retLicNo1", length = 25, nullable = false)
 	private String retLicNo1;
-	
+
 	@Column(name = "retLicNo2", length = 25, nullable = false)
 	private String retLicNo2;
-	
+
 	@Column(name = "retExpiry", nullable = false)
 	private Date retExpiry;
-	
+
 	@Column(name = "foodLicNo", length = 25, nullable = false)
 	private String foodLicNo;
-	
+
 	@Column(name = "otherLicense", length = 25, nullable = false)
 	private String otherLicense;
-	
+
 	@Column(name = "otherLicenseExpiry", nullable = false)
 	private Date otherLicenseExpiry;
-	
+
 	@Column(name = "gstType", length = 5, nullable = false)
 	private String gstType;
-	
+
 	@Column(name = "gstIN", length = 15, nullable = false)
 	private String gstIN;
-	
-	@Column(name = "natureOfGST", length = 9,nullable = false)
+
+	@Column(name = "natureOfGST", length = 9, nullable = false)
 	private String natureOfGST;
-	
-	@Column(name = "uin", length = 25,nullable = false)
+
+	@Column(name = "uin", length = 25, nullable = false)
 	private String uin;
-	
+
 	@Column(name = "saleType", length = 6, nullable = false)
 	private String saleType;
-	
+
 	@Column(name = "customerType", length = 10, nullable = false)
 	private String customerType;
-	
-	@Column(name = "creditLimit",nullable = false)
+
+	@Column(name = "creditLimit", nullable = false)
 	private Double creditLimit;
-	
+
 	@Column(name = "dueDays", nullable = false)
 	private Integer dueDays;
-	
+
 	@Column(name = "contactPerson", length = 30, nullable = false)
 	private String contactPerson;
-	
-	@Column(name = "hsnCode",  nullable = false)
+
+	@Column(name = "hsnCode", nullable = false)
 	private Long hsnCode;
-	
-	@Column(name = "sacCode",  nullable = false)
+
+	@Column(name = "sacCode", nullable = false)
 	private Long sacCode;
-	
+
 	@Column(name = "rateOfTax", nullable = false)
 	private Double rateOfTax;
-	
+
 	@Column(name = "openingBalance", nullable = false)
 	private Double openingBalance;
-	
+
 	@Column(name = "openingType", length = 6, nullable = false)
 	private String openingType;
-	
+
 	@Column(name = "specialRemarks", length = 60, nullable = false)
 	private String specialRemarks;
 
@@ -366,7 +364,6 @@ public class AccountInformation implements Serializable {
 		this.customerType = customerType;
 	}
 
-	
 	public Double getCreditLimit() {
 		return this.creditLimit;
 	}

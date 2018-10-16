@@ -9,9 +9,10 @@ import org.springframework.stereotype.Repository;
 
 import com.rest.eskaysoftAPI.entity.Districts;
 
-
 @Repository("districtsRepository")
 @Transactional
 public interface DistrictsRepository extends JpaRepository<Districts, Long> {
 	public List<Districts> findAllByOrderByDistrictNameAsc();
+	public List<Districts> findByStatesIdId(Long id);
+
 }

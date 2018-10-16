@@ -14,4 +14,6 @@ import com.rest.eskaysoftAPI.entity.Area;
 public interface AreaRepository extends JpaRepository<Area, Long> {
 	public List<Area> findAllByOrderByAreaNameAsc();
 
+	public List<Area> findByBusinessExecutiveIdId(Long id);
+
 }

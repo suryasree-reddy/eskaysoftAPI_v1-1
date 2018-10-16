@@ -48,9 +48,16 @@ public class DistrictServiceImpl implements DistrictService {
 		boolean status = false;
 		Districts districts = DisRepo.findById(id)
 				.orElseThrow(() -> new NotFoundException(String.format("districts %d not found", id)));
+
 		if (districts != null) {
 			DisRepo.delete(districts);
 			status = true;
+			List<Districts> disList = DisRepo.findByStatesIdId(districts.getStatesId().getId());
+			if (null == disList || disList.isEmpty()) {
+				States sts = districts.getStatesId();
+				sts.setDeleteFlag(true);
+				statesRepo.save(sts);
+			}
 		}
 		return status;
 	}
@@ -61,7 +68,7 @@ public class DistrictServiceImpl implements DistrictService {
 				() -> new NotFoundException(String.format("states %d not found", dischModel.getStatesId())));
 		Districts districts = new Districts();
 		BeanUtils.copyProperties(dischModel, districts);
-		if(sts.getDeleteFlag()) {
+		if (sts.getDeleteFlag()) {
 			sts.setDeleteFlag(false);
 			statesRepo.save(sts);
 		}
@@ -77,7 +84,7 @@ public class DistrictServiceImpl implements DistrictService {
 				() -> new NotFoundException(String.format("states %d not found", dischModel.getStatesId())));
 		Districts districts = new Districts();
 		BeanUtils.copyProperties(dischModel, districts);
-		if(sts.getDeleteFlag()) {
+		if (sts.getDeleteFlag()) {
 			sts.setDeleteFlag(false);
 			statesRepo.save(sts);
 		}

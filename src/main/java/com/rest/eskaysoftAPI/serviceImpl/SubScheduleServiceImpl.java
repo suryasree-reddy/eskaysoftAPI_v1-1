@@ -68,9 +68,16 @@ public class SubScheduleServiceImpl implements SubScheduleService {
 		boolean status = false;
 		SubSchedule subschedule = subschrepo.findById(id)
 				.orElseThrow(() -> new NotFoundException(String.format("subschedule %d not found", id)));
+		
 		if (subschedule != null) {
 			subschrepo.delete(subschedule);
-			status = true;
+			status = true;			
+			List<SubSchedule> subSchList = subschrepo.findByScheduleIdId(subschedule.getScheduleId().getId());
+			if(null == subSchList || subSchList.isEmpty()) {
+				Schedule sch = subschedule.getScheduleId();
+				sch.setDeleteFlag(true);
+				schedrepo.save(sch);
+			}
 		}
 		return status;
 	}

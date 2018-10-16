@@ -12,7 +12,9 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
   
 @Entity
-@Table(name = "businessexecutive",uniqueConstraints = { @UniqueConstraint(columnNames = {"name","address","town","mobile"})})
+@Table(name = "businessexecutive", uniqueConstraints = {
+@UniqueConstraint(columnNames = {"name"}),
+@UniqueConstraint(columnNames = {"mobile"})})
 public class BusinessExecutive implements Serializable {
 
     private static final long serialVersionUID = 1L;

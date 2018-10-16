@@ -11,9 +11,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "companies")
+@Table(name = "companies", uniqueConstraints = {
+@UniqueConstraint(columnNames = {"companyCode"}),
+@UniqueConstraint(columnNames = {"companyName"}),
+@UniqueConstraint(columnNames = {"companyStatus"}),
+@UniqueConstraint(columnNames = {"companyGroupId"}),
+@UniqueConstraint(columnNames = {"companyType"})})
 public class Company implements Serializable {
 
 	private static final long serialVersionUID = 1L;

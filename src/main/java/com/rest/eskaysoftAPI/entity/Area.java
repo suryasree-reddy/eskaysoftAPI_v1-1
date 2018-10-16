@@ -14,7 +14,8 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "area",uniqueConstraints = { @UniqueConstraint(columnNames = {"businessExecutiveId"})})
+@Table(name = "area", uniqueConstraints = {
+@UniqueConstraint(columnNames = {"businessExecutiveId"})})
 public class Area implements Serializable {
 
 	private static final long serialVersionUID = 1L;

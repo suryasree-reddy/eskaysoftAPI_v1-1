@@ -56,4 +56,6 @@ public class Districts implements Serializable{
 		this.statesId = statesId;
 	}
 
+	
+	
 }

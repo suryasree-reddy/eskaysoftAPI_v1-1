@@ -62,7 +62,7 @@ public class ProductCategoryResource {
     @Produces("application/json")
     public ProductCategory update(@RequestBody ProductCategory productcategory){
     	if (logger.isDebugEnabled()) {
-			logger.debug("Requsted productcategory = " + productcategory.getProductCategoryId());
+			logger.debug("Requsted productcategory = " + productcategory.getId());
 		}
         return productcategoryService.saveProductCategory(productcategory);
     }

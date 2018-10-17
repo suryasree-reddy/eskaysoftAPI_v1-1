@@ -11,7 +11,7 @@ public class DistrictsDto implements Serializable {
 	private String districtName;
 
 	private Long statesId;
-	
+
 	private String statesName;
 
 	public String getStatesName() {
@@ -23,7 +23,7 @@ public class DistrictsDto implements Serializable {
 	}
 
 	public Long getDistrictId() {
-		return this.districtId;
+		return districtId;
 	}
 
 	public void setDistrictId(Long districtId) {

@@ -74,7 +74,7 @@ public class DistrictServiceImpl implements DistrictService {
 		}
 		districts.setStatesId(sts);
 		districts = DisRepo.save(districts);
-		dischModel.setDistrictId(districts.getDistrictId());
+		dischModel.setDistrictId(districts.getId());
 		return dischModel;
 	}
 
@@ -100,9 +100,8 @@ public class DistrictServiceImpl implements DistrictService {
 		DistrictsDto disModel = new DistrictsDto();
 		BeanUtils.copyProperties(districts, disModel);
 		disModel.setStatesId(districts.getStatesId().getId());
-		disModel.setDistrictId(districts.getDistrictId());
-
 		return disModel;
 
 	}
+
 }

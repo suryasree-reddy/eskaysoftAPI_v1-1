@@ -99,7 +99,7 @@ public class AreaServiceImpl implements AreaService {
 		}
 		area.setBusinessExecutiveId(businessexecutive);
 		area = areaRepository.save(area);
-		areaModel.setAreaId(area.getAreaId());
+		areaModel.setAreaId(area.getId());
 		return areaModel;
 	}
 }

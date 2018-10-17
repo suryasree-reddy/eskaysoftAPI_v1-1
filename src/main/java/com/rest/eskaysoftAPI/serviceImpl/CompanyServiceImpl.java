@@ -11,8 +11,8 @@ import com.rest.eskaysoftAPI.entity.Company;
 import com.rest.eskaysoftAPI.entity.CompanyGroup;
 import com.rest.eskaysoftAPI.exception.NotFoundException;
 import com.rest.eskaysoftAPI.model.CompanyDto;
-import com.rest.eskaysoftAPI.repository.CompanyRepository;
 import com.rest.eskaysoftAPI.repository.CompanyGroupRepository;
+import com.rest.eskaysoftAPI.repository.CompanyRepository;
 import com.rest.eskaysoftAPI.service.CompanyService;
 
 @Service
@@ -58,7 +58,7 @@ public class CompanyServiceImpl implements CompanyService {
 						String.format("CompanyGroup %d not found", companyModel.getCompanyGroupId())));
 		Company company = new Company();
 		BeanUtils.copyProperties(companyModel, company);
-		if(companygroup.getDeleteFlag()) {
+		if (companygroup.getDeleteFlag()) {
 			companygroup.setDeleteFlag(false);
 			compgrprepo.save(companygroup);
 		}
@@ -86,13 +86,13 @@ public class CompanyServiceImpl implements CompanyService {
 						String.format("CompanyGroup %d not found", companyModel.getCompanyGroupId())));
 		Company company = new Company();
 		BeanUtils.copyProperties(companyModel, company);
-		if(companygroup.getDeleteFlag()) {
+		if (companygroup.getDeleteFlag()) {
 			companygroup.setDeleteFlag(false);
 			compgrprepo.save(companygroup);
 		}
 		company.setCompanyGroupId(companygroup);
 		company = cpmprepo.save(company);
-		companyModel.setCompanyId(company.getCompanyId());
+		companyModel.setCompanyId(company.getId());
 		return companyModel;
 	}
 

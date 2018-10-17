@@ -21,7 +21,7 @@ public class SubSchedule implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long subScheduleId;
+	private Long id;
 	
 	@Column(name = "subScheduleName", nullable = false, length = 40)
 	private String subScheduleName;
@@ -33,20 +33,20 @@ public class SubSchedule implements Serializable {
 	@JoinColumn(name = "scheduleId", nullable = false)
 	private Schedule scheduleId;
 
+	public Long getId() {
+		return this.id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public Schedule getScheduleId() {
 		return this.scheduleId;
 	}
 
 	public void setScheduleId(Schedule scheduleId) {
 		this.scheduleId = scheduleId;
-	}
-
-	public Long getSubScheduleId() {
-		return subScheduleId;
-	}
-
-	public void setSubScheduleId(Long subScheduleId) {
-		this.subScheduleId = subScheduleId;
 	}
 
 	public String getSubScheduleName() {

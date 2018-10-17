@@ -1,5 +1,7 @@
 package com.rest.eskaysoftAPI.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,10 +16,13 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name = "districts", uniqueConstraints = {
 @UniqueConstraint(columnNames = {"districtName"})})
-public class Districts {
+public class Districts implements Serializable{
+	
+	private static final long serialVersionUID = -6855841992822428060L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long districtId;
+	private Long id;
 	
 	@Column(name = "districtName", nullable = false, length = 20)
 	private String districtName;
@@ -26,12 +31,13 @@ public class Districts {
 	@JoinColumn(name = "statesId", nullable = false)
 	private States statesId;
 
-	public Long getDistrictId() {
-		return this.districtId;
+
+	public Long getId() {
+		return this.id;
 	}
 
-	public void setDistrictId(Long districtId) {
-		this.districtId = districtId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getDistrictName() {

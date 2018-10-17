@@ -17,17 +17,18 @@ public class ProductCategory implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long productCategoryId;
+	private Long id;
 	
 	@Column(name = "productCategoryName", nullable = false, length = 40)
 	private String productCategoryName;
 
-	public Long getProductCategoryId() {
-		return this.productCategoryId;
+
+	public Long getId() {
+		return this.id;
 	}
 
-	public void setProductCategoryId(Long productCategoryId) {
-		this.productCategoryId = productCategoryId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getProductCategoryName() {

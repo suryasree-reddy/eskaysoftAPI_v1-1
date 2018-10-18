@@ -16,10 +16,14 @@ public class ProductDto implements Serializable{
 	private Integer boxQty;
 
 	private Long productGroupId;
+	
+	private String productGroupName;
 
 	private Long caseQty;
 
 	private Long productCategoryId;
+	
+	private String productCategoryName;
 
 	private Double netRate;
 
@@ -32,6 +36,42 @@ public class ProductDto implements Serializable{
 	private String contents;
 
 	private Double tax;
+	
+	private Long companyId;
+	
+	private String companyName;
+
+	public String getProductGroupName() {
+		return productGroupName;
+	}
+
+	public void setProductGroupName(String productGroupName) {
+		this.productGroupName = productGroupName;
+	}
+
+	public String getProductCategoryName() {
+		return productCategoryName;
+	}
+
+	public void setProductCategoryName(String productCategoryName) {
+		this.productCategoryName = productCategoryName;
+	}
+
+	public Long getCompanyId() {
+		return companyId;
+	}
+
+	public void setCompanyId(Long companyId) {
+		this.companyId = companyId;
+	}
+
+	public String getCompanyName() {
+		return companyName;
+	}
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
 
 	public Long getId() {
 		return id;

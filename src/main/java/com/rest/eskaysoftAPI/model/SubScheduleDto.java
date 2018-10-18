@@ -6,11 +6,19 @@ public class SubScheduleDto implements Serializable {
 
 	private static final long serialVersionUID = 655159852262403024L;
 
-	private Long subScheduleId;
+	private Long id;
 	private String subScheduleName;
 	private Long subScheduleIndex;
 	private String scheduleName;
 	private Long scheduleId;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public Long getScheduleId() {
 		return scheduleId;
@@ -18,14 +26,6 @@ public class SubScheduleDto implements Serializable {
 
 	public void setScheduleId(Long scheduleId) {
 		this.scheduleId = scheduleId;
-	}
-
-	public Long getSubScheduleId() {
-		return subScheduleId;
-	}
-
-	public void setSubScheduleId(Long subScheduleId) {
-		this.subScheduleId = subScheduleId;
 	}
 
 	public String getSubScheduleName() {

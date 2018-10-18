@@ -6,28 +6,28 @@ public class DistrictsDto implements Serializable {
 
 	private static final long serialVersionUID = 1694531969479034978L;
 
-	private Long districtId;
+	private Long id;
 
 	private String districtName;
 
 	private Long statesId;
 
-	private String statesName;
+	private String stateName;
 
-	public String getStatesName() {
-		return this.statesName;
+	public Long getId() {
+		return id;
 	}
 
-	public void setStatesName(String statesName) {
-		this.statesName = statesName;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public Long getDistrictId() {
-		return districtId;
+	public String getStateName() {
+		return stateName;
 	}
 
-	public void setDistrictId(Long districtId) {
-		this.districtId = districtId;
+	public void setStateName(String stateName) {
+		this.stateName = stateName;
 	}
 
 	public String getDistrictName() {

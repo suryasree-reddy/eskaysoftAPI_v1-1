@@ -8,7 +8,7 @@ public class CompanyDto implements Serializable {
 
 	private static final long serialVersionUID = 655159852262403024L;
 	
-	private Long companyId;
+	private Long id;
 	
 	private String companyCode;
 	
@@ -24,14 +24,22 @@ public class CompanyDto implements Serializable {
 	
 	private Long companyGroupId;
 	
-	private String companyGroupName;
+	private String companyGroup;
 
-	public Long getCompanyId() {
-		return companyId;
+	public Long getId() {
+		return id;
 	}
 
-	public void setCompanyId(Long companyId) {
-		this.companyId = companyId;
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getCompanyGroup() {
+		return companyGroup;
+	}
+
+	public void setCompanyGroup(String companyGroup) {
+		this.companyGroup = companyGroup;
 	}
 
 	public String getCompanyCode() {
@@ -89,15 +97,5 @@ public class CompanyDto implements Serializable {
 	public void setCompanyType(String companyType) {
 		this.companyType = companyType;
 	}
-
-	public String getCompanyGroupName() {
-		return this.companyGroupName;
-	}
-
-	public void setCompanyGroupName(String companyGroupName) {
-		this.companyGroupName = companyGroupName;
-	}
-
-	
 
 }

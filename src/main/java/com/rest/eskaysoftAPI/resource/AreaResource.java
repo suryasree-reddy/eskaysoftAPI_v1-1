@@ -60,7 +60,7 @@ public class AreaResource {
 	@Produces("application/json")
 	public AreaDto update(@RequestBody AreaDto area) {
 		if (logger.isDebugEnabled()) {
-			logger.debug("Requsted Area = " + area.getAreaId());
+			logger.debug("Requsted Area = " + area.getId());
 		}
 		return areaService.saveArea(area);
 	}

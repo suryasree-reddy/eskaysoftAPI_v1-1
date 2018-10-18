@@ -31,7 +31,7 @@ public class CompanyServiceImpl implements CompanyService {
 
 			CompanyDto companyModel = new CompanyDto();
 			BeanUtils.copyProperties(company, companyModel);
-			companyModel.setCompanyGroupName(company.getCompanyGroupId().getCompanyGroup());
+			companyModel.setCompanyGroup(company.getCompanyGroupId().getCompanyGroup());
 			companyModel.setCompanyGroupId(company.getCompanyGroupId().getId());
 			companyList.add(companyModel);
 		});
@@ -92,7 +92,7 @@ public class CompanyServiceImpl implements CompanyService {
 		}
 		company.setCompanyGroupId(companygroup);
 		company = cpmprepo.save(company);
-		companyModel.setCompanyId(company.getId());
+		companyModel.setId(company.getId());
 		return companyModel;
 	}
 

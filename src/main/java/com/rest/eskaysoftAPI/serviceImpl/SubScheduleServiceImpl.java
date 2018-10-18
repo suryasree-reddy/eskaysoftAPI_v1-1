@@ -94,7 +94,7 @@ public class SubScheduleServiceImpl implements SubScheduleService {
 		}
 		subschedule.setScheduleId(sch);
 		subschedule = subschrepo.save(subschedule);
-		subschModel.setSubScheduleId(subschedule.getId());
+		subschModel.setId(subschedule.getId());
 		return subschModel;
 	}
 

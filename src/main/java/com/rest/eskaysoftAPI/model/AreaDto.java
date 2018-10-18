@@ -6,7 +6,7 @@ public class AreaDto implements Serializable {
 
 	private static final long serialVersionUID = 655159852262403024L;
 
-	private Long areaId;
+	private Long id;
 
 	private String areaName;
 
@@ -14,12 +14,13 @@ public class AreaDto implements Serializable {
 	
 	private String businessExecutiveName;
 
-	public Long getAreaId() {
-		return this.areaId;
+	
+	public Long getId() {
+		return id;
 	}
 
-	public void setAreaId(Long areaId) {
-		this.areaId = areaId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public Long getBusinessExecutiveId() {

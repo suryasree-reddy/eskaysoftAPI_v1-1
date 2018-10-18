@@ -61,7 +61,7 @@ public class DistrictsResource {
 	@Produces("application/json")
 	public DistrictsDto update(@RequestBody DistrictsDto districs) {
 		if (logger.isDebugEnabled()) {
-			logger.debug("Requsted districs = " + districs.getDistrictId());
+			logger.debug("Requsted districs = " + districs.getId());
 		}
 		return districtService.save(districs);
 	}

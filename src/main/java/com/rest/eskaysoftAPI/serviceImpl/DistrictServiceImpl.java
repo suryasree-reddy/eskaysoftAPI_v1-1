@@ -35,7 +35,7 @@ public class DistrictServiceImpl implements DistrictService {
 		DisRepo.findAllByOrderByDistrictNameAsc().forEach(districts -> {
 			DistrictsDto districtsModel = new DistrictsDto();
 			BeanUtils.copyProperties(districts, districtsModel);
-			districtsModel.setStatesName(districts.getStatesId().getStateName());
+			districtsModel.setStateName(districts.getStatesId().getStateName());
 			districtsModel.setStatesId(districts.getStatesId().getId());
 			districtsList.add(districtsModel);
 		});
@@ -74,7 +74,7 @@ public class DistrictServiceImpl implements DistrictService {
 		}
 		districts.setStatesId(sts);
 		districts = DisRepo.save(districts);
-		dischModel.setDistrictId(districts.getId());
+		dischModel.setId(districts.getId());
 		return dischModel;
 	}
 

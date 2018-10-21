@@ -36,10 +36,19 @@ public class ProductDto implements Serializable{
 	private String contents;
 
 	private Double tax;
+	private Long taxId;
 	
 	private Long companyId;
 	
 	private String companyName;
+
+	public Long getTaxId() {
+		return taxId;
+	}
+
+	public void setTaxId(Long taxId) {
+		this.taxId = taxId;
+	}
 
 	public String getProductGroupName() {
 		return productGroupName;

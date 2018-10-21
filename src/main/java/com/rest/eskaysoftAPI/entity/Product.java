@@ -61,6 +61,17 @@ public class Product implements Serializable {
 	
 	@Column(name = "tax", nullable = false)
 	private Double tax;
+	
+	@Column(name = "taxId", nullable = false)
+	private long taxId;
+	
+	public long getTaxId() {
+		return taxId;
+	}
+
+	public void setTaxId(long taxId) {
+		this.taxId = taxId;
+	}
 
 	public String getProductGroupName() {
 		return productGroupName;

@@ -35,8 +35,8 @@ public class DistrictServiceImpl implements DistrictService {
 		DisRepo.findAllByOrderByDistrictNameAsc().forEach(districts -> {
 			DistrictsDto districtsModel = new DistrictsDto();
 			BeanUtils.copyProperties(districts, districtsModel);
-			districtsModel.setStateName(districts.getStatesId().getStateName());
-			districtsModel.setStatesId(districts.getStatesId().getId());
+			districtsModel.setStateName(districts.getStateId().getStateName());
+			districtsModel.setStateId(districts.getStateId().getId());
 			districtsList.add(districtsModel);
 		});
 
@@ -52,9 +52,9 @@ public class DistrictServiceImpl implements DistrictService {
 		if (districts != null) {
 			DisRepo.delete(districts);
 			status = true;
-			List<Districts> disList = DisRepo.findByStatesIdId(districts.getStatesId().getId());
+			List<Districts> disList = DisRepo.findByStatesIdId(districts.getStateId().getId());
 			if (null == disList || disList.isEmpty()) {
-				States sts = districts.getStatesId();
+				States sts = districts.getStateId();
 				sts.setDeleteFlag(true);
 				statesRepo.save(sts);
 			}
@@ -64,15 +64,15 @@ public class DistrictServiceImpl implements DistrictService {
 
 	@Override
 	public DistrictsDto create(DistrictsDto dischModel) {
-		States sts = statesRepo.findById(dischModel.getStatesId()).orElseThrow(
-				() -> new NotFoundException(String.format("states %d not found", dischModel.getStatesId())));
+		States sts = statesRepo.findById(dischModel.getStateId()).orElseThrow(
+				() -> new NotFoundException(String.format("states %d not found", dischModel.getStateId())));
 		Districts districts = new Districts();
 		BeanUtils.copyProperties(dischModel, districts);
 		if (sts.getDeleteFlag()) {
 			sts.setDeleteFlag(false);
 			statesRepo.save(sts);
 		}
-		districts.setStatesId(sts);
+		districts.setStateId(sts);
 		districts = DisRepo.save(districts);
 		dischModel.setId(districts.getId());
 		return dischModel;
@@ -80,15 +80,15 @@ public class DistrictServiceImpl implements DistrictService {
 
 	@Override
 	public DistrictsDto save(DistrictsDto dischModel) {
-		States sts = statesRepo.findById(dischModel.getStatesId()).orElseThrow(
-				() -> new NotFoundException(String.format("states %d not found", dischModel.getStatesId())));
+		States sts = statesRepo.findById(dischModel.getStateId()).orElseThrow(
+				() -> new NotFoundException(String.format("states %d not found", dischModel.getStateId())));
 		Districts districts = new Districts();
 		BeanUtils.copyProperties(dischModel, districts);
 		if (sts.getDeleteFlag()) {
 			sts.setDeleteFlag(false);
 			statesRepo.save(sts);
 		}
-		districts.setStatesId(sts);
+		districts.setStateId(sts);
 		districts = DisRepo.save(districts);
 		return dischModel;
 	}
@@ -99,7 +99,7 @@ public class DistrictServiceImpl implements DistrictService {
 				.orElseThrow(() -> new NotFoundException(String.format("districts %d not found", id)));
 		DistrictsDto disModel = new DistrictsDto();
 		BeanUtils.copyProperties(districts, disModel);
-		disModel.setStatesId(districts.getStatesId().getId());
+		disModel.setStateId(districts.getStateId().getId());
 		return disModel;
 
 	}

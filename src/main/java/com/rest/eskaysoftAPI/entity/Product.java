@@ -33,10 +33,16 @@ public class Product implements Serializable {
 	
 	private Long productGroupId;
 	
+	private String productGroupName;
+	
 	@Column(name = "caseQty", nullable = false)
 	private Long caseQty;
 	
 	private Long productCategoryId;
+	private String productCategoryName;
+	private Long companyId;
+	private String companyName;
+	private String companyCode;
 	
 	@Column(name = "netRate",nullable = false)
 	private Double netRate;
@@ -55,6 +61,46 @@ public class Product implements Serializable {
 	
 	@Column(name = "tax", nullable = false)
 	private Double tax;
+
+	public String getProductGroupName() {
+		return productGroupName;
+	}
+
+	public void setProductGroupName(String productGroupName) {
+		this.productGroupName = productGroupName;
+	}
+
+	public String getProductCategoryName() {
+		return productCategoryName;
+	}
+
+	public void setProductCategoryName(String productCategoryName) {
+		this.productCategoryName = productCategoryName;
+	}
+
+	public Long getCompanyId() {
+		return companyId;
+	}
+
+	public void setCompanyId(Long companyId) {
+		this.companyId = companyId;
+	}
+
+	public String getCompanyName() {
+		return companyName;
+	}
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
+
+	public String getCompanyCode() {
+		return companyCode;
+	}
+
+	public void setCompanyCode(String companyCode) {
+		this.companyCode = companyCode;
+	}
 
 	public Long getId() {
 		return id;

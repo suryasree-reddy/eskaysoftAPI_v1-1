@@ -23,44 +23,44 @@ public class Tax implements Serializable {
 	@Column(name = "wefdate", nullable = false, length = 20)
 	private Date wefdate;
 	
-	@Column(name = "igstpur", nullable = false, length = 20)
+	@Column(name = "igstpur", nullable = true, length = 20)
 	private String igstpur;
 	
-	@Column(name = "igstpit", nullable = false, length = 20)
+	@Column(name = "igstpit", nullable = true, length = 20)
 	private String igstpit;
 	
-	@Column(name = "igstsale", nullable = false, length = 20)
+	@Column(name = "igstsale", nullable = true, length = 20)
 	private String igstsale;
 	
-	@Column(name = "igstsot", nullable = false, length = 20)
+	@Column(name = "igstsot", nullable = true, length = 20)
 	private String igstsot;
 	
-	@Column(name = "wpurch", nullable = false, length = 20)
+	@Column(name = "wpurch", nullable = true, length = 20)
 	private String wpurch;
 	
-	@Column(name = "cgstpit", nullable = false, length = 20)
+	@Column(name = "cgstpit", nullable = true, length = 20)
 	private String cgstpit;
 	
 						  	
-	@Column(name = "sgstpit", nullable = false, length = 20)
+	@Column(name = "sgstpit", nullable = true, length = 20)
 	private String sgstpit;
 	
-	@Column(name = "wsale", nullable = false, length = 20)
+	@Column(name = "wsale", nullable = true, length = 20)
 	private String wsale;
 	
-	@Column(name = "cgstsot", nullable = false, length = 20)
+	@Column(name = "cgstsot", nullable = true, length = 20)
 	private String cgstsot;
 	
-	@Column(name = "sgstsot", nullable = false, length = 20)
+	@Column(name = "sgstsot", nullable = true, length = 20)
 	private String sgstsot;
 
 	@Column(name = "tax", nullable = false)
 	private Long tax;
 	
-	@Column(name = "cgst", nullable = false)
+	@Column(name = "cgst", nullable = true)
 	private Long cgst;
 	
-	@Column(name = "sgst", nullable = false)
+	@Column(name = "sgst", nullable = true)
 	private Long sgst;
 	
 	@Column(name = "status", nullable = false)

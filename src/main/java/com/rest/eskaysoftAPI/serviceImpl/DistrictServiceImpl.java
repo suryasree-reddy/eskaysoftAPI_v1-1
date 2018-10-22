@@ -24,10 +24,10 @@ public class DistrictServiceImpl implements DistrictService {
 	@Autowired
 	private StatesRepository statesRepo;
 
-	@Autowired
+	/*@Autowired
 	public void setdistrictsDao(DistrictsRepository districtsDao) {
 		this.DisRepo = districtsDao;
-	}
+	}*/
 
 	@Override
 	public List<DistrictsDto> listAllDistricts() {
@@ -52,7 +52,7 @@ public class DistrictServiceImpl implements DistrictService {
 		if (districts != null) {
 			DisRepo.delete(districts);
 			status = true;
-			List<Districts> disList = DisRepo.findByStatesIdId(districts.getStateId().getId());
+			List<Districts> disList = DisRepo.findBystateIdId(districts.getStateId().getId());
 			if (null == disList || disList.isEmpty()) {
 				States sts = districts.getStateId();
 				sts.setDeleteFlag(true);

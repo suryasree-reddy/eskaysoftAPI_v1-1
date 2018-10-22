@@ -7,7 +7,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.rest.eskaysoftAPI.entity.States;
 import com.rest.eskaysoftAPI.entity.Tax;
 import com.rest.eskaysoftAPI.exception.NotFoundException;
 import com.rest.eskaysoftAPI.model.TaxDto;
@@ -20,7 +19,7 @@ public class TaxServiceImpl implements TaxService {
 	private TaxRepository taxRepo;
 
 	@Autowired
-	public void setTaxDao(TaxRepository statesrepo) {
+	public void setTaxDao(TaxRepository taxRepo) {
 		this.taxRepo = taxRepo;
 	}
 

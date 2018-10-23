@@ -22,6 +22,7 @@ import com.rest.eskaysoftAPI.resource.PurchaseEntryResource;
 import com.rest.eskaysoftAPI.resource.ScheduleResource;
 import com.rest.eskaysoftAPI.resource.StatesResource;
 import com.rest.eskaysoftAPI.resource.SubScheduleResource;
+import com.rest.eskaysoftAPI.resource.TaxResource;
 
 @Component
 @ApplicationPath("/api/v1")
@@ -45,5 +46,6 @@ public class AppConfig extends ResourceConfig {
 		register(CustomerWiseDiscountsResource.class);
 		register(ManfacturerResource.class);
 		register(DistrictsResource.class);
+		register(TaxResource.class);
 	}
 }

@@ -29,7 +29,7 @@ public class Districts implements Serializable{
 
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "stateId", nullable = false)
-	private States stateId;
+	private States statesId;
 
 
 	public Long getId() {
@@ -48,13 +48,15 @@ public class Districts implements Serializable{
 		this.districtName = districtName;
 	}
 
-	public States getStateId() {
-		return this.stateId;
+	public States getStatesId() {
+		return statesId;
 	}
 
-	public void setStateId(States stateId) {
-		this.stateId = stateId;
+	public void setStatesId(States statesId) {
+		this.statesId = statesId;
 	}
+
+	
 
 	
 	

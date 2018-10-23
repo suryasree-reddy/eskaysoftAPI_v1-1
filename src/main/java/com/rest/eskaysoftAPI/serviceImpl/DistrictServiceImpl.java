@@ -35,8 +35,8 @@ public class DistrictServiceImpl implements DistrictService {
 		DisRepo.findAllByOrderByDistrictNameAsc().forEach(districts -> {
 			DistrictsDto districtsModel = new DistrictsDto();
 			BeanUtils.copyProperties(districts, districtsModel);
-			districtsModel.setStateName(districts.getStateId().getStateName());
-			districtsModel.setStateId(districts.getStateId().getId());
+			districtsModel.setStateName(districts.getStatesId().getStateName());
+			districtsModel.setStateId(districts.getStatesId().getId());
 			districtsList.add(districtsModel);
 		});
 
@@ -52,9 +52,9 @@ public class DistrictServiceImpl implements DistrictService {
 		if (districts != null) {
 			DisRepo.delete(districts);
 			status = true;
-			List<Districts> disList = DisRepo.findBystateIdId(districts.getStateId().getId());
+			List<Districts> disList = DisRepo.findBystatesIdId(districts.getStatesId().getId());
 			if (null == disList || disList.isEmpty()) {
-				States sts = districts.getStateId();
+				States sts = districts.getStatesId();
 				sts.setDeleteFlag(true);
 				statesRepo.save(sts);
 			}
@@ -72,7 +72,7 @@ public class DistrictServiceImpl implements DistrictService {
 			sts.setDeleteFlag(false);
 			statesRepo.save(sts);
 		}
-		districts.setStateId(sts);
+		districts.setStatesId(sts);
 		districts = DisRepo.save(districts);
 		dischModel.setId(districts.getId());
 		return dischModel;
@@ -88,7 +88,7 @@ public class DistrictServiceImpl implements DistrictService {
 			sts.setDeleteFlag(false);
 			statesRepo.save(sts);
 		}
-		districts.setStateId(sts);
+		districts.setStatesId(sts);
 		districts = DisRepo.save(districts);
 		return dischModel;
 	}
@@ -99,7 +99,7 @@ public class DistrictServiceImpl implements DistrictService {
 				.orElseThrow(() -> new NotFoundException(String.format("districts %d not found", id)));
 		DistrictsDto disModel = new DistrictsDto();
 		BeanUtils.copyProperties(districts, disModel);
-		disModel.setStateId(districts.getStateId().getId());
+		disModel.setStateId(districts.getStatesId().getId());
 		return disModel;
 
 	}

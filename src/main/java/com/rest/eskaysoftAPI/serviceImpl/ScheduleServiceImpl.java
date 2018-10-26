@@ -23,7 +23,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 	@Override
 	public List<ScheduleDto> listAllSchedules() {
 		List<ScheduleDto> schList = new ArrayList<>();
-		schedrepo.findAllByOrderByScheduleNameAsc().forEach(sch ->{
+		schedrepo.getSchedules().forEach(sch ->{
 			ScheduleDto schModel = new ScheduleDto();	
 			BeanUtils.copyProperties(sch, schModel);
 			schList.add(schModel);

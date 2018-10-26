@@ -54,10 +54,6 @@ public class SubScheduleServiceImpl implements SubScheduleService {
 				() -> new NotFoundException(String.format("Schedule %d not found", subschModel.getScheduleId())));
 		SubSchedule subschedule = new SubSchedule();
 		BeanUtils.copyProperties(subschModel, subschedule);
-		if(sch.getDeleteFlag()) {
-			sch.setDeleteFlag(false);
-			schedrepo.save(sch);
-		}
 		subschedule.setScheduleId(sch);
 		subschedule = subschrepo.save(subschedule);
 		return subschModel;
@@ -67,17 +63,10 @@ public class SubScheduleServiceImpl implements SubScheduleService {
 	public boolean deleteSubSchedule(Long id) {
 		boolean status = false;
 		SubSchedule subschedule = subschrepo.findById(id)
-				.orElseThrow(() -> new NotFoundException(String.format("subschedule %d not found", id)));
-		
+				.orElseThrow(() -> new NotFoundException(String.format("subschedule %d not found", id)));		
 		if (subschedule != null) {
 			subschrepo.delete(subschedule);
 			status = true;			
-			List<SubSchedule> subSchList = subschrepo.findByScheduleIdId(subschedule.getScheduleId().getId());
-			if(null == subSchList || subSchList.isEmpty()) {
-				Schedule sch = subschedule.getScheduleId();
-				sch.setDeleteFlag(true);
-				schedrepo.save(sch);
-			}
 		}
 		return status;
 	}
@@ -88,10 +77,6 @@ public class SubScheduleServiceImpl implements SubScheduleService {
 				() -> new NotFoundException(String.format("Schedule %d not found", subschModel.getScheduleId())));
 		SubSchedule subschedule = new SubSchedule();
 		BeanUtils.copyProperties(subschModel, subschedule);
-		if(sch.getDeleteFlag()) {
-			sch.setDeleteFlag(false);
-			schedrepo.save(sch);
-		}
 		subschedule.setScheduleId(sch);
 		subschedule = subschrepo.save(subschedule);
 		subschModel.setId(subschedule.getId());

@@ -25,22 +25,22 @@ public class Company implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "companyCode", nullable = false, length = 20)
+	@Column(name = "companyCode", nullable = false, length = 2)
 	private String companyCode;
 
-	@Column(name = "companyName", nullable = false, length = 20)
+	@Column(name = "companyName", nullable = false, length = 40)
 	private String companyName;
 
-	@Column(name = "companyStatus", nullable = false, length = 20)
+	@Column(name = "companyStatus", nullable = false, length = 10)
 	private String companyStatus;
 
-	@Column(name = "invGenType", nullable = false, length = 20)
+	@Column(name = "invGenType", nullable = false, length = 8)
 	private String invGenType;
 
-	@Column(name = "invPrefix", nullable = false, length = 20)
+	@Column(name = "invPrefix", nullable = false, length = 10)
 	private String invPrefix;
 
-	@Column(name = "companyType", nullable = false, length = 20)
+	@Column(name = "companyType", nullable = false, length = 10)
 	private String companyType;
 
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)

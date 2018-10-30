@@ -11,21 +11,21 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "companygroup",uniqueConstraints = { @UniqueConstraint(columnNames = {"companyGroup"})})
+@Table(name = "companyGroup", uniqueConstraints = { @UniqueConstraint(columnNames = { "companyGroupName" }) })
 public class CompanyGroup implements Serializable {
 
 	private static final long serialVersionUID = 6959309821416613726L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@Column(name = "companyGroup", nullable = false, length = 20)
-	private String companyGroup;
-	 
+
+	@Column(name = "companyGroupName", nullable = false, length = 20)
+	private String companyGroupName;
+
 	@Column(name = "deleteFlag", nullable = false)
 	private boolean deleteFlag = true;
-	
+
 	public Long getId() {
 		return this.id;
 	}
@@ -34,12 +34,16 @@ public class CompanyGroup implements Serializable {
 		this.id = id;
 	}
 
-	public String getCompanyGroup() {
-		return this.companyGroup;
+	public String getCompanyGroupName() {
+		return this.companyGroupName;
 	}
 
-	public void setCompanyGroup(String companyGroup) {
-		this.companyGroup = companyGroup;
+	public void setCompanyGroupName(String companyGroupName) {
+		this.companyGroupName = companyGroupName;
+	}
+
+	public void setDeleteFlag(boolean deleteFlag) {
+		this.deleteFlag = deleteFlag;
 	}
 
 	public Boolean getDeleteFlag() {

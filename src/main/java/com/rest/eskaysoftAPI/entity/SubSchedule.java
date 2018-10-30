@@ -15,7 +15,6 @@ import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "subschedules", uniqueConstraints = {
-@UniqueConstraint(columnNames = {"subScheduleIndex"}),
 @UniqueConstraint(columnNames = {"subScheduleName"})})
 public class SubSchedule implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -23,7 +22,7 @@ public class SubSchedule implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "subScheduleName", nullable = false, length = 40)
+	@Column(name = "subScheduleName",  nullable = false, length = 40)
 	private String subScheduleName;
 	
 	@Column(name = "subScheduleIndex", nullable = false)
@@ -32,6 +31,9 @@ public class SubSchedule implements Serializable {
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "scheduleId", nullable = false)
 	private Schedule scheduleId;
+	
+	@Column(name = "deleteFlag", nullable = false)
+	private boolean deleteFlag = true;
 
 	public Long getId() {
 		return this.id;
@@ -64,5 +66,15 @@ public class SubSchedule implements Serializable {
 	public void setSubScheduleIndex(Long subScheduleIndex) {
 		this.subScheduleIndex = subScheduleIndex;
 	}
+
+	public boolean isDeleteFlag() {
+		return deleteFlag;
+	}
+
+	public void setDeleteFlag(boolean deleteFlag) {
+		this.deleteFlag = deleteFlag;
+	}
+
+	
 
 }

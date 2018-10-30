@@ -12,7 +12,7 @@ public interface ProductCategoryService {
 
 	ProductCategory getProductCategoryById(Long id);
 
-	ProductCategory saveProductCategory(ProductCategory productcategory);
+	ProductCategory updateProductCategory(ProductCategory productcategory);
 
 	 boolean deleteProductCategory(Long id);
 	ProductCategory create(ProductCategory productcategory);

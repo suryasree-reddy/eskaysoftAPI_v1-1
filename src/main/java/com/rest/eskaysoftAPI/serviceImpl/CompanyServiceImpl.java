@@ -31,7 +31,7 @@ public class CompanyServiceImpl implements CompanyService {
 
 			CompanyDto companyModel = new CompanyDto();
 			BeanUtils.copyProperties(company, companyModel);
-			companyModel.setCompanyGroup(company.getCompanyGroupId().getCompanyGroup());
+			companyModel.setCompanyGroupName(company.getCompanyGroupId().getCompanyGroupName());
 			companyModel.setCompanyGroupId(company.getCompanyGroupId().getId());
 			companyList.add(companyModel);
 		});
@@ -46,13 +46,13 @@ public class CompanyServiceImpl implements CompanyService {
 		CompanyDto companyModel = new CompanyDto();
 		BeanUtils.copyProperties(company, companyModel);
 		companyModel.setCompanyGroupId(company.getCompanyGroupId().getId());
-
+		companyModel.setCompanyGroupName(company.getCompanyGroupId().getCompanyGroupName());
 		return companyModel;
 
 	}
 
 	@Override
-	public CompanyDto save(CompanyDto companyModel) {
+	public CompanyDto updatecompany(CompanyDto companyModel) {
 		CompanyGroup companygroup = compgrprepo.findById(companyModel.getCompanyGroupId())
 				.orElseThrow(() -> new NotFoundException(
 						String.format("CompanyGroup %d not found", companyModel.getCompanyGroupId())));
@@ -75,6 +75,12 @@ public class CompanyServiceImpl implements CompanyService {
 		if (company != null) {
 			cpmprepo.delete(company);
 			status = true;
+			List<Company> com = cpmprepo.findByCompanyGroupIdId(company.getCompanyGroupId().getId());
+			if (null == com || com.isEmpty()) {
+				CompanyGroup cg = company.getCompanyGroupId();
+				cg.setDeleteFlag(true);
+				compgrprepo.save(cg);
+			}
 		}
 		return status;
 	}

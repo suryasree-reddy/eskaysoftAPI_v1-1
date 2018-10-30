@@ -22,49 +22,51 @@ public class Tax implements Serializable {
 
 	@Column(name = "wefdate", nullable = false, length = 20)
 	private Date wefdate;
-	
+
 	@Column(name = "igstpur", nullable = true, length = 20)
 	private String igstpur;
-	
+
 	@Column(name = "igstpit", nullable = true, length = 20)
 	private String igstpit;
-	
+
 	@Column(name = "igstsale", nullable = true, length = 20)
 	private String igstsale;
-	
+
 	@Column(name = "igstsot", nullable = true, length = 20)
 	private String igstsot;
-	
+
 	@Column(name = "wpurch", nullable = true, length = 20)
 	private String wpurch;
-	
+
 	@Column(name = "cgstpit", nullable = true, length = 20)
 	private String cgstpit;
-	
-						  	
+
 	@Column(name = "sgstpit", nullable = true, length = 20)
 	private String sgstpit;
-	
+
 	@Column(name = "wsale", nullable = true, length = 20)
 	private String wsale;
-	
+
 	@Column(name = "cgstsot", nullable = true, length = 20)
 	private String cgstsot;
-	
+
 	@Column(name = "sgstsot", nullable = true, length = 20)
 	private String sgstsot;
 
 	@Column(name = "tax", nullable = false)
 	private Long tax;
-	
+
 	@Column(name = "cgst", nullable = true)
 	private Long cgst;
-	
+
 	@Column(name = "sgst", nullable = true)
 	private Long sgst;
-	
+
 	@Column(name = "status", nullable = false)
 	private Boolean status;
+
+	@Column(name = "deleteFlag", nullable = false)
+	private boolean deleteFlag = true;
 
 	public Long getId() {
 		return id;
@@ -193,5 +195,13 @@ public class Tax implements Serializable {
 	public void setStatus(Boolean status) {
 		this.status = status;
 	}
-	
+
+	public Boolean getDeleteFlag() {
+		return this.deleteFlag;
+	}
+
+	public void setDeleteFlag(Boolean deleteFlag) {
+		this.deleteFlag = deleteFlag;
+	}
+
 }

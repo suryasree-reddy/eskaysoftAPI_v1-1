@@ -30,11 +30,11 @@ public class AppConfig extends ResourceConfig {
 
 	public AppConfig() {
 		register(ProductResource.class);
+		register(CompanyResource.class);
 		register(StatesResource.class);
 		register(AccountInformationResource.class);
 		register(AreaResource.class);
 		register(BankInformationResource.class);
-		register(CompanyResource.class);
 		register(CompanyGroupResource.class);
 		register(ScheduleResource.class);
 		register(BusinessExecutiveResource.class);

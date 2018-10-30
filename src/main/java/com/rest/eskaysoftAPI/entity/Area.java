@@ -14,8 +14,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "area", uniqueConstraints = {
-@UniqueConstraint(columnNames = {"businessExecutiveId"})})
+@Table(name = "area", uniqueConstraints = { @UniqueConstraint(columnNames = { "areaName" }) })
 public class Area implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -27,10 +26,12 @@ public class Area implements Serializable {
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "businessExecutiveId", nullable = false)
 	private BusinessExecutive businessExecutiveId;
-	
+
 	@Column(name = "areaName", nullable = false, length = 20)
 	private String areaName;
 
+	@Column(name = "deleteFlag", nullable = false)
+	private boolean deleteFlag = true;
 
 	public Long getId() {
 		return this.id;
@@ -54,6 +55,14 @@ public class Area implements Serializable {
 
 	public void setAreaName(String areaName) {
 		this.areaName = areaName;
+	}
+
+	public boolean isDeleteFlag() {
+		return deleteFlag;
+	}
+
+	public void setDeleteFlag(boolean deleteFlag) {
+		this.deleteFlag = deleteFlag;
 	}
 
 }

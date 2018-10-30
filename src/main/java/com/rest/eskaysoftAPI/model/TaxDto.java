@@ -24,6 +24,8 @@ public class TaxDto implements Serializable {
 	private Long cgst;
 	private Long sgst;
 	private Boolean status;
+	private boolean deleteFlag;
+
 	public Long getId() {
 		return id;
 	}
@@ -119,6 +121,12 @@ public class TaxDto implements Serializable {
 	}
 	public void setStatus(Boolean status) {
 		this.status = status;
+	}
+	public boolean isDeleteFlag() {
+		return deleteFlag;
+	}
+	public void setDeleteFlag(boolean deleteFlag) {
+		this.deleteFlag = deleteFlag;
 	}
 	
 }

@@ -100,6 +100,7 @@ public class DistrictServiceImpl implements DistrictService {
 		DistrictsDto disModel = new DistrictsDto();
 		BeanUtils.copyProperties(districts, disModel);
 		disModel.setStateId(districts.getStatesId().getId());
+		disModel.setStateName(districts.getStatesId().getStateName());
 		return disModel;
 
 	}

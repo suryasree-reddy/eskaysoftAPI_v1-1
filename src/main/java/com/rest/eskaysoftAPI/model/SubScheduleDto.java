@@ -12,8 +12,10 @@ public class SubScheduleDto implements Serializable {
 	private String scheduleName;
 	private Long scheduleId;
 
+	private boolean deleteFlag = true;
+
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Long id) {
@@ -21,7 +23,7 @@ public class SubScheduleDto implements Serializable {
 	}
 
 	public Long getScheduleId() {
-		return scheduleId;
+		return this.scheduleId;
 	}
 
 	public void setScheduleId(Long scheduleId) {
@@ -29,7 +31,7 @@ public class SubScheduleDto implements Serializable {
 	}
 
 	public String getSubScheduleName() {
-		return subScheduleName;
+		return this.subScheduleName;
 	}
 
 	public void setSubScheduleName(String subScheduleName) {
@@ -37,7 +39,7 @@ public class SubScheduleDto implements Serializable {
 	}
 
 	public Long getSubScheduleIndex() {
-		return subScheduleIndex;
+		return this.subScheduleIndex;
 	}
 
 	public void setSubScheduleIndex(Long subScheduleIndex) {
@@ -52,5 +54,12 @@ public class SubScheduleDto implements Serializable {
 		this.scheduleName = scheduleName;
 	}
 
+	public boolean isDeleteFlag() {
+		return deleteFlag;
+	}
+
+	public void setDeleteFlag(boolean deleteFlag) {
+		this.deleteFlag = deleteFlag;
+	}
 
 }

@@ -11,13 +11,18 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "AccountOpenings",uniqueConstraints = { @UniqueConstraint(columnNames = {"code", "accountName","opening"})})
+@Table(name = "accountopenings", uniqueConstraints = {
+@UniqueConstraint(columnNames = {"code"}),
+@UniqueConstraint(columnNames = {"accountName"}),
+@UniqueConstraint(columnNames = {"town"}),
+@UniqueConstraint(columnNames = {"opening"}),
+@UniqueConstraint(columnNames = {"type"})
+})
 public class AccountOpenings implements Serializable {
 	private static final long serialVersionUID = 2099654952913091298L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "AccountOpeningId", length = 20)
 	private Long id;
 	
 	@Column(name = "code", length = 6, nullable = false)

@@ -6,7 +6,6 @@ import javax.annotation.Resource;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -25,56 +24,54 @@ import com.rest.eskaysoftAPI.service.CustomerWiseDiscountsService;
 @Path("/customerwisediscount")
 public class CustomerWiseDiscountsResource {
 	private static final Logger logger = LoggerFactory.getLogger(CustomerWiseDiscountsResource.class);
-	
+
 	@Autowired
 	CustomerWiseDiscountsService customerWiseDiscountsService;
 
 	@GET
 	@Produces("application/json")
-    public List<CustomerWiseDiscountsDto> findAll(){
-        return customerWiseDiscountsService.listAllCustomerWiseDiscounts();
-    }
-	
+	public List<CustomerWiseDiscountsDto> findAll() {
+		return customerWiseDiscountsService.listAllCustomerWiseDiscounts();
+	}
+
 	@GET
 	@Path("/{id}")
 	@Produces("application/json")
-	public CustomerWiseDiscounts findOne(@PathParam("id") long id){
+	public CustomerWiseDiscountsDto findOne(@PathParam("id") long id) {
 		if (logger.isDebugEnabled()) {
 			logger.debug("Requsted ID = " + id);
 		}
-        return customerWiseDiscountsService.getCustomerWiseDiscountsById(id);
+		return customerWiseDiscountsService.getCustomerWiseDiscountsById(id);
 
-    }
+	}
 
-    @POST
-    @Consumes("application/json")
-    @Produces("application/json")
-    public CustomerWiseDiscounts create(@RequestBody CustomerWiseDiscounts customerWiseDiscounts){
-    	if (logger.isDebugEnabled()) {
+	/*
+	 * @POST
+	 * 
+	 * @Consumes("application/json")
+	 * 
+	 * @Produces("application/json") public CustomerWiseDiscounts
+	 * create(@RequestBody CustomerWiseDiscounts customerWiseDiscounts){ if
+	 * (logger.isDebugEnabled()) { logger.debug("Requsted customerWiseDiscounts = "
+	 * + customerWiseDiscounts.getId()); } return
+	 * customerWiseDiscountsService.create(customerWiseDiscounts); }
+	 */
+
+	@PUT
+	@Consumes("application/json")
+	@Produces("application/json")
+	public CustomerWiseDiscountsDto update(@RequestBody CustomerWiseDiscountsDto customerWiseDiscounts) {
+		if (logger.isDebugEnabled()) {
 			logger.debug("Requsted customerWiseDiscounts = " + customerWiseDiscounts.getId());
 		}
-        return customerWiseDiscountsService.create(customerWiseDiscounts);
-    }
+		return customerWiseDiscountsService.save(customerWiseDiscounts);
+	}
 
-    @PUT
-    @Consumes("application/json")
-    @Produces("application/json")
-    public CustomerWiseDiscounts update(@RequestBody CustomerWiseDiscounts customerWiseDiscounts){
-    	if (logger.isDebugEnabled()) {
-			logger.debug("Requsted customerWiseDiscounts = " + customerWiseDiscounts.getId());
-		}
-        return customerWiseDiscountsService.saveCustomerWiseDiscounts(customerWiseDiscounts);
-    }
-
-
-    @DELETE
-    @Path("/{id}")
-    @Produces("application/json")
-    public boolean deleteCustomerWiseDiscounts(@PathParam("id") long id)
-    {
-        return customerWiseDiscountsService.deleteCustomerWiseDiscounts(id);
-    }
-
-
+	@DELETE
+	@Path("/{id}")
+	@Produces("application/json")
+	public boolean deleteCustomerWiseDiscounts(@PathParam("id") long id) {
+		return customerWiseDiscountsService.deleteCustomerWiseDiscounts(id);
+	}
 
 }

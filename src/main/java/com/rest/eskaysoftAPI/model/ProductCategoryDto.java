@@ -2,6 +2,7 @@ package com.rest.eskaysoftAPI.model;
 
 import java.io.Serializable;
 
+
 public class ProductCategoryDto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -10,7 +11,7 @@ public class ProductCategoryDto implements Serializable {
 	private String productCategoryName;
 
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Long id) {

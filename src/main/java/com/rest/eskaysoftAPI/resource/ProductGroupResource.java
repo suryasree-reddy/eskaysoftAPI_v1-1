@@ -17,8 +17,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.rest.eskaysoftAPI.entity.ProductGroup;
-import com.rest.eskaysoftAPI.model.ProductGroupDto;
+import com.rest.eskaysoftAPI.entity.Productgroup;
+import com.rest.eskaysoftAPI.model.ProductgroupDto;
 import com.rest.eskaysoftAPI.service.ProductGroupService;
 
 @Resource(name = "productgroup")
@@ -31,14 +31,14 @@ public class ProductGroupResource {
 
 	@GET
 	@Produces("application/json")
-    public List<ProductGroupDto> findAll(){
+    public List<ProductgroupDto> findAll(){
         return productGroupService.listAllProductGroups();
     }
 	
 	@GET
 	@Path("/{id}")
 	@Produces("application/json")
-	public ProductGroup findOne(@PathParam("id") long id){
+	public Productgroup findOne(@PathParam("id") long id){
 		if (logger.isDebugEnabled()) {
 			logger.debug("Requsted ID = " + id);
 		}
@@ -49,7 +49,7 @@ public class ProductGroupResource {
     @POST
     @Consumes("application/json")
     @Produces("application/json")
-    public ProductGroup create(@RequestBody ProductGroup productgroup){
+    public Productgroup create(@RequestBody Productgroup productgroup){
     	if (logger.isDebugEnabled()) {
 			logger.debug("Requsted productgroup = " + productgroup.getProductGroupName());
 		}
@@ -59,11 +59,11 @@ public class ProductGroupResource {
     @PUT
     @Consumes("application/json")
     @Produces("application/json")
-    public ProductGroup update(@RequestBody ProductGroup productgroup){
+    public Productgroup update(@RequestBody Productgroup productgroup){
     	if (logger.isDebugEnabled()) {
 			logger.debug("Requsted productgroup = " + productgroup.getId());
 		}
-        return productGroupService.saveProductGroup(productgroup);
+        return productGroupService.updateProductGroup(productgroup);
     }
     
     @DELETE

@@ -12,7 +12,7 @@ public interface CompanyService {
 
 	boolean deleteCompany(Long id);
 
-	CompanyDto save(CompanyDto company);
+	CompanyDto updatecompany(CompanyDto company);
 
 	CompanyDto create(CompanyDto company);
 

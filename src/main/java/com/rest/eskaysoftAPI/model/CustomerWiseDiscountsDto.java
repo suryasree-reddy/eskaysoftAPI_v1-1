@@ -2,44 +2,45 @@ package com.rest.eskaysoftAPI.model;
 
 import java.io.Serializable;
 
-public class CustomerWiseDiscountsDto implements Serializable{
+public class CustomerWiseDiscountsDto implements Serializable {
+	
 	private static final long serialVersionUID = 655159852262403024L;
 	private Long id;
-	private Long accountInformationId;
-	private Long companiId;
+	private Long companyId;
+	private String companyName;
 	private Double disc;
 
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
 
-	public Long getAccountInformationId() {
-		return accountInformationId;
+	public Long getCompanyId() {
+		return companyId;
 	}
 
-	public void setAccountInformationId(Long accountInformationId) {
-		this.accountInformationId = accountInformationId;
+	public void setCompanyId(Long companyId) {
+		this.companyId = companyId;
 	}
 
-	public Long getCompaniId() {
-		return companiId;
+	public String getCompanyName() {
+		return this.companyName;
 	}
 
-	public void setCompaniId(Long companiId) {
-		this.companiId = companiId;
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
 	}
 
 	public Double getDisc() {
-		return disc;
+		return this.disc;
 	}
 
 	public void setDisc(Double disc) {
 		this.disc = disc;
 	}
 
-	
 }

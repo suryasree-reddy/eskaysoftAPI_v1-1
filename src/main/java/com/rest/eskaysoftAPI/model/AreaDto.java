@@ -14,6 +14,7 @@ public class AreaDto implements Serializable {
 	
 	private String businessExecutiveName;
 
+	private boolean deleteFlag = true;
 	
 	public Long getId() {
 		return id;
@@ -45,6 +46,14 @@ public class AreaDto implements Serializable {
 
 	public void setBusinessExecutiveName(String businessExecutiveName) {
 		this.businessExecutiveName = businessExecutiveName;
+	}
+
+	public boolean isDeleteFlag() {
+		return deleteFlag;
+	}
+
+	public void setDeleteFlag(boolean deleteFlag) {
+		this.deleteFlag = deleteFlag;
 	}
 
 	

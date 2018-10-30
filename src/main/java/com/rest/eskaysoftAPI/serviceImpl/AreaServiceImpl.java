@@ -47,6 +47,8 @@ public class AreaServiceImpl implements AreaService {
 		AreaDto areaModel = new AreaDto();
 		BeanUtils.copyProperties(area, areaModel);
 		areaModel.setBusinessExecutiveId(area.getBusinessExecutiveId().getId());
+		areaModel.setBusinessExecutiveName(area.getBusinessExecutiveId().getName());
+
 		return areaModel;
 
 	}

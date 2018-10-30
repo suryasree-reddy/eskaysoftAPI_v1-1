@@ -2,19 +2,18 @@ package com.rest.eskaysoftAPI.service;
 
 import java.util.List;
 
-import com.rest.eskaysoftAPI.entity.Product;
 import com.rest.eskaysoftAPI.model.ProductDto;
 
 public interface ProductService {
 
-    List<ProductDto> listAllProduct();
+	List<ProductDto> listAllProduct();
 
-    Product getProductById(Long id);
+	ProductDto getProductById(Long id);
 
-    Product saveProduct(Product schedule);
+	ProductDto updateProduct(ProductDto product);
 
-    boolean deleteProduct(Long id);
+	boolean deleteProduct(Long id);
 
-    Product create(Product schedule);
+	ProductDto create(ProductDto productModel);
 
 }

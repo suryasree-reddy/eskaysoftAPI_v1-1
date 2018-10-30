@@ -14,6 +14,8 @@ public class DistrictsDto implements Serializable {
 
 	private String stateName;
 
+	private boolean deleteFlag = true;
+
 	public Long getId() {
 		return id;
 	}
@@ -44,6 +46,14 @@ public class DistrictsDto implements Serializable {
 
 	public void setStateId(Long stateId) {
 		this.stateId = stateId;
+	}
+
+	public boolean isDeleteFlag() {
+		return deleteFlag;
+	}
+
+	public void setDeleteFlag(boolean deleteFlag) {
+		this.deleteFlag = deleteFlag;
 	}
 
 }

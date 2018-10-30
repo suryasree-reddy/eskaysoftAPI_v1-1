@@ -17,7 +17,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.rest.eskaysoftAPI.entity.Product;
 import com.rest.eskaysoftAPI.model.ProductDto;
 import com.rest.eskaysoftAPI.service.ProductService;
 
@@ -27,53 +26,50 @@ public class ProductResource {
 	private static final Logger logger = LoggerFactory.getLogger(ProductResource.class);
 
 	@Autowired
-    ProductService productService;
+	ProductService productService;
 
 	@GET
 	@Produces("application/json")
-    public List<ProductDto> findAll(){
-        return productService.listAllProduct();
-    }
-	
+	public List<ProductDto> findAll() {
+		return productService.listAllProduct();
+	}
+
 	@GET
 	@Path("/{id}")
 	@Produces("application/json")
-	public Product findOne(@PathParam("id") long id){
+	public ProductDto findOne(@PathParam("id") long id) {
 		if (logger.isDebugEnabled()) {
 			logger.debug("Requsted ID = " + id);
 		}
-        return productService.getProductById(id);
+		return productService.getProductById(id);
 
-    }
+	}
 
-    @POST
-    @Consumes("application/json")
-    @Produces("application/json")
-    public Product create(@RequestBody Product product){
-    	if (logger.isDebugEnabled()) {
+	@POST
+	@Consumes("application/json")
+	@Produces("application/json")
+	public ProductDto create(@RequestBody ProductDto product) {
+		if (logger.isDebugEnabled()) {
 			logger.debug("Requsted product = " + product.getName());
 		}
-        return productService.create(product);
-    }
+		return productService.create(product);
+	}
 
-    @PUT
-    @Consumes("application/json")
-    @Produces("application/json")
-    public Product update(@RequestBody Product product){
-    	if (logger.isDebugEnabled()) {
+	@PUT
+	@Consumes("application/json")
+	@Produces("application/json")
+	public ProductDto update(@RequestBody ProductDto product) {
+		if (logger.isDebugEnabled()) {
 			logger.debug("Requsted product = " + product.getId());
 		}
-        return productService.saveProduct(product);
-    }
+		return productService.updateProduct(product);
+	}
 
-
-    @DELETE
-    @Path("/{id}")
-    @Produces("application/json")
-    public boolean delete(@PathParam("id") long id)
-    {
-        return productService.deleteProduct(id);
-    }
-
+	@DELETE
+	@Path("/{id}")
+	@Produces("application/json")
+	public boolean delete(@PathParam("id") long id) {
+		return productService.deleteProduct(id);
+	}
 
 }

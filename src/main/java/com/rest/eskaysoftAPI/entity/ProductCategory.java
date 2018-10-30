@@ -8,9 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "productcategory")
+@Table(name = "productcategory", uniqueConstraints = { @UniqueConstraint(columnNames = { "productCategoryName" })})
 public class ProductCategory implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -18,10 +19,12 @@ public class ProductCategory implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@Column(name = "productCategoryName", nullable = false, length = 40)
+
+	@Column(name = "productCategoryName", nullable = false, length = 20)
 	private String productCategoryName;
 
+	@Column(name = "deleteFlag", nullable = false)
+	private boolean deleteFlag = true;
 
 	public Long getId() {
 		return this.id;
@@ -37,6 +40,14 @@ public class ProductCategory implements Serializable {
 
 	public void setProductCategoryName(String productCategoryName) {
 		this.productCategoryName = productCategoryName;
+	}
+
+	public boolean isDeleteFlag() {
+		return this.deleteFlag;
+	}
+
+	public void setDeleteFlag(boolean deleteFlag) {
+		this.deleteFlag = deleteFlag;
 	}
 
 }

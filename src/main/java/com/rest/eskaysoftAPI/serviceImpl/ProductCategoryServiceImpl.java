@@ -43,7 +43,7 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 	}
 
 	@Override
-	public ProductCategory saveProductCategory(ProductCategory productcategory) {
+	public ProductCategory updateProductCategory(ProductCategory productcategory) {
 		return procatrepo.save(productcategory);
 	}
 

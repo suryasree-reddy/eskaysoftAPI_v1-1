@@ -4,9 +4,12 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,16 +19,15 @@ public class CustomerWiseDiscounts implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
-	@Column(name = "accountInformationId")
-	private AccountInformation accountInformationId;
-
-	@Column(name = "companiId")
-	private Company companiId;
+	
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "companyId", nullable = false)
+	private Company companyId;
 
 	@Column(name = "Disc", nullable = false)
 	private Double disc;
-
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -34,20 +36,12 @@ public class CustomerWiseDiscounts implements Serializable {
 		this.id = id;
 	}
 
-	public AccountInformation getAccountInformationId() {
-		return accountInformationId;
+	public Company getCompanyId() {
+		return companyId;
 	}
 
-	public void setAccountInformationId(AccountInformation accountInformationId) {
-		this.accountInformationId = accountInformationId;
-	}
-
-	public Company getCompaniId() {
-		return companiId;
-	}
-
-	public void setCompaniId(Company companiId) {
-		this.companiId = companiId;
+	public void setCompanyId(Company companyId) {
+		this.companyId = companyId;
 	}
 
 	public Double getDisc() {
@@ -57,5 +51,6 @@ public class CustomerWiseDiscounts implements Serializable {
 	public void setDisc(Double disc) {
 		this.disc = disc;
 	}
+
 
 }

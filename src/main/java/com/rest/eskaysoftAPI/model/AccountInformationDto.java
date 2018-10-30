@@ -9,16 +9,24 @@ public class AccountInformationDto implements Serializable {
 
 	private Long id;
 
-	private String accountName;
+	private String accountname;
 	private Long subScheduleId;
+	private String subScheduleName;
 	private Long scheduleId;
+	private String scheduleName;
+	private Long statesId;
+	private String stateName;
+	private Long districtsId;
+	private String districtName;
+
+	private Long areaId;
+	private String areaName;
+
 	private String address1;
 	private String address2;
 	private String town;
 	private Integer pin;
-	private Long stateId;
-	private Long areaId;
-	private Long districtId;
+
 	private Long phone;
 	private Long mobile;
 	private String email;
@@ -56,12 +64,12 @@ public class AccountInformationDto implements Serializable {
 		this.id = id;
 	}
 
-	public String getAccountName() {
-		return accountName;
+	public String getAccountname() {
+		return accountname;
 	}
 
-	public void setAccountName(String accountName) {
-		this.accountName = accountName;
+	public void setAccountname(String accountname) {
+		this.accountname = accountname;
 	}
 
 	public Long getSubScheduleId() {
@@ -72,12 +80,76 @@ public class AccountInformationDto implements Serializable {
 		this.subScheduleId = subScheduleId;
 	}
 
+	public String getSubScheduleName() {
+		return subScheduleName;
+	}
+
+	public void setSubScheduleName(String subScheduleName) {
+		this.subScheduleName = subScheduleName;
+	}
+
 	public Long getScheduleId() {
 		return scheduleId;
 	}
 
 	public void setScheduleId(Long scheduleId) {
 		this.scheduleId = scheduleId;
+	}
+
+	public String getScheduleName() {
+		return scheduleName;
+	}
+
+	public void setScheduleName(String scheduleName) {
+		this.scheduleName = scheduleName;
+	}
+
+	public String getDistrictName() {
+		return districtName;
+	}
+
+	public void setDistrictName(String districtName) {
+		this.districtName = districtName;
+	}
+
+	public Long getStatesId() {
+		return statesId;
+	}
+
+	public void setStatesId(Long statesId) {
+		this.statesId = statesId;
+	}
+
+	public String getStateName() {
+		return stateName;
+	}
+
+	public void setStateName(String stateName) {
+		this.stateName = stateName;
+	}
+
+	public Long getDistrictsId() {
+		return districtsId;
+	}
+
+	public void setDistrictsId(Long districtsId) {
+		this.districtsId = districtsId;
+	}
+
+	public Long getAreaId() {
+		return areaId;
+	}
+
+	public void setAreaId(Long areaId) {
+		this.areaId = areaId;
+	}
+
+	public String getAreaName() {
+		return areaName;
+	}
+
+	public void setAreaName(String areaName) {
+		this.areaName = areaName;
 	}
 
 	public String getAddress1() {
@@ -110,30 +182,6 @@ public class AccountInformationDto implements Serializable {
 
 	public void setPin(Integer pin) {
 		this.pin = pin;
-	}
-
-	public Long getStateId() {
-		return stateId;
-	}
-
-	public void setStateId(Long stateId) {
-		this.stateId = stateId;
-	}
-
-	public Long getAreaId() {
-		return areaId;
-	}
-
-	public void setAreaId(Long areaId) {
-		this.areaId = areaId;
-	}
-
-	public Long getDistrictId() {
-		return districtId;
-	}
-
-	public void setDistrictId(Long districtId) {
-		this.districtId = districtId;
 	}
 
 	public Long getPhone() {
@@ -359,7 +407,5 @@ public class AccountInformationDto implements Serializable {
 	public void setSpecialRemarks(String specialRemarks) {
 		this.specialRemarks = specialRemarks;
 	}
-
-	
 
 }

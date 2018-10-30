@@ -13,10 +13,10 @@ public class ProductDto implements Serializable {
 	private String companyName;
 
 	private Long productgroupId;
-	private String productgroupName;
+	private String productGroupName;
 
 	private Long productcategoryId;
-	private String productcategoryName;
+	private String productCategoryName;
 
 	private Long taxId;
 	private Long tax;
@@ -89,20 +89,20 @@ public class ProductDto implements Serializable {
 		this.companyName = companyName;
 	}
 
-	public String getProductgroupName() {
-		return this.productgroupName;
+	public String getProductGroupName() {
+		return productGroupName;
 	}
 
-	public void setProductgroupName(String productgroupName) {
-		this.productgroupName = productgroupName;
+	public void setProductGroupName(String productGroupName) {
+		this.productGroupName = productGroupName;
 	}
 
-	public String getProductcategoryName() {
-		return this.productcategoryName;
+	public String getProductCategoryName() {
+		return productCategoryName;
 	}
 
-	public void setProductcategoryName(String productcategoryName) {
-		this.productcategoryName = productcategoryName;
+	public void setProductCategoryName(String productCategoryName) {
+		this.productCategoryName = productCategoryName;
 	}
 
 	public Long getTaxId() {

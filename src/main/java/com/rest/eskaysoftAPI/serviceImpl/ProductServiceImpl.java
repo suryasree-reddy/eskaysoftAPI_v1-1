@@ -48,9 +48,9 @@ public class ProductServiceImpl implements ProductService {
 			productModel.setCompanyId(product.getCompanyId().getId());
 			productModel.setCompanyName(product.getCompanyId().getCompanyName());
 			productModel.setProductgroupId(product.getProductgroupId().getId());
-			productModel.setProductgroupName(product.getProductgroupId().getProductGroupName());
+			productModel.setProductGroupName(product.getProductgroupId().getProductGroupName());
 			productModel.setProductcategoryId(product.getProductcategoryId().getId());
-			productModel.setProductcategoryName(product.getProductcategoryId().getProductCategoryName());
+			productModel.setProductCategoryName(product.getProductcategoryId().getProductCategoryName());
 			productModel.setTaxId(product.getTaxId().getId());
 			productModel.setTax(product.getTaxId().getTax());
 
@@ -72,8 +72,8 @@ public class ProductServiceImpl implements ProductService {
 		prodModel.setCompanyName(product.getCompanyId().getCompanyName());
 		prodModel.setCompanyId(product.getCompanyId().getId());
 		prodModel.setProductgroupId(product.getProductgroupId().getId());
-		prodModel.setProductgroupName(product.getProductgroupId().getProductGroupName());
-		prodModel.setProductcategoryName(product.getProductcategoryId().getProductCategoryName());
+		prodModel.setProductGroupName(product.getProductgroupId().getProductGroupName());
+		prodModel.setProductCategoryName(product.getProductcategoryId().getProductCategoryName());
 		prodModel.setProductcategoryId(product.getProductcategoryId().getId());
 
 		return prodModel;

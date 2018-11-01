@@ -15,10 +15,7 @@ import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "products", uniqueConstraints = { @UniqueConstraint(columnNames = { "name" }),
-		@UniqueConstraint(columnNames = { "packing" }), @UniqueConstraint(columnNames = { "boxQty" }),
-		@UniqueConstraint(columnNames = { "contents" }), @UniqueConstraint(columnNames = { "schemeQty" }),
-		@UniqueConstraint(columnNames = { "isNetRateItem" }), @UniqueConstraint(columnNames = { "free" }),
-		@UniqueConstraint(columnNames = { "productCode" }) })
+		@UniqueConstraint(columnNames = { "productcode" }) })
 public class Product implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -27,7 +24,7 @@ public class Product implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "name", length = 20, nullable = false)
+	@Column(name = "name", length = 30, nullable = false)
 	private String name;
 
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
@@ -74,7 +71,7 @@ public class Product implements Serializable {
 	 * @Column(name = "tax") private Double tax;
 	 */
 
-	@Column(name = "productCode", nullable = false)
+	@Column(name = "productcode", nullable = false)
 	private String productcode;
 
 	public Long getId() {

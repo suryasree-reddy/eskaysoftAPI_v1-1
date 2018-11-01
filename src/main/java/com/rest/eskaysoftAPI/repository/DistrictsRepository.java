@@ -13,7 +13,7 @@ import com.rest.eskaysoftAPI.entity.Districts;
 @Transactional
 public interface DistrictsRepository extends JpaRepository<Districts, Long> {
 	public List<Districts> findAllByOrderByDistrictNameAsc();
-	public List<Districts> findBystatesIdId(Long id);
+	public List<Districts> findBystateIdId(Long id);
 
 }
 

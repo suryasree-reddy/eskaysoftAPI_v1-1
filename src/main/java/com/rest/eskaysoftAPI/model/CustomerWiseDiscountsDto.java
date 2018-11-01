@@ -3,11 +3,13 @@ package com.rest.eskaysoftAPI.model;
 import java.io.Serializable;
 
 public class CustomerWiseDiscountsDto implements Serializable {
-	
+
 	private static final long serialVersionUID = 655159852262403024L;
 	private Long id;
 	private Long companyId;
 	private String companyName;
+	private Long accountInformationId;
+	private String accountName;
 	private Double disc;
 
 	public Long getId() {
@@ -17,7 +19,6 @@ public class CustomerWiseDiscountsDto implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
 
 	public Long getCompanyId() {
 		return companyId;
@@ -41,6 +42,22 @@ public class CustomerWiseDiscountsDto implements Serializable {
 
 	public void setDisc(Double disc) {
 		this.disc = disc;
+	}
+
+	public Long getAccountInformationId() {
+		return accountInformationId;
+	}
+
+	public void setAccountInformationId(Long accountInformationId) {
+		this.accountInformationId = accountInformationId;
+	}
+
+	public String getAccountName() {
+		return accountName;
+	}
+
+	public void setAccountName(String accountName) {
+		this.accountName = accountName;
 	}
 
 }

@@ -12,15 +12,15 @@ import com.rest.eskaysoftAPI.entity.AccountInformation;
 @Repository("accountInformationRepository")
 @Transactional
 public interface AccountInformationRepository extends JpaRepository<AccountInformation, Long> {
-	public List<AccountInformation> findAllByOrderByAccountnameAsc();
+	public List<AccountInformation> findAllByOrderByAccountNameAsc();
 
 	public List<AccountInformation> findByscheduleIdId(Long id);
 
 	public List<AccountInformation> findBysubScheduleIdId(Long id);
 
-	public List<AccountInformation> findByStatesIdId(Long id);
+	public List<AccountInformation> findByStateIdId(Long id);
 
-	public List<AccountInformation> findBydistrictsIdId(Long id);
+	public List<AccountInformation> findBydistrictIdId(Long id);
 
 	public List<AccountInformation> findByareaIdId(Long id);
 

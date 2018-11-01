@@ -19,15 +19,22 @@ public class CustomerWiseDiscounts implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "companyId", nullable = false)
 	private Company companyId;
 
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "accountInformationId", nullable = false)
+	private AccountInformation accountInformationId;
+	
+	@Column(name = "selectFlag", nullable = false)
+	private boolean selectFlag = true;
+
+
 	@Column(name = "Disc", nullable = false)
 	private Double disc;
-	
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -52,5 +59,20 @@ public class CustomerWiseDiscounts implements Serializable {
 		this.disc = disc;
 	}
 
+	public AccountInformation getAccountInformationId() {
+		return accountInformationId;
+	}
+
+	public void setAccountInformationId(AccountInformation accountInformationId) {
+		this.accountInformationId = accountInformationId;
+	}
+
+	public boolean isSelectFlag() {
+		return selectFlag;
+	}
+
+	public void setSelectFlag(boolean selectFlag) {
+		this.selectFlag = selectFlag;
+	}
 
 }

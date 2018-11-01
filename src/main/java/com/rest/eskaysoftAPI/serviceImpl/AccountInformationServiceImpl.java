@@ -9,12 +9,14 @@ import org.springframework.stereotype.Service;
 
 import com.rest.eskaysoftAPI.entity.AccountInformation;
 import com.rest.eskaysoftAPI.entity.Area;
+import com.rest.eskaysoftAPI.entity.BusinessExecutive;
 import com.rest.eskaysoftAPI.entity.Districts;
 import com.rest.eskaysoftAPI.entity.Schedule;
 import com.rest.eskaysoftAPI.entity.States;
 import com.rest.eskaysoftAPI.entity.SubSchedule;
 import com.rest.eskaysoftAPI.exception.NotFoundException;
 import com.rest.eskaysoftAPI.model.AccountInformationDto;
+import com.rest.eskaysoftAPI.model.AreaDto;
 import com.rest.eskaysoftAPI.repository.AccountInformationRepository;
 import com.rest.eskaysoftAPI.repository.AreaRepository;
 import com.rest.eskaysoftAPI.repository.DistrictsRepository;
@@ -47,7 +49,7 @@ public class AccountInformationServiceImpl implements AccountInformationService 
 	@Override
 	public List<AccountInformationDto> listAllAccountInformation() {
 		List<AccountInformationDto> ailist = new ArrayList<>();
-		acinfrRepo.findAllByOrderByAccountnameAsc().forEach(ai -> {
+		acinfrRepo.findAllByOrderByAccountNameAsc().forEach(ai -> {
 			AccountInformationDto aimodel = new AccountInformationDto();
 			BeanUtils.copyProperties(ai, aimodel);
 			aimodel.setScheduleId(ai.getScheduleId().getId());
@@ -56,10 +58,10 @@ public class AccountInformationServiceImpl implements AccountInformationService 
 			aimodel.setSubScheduleName(ai.getSubscheduleId().getSubScheduleName());
 			aimodel.setAreaId(ai.getAreaId().getId());
 			aimodel.setAreaName(ai.getAreaId().getAreaName());
-			aimodel.setDistrictsId(ai.getDistrictsId().getId());
-			aimodel.setDistrictName(ai.getDistrictsId().getDistrictName());
-			aimodel.setStatesId(ai.getStatesId().getId());
-			aimodel.setStateName(ai.getStatesId().getStateName());
+			aimodel.setDistrictId(ai.getDistrictId().getId());
+			aimodel.setDistrictName(ai.getDistrictId().getDistrictName());
+			aimodel.setStateId(ai.getStateId().getId());
+			aimodel.setStateName(ai.getStateId().getStateName());
 			ailist.add(aimodel);
 		});
 
@@ -77,12 +79,12 @@ public class AccountInformationServiceImpl implements AccountInformationService 
 		aimodel.setScheduleName(ain.getScheduleId().getScheduleName());
 		aimodel.setSubScheduleId(ain.getSubscheduleId().getId());
 		aimodel.setSubScheduleName(ain.getSubscheduleId().getSubScheduleName());
-		aimodel.setStatesId(ain.getStatesId().getId());
-		aimodel.setStateName(ain.getStatesId().getStateName());
+		aimodel.setStateId(ain.getStateId().getId());
+		aimodel.setStateName(ain.getStateId().getStateName());
 		aimodel.setAreaId(ain.getAreaId().getId());
 		aimodel.setAreaName(ain.getAreaId().getAreaName());
-		aimodel.setDistrictsId(ain.getDistrictsId().getId());
-		aimodel.setDistrictName(ain.getDistrictsId().getDistrictName());
+		aimodel.setDistrictId(ain.getDistrictId().getId());
+		aimodel.setDistrictName(ain.getDistrictId().getDistrictName());
 
 		return aimodel;
 	}
@@ -96,34 +98,10 @@ public class AccountInformationServiceImpl implements AccountInformationService 
 			acinfrRepo.delete(ai);
 			status = true;
 		}
-		List<AccountInformation> aiList = new ArrayList<>();
-		aiList = acinfrRepo.findByscheduleIdId(ai.getScheduleId().getId());
-		aiList = acinfrRepo.findBysubScheduleIdId(ai.getSubscheduleId().getId());
-		aiList = acinfrRepo.findByStatesIdId(ai.getStatesId().getId());
-		aiList = acinfrRepo.findBydistrictsIdId(ai.getDistrictsId().getId());
-		aiList = acinfrRepo.findByareaIdId(ai.getAreaId().getId());
 
-		if (null == aiList || aiList.isEmpty()) {
-			Schedule sc = ai.getScheduleId();
-			sc.setDeleteFlag(true);
-			screpo.save(sc);
-			SubSchedule sb = ai.getSubscheduleId();
-			sb.setDeleteFlag(true);
-			subrepo.save(sb);
-			Area area = ai.getAreaId();
-			area.setDeleteFlag(true);
-			aerarepo.save(area);
-			States states = ai.getStatesId();
-			states.setDeleteFlag(true);
-			staterepo.save(states);
-			Districts ds = ai.getDistrictsId();
-			ds.setDeleteFlag(true);
-			disrepo.save(ds);
-
-		}
 		return status;
 	}
-
+	
 	@Override
 	public AccountInformationDto create(AccountInformationDto aimodel) {
 		AccountInformation ain = new AccountInformation();
@@ -137,14 +115,15 @@ public class AccountInformationServiceImpl implements AccountInformationService 
 		Area area = aerarepo.findById(aimodel.getAreaId())
 				.orElseThrow(() -> new NotFoundException(String.format("Districts %d not found", aimodel.getAreaId())));
 		ain.setAreaId(area);
-		Districts dis = disrepo.findById(aimodel.getDistrictsId()).orElseThrow(
-				() -> new NotFoundException(String.format("Districts %d not found", aimodel.getDistrictsId())));
-		ain.setDistrictsId(dis);
-		States st = staterepo.findById(aimodel.getStatesId())
-				.orElseThrow(() -> new NotFoundException(String.format("States %d not found", aimodel.getStatesId())));
-		ain.setStatesId(st);
+		Districts dis = disrepo.findById(aimodel.getDistrictId()).orElseThrow(
+				() -> new NotFoundException(String.format("Districts %d not found", aimodel.getDistrictId())));
+		ain.setDistrictId(dis);
+		States st = staterepo.findById(aimodel.getStateId())
+				.orElseThrow(() -> new NotFoundException(String.format("States %d not found", aimodel.getStateId())));
+		ain.setStateId(st);
 
 		BeanUtils.copyProperties(aimodel, ain);
+		ain = acinfrRepo.save(ain);
 		ain.setId(ain.getId());
 		return aimodel;
 	}
@@ -162,12 +141,12 @@ public class AccountInformationServiceImpl implements AccountInformationService 
 		Area area = aerarepo.findById(accountInformation.getAreaId()).orElseThrow(
 				() -> new NotFoundException(String.format("Districts %d not found", accountInformation.getAreaId())));
 		ai.setAreaId(area);
-		Districts dis = disrepo.findById(accountInformation.getDistrictsId()).orElseThrow(() -> new NotFoundException(
-				String.format("Districts %d not found", accountInformation.getDistrictsId())));
-		ai.setDistrictsId(dis);
-		States st = staterepo.findById(accountInformation.getStatesId()).orElseThrow(
-				() -> new NotFoundException(String.format("States %d not found", accountInformation.getStatesId())));
-		ai.setStatesId(st);
+		Districts dis = disrepo.findById(accountInformation.getDistrictId()).orElseThrow(() -> new NotFoundException(
+				String.format("Districts %d not found", accountInformation.getDistrictId())));
+		ai.setDistrictId(dis);
+		States st = staterepo.findById(accountInformation.getStateId()).orElseThrow(
+				() -> new NotFoundException(String.format("States %d not found", accountInformation.getStateId())));
+		ai.setStateId(st);
 		BeanUtils.copyProperties(accountInformation, ai);
 		ai = acinfrRepo.save(ai);
 		return accountInformation;

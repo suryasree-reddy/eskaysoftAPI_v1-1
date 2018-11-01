@@ -5,7 +5,6 @@ import java.util.List;
 import com.rest.eskaysoftAPI.model.AccountInformationDto;
 
 public interface AccountInformationService {
-
 	List<AccountInformationDto> listAllAccountInformation();
 
 	AccountInformationDto getAccountInformationById(Long id);

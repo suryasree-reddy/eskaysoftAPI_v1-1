@@ -7,10 +7,12 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.rest.eskaysoftAPI.entity.AccountInformation;
 import com.rest.eskaysoftAPI.entity.Company;
 import com.rest.eskaysoftAPI.entity.CustomerWiseDiscounts;
 import com.rest.eskaysoftAPI.exception.NotFoundException;
 import com.rest.eskaysoftAPI.model.CustomerWiseDiscountsDto;
+import com.rest.eskaysoftAPI.repository.AccountInformationRepository;
 import com.rest.eskaysoftAPI.repository.CompanyRepository;
 import com.rest.eskaysoftAPI.repository.CustomerWiseDiscountsRepository;
 import com.rest.eskaysoftAPI.service.CustomerWiseDiscountsService;
@@ -20,6 +22,10 @@ public class CustomerWiseDiscountServiceImpl implements CustomerWiseDiscountsSer
 
 	@Autowired
 	private CustomerWiseDiscountsRepository cuswiserepo;
+	
+	
+	@Autowired
+	private AccountInformationRepository airepo;
 
 	@Autowired
 	private CompanyRepository comprepo;
@@ -32,6 +38,8 @@ public class CustomerWiseDiscountServiceImpl implements CustomerWiseDiscountsSer
 			BeanUtils.copyProperties(customer, cusModel);
 			cusModel.setCompanyId(customer.getCompanyId().getId());
 			cusModel.setCompanyName(customer.getCompanyId().getCompanyName());
+			cusModel.setAccountInformationId(customer.getAccountInformationId().getId());
+			cusModel.setCompanyName(customer.getAccountInformationId().getAccountName());
 			cusList.add(cusModel);
 		});
 
@@ -46,11 +54,13 @@ public class CustomerWiseDiscountServiceImpl implements CustomerWiseDiscountsSer
 		BeanUtils.copyProperties(customerwise, cwdmodel);
 		cwdmodel.setCompanyId(customerwise.getCompanyId().getId());
 		cwdmodel.setCompanyName(customerwise.getCompanyId().getCompanyName());
+		cwdmodel.setAccountInformationId(customerwise.getAccountInformationId().getId());
+		cwdmodel.setAccountName(customerwise.getAccountInformationId().getAccountName());
 		return cwdmodel;
 	}
 
 	@Override
-	public CustomerWiseDiscountsDto save(CustomerWiseDiscountsDto customerWiseDiscountsDto) {
+	public CustomerWiseDiscountsDto updatecwd(CustomerWiseDiscountsDto customerWiseDiscountsDto) {
 		CustomerWiseDiscounts cwd = cuswiserepo.findById(customerWiseDiscountsDto.getId())
 				.orElseThrow(() -> new NotFoundException(
 						String.format("customerWiseDiscounts %d not found", customerWiseDiscountsDto.getId())));
@@ -61,13 +71,9 @@ public class CustomerWiseDiscountServiceImpl implements CustomerWiseDiscountsSer
 				return customerWiseDiscountsDto;
 			}
 		}
+
 		return null;
 	}
-
-	/*
-	 * @Override public CustomerWiseDiscounts save(CustomerWiseDiscounts cwd) {
-	 * return cuswiserepo.save(cwd); }
-	 */
 
 	@Override
 	public boolean deleteCustomerWiseDiscounts(Long id) {
@@ -88,6 +94,21 @@ public class CustomerWiseDiscountServiceImpl implements CustomerWiseDiscountsSer
 
 		}
 		return status;
+	}
+
+	@Override
+	public CustomerWiseDiscountsDto create(CustomerWiseDiscountsDto cdmodel) {
+		Company com = comprepo.findById(cdmodel.getCompanyId()).orElseThrow(
+				() -> new NotFoundException(String.format("Schedule %d not found", cdmodel.getCompanyId())));
+		AccountInformation ai = airepo.findById(cdmodel.getAccountInformationId()).orElseThrow(
+				() -> new NotFoundException(String.format("AccountInformation %d not found", cdmodel.getAccountInformationId())));
+		CustomerWiseDiscounts cwd = new CustomerWiseDiscounts();
+		BeanUtils.copyProperties(cdmodel, cwd);
+		cwd.setCompanyId(com);
+		cwd.setAccountInformationId(ai);
+		cwd = cuswiserepo.save(cwd);
+		cdmodel.setId(cwd.getId());
+		return cdmodel;
 	}
 
 }

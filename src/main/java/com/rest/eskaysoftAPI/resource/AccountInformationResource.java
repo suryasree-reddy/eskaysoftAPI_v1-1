@@ -50,7 +50,7 @@ public class AccountInformationResource {
 	@Produces("application/json")
 	public AccountInformationDto create(@RequestBody AccountInformationDto accountInformation) {
 		if (logger.isDebugEnabled()) {
-			logger.debug("Requsted AccountInformation = " + accountInformation.getAccountname());
+			logger.debug("Requsted AccountInformation = " + accountInformation.getAccountName());
 		}
 		return accountInformationService.create(accountInformation);
 	}

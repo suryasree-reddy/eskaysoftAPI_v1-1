@@ -24,19 +24,14 @@ public class DistrictServiceImpl implements DistrictService {
 	@Autowired
 	private StatesRepository statesRepo;
 
-	/*@Autowired
-	public void setdistrictsDao(DistrictsRepository districtsDao) {
-		this.DisRepo = districtsDao;
-	}*/
-
 	@Override
 	public List<DistrictsDto> listAllDistricts() {
 		List<DistrictsDto> districtsList = new ArrayList<>();
 		DisRepo.findAllByOrderByDistrictNameAsc().forEach(districts -> {
 			DistrictsDto districtsModel = new DistrictsDto();
 			BeanUtils.copyProperties(districts, districtsModel);
-			districtsModel.setStateName(districts.getStatesId().getStateName());
-			districtsModel.setStateId(districts.getStatesId().getId());
+			districtsModel.setStateName(districts.getStateId().getStateName());
+			districtsModel.setStateId(districts.getStateId().getId());
 			districtsList.add(districtsModel);
 		});
 
@@ -52,9 +47,9 @@ public class DistrictServiceImpl implements DistrictService {
 		if (districts != null) {
 			DisRepo.delete(districts);
 			status = true;
-			List<Districts> disList = DisRepo.findBystatesIdId(districts.getStatesId().getId());
+			List<Districts> disList = DisRepo.findBystateIdId(districts.getStateId().getId());
 			if (null == disList || disList.isEmpty()) {
-				States sts = districts.getStatesId();
+				States sts = districts.getStateId();
 				sts.setDeleteFlag(true);
 				statesRepo.save(sts);
 			}
@@ -72,7 +67,7 @@ public class DistrictServiceImpl implements DistrictService {
 			sts.setDeleteFlag(false);
 			statesRepo.save(sts);
 		}
-		districts.setStatesId(sts);
+		districts.setStateId(sts);
 		districts = DisRepo.save(districts);
 		dischModel.setId(districts.getId());
 		return dischModel;
@@ -88,7 +83,7 @@ public class DistrictServiceImpl implements DistrictService {
 			sts.setDeleteFlag(false);
 			statesRepo.save(sts);
 		}
-		districts.setStatesId(sts);
+		districts.setStateId(sts);
 		districts = DisRepo.save(districts);
 		return dischModel;
 	}
@@ -99,8 +94,8 @@ public class DistrictServiceImpl implements DistrictService {
 				.orElseThrow(() -> new NotFoundException(String.format("districts %d not found", id)));
 		DistrictsDto disModel = new DistrictsDto();
 		BeanUtils.copyProperties(districts, disModel);
-		disModel.setStateId(districts.getStatesId().getId());
-		disModel.setStateName(districts.getStatesId().getStateName());
+		disModel.setStateId(districts.getStateId().getId());
+		disModel.setStateName(districts.getStateId().getStateName());
 		return disModel;
 
 	}

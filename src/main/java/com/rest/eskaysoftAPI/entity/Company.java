@@ -15,8 +15,8 @@ import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "companies", uniqueConstraints = { @UniqueConstraint(columnNames = { "companyCode" }),
-		@UniqueConstraint(columnNames = { "companyName" }), @UniqueConstraint(columnNames = { "companyStatus" }),
-		@UniqueConstraint(columnNames = { "companyType" }) })
+		@UniqueConstraint(columnNames = { "companyName" })
+		 })
 public class Company implements Serializable {
 
 	private static final long serialVersionUID = 1L;

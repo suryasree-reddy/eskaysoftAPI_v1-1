@@ -12,9 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "accountInformation")
+@Table(name = "accountInformation" , uniqueConstraints = { @UniqueConstraint(columnNames = { "shortName" }) })
 public class AccountInformation implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -23,8 +24,8 @@ public class AccountInformation implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "accountname", length = 40, nullable = false)
-	private String accountname;
+	@Column(name = "accountName", length = 50, nullable = false)
+	private String accountName;
 
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "scheduleId", nullable = false)
@@ -35,30 +36,30 @@ public class AccountInformation implements Serializable {
 	private SubSchedule subScheduleId;
 
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
-	@JoinColumn(name = "statesId", nullable = false)
-	private States statesId;
+	@JoinColumn(name = "stateId", nullable = false)
+	private States stateId;
 
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
-	@JoinColumn(name = "districtsId", nullable = false)
-	private Districts districtsId;
+	@JoinColumn(name = "districtId", nullable = false)
+	private Districts districtId;
 
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "areaId", nullable = false)
 	private Area areaId;
 
-	@Column(name = "address1", length = 40, nullable = false)
+	@Column(name = "address1", length = 50, nullable = false)
 	private String address1;
 
-	@Column(name = "address2", length = 40, nullable = false)
+	@Column(name = "address2", length = 50, nullable = false)
 	private String address2;
 
 	@Column(name = "town", length = 20, nullable = false)
 	private String town;
 
-	@Column(name = "pin", nullable = false)
+	@Column(name = "pin", length= 6, nullable = false)
 	private Integer pin;
 
-	@Column(name = "phone", nullable = false)
+	@Column(name = "phone", nullable = false, length = 10)
 	private Long phone;
 
 	@Column(name = "mobile", nullable = false)
@@ -118,16 +119,16 @@ public class AccountInformation implements Serializable {
 	@Column(name = "creditLimit", nullable = false)
 	private Double creditLimit;
 
-	@Column(name = "dueDays", nullable = false)
+	@Column(name = "dueDays", length = 3, nullable = false)
 	private Integer dueDays;
 
 	@Column(name = "contactPerson", length = 30, nullable = false)
 	private String contactPerson;
 
-	@Column(name = "hsnCode", nullable = false)
+	@Column(name = "hsnCode",length = 8, nullable = false)
 	private Long hsnCode;
 
-	@Column(name = "sacCode", nullable = false)
+	@Column(name = "sacCode", length = 8, nullable = false)
 	private Long sacCode;
 
 	@Column(name = "rateOfTax", nullable = false)
@@ -150,12 +151,36 @@ public class AccountInformation implements Serializable {
 		this.id = id;
 	}
 
-	public String getAccountname() {
-		return accountname;
+	public String getAccountName() {
+		return accountName;
 	}
 
-	public void setAccountname(String accountname) {
-		this.accountname = accountname;
+	public void setAccountName(String accountName) {
+		this.accountName = accountName;
+	}
+
+	public SubSchedule getSubScheduleId() {
+		return subScheduleId;
+	}
+
+	public void setSubScheduleId(SubSchedule subScheduleId) {
+		this.subScheduleId = subScheduleId;
+	}
+
+	public States getStateId() {
+		return stateId;
+	}
+
+	public void setStateId(States stateId) {
+		this.stateId = stateId;
+	}
+
+	public Districts getDistrictId() {
+		return districtId;
+	}
+
+	public void setDistrictId(Districts districtId) {
+		this.districtId = districtId;
 	}
 
 	public Schedule getScheduleId() {
@@ -172,22 +197,6 @@ public class AccountInformation implements Serializable {
 
 	public void setSubscheduleId(SubSchedule subscheduleId) {
 		this.subScheduleId = subscheduleId;
-	}
-
-	public States getStatesId() {
-		return statesId;
-	}
-
-	public void setStatesId(States statesId) {
-		this.statesId = statesId;
-	}
-
-	public Districts getDistrictsId() {
-		return districtsId;
-	}
-
-	public void setDistrictsId(Districts districtsId) {
-		this.districtsId = districtsId;
 	}
 
 	public Area getAreaId() {

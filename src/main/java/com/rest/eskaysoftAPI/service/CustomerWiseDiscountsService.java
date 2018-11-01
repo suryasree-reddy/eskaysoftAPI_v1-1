@@ -10,9 +10,10 @@ public interface CustomerWiseDiscountsService {
 
 	CustomerWiseDiscountsDto getCustomerWiseDiscountsById(Long id);
 
-	CustomerWiseDiscountsDto save(CustomerWiseDiscountsDto customerWiseDiscounts);
+	CustomerWiseDiscountsDto updatecwd(CustomerWiseDiscountsDto customerWiseDiscounts);
 
 	boolean deleteCustomerWiseDiscounts(Long id);
-	/* CustomerWiseDiscounts create(CustomerWiseDiscounts customerWiseDiscounts); */
+
+	CustomerWiseDiscountsDto create(CustomerWiseDiscountsDto customerWiseDiscounts);
 
 }

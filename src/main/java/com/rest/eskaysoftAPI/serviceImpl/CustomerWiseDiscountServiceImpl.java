@@ -22,8 +22,7 @@ public class CustomerWiseDiscountServiceImpl implements CustomerWiseDiscountsSer
 
 	@Autowired
 	private CustomerWiseDiscountsRepository cuswiserepo;
-	
-	
+
 	@Autowired
 	private AccountInformationRepository airepo;
 
@@ -39,7 +38,7 @@ public class CustomerWiseDiscountServiceImpl implements CustomerWiseDiscountsSer
 			cusModel.setCompanyId(customer.getCompanyId().getId());
 			cusModel.setCompanyName(customer.getCompanyId().getCompanyName());
 			cusModel.setAccountInformationId(customer.getAccountInformationId().getId());
-			cusModel.setCompanyName(customer.getAccountInformationId().getAccountName());
+			cusModel.setAccountName(customer.getAccountInformationId().getAccountName());
 			cusList.add(cusModel);
 		});
 
@@ -100,8 +99,9 @@ public class CustomerWiseDiscountServiceImpl implements CustomerWiseDiscountsSer
 	public CustomerWiseDiscountsDto create(CustomerWiseDiscountsDto cdmodel) {
 		Company com = comprepo.findById(cdmodel.getCompanyId()).orElseThrow(
 				() -> new NotFoundException(String.format("Schedule %d not found", cdmodel.getCompanyId())));
-		AccountInformation ai = airepo.findById(cdmodel.getAccountInformationId()).orElseThrow(
-				() -> new NotFoundException(String.format("AccountInformation %d not found", cdmodel.getAccountInformationId())));
+		AccountInformation ai = airepo.findById(cdmodel.getAccountInformationId())
+				.orElseThrow(() -> new NotFoundException(
+						String.format("AccountInformation %d not found", cdmodel.getAccountInformationId())));
 		CustomerWiseDiscounts cwd = new CustomerWiseDiscounts();
 		BeanUtils.copyProperties(cdmodel, cwd);
 		cwd.setCompanyId(com);

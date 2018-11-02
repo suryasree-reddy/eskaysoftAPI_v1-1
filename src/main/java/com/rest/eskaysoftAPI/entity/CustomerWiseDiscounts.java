@@ -36,7 +36,7 @@ public class CustomerWiseDiscounts implements Serializable {
 	private Double disc;
 
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Long id) {
@@ -44,7 +44,7 @@ public class CustomerWiseDiscounts implements Serializable {
 	}
 
 	public Company getCompanyId() {
-		return companyId;
+		return this.companyId;
 	}
 
 	public void setCompanyId(Company companyId) {
@@ -52,7 +52,7 @@ public class CustomerWiseDiscounts implements Serializable {
 	}
 
 	public Double getDisc() {
-		return disc;
+		return this.disc;
 	}
 
 	public void setDisc(Double disc) {
@@ -60,7 +60,7 @@ public class CustomerWiseDiscounts implements Serializable {
 	}
 
 	public AccountInformation getAccountInformationId() {
-		return accountInformationId;
+		return this.accountInformationId;
 	}
 
 	public void setAccountInformationId(AccountInformation accountInformationId) {
@@ -68,7 +68,7 @@ public class CustomerWiseDiscounts implements Serializable {
 	}
 
 	public boolean isSelectFlag() {
-		return selectFlag;
+		return this.selectFlag;
 	}
 
 	public void setSelectFlag(boolean selectFlag) {

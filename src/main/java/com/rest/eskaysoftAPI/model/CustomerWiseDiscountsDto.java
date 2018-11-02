@@ -21,7 +21,7 @@ public class CustomerWiseDiscountsDto implements Serializable {
 	}
 
 	public Long getCompanyId() {
-		return companyId;
+		return this.companyId;
 	}
 
 	public void setCompanyId(Long companyId) {
@@ -45,7 +45,7 @@ public class CustomerWiseDiscountsDto implements Serializable {
 	}
 
 	public Long getAccountInformationId() {
-		return accountInformationId;
+		return this.accountInformationId;
 	}
 
 	public void setAccountInformationId(Long accountInformationId) {
@@ -53,7 +53,7 @@ public class CustomerWiseDiscountsDto implements Serializable {
 	}
 
 	public String getAccountName() {
-		return accountName;
+		return this.accountName;
 	}
 
 	public void setAccountName(String accountName) {

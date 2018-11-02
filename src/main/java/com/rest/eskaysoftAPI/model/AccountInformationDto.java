@@ -57,17 +57,15 @@ public class AccountInformationDto implements Serializable {
 	private String specialRemarks;
 
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-	
-
 	public String getAccountName() {
-		return accountName;
+		return this.accountName;
 	}
 
 	public void setAccountName(String accountName) {
@@ -75,7 +73,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public Long getSubScheduleId() {
-		return subScheduleId;
+		return this.subScheduleId;
 	}
 
 	public void setSubScheduleId(Long subScheduleId) {
@@ -83,7 +81,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public String getSubScheduleName() {
-		return subScheduleName;
+		return this.subScheduleName;
 	}
 
 	public void setSubScheduleName(String subScheduleName) {
@@ -91,7 +89,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public Long getScheduleId() {
-		return scheduleId;
+		return this.scheduleId;
 	}
 
 	public void setScheduleId(Long scheduleId) {
@@ -99,7 +97,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public String getScheduleName() {
-		return scheduleName;
+		return this.scheduleName;
 	}
 
 	public void setScheduleName(String scheduleName) {
@@ -107,7 +105,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public String getDistrictName() {
-		return districtName;
+		return this.districtName;
 	}
 
 	public void setDistrictName(String districtName) {
@@ -115,7 +113,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public String getStateName() {
-		return stateName;
+		return this.stateName;
 	}
 
 	public void setStateName(String stateName) {
@@ -123,7 +121,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public Long getAreaId() {
-		return areaId;
+		return this.areaId;
 	}
 
 	public void setAreaId(Long areaId) {
@@ -131,7 +129,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public String getAreaName() {
-		return areaName;
+		return this.areaName;
 	}
 
 	public void setAreaName(String areaName) {
@@ -139,7 +137,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public String getAddress1() {
-		return address1;
+		return this.address1;
 	}
 
 	public void setAddress1(String address1) {
@@ -147,7 +145,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public String getAddress2() {
-		return address2;
+		return this.address2;
 	}
 
 	public void setAddress2(String address2) {
@@ -155,7 +153,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public String getTown() {
-		return town;
+		return this.town;
 	}
 
 	public void setTown(String town) {
@@ -163,7 +161,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public Integer getPin() {
-		return pin;
+		return this.pin;
 	}
 
 	public void setPin(Integer pin) {
@@ -171,7 +169,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public Long getPhone() {
-		return phone;
+		return this.phone;
 	}
 
 	public void setPhone(Long phone) {
@@ -179,7 +177,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public Long getMobile() {
-		return mobile;
+		return this.mobile;
 	}
 
 	public void setMobile(Long mobile) {
@@ -187,7 +185,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public String getEmail() {
-		return email;
+		return this.email;
 	}
 
 	public void setEmail(String email) {
@@ -195,7 +193,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public String getShortName() {
-		return shortName;
+		return this.shortName;
 	}
 
 	public void setShortName(String shortName) {
@@ -203,7 +201,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public String getLicNo1() {
-		return licNo1;
+		return this.licNo1;
 	}
 
 	public void setLicNo1(String licNo1) {
@@ -211,7 +209,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public String getLicNo2() {
-		return licNo2;
+		return this.licNo2;
 	}
 
 	public void setLicNo2(String licNo2) {
@@ -219,7 +217,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public Date getLicExpiry() {
-		return licExpiry;
+		return this.licExpiry;
 	}
 
 	public void setLicExpiry(Date licExpiry) {
@@ -227,7 +225,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public String getRetLicNo1() {
-		return retLicNo1;
+		return this.retLicNo1;
 	}
 
 	public void setRetLicNo1(String retLicNo1) {
@@ -235,7 +233,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public String getRetLicNo2() {
-		return retLicNo2;
+		return this.retLicNo2;
 	}
 
 	public void setRetLicNo2(String retLicNo2) {
@@ -243,7 +241,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public Date getRetExpiry() {
-		return retExpiry;
+		return this.retExpiry;
 	}
 
 	public void setRetExpiry(Date retExpiry) {
@@ -251,7 +249,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public String getFoodLicNo() {
-		return foodLicNo;
+		return this.foodLicNo;
 	}
 
 	public void setFoodLicNo(String foodLicNo) {
@@ -259,7 +257,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public String getOtherLicense() {
-		return otherLicense;
+		return this.otherLicense;
 	}
 
 	public void setOtherLicense(String otherLicense) {
@@ -267,7 +265,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public Date getOtherLicenseExpiry() {
-		return otherLicenseExpiry;
+		return this.otherLicenseExpiry;
 	}
 
 	public void setOtherLicenseExpiry(Date otherLicenseExpiry) {
@@ -275,7 +273,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public String getGstType() {
-		return gstType;
+		return this.gstType;
 	}
 
 	public void setGstType(String gstType) {
@@ -283,7 +281,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public String getGstIN() {
-		return gstIN;
+		return this.gstIN;
 	}
 
 	public void setGstIN(String gstIN) {
@@ -291,7 +289,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public String getNatureOfGST() {
-		return natureOfGST;
+		return this.natureOfGST;
 	}
 
 	public void setNatureOfGST(String natureOfGST) {
@@ -299,7 +297,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public String getUin() {
-		return uin;
+		return this.uin;
 	}
 
 	public void setUin(String uin) {
@@ -307,7 +305,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public String getSaleType() {
-		return saleType;
+		return this.saleType;
 	}
 
 	public void setSaleType(String saleType) {
@@ -315,7 +313,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public String getCustomerType() {
-		return customerType;
+		return this.customerType;
 	}
 
 	public void setCustomerType(String customerType) {
@@ -323,7 +321,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public Double getCreditLimit() {
-		return creditLimit;
+		return this.creditLimit;
 	}
 
 	public void setCreditLimit(Double creditLimit) {
@@ -331,7 +329,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public Integer getDueDays() {
-		return dueDays;
+		return this.dueDays;
 	}
 
 	public void setDueDays(Integer dueDays) {
@@ -339,7 +337,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public String getContactPerson() {
-		return contactPerson;
+		return this.contactPerson;
 	}
 
 	public void setContactPerson(String contactPerson) {
@@ -347,7 +345,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public Long getHsnCode() {
-		return hsnCode;
+		return this.hsnCode;
 	}
 
 	public void setHsnCode(Long hsnCode) {
@@ -363,7 +361,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public Double getRateOfTax() {
-		return rateOfTax;
+		return this.rateOfTax;
 	}
 
 	public void setRateOfTax(Double rateOfTax) {
@@ -371,7 +369,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public Double getOpeningBalance() {
-		return openingBalance;
+		return this.openingBalance;
 	}
 
 	public void setOpeningBalance(Double openingBalance) {
@@ -379,7 +377,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public String getOpeningType() {
-		return openingType;
+		return this.openingType;
 	}
 
 	public void setOpeningType(String openingType) {
@@ -387,7 +385,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public String getSpecialRemarks() {
-		return specialRemarks;
+		return this.specialRemarks;
 	}
 
 	public void setSpecialRemarks(String specialRemarks) {
@@ -395,7 +393,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public Long getStateId() {
-		return stateId;
+		return this.stateId;
 	}
 
 	public void setStateId(Long stateId) {
@@ -403,7 +401,7 @@ public class AccountInformationDto implements Serializable {
 	}
 
 	public Long getDistrictId() {
-		return districtId;
+		return this.districtId;
 	}
 
 	public void setDistrictId(Long districtId) {

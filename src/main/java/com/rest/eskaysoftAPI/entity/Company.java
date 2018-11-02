@@ -25,7 +25,7 @@ public class Company implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "companyCode", nullable = false, length = 2)
+	@Column(name = "companyCode", nullable = false, length = 40)
 	private String companyCode;
 
 	@Column(name = "companyName", nullable = false, length = 40)

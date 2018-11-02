@@ -9,8 +9,11 @@ import org.springframework.stereotype.Service;
 
 import com.rest.eskaysoftAPI.entity.Company;
 import com.rest.eskaysoftAPI.entity.CompanyGroup;
+import com.rest.eskaysoftAPI.entity.Schedule;
+import com.rest.eskaysoftAPI.entity.SubSchedule;
 import com.rest.eskaysoftAPI.exception.NotFoundException;
 import com.rest.eskaysoftAPI.model.CompanyDto;
+import com.rest.eskaysoftAPI.model.SubScheduleDto;
 import com.rest.eskaysoftAPI.repository.CompanyGroupRepository;
 import com.rest.eskaysoftAPI.repository.CompanyRepository;
 import com.rest.eskaysoftAPI.service.CompanyService;
@@ -84,7 +87,7 @@ public class CompanyServiceImpl implements CompanyService {
 		}
 		return status;
 	}
-
+	
 	@Override
 	public CompanyDto create(CompanyDto companyModel) {
 		CompanyGroup companygroup = compgrprepo.findById(companyModel.getCompanyGroupId())

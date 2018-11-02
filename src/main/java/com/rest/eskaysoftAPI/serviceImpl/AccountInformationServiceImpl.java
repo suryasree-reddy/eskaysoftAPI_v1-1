@@ -9,14 +9,12 @@ import org.springframework.stereotype.Service;
 
 import com.rest.eskaysoftAPI.entity.AccountInformation;
 import com.rest.eskaysoftAPI.entity.Area;
-import com.rest.eskaysoftAPI.entity.BusinessExecutive;
 import com.rest.eskaysoftAPI.entity.Districts;
 import com.rest.eskaysoftAPI.entity.Schedule;
 import com.rest.eskaysoftAPI.entity.States;
 import com.rest.eskaysoftAPI.entity.SubSchedule;
 import com.rest.eskaysoftAPI.exception.NotFoundException;
 import com.rest.eskaysoftAPI.model.AccountInformationDto;
-import com.rest.eskaysoftAPI.model.AreaDto;
 import com.rest.eskaysoftAPI.repository.AccountInformationRepository;
 import com.rest.eskaysoftAPI.repository.AreaRepository;
 import com.rest.eskaysoftAPI.repository.DistrictsRepository;
@@ -101,7 +99,7 @@ public class AccountInformationServiceImpl implements AccountInformationService 
 
 		return status;
 	}
-	
+
 	@Override
 	public AccountInformationDto create(AccountInformationDto aimodel) {
 		AccountInformation ain = new AccountInformation();
@@ -124,7 +122,7 @@ public class AccountInformationServiceImpl implements AccountInformationService 
 
 		BeanUtils.copyProperties(aimodel, ain);
 		ain = acinfrRepo.save(ain);
-		ain.setId(ain.getId());
+		aimodel.setId(ain.getId());
 		return aimodel;
 	}
 

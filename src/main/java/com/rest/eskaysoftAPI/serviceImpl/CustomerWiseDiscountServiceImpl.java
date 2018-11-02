@@ -44,6 +44,22 @@ public class CustomerWiseDiscountServiceImpl implements CustomerWiseDiscountsSer
 
 		return cusList;
 	}
+	
+	@Override
+	public List<CustomerWiseDiscountsDto> listAllCustomerWiseDiscountsByAccountId(Long id) {
+		List<CustomerWiseDiscountsDto> cusList = new ArrayList<>();
+		cuswiserepo.findByAccountInformationIdOrderByDiscAsc(id).forEach(customer -> {
+			CustomerWiseDiscountsDto cusModel = new CustomerWiseDiscountsDto();
+			BeanUtils.copyProperties(customer, cusModel);
+			cusModel.setCompanyId(customer.getCompanyId().getId());
+			cusModel.setCompanyName(customer.getCompanyId().getCompanyName());
+			cusModel.setAccountInformationId(customer.getAccountInformationId().getId());
+			cusModel.setAccountName(customer.getAccountInformationId().getAccountName());
+			cusList.add(cusModel);
+		});
+
+		return cusList;
+	}
 
 	@Override
 	public CustomerWiseDiscountsDto getCustomerWiseDiscountsById(Long id) {
@@ -83,7 +99,7 @@ public class CustomerWiseDiscountServiceImpl implements CustomerWiseDiscountsSer
 			cuswiserepo.delete(customerWiseDiscounts);
 			status = true;
 			List<CustomerWiseDiscounts> list = cuswiserepo
-					.findByCompanyIdId(customerWiseDiscounts.getCompanyId().getId());
+					.findByCompanyId(customerWiseDiscounts.getCompanyId().getId());
 			if (null == list || list.isEmpty()) {
 				Company cmp = customerWiseDiscounts.getCompanyId();
 				cmp.setDeleteFlag(true);

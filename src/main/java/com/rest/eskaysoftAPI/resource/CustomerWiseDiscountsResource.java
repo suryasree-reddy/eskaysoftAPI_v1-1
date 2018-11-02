@@ -45,6 +45,17 @@ public class CustomerWiseDiscountsResource {
 
 	}
 
+	@GET
+	@Path("accountinfo/{id}")
+	@Produces("application/json")
+	public List<CustomerWiseDiscountsDto> findAllByAccountId(@PathParam("id") long id) {
+		if (logger.isDebugEnabled()) {
+			logger.debug("Requsted ID = " + id);
+		}
+		return customerWiseDiscountsService.listAllCustomerWiseDiscountsByAccountId(id);
+
+	}
+	
 	@POST
 	@Consumes("application/json")
 	@Produces("application/json")

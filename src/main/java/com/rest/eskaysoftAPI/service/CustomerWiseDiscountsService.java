@@ -7,6 +7,8 @@ import com.rest.eskaysoftAPI.model.CustomerWiseDiscountsDto;
 public interface CustomerWiseDiscountsService {
 
 	List<CustomerWiseDiscountsDto> listAllCustomerWiseDiscounts();
+	
+	List<CustomerWiseDiscountsDto> listAllCustomerWiseDiscountsByAccountId(Long id);
 
 	CustomerWiseDiscountsDto getCustomerWiseDiscountsById(Long id);
 

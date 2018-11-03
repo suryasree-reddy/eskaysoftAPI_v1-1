@@ -9,8 +9,11 @@ import org.springframework.stereotype.Service;
 
 import com.rest.eskaysoftAPI.entity.Company;
 import com.rest.eskaysoftAPI.entity.CompanyGroup;
+import com.rest.eskaysoftAPI.entity.Schedule;
+import com.rest.eskaysoftAPI.entity.SubSchedule;
 import com.rest.eskaysoftAPI.exception.NotFoundException;
 import com.rest.eskaysoftAPI.model.CompanyDto;
+import com.rest.eskaysoftAPI.model.SubScheduleDto;
 import com.rest.eskaysoftAPI.repository.CompanyGroupRepository;
 import com.rest.eskaysoftAPI.repository.CompanyRepository;
 import com.rest.eskaysoftAPI.service.CompanyService;
@@ -31,7 +34,7 @@ public class CompanyServiceImpl implements CompanyService {
 
 			CompanyDto companyModel = new CompanyDto();
 			BeanUtils.copyProperties(company, companyModel);
-			companyModel.setCompanyGroup(company.getCompanyGroupId().getCompanyGroup());
+			companyModel.setCompanyGroupName(company.getCompanyGroupId().getCompanyGroupName());
 			companyModel.setCompanyGroupId(company.getCompanyGroupId().getId());
 			companyList.add(companyModel);
 		});
@@ -46,13 +49,13 @@ public class CompanyServiceImpl implements CompanyService {
 		CompanyDto companyModel = new CompanyDto();
 		BeanUtils.copyProperties(company, companyModel);
 		companyModel.setCompanyGroupId(company.getCompanyGroupId().getId());
-
+		companyModel.setCompanyGroupName(company.getCompanyGroupId().getCompanyGroupName());
 		return companyModel;
 
 	}
 
 	@Override
-	public CompanyDto save(CompanyDto companyModel) {
+	public CompanyDto updatecompany(CompanyDto companyModel) {
 		CompanyGroup companygroup = compgrprepo.findById(companyModel.getCompanyGroupId())
 				.orElseThrow(() -> new NotFoundException(
 						String.format("CompanyGroup %d not found", companyModel.getCompanyGroupId())));
@@ -75,10 +78,16 @@ public class CompanyServiceImpl implements CompanyService {
 		if (company != null) {
 			cpmprepo.delete(company);
 			status = true;
+			List<Company> com = cpmprepo.findByCompanyGroupIdId(company.getCompanyGroupId().getId());
+			if (null == com || com.isEmpty()) {
+				CompanyGroup cg = company.getCompanyGroupId();
+				cg.setDeleteFlag(true);
+				compgrprepo.save(cg);
+			}
 		}
 		return status;
 	}
-
+	
 	@Override
 	public CompanyDto create(CompanyDto companyModel) {
 		CompanyGroup companygroup = compgrprepo.findById(companyModel.getCompanyGroupId())

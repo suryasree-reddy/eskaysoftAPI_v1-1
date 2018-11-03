@@ -52,7 +52,7 @@ public class CompanyGroupResource {
 	@Produces("application/json")
 	public CompanyGroup create(@RequestBody CompanyGroup companygroup) {
 		if (logger.isDebugEnabled()) {
-			logger.debug("Requsted companygroup = " + companygroup.getCompanyGroup());
+			logger.debug("Requsted companygroup = " + companygroup.getCompanyGroupName());
 		}
 		return companyGroupService.create(companygroup);
 	}
@@ -64,7 +64,7 @@ public class CompanyGroupResource {
 		if (logger.isDebugEnabled()) {
 			logger.debug("Requsted companygroup = " + companygroup.getId());
 		}
-		return companyGroupService.saveCompanygroup(companygroup);
+		return companyGroupService.updateCompanygroup(companygroup);
 	}
 
 	@DELETE

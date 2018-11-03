@@ -26,53 +26,51 @@ import com.rest.eskaysoftAPI.service.ProductCategoryService;
 public class ProductCategoryResource {
 	private static final Logger logger = LoggerFactory.getLogger(ProductCategoryResource.class);
 
-
 	@Autowired
 	ProductCategoryService productcategoryService;
 
 	@GET
 	@Produces("application/json")
-    public List<ProductCategoryDto> findAll(){
-        return productcategoryService.listAllProductcategories();
-    }
-	
+	public List<ProductCategoryDto> findAll() {
+		return productcategoryService.listAllProductcategories();
+	}
+
 	@GET
 	@Path("/{id}")
 	@Produces("application/json")
-	public ProductCategory findOne(@PathParam("id") long id){
+	public ProductCategory findOne(@PathParam("id") long id) {
 		if (logger.isDebugEnabled()) {
 			logger.debug("Requsted ID = " + id);
 		}
-        return productcategoryService.getProductCategoryById(id);
+		return productcategoryService.getProductCategoryById(id);
 
-    }
+	}
 
-    @POST
-    @Consumes("application/json")
-    @Produces("application/json")
-    public ProductCategory create(@RequestBody ProductCategory productcategory){
-    	if (logger.isDebugEnabled()) {
+	@POST
+	@Consumes("application/json")
+	@Produces("application/json")
+	public ProductCategory create(@RequestBody ProductCategory productcategory) {
+		if (logger.isDebugEnabled()) {
 			logger.debug("Requsted productcategory = " + productcategory.getProductCategoryName());
 		}
-        return productcategoryService.create(productcategory);
-    }
+		return productcategoryService.create(productcategory);
+	}
 
-    @PUT
-    @Consumes("application/json")
-    @Produces("application/json")
-    public ProductCategory update(@RequestBody ProductCategory productcategory){
-    	if (logger.isDebugEnabled()) {
+	@PUT
+	@Consumes("application/json")
+	@Produces("application/json")
+	public ProductCategory update(@RequestBody ProductCategory productcategory) {
+		if (logger.isDebugEnabled()) {
 			logger.debug("Requsted productcategory = " + productcategory.getId());
 		}
-        return productcategoryService.saveProductCategory(productcategory);
-    }
-    @DELETE
-    @Path("/{id}")
-    @Produces("application/json")
-    public boolean delete(@PathParam("id") long id)
-    {
-        return productcategoryService.deleteProductCategory(id);
-    }
+		return productcategoryService.updateProductCategory(productcategory);
+	}
 
+	@DELETE
+	@Path("/{id}")
+	@Produces("application/json")
+	public boolean delete(@PathParam("id") long id) {
+		return productcategoryService.deleteProductCategory(id);
+	}
 
 }

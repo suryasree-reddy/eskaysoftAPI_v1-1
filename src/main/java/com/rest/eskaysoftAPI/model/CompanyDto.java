@@ -2,29 +2,29 @@ package com.rest.eskaysoftAPI.model;
 
 import java.io.Serializable;
 
-
-
 public class CompanyDto implements Serializable {
 
 	private static final long serialVersionUID = 655159852262403024L;
-	
+
 	private Long id;
-	
+
 	private String companyCode;
-	
+
 	private String companyName;
 
 	private String companyStatus;
 
 	private String invGenType;
-	
+
 	private String invPrefix;
 
 	private String companyType;
-	
+
 	private Long companyGroupId;
-	
-	private String companyGroup;
+
+	private String companyGroupName;
+
+	private boolean deleteFlag;
 
 	public Long getId() {
 		return id;
@@ -32,14 +32,6 @@ public class CompanyDto implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getCompanyGroup() {
-		return companyGroup;
-	}
-
-	public void setCompanyGroup(String companyGroup) {
-		this.companyGroup = companyGroup;
 	}
 
 	public String getCompanyCode() {
@@ -59,11 +51,19 @@ public class CompanyDto implements Serializable {
 	}
 
 	public Long getCompanyGroupId() {
-		return this.companyGroupId;
+		return companyGroupId;
 	}
 
 	public void setCompanyGroupId(Long companyGroupId) {
 		this.companyGroupId = companyGroupId;
+	}
+
+	public String getCompanyGroupName() {
+		return companyGroupName;
+	}
+
+	public void setCompanyGroupName(String companyGroupName) {
+		this.companyGroupName = companyGroupName;
 	}
 
 	public String getCompanyStatus() {
@@ -96,6 +96,14 @@ public class CompanyDto implements Serializable {
 
 	public void setCompanyType(String companyType) {
 		this.companyType = companyType;
+	}
+
+	public boolean isDeleteFlag() {
+		return this.deleteFlag;
+	}
+
+	public void setDeleteFlag(boolean deleteFlag) {
+		this.deleteFlag = deleteFlag;
 	}
 
 }

@@ -11,7 +11,7 @@ public interface CompanyGroupService {
 
     CompanyGroup getCompanygroupById(Long id);
 
-    CompanyGroup saveCompanygroup(CompanyGroup companygroup);
+    CompanyGroup updateCompanygroup(CompanyGroup companygroup);
 
     boolean deleteCompanygroup(Long id);
 

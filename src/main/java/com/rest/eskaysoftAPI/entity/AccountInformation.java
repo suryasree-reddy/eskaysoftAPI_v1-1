@@ -5,13 +5,17 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "AccountInformation")
+@Table(name = "accountInformation", uniqueConstraints = { @UniqueConstraint(columnNames = { "shortName" }) })
 public class AccountInformation implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -19,14 +23,29 @@ public class AccountInformation implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(name = "accountname", length = 50, nullable = false)
+
+	@Column(name = "accountName", length = 50, nullable = false)
 	private String accountName;
 
-	private Long subScheduleId;
-	private Long scheduleId;
-	private Long stateId;
-	private Long areaId;
-	private Long districtId;
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "scheduleId", nullable = false)
+	private Schedule scheduleId;
+
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "subScheduleId", nullable = false)
+	private SubSchedule subScheduleId;
+
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "stateId", nullable = false)
+	private States stateId;
+
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "districtId", nullable = false)
+	private Districts districtId;
+
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "areaId", nullable = false)
+	private Area areaId;
 
 	@Column(name = "address1", length = 50, nullable = false)
 	private String address1;
@@ -37,10 +56,10 @@ public class AccountInformation implements Serializable {
 	@Column(name = "town", length = 20, nullable = false)
 	private String town;
 
-	@Column(name = "pin", nullable = false)
+	@Column(name = "pin", length = 6, nullable = false)
 	private Integer pin;
 
-	@Column(name = "phone", nullable = false)
+	@Column(name = "phone", nullable = false, length = 10)
 	private Long phone;
 
 	@Column(name = "mobile", nullable = false)
@@ -100,16 +119,16 @@ public class AccountInformation implements Serializable {
 	@Column(name = "creditLimit", nullable = false)
 	private Double creditLimit;
 
-	@Column(name = "dueDays", nullable = false)
+	@Column(name = "dueDays", length = 3, nullable = false)
 	private Integer dueDays;
 
 	@Column(name = "contactPerson", length = 30, nullable = false)
 	private String contactPerson;
 
-	@Column(name = "hsnCode", nullable = false)
+	@Column(name = "hsnCode", length = 8, nullable = false)
 	private Long hsnCode;
 
-	@Column(name = "sacCode", nullable = false)
+	@Column(name = "sacCode", length = 8, nullable = false)
 	private Long sacCode;
 
 	@Column(name = "rateOfTax", nullable = false)
@@ -140,20 +159,52 @@ public class AccountInformation implements Serializable {
 		this.accountName = accountName;
 	}
 
-	public Long getSubScheduleId() {
+	public SubSchedule getSubScheduleId() {
 		return this.subScheduleId;
 	}
 
-	public void setSubScheduleId(Long subScheduleId) {
+	public void setSubScheduleId(SubSchedule subScheduleId) {
 		this.subScheduleId = subScheduleId;
 	}
 
-	public Long getScheduleId() {
+	public States getStateId() {
+		return this.stateId;
+	}
+
+	public void setStateId(States stateId) {
+		this.stateId = stateId;
+	}
+
+	public Districts getDistrictId() {
+		return this.districtId;
+	}
+
+	public void setDistrictId(Districts districtId) {
+		this.districtId = districtId;
+	}
+
+	public Schedule getScheduleId() {
 		return this.scheduleId;
 	}
 
-	public void setScheduleId(Long scheduleId) {
+	public void setScheduleId(Schedule scheduleId) {
 		this.scheduleId = scheduleId;
+	}
+
+	public SubSchedule getSubscheduleId() {
+		return this.subScheduleId;
+	}
+
+	public void setSubscheduleId(SubSchedule subscheduleId) {
+		this.subScheduleId = subscheduleId;
+	}
+
+	public Area getAreaId() {
+		return this.areaId;
+	}
+
+	public void setAreaId(Area areaId) {
+		this.areaId = areaId;
 	}
 
 	public String getAddress1() {
@@ -186,30 +237,6 @@ public class AccountInformation implements Serializable {
 
 	public void setPin(Integer pin) {
 		this.pin = pin;
-	}
-
-	public Long getStateId() {
-		return this.stateId;
-	}
-
-	public void setStateId(Long stateId) {
-		this.stateId = stateId;
-	}
-
-	public Long getAreaId() {
-		return this.areaId;
-	}
-
-	public void setAreaId(Long areaId) {
-		this.areaId = areaId;
-	}
-
-	public Long getDistrictId() {
-		return this.districtId;
-	}
-
-	public void setDistrictId(Long districtId) {
-		this.districtId = districtId;
 	}
 
 	public Long getPhone() {

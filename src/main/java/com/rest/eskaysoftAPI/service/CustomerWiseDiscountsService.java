@@ -2,19 +2,20 @@ package com.rest.eskaysoftAPI.service;
 
 import java.util.List;
 
-import com.rest.eskaysoftAPI.entity.CustomerWiseDiscounts;
 import com.rest.eskaysoftAPI.model.CustomerWiseDiscountsDto;
 
 public interface CustomerWiseDiscountsService {
 
-    List<CustomerWiseDiscountsDto> listAllCustomerWiseDiscounts();
+	List<CustomerWiseDiscountsDto> listAllCustomerWiseDiscounts();
+	
+	List<CustomerWiseDiscountsDto> listAllCustomerWiseDiscountsByAccountId(Long id);
 
-    CustomerWiseDiscounts getCustomerWiseDiscountsById(Long id);
+	CustomerWiseDiscountsDto getCustomerWiseDiscountsById(Long id);
 
-    CustomerWiseDiscounts saveCustomerWiseDiscounts(CustomerWiseDiscounts customerWiseDiscounts);
+	CustomerWiseDiscountsDto updatecwd(CustomerWiseDiscountsDto customerWiseDiscounts);
 
+	boolean deleteCustomerWiseDiscounts(Long id);
 
-    boolean deleteCustomerWiseDiscounts(Long id);
-    CustomerWiseDiscounts create(CustomerWiseDiscounts customerWiseDiscounts);
+	CustomerWiseDiscountsDto create(CustomerWiseDiscountsDto customerWiseDiscounts);
 
 }

@@ -12,5 +12,5 @@ import com.rest.eskaysoftAPI.entity.CompanyGroup;
 @Repository("companygroupRepository")
 @Transactional
 public interface CompanyGroupRepository extends JpaRepository<CompanyGroup, Long> {
-	public List<CompanyGroup> findAllByOrderByCompanyGroupAsc();
+	public List<CompanyGroup> findAllByOrderByCompanyGroupNameAsc();
 }

@@ -41,18 +41,18 @@ public class CompanyResource {
 		if (logger.isDebugEnabled()) {
 			logger.debug("Requsted company = " + company.getCompanyName());
 		}
-		
+
 		return companyService.create(company);
 	}
 
 	@PUT
 	@Consumes("application/json")
 	@Produces("application/json")
-	public CompanyDto update(@RequestBody CompanyDto company) {
+	public CompanyDto updatecompany(@RequestBody CompanyDto company) {
 		if (logger.isDebugEnabled()) {
 			logger.debug("Requsted company = " + company.getCompanyName());
 		}
-		return companyService.save(company);
+		return companyService.updatecompany(company);
 	}
 
 	@GET

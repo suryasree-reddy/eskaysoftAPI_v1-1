@@ -1,24 +1,19 @@
-
-
 package com.rest.eskaysoftAPI.service;
 
 import java.util.List;
 
-import com.rest.eskaysoftAPI.entity.ProductGroup;
-import com.rest.eskaysoftAPI.model.ProductGroupDto;
-
-
-
+import com.rest.eskaysoftAPI.entity.Productgroup;
+import com.rest.eskaysoftAPI.model.ProductgroupDto;
 
 public interface ProductGroupService {
 
-    List<ProductGroupDto> listAllProductGroups();
+	List<ProductgroupDto> listAllProductGroups();
 
-    ProductGroup getProductGroupById(Long id);
+	Productgroup getProductGroupById(Long id);
 
-    ProductGroup saveProductGroup(ProductGroup productgroup);
+	Productgroup updateProductGroup(Productgroup productgroup);
 
-    boolean deleteProductGroup(Long id);
-    
-    ProductGroup create(ProductGroup productgroup);
+	boolean deleteProductGroup(Long id);
+
+	Productgroup create(Productgroup productgroup);
 }

@@ -16,12 +16,8 @@ import com.rest.eskaysoftAPI.service.CompanyGroupService;
 @Service
 public class CompanyGroupServiceImpl implements CompanyGroupService {
 
-	private CompanyGroupRepository compgrprepo;
-
 	@Autowired
-	public void setCompanyGroupDao(CompanyGroupRepository companyGroupRepository) {
-		this.compgrprepo = companyGroupRepository;
-	}
+	private CompanyGroupRepository compgrprepo;
 
 	@Override
 	public CompanyGroup getCompanygroupById(Long id) {
@@ -33,7 +29,7 @@ public class CompanyGroupServiceImpl implements CompanyGroupService {
 	@Override
 	public List<CompanyGroupDto> listAllCompanygroup() {
 		List<CompanyGroupDto> companygroupList = new ArrayList<>();
-		compgrprepo.findAllByOrderByCompanyGroupAsc().forEach(companygroup -> {
+		compgrprepo.findAllByOrderByCompanyGroupNameAsc().forEach(companygroup -> {
 			CompanyGroupDto companygroupModel = new CompanyGroupDto();
 			BeanUtils.copyProperties(companygroup, companygroupModel);
 			companygroupList.add(companygroupModel);
@@ -43,7 +39,7 @@ public class CompanyGroupServiceImpl implements CompanyGroupService {
 	}
 
 	@Override
-	public CompanyGroup saveCompanygroup(CompanyGroup companygroup) {
+	public CompanyGroup updateCompanygroup(CompanyGroup companygroup) {
 		return compgrprepo.save(companygroup);
 	}
 
@@ -52,8 +48,8 @@ public class CompanyGroupServiceImpl implements CompanyGroupService {
 		boolean status = false;
 		CompanyGroup companygroup = getCompanygroupById(id);
 		if (companygroup != null) {
-			status = true;
 			compgrprepo.delete(companygroup);
+			status = true;
 		}
 		return status;
 	}

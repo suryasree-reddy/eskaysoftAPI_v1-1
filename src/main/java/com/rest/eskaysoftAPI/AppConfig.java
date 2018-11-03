@@ -6,7 +6,6 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.stereotype.Component;
 
 import com.rest.eskaysoftAPI.resource.AccountInformationResource;
-import com.rest.eskaysoftAPI.resource.AccountOpeningsResource;
 import com.rest.eskaysoftAPI.resource.AreaResource;
 import com.rest.eskaysoftAPI.resource.BankInformationResource;
 import com.rest.eskaysoftAPI.resource.BusinessExecutiveResource;
@@ -30,11 +29,11 @@ public class AppConfig extends ResourceConfig {
 
 	public AppConfig() {
 		register(ProductResource.class);
+		register(CompanyResource.class);
 		register(StatesResource.class);
 		register(AccountInformationResource.class);
 		register(AreaResource.class);
 		register(BankInformationResource.class);
-		register(CompanyResource.class);
 		register(CompanyGroupResource.class);
 		register(ScheduleResource.class);
 		register(BusinessExecutiveResource.class);
@@ -42,7 +41,6 @@ public class AppConfig extends ResourceConfig {
 		register(ProductGroupResource.class);
 		register(PurchaseEntryResource.class);
 		register(SubScheduleResource.class);
-		register(AccountOpeningsResource.class);
 		register(CustomerWiseDiscountsResource.class);
 		register(ManfacturerResource.class);
 		register(DistrictsResource.class);

@@ -17,7 +17,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.rest.eskaysoftAPI.entity.AccountInformation;
 import com.rest.eskaysoftAPI.model.AccountInformationDto;
 import com.rest.eskaysoftAPI.service.AccountInformationService;
 
@@ -38,7 +37,7 @@ public class AccountInformationResource {
 	@GET
 	@Path("/{id}")
 	@Produces("application/json")
-	public AccountInformation findOne(@PathParam("id") long id) {
+	public AccountInformationDto findOne(@PathParam("id") long id) {
 		if (logger.isDebugEnabled()) {
 			logger.debug("Requsted ID = " + id);
 		}
@@ -49,7 +48,7 @@ public class AccountInformationResource {
 	@POST
 	@Consumes("application/json")
 	@Produces("application/json")
-	public AccountInformation create(@RequestBody AccountInformation accountInformation) {
+	public AccountInformationDto create(@RequestBody AccountInformationDto accountInformation) {
 		if (logger.isDebugEnabled()) {
 			logger.debug("Requsted AccountInformation = " + accountInformation.getAccountName());
 		}
@@ -59,18 +58,17 @@ public class AccountInformationResource {
 	@PUT
 	@Consumes("application/json")
 	@Produces("application/json")
-	public AccountInformation update(@RequestBody AccountInformation accountInformation) {
+	public AccountInformationDto updateai(@RequestBody AccountInformationDto accountInformation) {
 		if (logger.isDebugEnabled()) {
 			logger.debug("Requsted AccountInformation = " + accountInformation.getId());
 		}
-		return accountInformationService.saveAccountInformation(accountInformation);
+		return accountInformationService.updateai(accountInformation);
 	}
 
-    @DELETE
-    @Path("/{id}")
-    @Produces("application/json")
-    public boolean delete(@PathParam("id") long id)
-    {
-        return accountInformationService.deleteAccountInformation(id);
-    }
+	@DELETE
+	@Path("/{id}")
+	@Produces("application/json")
+	public boolean delete(@PathParam("id") long id) {
+		return accountInformationService.deleteAccountInformation(id);
+	}
 }

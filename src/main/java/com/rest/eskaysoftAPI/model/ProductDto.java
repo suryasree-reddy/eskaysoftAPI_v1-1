@@ -2,52 +2,91 @@ package com.rest.eskaysoftAPI.model;
 
 import java.io.Serializable;
 
-public class ProductDto implements Serializable{
+public class ProductDto implements Serializable {
 	private static final long serialVersionUID = 655159852262403024L;
 
 	private Long id;
 
-	private String code;
-
 	private String name;
+
+	private Long companyId;
+	private String companyName;
+
+	private Long productgroupId;
+	private String productGroupName;
+
+	private Long productcategoryId;
+	private String productCategoryName;
+
+	private Long taxId;
+	private Long tax;
+
+	private boolean deleteFlag;
 
 	private String packing;
 
 	private Integer boxQty;
 
-	private Long productGroupId;
-	
-	private String productGroupName;
-
 	private Long caseQty;
 
-	private Long productCategoryId;
-	
-	private String productCategoryName;
+	private String contents;
+
+	private Double schemeQty;
 
 	private Double netRate;
 
 	private String isNetRateItem;
 
-	private Double schemeQty;
-
 	private Integer free;
 
-	private String contents;
+	private String productcode;
 
-	private Double tax;
-	private Long taxId;
-	
-	private Long companyId;
-	
-	private String companyName;
-
-	public Long getTaxId() {
-		return taxId;
+	public Long getId() {
+		return this.id;
 	}
 
-	public void setTaxId(Long taxId) {
-		this.taxId = taxId;
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return this.name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Long getCompanyId() {
+		return this.companyId;
+	}
+
+	public void setCompanyId(Long companyId) {
+		this.companyId = companyId;
+	}
+
+	public Long getProductgroupId() {
+		return this.productgroupId;
+	}
+
+	public void setProductgroupId(Long productgroupId) {
+		this.productgroupId = productgroupId;
+	}
+
+	public Long getProductcategoryId() {
+		return this.productcategoryId;
+	}
+
+	public void setProductcategoryId(Long productcategoryId) {
+		this.productcategoryId = productcategoryId;
+	}
+
+	public String getCompanyName() {
+		return this.companyName;
+	}
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
 	}
 
 	public String getProductGroupName() {
@@ -66,48 +105,20 @@ public class ProductDto implements Serializable{
 		this.productCategoryName = productCategoryName;
 	}
 
-	public Long getCompanyId() {
-		return companyId;
+	public Long getTaxId() {
+		return this.taxId;
 	}
 
-	public void setCompanyId(Long companyId) {
-		this.companyId = companyId;
+	public void setTaxId(Long taxId) {
+		this.taxId = taxId;
 	}
 
-	public String getCompanyName() {
-		return companyName;
-	}
-
-	public void setCompanyName(String companyName) {
-		this.companyName = companyName;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getCode() {
-		return code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
+	public void setTax(Long tax) {
+		this.tax = tax;
 	}
 
 	public String getPacking() {
-		return packing;
+		return this.packing;
 	}
 
 	public void setPacking(String packing) {
@@ -115,39 +126,39 @@ public class ProductDto implements Serializable{
 	}
 
 	public Integer getBoxQty() {
-		return boxQty;
+		return this.boxQty;
 	}
 
 	public void setBoxQty(Integer boxQty) {
 		this.boxQty = boxQty;
 	}
 
-	public Long getProductGroupId() {
-		return productGroupId;
-	}
-
-	public void setProductGroupId(Long productGroupId) {
-		this.productGroupId = productGroupId;
-	}
-
 	public Long getCaseQty() {
-		return caseQty;
+		return this.caseQty;
 	}
 
 	public void setCaseQty(Long caseQty) {
 		this.caseQty = caseQty;
 	}
 
-	public Long getProductCategoryId() {
-		return productCategoryId;
+	public String getContents() {
+		return this.contents;
 	}
 
-	public void setProductCategoryId(Long productCategoryId) {
-		this.productCategoryId = productCategoryId;
+	public void setContents(String contents) {
+		this.contents = contents;
+	}
+
+	public Double getSchemeQty() {
+		return this.schemeQty;
+	}
+
+	public void setSchemeQty(Double schemeQty) {
+		this.schemeQty = schemeQty;
 	}
 
 	public Double getNetRate() {
-		return netRate;
+		return this.netRate;
 	}
 
 	public void setNetRate(Double netRate) {
@@ -155,44 +166,39 @@ public class ProductDto implements Serializable{
 	}
 
 	public String getIsNetRateItem() {
-		return isNetRateItem;
+		return this.isNetRateItem;
 	}
 
 	public void setIsNetRateItem(String isNetRateItem) {
 		this.isNetRateItem = isNetRateItem;
 	}
 
-	public Double getSchemeQty() {
-		return schemeQty;
-	}
-
-	public void setSchemeQty(Double schemeQty) {
-		this.schemeQty = schemeQty;
-	}
-
 	public Integer getFree() {
-		return free;
+		return this.free;
 	}
 
 	public void setFree(Integer free) {
 		this.free = free;
 	}
 
-	public String getContents() {
-		return contents;
+	public Long getTax() {
+		return this.tax;
 	}
 
-	public void setContents(String contents) {
-		this.contents = contents;
+	public String getProductcode() {
+		return this.productcode;
 	}
 
-	public Double getTax() {
-		return tax;
+	public void setProductcode(String productcode) {
+		this.productcode = productcode;
 	}
 
-	public void setTax(Double tax) {
-		this.tax = tax;
+	public boolean isDeleteFlag() {
+		return this.deleteFlag;
 	}
 
-	
+	public void setDeleteFlag(boolean deleteFlag) {
+		this.deleteFlag = deleteFlag;
+	}
+
 }

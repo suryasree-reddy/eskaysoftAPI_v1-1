@@ -24,7 +24,7 @@ public class Schedule implements Serializable {
 	@Column(name = "scheduleName", nullable = false, length = 40)
 	private String scheduleName;
 	
-	@Column(name = "scheduleIndex", nullable = false)
+	@Column(name = "scheduleIndex", nullable = false, length = 2)
 	private Integer scheduleIndex;	
 	
 	@Column(name = "deleteFlag", nullable = false)

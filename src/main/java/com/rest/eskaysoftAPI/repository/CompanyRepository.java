@@ -14,4 +14,6 @@ import com.rest.eskaysoftAPI.entity.Company;
 public interface CompanyRepository extends JpaRepository<Company, Long> {
 	public List<Company> findAllByOrderByCompanyNameAsc();
 
+	public List<Company> findByCompanyGroupIdId(Long id);
+
 }

@@ -4,13 +4,18 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "Products")
+@Table(name = "products", uniqueConstraints = { @UniqueConstraint(columnNames = { "name" }),
+		@UniqueConstraint(columnNames = { "productcode" }) })
 public class Product implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -18,127 +23,107 @@ public class Product implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@Column(name = "code", nullable = false)
-	private String code;
-	
-	@Column(name = "name", length = 20, nullable = false)
+
+	@Column(name = "name", length = 30, nullable = false)
 	private String name;
-	
-	@Column(name = "packing", length = 4, nullable = false)
+
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "companyId", nullable = false)
+	private Company companyId;
+
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "productgroupId", nullable = false)
+	private Productgroup productgroupId;
+
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "productcategoryId", nullable = false)
+	private ProductCategory productcategoryId;
+
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "taxId", nullable = true)
+	private Tax taxId;
+
+	@Column(name = "packing", length = 4, nullable = true)
 	private String packing;
-	
+
 	@Column(name = "boxQty", nullable = false)
 	private Integer boxQty;
-	
-	private Long productGroupId;
-	
-	private String productGroupName;
-	
+
 	@Column(name = "caseQty", nullable = false)
 	private Long caseQty;
-	
-	private Long productCategoryId;
-	private String productCategoryName;
-	private Long companyId;
-	private String companyName;
-	private String companyCode;
-	
-	@Column(name = "netRate",nullable = false)
-	private Double netRate;
-	
-	@Column(name = "isNetRateItem", nullable = false)
-	private String isNetRateItem;
-	
+
+	@Column(name = "contents", nullable = false)
+	private String contents;
+
 	@Column(name = "schemeQty", nullable = false)
 	private Double schemeQty;
-	
-	@Column(name = "free",nullable = false)
+
+	@Column(name = "netRate", nullable = false)
+	private Double netRate;
+
+	@Column(name = "isNetRateItem", nullable = false)
+	private String isNetRateItem;
+
+	@Column(name = "free", nullable = false)
 	private Integer free;
-	
-	@Column(name = "contents",nullable = false)
-	private String contents;
-	
-	@Column(name = "tax", nullable = false)
-	private Double tax;
-	
-	@Column(name = "taxId", nullable = false)
-	private long taxId;
-	
-	public long getTaxId() {
-		return taxId;
-	}
 
-	public void setTaxId(long taxId) {
-		this.taxId = taxId;
-	}
+	/*
+	 * @Column(name = "tax") private Double tax;
+	 */
 
-	public String getProductGroupName() {
-		return productGroupName;
-	}
-
-	public void setProductGroupName(String productGroupName) {
-		this.productGroupName = productGroupName;
-	}
-
-	public String getProductCategoryName() {
-		return productCategoryName;
-	}
-
-	public void setProductCategoryName(String productCategoryName) {
-		this.productCategoryName = productCategoryName;
-	}
-
-	public Long getCompanyId() {
-		return companyId;
-	}
-
-	public void setCompanyId(Long companyId) {
-		this.companyId = companyId;
-	}
-
-	public String getCompanyName() {
-		return companyName;
-	}
-
-	public void setCompanyName(String companyName) {
-		this.companyName = companyName;
-	}
-
-	public String getCompanyCode() {
-		return companyCode;
-	}
-
-	public void setCompanyCode(String companyCode) {
-		this.companyCode = companyCode;
-	}
+	@Column(name = "productcode", nullable = false)
+	private String productcode;
 
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public String getCode() {
-		return code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
-
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	public Company getCompanyId() {
+		return this.companyId;
+	}
+
+	public void setCompanyId(Company companyId) {
+		this.companyId = companyId;
+	}
+
+	public Productgroup getProductgroupId() {
+		return this.productgroupId;
+	}
+
+	public void setProductgroupId(Productgroup productgroupId) {
+		this.productgroupId = productgroupId;
+	}
+
+	public ProductCategory getProductcategoryId() {
+		return this.productcategoryId;
+	}
+
+	public void setProductcategoryId(ProductCategory productcategoryId) {
+		this.productcategoryId = productcategoryId;
+	}
+
+	public Tax getTaxId() {
+		return this.taxId;
+	}
+
+	public void setTaxId(Tax taxId) {
+		this.taxId = taxId;
+	}
+
 	public String getPacking() {
-		return packing;
+		return this.packing;
 	}
 
 	public void setPacking(String packing) {
@@ -146,39 +131,39 @@ public class Product implements Serializable {
 	}
 
 	public Integer getBoxQty() {
-		return boxQty;
+		return this.boxQty;
 	}
 
 	public void setBoxQty(Integer boxQty) {
 		this.boxQty = boxQty;
 	}
 
-	public Long getProductGroupId() {
-		return productGroupId;
-	}
-
-	public void setProductGroupId(Long productGroupId) {
-		this.productGroupId = productGroupId;
-	}
-
 	public Long getCaseQty() {
-		return caseQty;
+		return this.caseQty;
 	}
 
 	public void setCaseQty(Long caseQty) {
 		this.caseQty = caseQty;
 	}
 
-	public Long getProductCategoryId() {
-		return productCategoryId;
+	public String getContents() {
+		return this.contents;
 	}
 
-	public void setProductCategoryId(Long productCategoryId) {
-		this.productCategoryId = productCategoryId;
+	public void setContents(String contents) {
+		this.contents = contents;
+	}
+
+	public Double getSchemeQty() {
+		return this.schemeQty;
+	}
+
+	public void setSchemeQty(Double schemeQty) {
+		this.schemeQty = schemeQty;
 	}
 
 	public Double getNetRate() {
-		return netRate;
+		return this.netRate;
 	}
 
 	public void setNetRate(Double netRate) {
@@ -186,44 +171,33 @@ public class Product implements Serializable {
 	}
 
 	public String getIsNetRateItem() {
-		return isNetRateItem;
+		return this.isNetRateItem;
 	}
 
 	public void setIsNetRateItem(String isNetRateItem) {
 		this.isNetRateItem = isNetRateItem;
 	}
 
-	public Double getSchemeQty() {
-		return schemeQty;
-	}
-
-	public void setSchemeQty(Double schemeQty) {
-		this.schemeQty = schemeQty;
-	}
-
 	public Integer getFree() {
-		return free;
+		return this.free;
 	}
 
 	public void setFree(Integer free) {
 		this.free = free;
 	}
 
-	public String getContents() {
-		return contents;
+	/*
+	 * public Double getTax() { return tax; }
+	 * 
+	 * public void setTax(Double tax) { this.tax = tax; }
+	 */
+
+	public String getProductcode() {
+		return this.productcode;
 	}
 
-	public void setContents(String contents) {
-		this.contents = contents;
+	public void setProductcode(String productcode) {
+		this.productcode = productcode;
 	}
 
-	public Double getTax() {
-		return tax;
-	}
-
-	public void setTax(Double tax) {
-		this.tax = tax;
-	}
-	
-	
 }

@@ -13,4 +13,9 @@ import com.rest.eskaysoftAPI.entity.CustomerWiseDiscounts;
 @Transactional
 public interface CustomerWiseDiscountsRepository extends JpaRepository<CustomerWiseDiscounts, Long> {
 	public List<CustomerWiseDiscounts> findAllByOrderByDiscAsc();
+
+	public List<CustomerWiseDiscounts> findByCompanyId(Long id);
+	
+	public List<CustomerWiseDiscounts> findByAccountInformationIdOrderByDiscAsc(Long id);
+
 }

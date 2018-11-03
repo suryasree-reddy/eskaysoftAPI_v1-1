@@ -15,9 +15,10 @@ import java.util.Set;
 @Entity
 @Table(name = "users", uniqueConstraints = {
         @UniqueConstraint(columnNames = {
-            "username", "email"
-        })
-})
+            "username"
+        }),
+        @UniqueConstraint(columnNames = {"email"})})
+
 public class User extends DateAudit {
 	private static final long serialVersionUID = 6998881581402295916L;
 

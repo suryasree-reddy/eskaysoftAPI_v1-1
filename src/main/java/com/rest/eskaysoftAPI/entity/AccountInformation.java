@@ -27,17 +27,13 @@ public class AccountInformation implements Serializable {
 	@Column(name = "accountName", length = 50, nullable = false)
 	private String accountName;
 
-	@ManyToOne(fetch = FetchType.EAGER, optional = false)
-	@JoinColumn(name = "scheduleId", nullable = false)
-	private Schedule scheduleId;
+	
 
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "subScheduleId", nullable = false)
 	private SubSchedule subScheduleId;
 
-	@ManyToOne(fetch = FetchType.EAGER, optional = false)
-	@JoinColumn(name = "stateId", nullable = false)
-	private States stateId;
+	
 
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "districtId", nullable = false)
@@ -167,13 +163,7 @@ public class AccountInformation implements Serializable {
 		this.subScheduleId = subScheduleId;
 	}
 
-	public States getStateId() {
-		return this.stateId;
-	}
-
-	public void setStateId(States stateId) {
-		this.stateId = stateId;
-	}
+	
 
 	public Districts getDistrictId() {
 		return this.districtId;
@@ -183,13 +173,7 @@ public class AccountInformation implements Serializable {
 		this.districtId = districtId;
 	}
 
-	public Schedule getScheduleId() {
-		return this.scheduleId;
-	}
-
-	public void setScheduleId(Schedule scheduleId) {
-		this.scheduleId = scheduleId;
-	}
+	
 
 	public SubSchedule getSubscheduleId() {
 		return this.subScheduleId;

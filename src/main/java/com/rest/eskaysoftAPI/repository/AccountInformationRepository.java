@@ -14,11 +14,7 @@ import com.rest.eskaysoftAPI.entity.AccountInformation;
 public interface AccountInformationRepository extends JpaRepository<AccountInformation, Long> {
 	public List<AccountInformation> findAllByOrderByAccountNameAsc();
 
-	public List<AccountInformation> findByscheduleIdId(Long id);
-
 	public List<AccountInformation> findBysubScheduleIdId(Long id);
-
-	public List<AccountInformation> findByStateIdId(Long id);
 
 	public List<AccountInformation> findBydistrictIdId(Long id);
 

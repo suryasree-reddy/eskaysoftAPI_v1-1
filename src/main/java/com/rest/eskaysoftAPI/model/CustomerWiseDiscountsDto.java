@@ -11,6 +11,8 @@ public class CustomerWiseDiscountsDto implements Serializable {
 	private Long accountInformationId;
 	private String accountName;
 	private Double disc;
+	private String shortName;
+	private Boolean discountType;
 
 	public Long getId() {
 		return this.id;
@@ -58,6 +60,22 @@ public class CustomerWiseDiscountsDto implements Serializable {
 
 	public void setAccountName(String accountName) {
 		this.accountName = accountName;
+	}
+
+	public String getShortName() {
+		return shortName;
+	}
+
+	public void setShortName(String shortName) {
+		this.shortName = shortName;
+	}
+
+	public Boolean getDiscountType() {
+		return discountType;
+	}
+
+	public void setDiscountType(Boolean discountType) {
+		this.discountType = discountType;
 	}
 
 }

@@ -39,6 +39,7 @@ public class CustomerWiseDiscountServiceImpl implements CustomerWiseDiscountsSer
 			cusModel.setCompanyName(customer.getCompanyId().getCompanyName());
 			cusModel.setAccountInformationId(customer.getAccountInformationId().getId());
 			cusModel.setAccountName(customer.getAccountInformationId().getAccountName());
+			cusModel.setShortName(customer.getAccountInformationId().getShortName());
 			cusList.add(cusModel);
 		});
 
@@ -55,6 +56,7 @@ public class CustomerWiseDiscountServiceImpl implements CustomerWiseDiscountsSer
 			cusModel.setCompanyName(customer.getCompanyId().getCompanyName());
 			cusModel.setAccountInformationId(customer.getAccountInformationId().getId());
 			cusModel.setAccountName(customer.getAccountInformationId().getAccountName());
+			cusModel.setShortName(customer.getAccountInformationId().getShortName());
 			cusList.add(cusModel);
 		});
 
@@ -71,6 +73,7 @@ public class CustomerWiseDiscountServiceImpl implements CustomerWiseDiscountsSer
 		cwdmodel.setCompanyName(customerwise.getCompanyId().getCompanyName());
 		cwdmodel.setAccountInformationId(customerwise.getAccountInformationId().getId());
 		cwdmodel.setAccountName(customerwise.getAccountInformationId().getAccountName());
+		cwdmodel.setShortName(customerwise.getAccountInformationId().getShortName());
 		return cwdmodel;
 	}
 
@@ -97,16 +100,7 @@ public class CustomerWiseDiscountServiceImpl implements CustomerWiseDiscountsSer
 				.orElseThrow(() -> new NotFoundException(String.format("cwd %d not found", id)));
 		if (customerWiseDiscounts != null) {
 			cuswiserepo.delete(customerWiseDiscounts);
-			status = true;
-			List<CustomerWiseDiscounts> list = cuswiserepo
-					.findByCompanyId(customerWiseDiscounts.getCompanyId().getId());
-			if (null == list || list.isEmpty()) {
-				Company cmp = customerWiseDiscounts.getCompanyId();
-				cmp.setDeleteFlag(true);
-				comprepo.save(cmp);
-
-			}
-
+			status = true;			
 		}
 		return status;
 	}

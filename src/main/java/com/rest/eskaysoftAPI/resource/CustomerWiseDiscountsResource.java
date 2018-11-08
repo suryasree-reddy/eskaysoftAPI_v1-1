@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.rest.eskaysoftAPI.entity.CustomerWiseDiscounts;
 import com.rest.eskaysoftAPI.model.CustomerWiseDiscountsDto;
 import com.rest.eskaysoftAPI.service.CustomerWiseDiscountsService;
 
@@ -59,7 +60,7 @@ public class CustomerWiseDiscountsResource {
 	@POST
 	@Consumes("application/json")
 	@Produces("application/json")
-	public CustomerWiseDiscountsDto create(@RequestBody CustomerWiseDiscountsDto customerWiseDiscounts) {
+	public List<CustomerWiseDiscounts> create(@RequestBody CustomerWiseDiscountsDto customerWiseDiscounts) {
 		if (logger.isDebugEnabled()) {
 			logger.debug("Requsted customerWiseDiscounts = " + customerWiseDiscounts.getId());
 		}

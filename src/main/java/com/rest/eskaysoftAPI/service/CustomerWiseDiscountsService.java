@@ -2,6 +2,7 @@ package com.rest.eskaysoftAPI.service;
 
 import java.util.List;
 
+import com.rest.eskaysoftAPI.entity.CustomerWiseDiscounts;
 import com.rest.eskaysoftAPI.model.CustomerWiseDiscountsDto;
 
 public interface CustomerWiseDiscountsService {
@@ -16,6 +17,6 @@ public interface CustomerWiseDiscountsService {
 
 	boolean deleteCustomerWiseDiscounts(Long id);
 
-	CustomerWiseDiscountsDto create(CustomerWiseDiscountsDto customerWiseDiscounts);
+	List<CustomerWiseDiscounts> create(CustomerWiseDiscountsDto customerWiseDiscounts);
 
 }

@@ -49,7 +49,7 @@ public class CustomerWiseDiscountServiceImpl implements CustomerWiseDiscountsSer
 	@Override
 	public List<CustomerWiseDiscountsDto> listAllCustomerWiseDiscountsByAccountId(Long id) {
 		List<CustomerWiseDiscountsDto> cusList = new ArrayList<>();
-		cuswiserepo.findByAccountInformationIdOrderByDiscAsc(id).forEach(customer -> {
+		cuswiserepo.findByAccountInformationIdIdOrderByDiscAsc(id).forEach(customer -> {
 			CustomerWiseDiscountsDto cusModel = new CustomerWiseDiscountsDto();
 			BeanUtils.copyProperties(customer, cusModel);
 			cusModel.setCompanyId(customer.getCompanyId().getId());
@@ -106,19 +106,40 @@ public class CustomerWiseDiscountServiceImpl implements CustomerWiseDiscountsSer
 	}
 
 	@Override
-	public CustomerWiseDiscountsDto create(CustomerWiseDiscountsDto cdmodel) {
-		Company com = comprepo.findById(cdmodel.getCompanyId()).orElseThrow(
-				() -> new NotFoundException(String.format("Schedule %d not found", cdmodel.getCompanyId())));
+	public List<CustomerWiseDiscounts> create(CustomerWiseDiscountsDto cdmodel) {
+		
 		AccountInformation ai = airepo.findById(cdmodel.getAccountInformationId())
 				.orElseThrow(() -> new NotFoundException(
 						String.format("AccountInformation %d not found", cdmodel.getAccountInformationId())));
-		CustomerWiseDiscounts cwd = new CustomerWiseDiscounts();
-		BeanUtils.copyProperties(cdmodel, cwd);
-		cwd.setCompanyId(com);
-		cwd.setAccountInformationId(ai);
-		cwd = cuswiserepo.save(cwd);
-		cdmodel.setId(cwd.getId());
-		return cdmodel;
+		CustomerWiseDiscounts cwd = null;
+		List<CustomerWiseDiscounts> cwdlist = new ArrayList<>();;
+		if(cdmodel.getDiscountType()) {
+			List<Company> companyList= comprepo.findAll();
+			for (Company company : companyList) {				
+				CustomerWiseDiscounts cwsDb = cuswiserepo.findByAccountInformationIdIdAndCompanyIdId(cdmodel.getAccountInformationId(), company.getId());
+				
+				if(cwsDb != null) {
+					cwsDb.setDisc(cdmodel.getDisc());
+					cwdlist.add(cwsDb);
+				}else {
+					cwd = new CustomerWiseDiscounts();
+					BeanUtils.copyProperties(cdmodel, cwd);
+					cwd.setCompanyId(company);
+					cwd.setAccountInformationId(ai);
+					cwdlist.add(cwd);
+				}				
+			}
+		}else {
+			Company com = comprepo.findById(cdmodel.getCompanyId()).orElseThrow(
+					() -> new NotFoundException(String.format("Company %d not found", cdmodel.getCompanyId())));
+			cwd = new CustomerWiseDiscounts();
+			BeanUtils.copyProperties(cdmodel, cwd);
+			cwd.setCompanyId(com);
+			cwd.setAccountInformationId(ai);
+			cwdlist.add(cwd);
+		}		
+		cwdlist = cuswiserepo.saveAll(cwdlist);
+		return cwdlist;
 	}
 
 }

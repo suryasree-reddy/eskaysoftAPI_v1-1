@@ -21,6 +21,9 @@ public class AccountInformationDto implements Serializable {
 
 	private Long areaId;
 	private String areaName;
+	private Long businessExecutiveId;
+
+	private String businessExecutiveName;
 
 	private String address1;
 	private String address2;
@@ -406,6 +409,22 @@ public class AccountInformationDto implements Serializable {
 
 	public void setDistrictId(Long districtId) {
 		this.districtId = districtId;
+	}
+
+	public Long getBusinessExecutiveId() {
+		return businessExecutiveId;
+	}
+
+	public void setBusinessExecutiveId(Long businessExecutiveId) {
+		this.businessExecutiveId = businessExecutiveId;
+	}
+
+	public String getBusinessExecutiveName() {
+		return businessExecutiveName;
+	}
+
+	public void setBusinessExecutiveName(String businessExecutiveName) {
+		this.businessExecutiveName = businessExecutiveName;
 	}
 
 }

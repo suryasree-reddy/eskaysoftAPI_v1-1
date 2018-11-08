@@ -56,7 +56,8 @@ public class AccountInformationServiceImpl implements AccountInformationService 
 			aimodel.setAreaName(ai.getAreaId().getAreaName());
 			aimodel.setDistrictId(ai.getDistrictId().getId());
 			aimodel.setDistrictName(ai.getDistrictId().getDistrictName());
-
+			aimodel.setStateId(ai.getDistrictId().getStateId().getId());
+			aimodel.setStateName(ai.getDistrictId().getStateId().getStateName());
 			ailist.add(aimodel);
 		});
 
@@ -73,12 +74,15 @@ public class AccountInformationServiceImpl implements AccountInformationService 
 
 		aimodel.setSubScheduleId(ain.getSubscheduleId().getId());
 		aimodel.setSubScheduleName(ain.getSubscheduleId().getSubScheduleName());
-
+		aimodel.setScheduleId(ain.getSubscheduleId().getScheduleId().getId());
+		aimodel.setScheduleName(ain.getSubscheduleId().getScheduleId().getScheduleName());
 		aimodel.setAreaId(ain.getAreaId().getId());
+	
 		aimodel.setAreaName(ain.getAreaId().getAreaName());
 		aimodel.setDistrictId(ain.getDistrictId().getId());
 		aimodel.setDistrictName(ain.getDistrictId().getDistrictName());
-
+		aimodel.setStateName(ain.getDistrictId().getStateId().getStateName());
+		aimodel.setStateId(ain.getDistrictId().getStateId().getId());
 		return aimodel;
 	}
 

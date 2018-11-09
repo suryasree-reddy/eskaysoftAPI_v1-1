@@ -12,6 +12,7 @@ import com.rest.eskaysoftAPI.exception.NotFoundException;
 import com.rest.eskaysoftAPI.model.ScheduleDto;
 import com.rest.eskaysoftAPI.repository.ScheduleRepository;
 import com.rest.eskaysoftAPI.service.ScheduleService;
+import com.rest.eskaysoftAPI.util.EskaysoftConstants;
 
 
 @Service
@@ -26,6 +27,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 		schedrepo.getSchedules().forEach(sch ->{
 			ScheduleDto schModel = new ScheduleDto();	
 			BeanUtils.copyProperties(sch, schModel);
+			schModel.setTypeheadDisplay(sch.getScheduleName()+EskaysoftConstants.SEPERATOR + sch.getScheduleIndex());
 			schList.add(schModel);
 		});
 		return schList;

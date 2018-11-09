@@ -11,6 +11,7 @@ public class SubScheduleDto implements Serializable {
 	private Long subScheduleIndex;
 	private String scheduleName;
 	private Long scheduleId;
+	private String typeheadDisplay;
 
 	private boolean deleteFlag = true;
 
@@ -60,6 +61,14 @@ public class SubScheduleDto implements Serializable {
 
 	public void setDeleteFlag(boolean deleteFlag) {
 		this.deleteFlag = deleteFlag;
+	}
+
+	public String getTypeheadDisplay() {
+		return typeheadDisplay;
+	}
+
+	public void setTypeheadDisplay(String typeheadDisplay) {
+		this.typeheadDisplay = typeheadDisplay;
 	}
 
 }

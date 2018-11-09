@@ -14,6 +14,7 @@ import com.rest.eskaysoftAPI.model.SubScheduleDto;
 import com.rest.eskaysoftAPI.repository.ScheduleRepository;
 import com.rest.eskaysoftAPI.repository.SubScheduleRepository;
 import com.rest.eskaysoftAPI.service.SubScheduleService;
+import com.rest.eskaysoftAPI.util.EskaysoftConstants;
 
 @Service
 public class SubScheduleServiceImpl implements SubScheduleService {
@@ -33,6 +34,7 @@ public class SubScheduleServiceImpl implements SubScheduleService {
 			BeanUtils.copyProperties(subschedule, subschModel);
 			subschModel.setScheduleName(subschedule.getScheduleId().getScheduleName());
 			subschModel.setScheduleId(subschedule.getScheduleId().getId());
+			subschModel.setTypeheadDisplay(subschedule.getSubScheduleName() +EskaysoftConstants.SEPERATOR +subschedule.getScheduleId().getScheduleName());
 			subschList.add(subschModel);
 		});
 		return subschList;

@@ -11,6 +11,7 @@ public class ScheduleDto implements Serializable {
 	private int scheduleIndex;	
 	private String scheduleType;
 	private boolean deleteFlag;
+	private String typeheadDisplay;
 	
 	public Long getId() {
 		return this.id;
@@ -41,6 +42,12 @@ public class ScheduleDto implements Serializable {
 	}
 	public void setDeleteFlag(boolean deleteFlag) {
 		this.deleteFlag = deleteFlag;
+	}
+	public String getTypeheadDisplay() {
+		return typeheadDisplay;
+	}
+	public void setTypeheadDisplay(String typeheadDisplay) {
+		this.typeheadDisplay = typeheadDisplay;
 	}
 	
 }

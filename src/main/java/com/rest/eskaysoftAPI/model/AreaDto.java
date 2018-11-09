@@ -11,11 +11,13 @@ public class AreaDto implements Serializable {
 	private String areaName;
 
 	private Long businessExecutiveId;
-	
+
 	private String businessExecutiveName;
 
 	private boolean deleteFlag = true;
-	
+
+	private String typeheadDisplay;
+
 	public Long getId() {
 		return id;
 	}
@@ -56,6 +58,12 @@ public class AreaDto implements Serializable {
 		this.deleteFlag = deleteFlag;
 	}
 
-	
+	public String getTypeheadDisplay() {
+		return typeheadDisplay;
+	}
+
+	public void setTypeheadDisplay(String typeheadDisplay) {
+		this.typeheadDisplay = typeheadDisplay;
+	}
 
 }

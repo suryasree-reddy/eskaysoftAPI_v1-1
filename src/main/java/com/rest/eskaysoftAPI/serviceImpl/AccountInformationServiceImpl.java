@@ -16,10 +16,9 @@ import com.rest.eskaysoftAPI.model.AccountInformationDto;
 import com.rest.eskaysoftAPI.repository.AccountInformationRepository;
 import com.rest.eskaysoftAPI.repository.AreaRepository;
 import com.rest.eskaysoftAPI.repository.DistrictsRepository;
-import com.rest.eskaysoftAPI.repository.ScheduleRepository;
-import com.rest.eskaysoftAPI.repository.StatesRepository;
 import com.rest.eskaysoftAPI.repository.SubScheduleRepository;
 import com.rest.eskaysoftAPI.service.AccountInformationService;
+import com.rest.eskaysoftAPI.util.EskaysoftConstants;
 
 @Service
 public class AccountInformationServiceImpl implements AccountInformationService {
@@ -28,16 +27,10 @@ public class AccountInformationServiceImpl implements AccountInformationService 
 	private AccountInformationRepository acinfrRepo;
 
 	@Autowired
-	private ScheduleRepository screpo;
-
-	@Autowired
 	private SubScheduleRepository subrepo;
 
 	@Autowired
 	private DistrictsRepository disrepo;
-
-	@Autowired
-	private StatesRepository staterepo;
 
 	@Autowired
 	private AreaRepository aerarepo;
@@ -60,6 +53,8 @@ public class AccountInformationServiceImpl implements AccountInformationService 
 			aimodel.setDistrictName(ai.getDistrictId().getDistrictName());
 			aimodel.setStateId(ai.getDistrictId().getStateId().getId());
 			aimodel.setStateName(ai.getDistrictId().getStateId().getStateName());
+			aimodel.setTypeheadDisplay(ai.getAccountName()+EskaysoftConstants.SEPERATOR +ai.getShortName()+EskaysoftConstants.SEPERATOR +ai.getTown());
+			
 			ailist.add(aimodel);
 		});
 

@@ -26,6 +26,16 @@ public class CompanyDto implements Serializable {
 
 	private boolean deleteFlag;
 
+	private String typeheadDisplay;
+
+	public String getTypeheadDisplay() {
+		return typeheadDisplay;
+	}
+
+	public void setTypeheadDisplay(String typeheadDisplay) {
+		this.typeheadDisplay = typeheadDisplay;
+	}
+
 	public Long getId() {
 		return id;
 	}

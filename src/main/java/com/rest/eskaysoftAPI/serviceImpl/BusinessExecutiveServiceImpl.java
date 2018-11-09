@@ -12,6 +12,7 @@ import com.rest.eskaysoftAPI.exception.NotFoundException;
 import com.rest.eskaysoftAPI.model.BusinessExecutiveDto;
 import com.rest.eskaysoftAPI.repository.BusinessExecutiveRepository;
 import com.rest.eskaysoftAPI.service.BusinessExecutiveService;
+import com.rest.eskaysoftAPI.util.EskaysoftConstants;
 
 @Service
 public class BusinessExecutiveServiceImpl implements BusinessExecutiveService {
@@ -36,6 +37,7 @@ public class BusinessExecutiveServiceImpl implements BusinessExecutiveService {
 		busExrepo.findAllByOrderByNameAsc().forEach(businessexecutive -> {
 			BusinessExecutiveDto businessexecutiveModel = new BusinessExecutiveDto();
 			BeanUtils.copyProperties(businessexecutive, businessexecutiveModel);
+			businessexecutiveModel.setTypeheadDisplay(businessexecutive.getName()+EskaysoftConstants.SEPERATOR +businessexecutive.getTown());
 			businessexecutiveList.add(businessexecutiveModel);
 		});
 

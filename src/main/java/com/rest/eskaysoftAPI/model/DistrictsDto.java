@@ -16,6 +16,8 @@ public class DistrictsDto implements Serializable {
 
 	private boolean deleteFlag = true;
 
+	private String typeheadDisplay;
+
 	public Long getId() {
 		return id;
 	}
@@ -54,6 +56,14 @@ public class DistrictsDto implements Serializable {
 
 	public void setDeleteFlag(boolean deleteFlag) {
 		this.deleteFlag = deleteFlag;
+	}
+
+	public String getTypeheadDisplay() {
+		return typeheadDisplay;
+	}
+
+	public void setTypeheadDisplay(String typeheadDisplay) {
+		this.typeheadDisplay = typeheadDisplay;
 	}
 
 }

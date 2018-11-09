@@ -12,6 +12,7 @@ import com.rest.eskaysoftAPI.exception.NotFoundException;
 import com.rest.eskaysoftAPI.model.StatesDto;
 import com.rest.eskaysoftAPI.repository.StatesRepository;
 import com.rest.eskaysoftAPI.service.StatesService;
+import com.rest.eskaysoftAPI.util.EskaysoftConstants;
 
 @Service
 public class StatesServiceImpl implements StatesService {
@@ -29,6 +30,7 @@ public class StatesServiceImpl implements StatesService {
 		statesRepo.findAllByOrderByStateNameAsc().forEach(states -> {
 			StatesDto stateModel = new StatesDto();
 			BeanUtils.copyProperties(states, stateModel);
+			stateModel.setTypeheadDisplay(states.getStateName() + EskaysoftConstants.SEPERATOR + states.getStateCode());
 			stateList.add(stateModel);
 		});
 
@@ -37,7 +39,8 @@ public class StatesServiceImpl implements StatesService {
 
 	@Override
 	public States getStateById(Long id) {
-		return statesRepo.findById(id).orElseThrow(() -> new NotFoundException(String.format("state %d not found", id)));
+		return statesRepo.findById(id)
+				.orElseThrow(() -> new NotFoundException(String.format("state %d not found", id)));
 	}
 
 	@Override

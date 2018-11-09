@@ -15,8 +15,10 @@ public class BusinessExecutiveDto implements Serializable {
 	private String town;
 
 	private Long mobile;
-	
+
 	private boolean deleteFlag;
+
+	private String typeheadDisplay;
 
 	public Long getId() {
 		return id;
@@ -61,8 +63,17 @@ public class BusinessExecutiveDto implements Serializable {
 	public boolean isDeleteFlag() {
 		return this.deleteFlag;
 	}
+
 	public void setDeleteFlag(boolean deleteFlag) {
 		this.deleteFlag = deleteFlag;
+	}
+
+	public String getTypeheadDisplay() {
+		return typeheadDisplay;
+	}
+
+	public void setTypeheadDisplay(String typeheadDisplay) {
+		this.typeheadDisplay = typeheadDisplay;
 	}
 
 }

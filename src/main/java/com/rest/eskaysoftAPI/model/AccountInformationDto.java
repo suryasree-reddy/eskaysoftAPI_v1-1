@@ -58,7 +58,9 @@ public class AccountInformationDto implements Serializable {
 	private Double openingBalance;
 	private String openingType;
 	private String specialRemarks;
-
+	private String typeheadDisplay;
+		
+	
 	public Long getId() {
 		return this.id;
 	}
@@ -425,6 +427,14 @@ public class AccountInformationDto implements Serializable {
 
 	public void setBusinessExecutiveName(String businessExecutiveName) {
 		this.businessExecutiveName = businessExecutiveName;
+	}
+
+	public String getTypeheadDisplay() {
+		return typeheadDisplay;
+	}
+
+	public void setTypeheadDisplay(String typeheadDisplay) {
+		this.typeheadDisplay = typeheadDisplay;
 	}
 
 }

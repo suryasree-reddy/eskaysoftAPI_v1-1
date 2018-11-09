@@ -11,6 +11,7 @@ public class StatesDto implements Serializable {
 	private Long stateCode;
 	private String zone;
 	private boolean deleteFlag;
+	private String typeheadDisplay;
 
 	public Long getId() {
 		return id;
@@ -47,7 +48,17 @@ public class StatesDto implements Serializable {
 	public boolean isDeleteFlag() {
 		return this.deleteFlag;
 	}
+
 	public void setDeleteFlag(boolean deleteFlag) {
 		this.deleteFlag = deleteFlag;
 	}
+
+	public String getTypeheadDisplay() {
+		return typeheadDisplay;
+	}
+
+	public void setTypeheadDisplay(String typeheadDisplay) {
+		this.typeheadDisplay = typeheadDisplay;
+	}
+
 }

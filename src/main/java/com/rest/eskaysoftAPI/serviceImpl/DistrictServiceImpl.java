@@ -14,6 +14,7 @@ import com.rest.eskaysoftAPI.model.DistrictsDto;
 import com.rest.eskaysoftAPI.repository.DistrictsRepository;
 import com.rest.eskaysoftAPI.repository.StatesRepository;
 import com.rest.eskaysoftAPI.service.DistrictService;
+import com.rest.eskaysoftAPI.util.EskaysoftConstants;
 
 @Service
 public class DistrictServiceImpl implements DistrictService {
@@ -32,6 +33,7 @@ public class DistrictServiceImpl implements DistrictService {
 			BeanUtils.copyProperties(districts, districtsModel);
 			districtsModel.setStateName(districts.getStateId().getStateName());
 			districtsModel.setStateId(districts.getStateId().getId());
+			districtsModel.setTypeheadDisplay(districts.getDistrictName()+EskaysoftConstants.SEPERATOR + districts.getStateId().getStateName());
 			districtsList.add(districtsModel);
 		});
 

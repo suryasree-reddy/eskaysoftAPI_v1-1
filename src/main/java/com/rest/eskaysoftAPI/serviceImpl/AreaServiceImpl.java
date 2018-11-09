@@ -14,6 +14,7 @@ import com.rest.eskaysoftAPI.model.AreaDto;
 import com.rest.eskaysoftAPI.repository.AreaRepository;
 import com.rest.eskaysoftAPI.repository.BusinessExecutiveRepository;
 import com.rest.eskaysoftAPI.service.AreaService;
+import com.rest.eskaysoftAPI.util.EskaysoftConstants;
 
 @Service
 public class AreaServiceImpl implements AreaService {
@@ -33,6 +34,7 @@ public class AreaServiceImpl implements AreaService {
 			BeanUtils.copyProperties(area, areaModel);
 			areaModel.setBusinessExecutiveName(area.getBusinessExecutiveId().getName());
 			areaModel.setBusinessExecutiveId(area.getBusinessExecutiveId().getId());
+			areaModel.setTypeheadDisplay(area.getAreaName()+EskaysoftConstants.SEPERATOR+area.getBusinessExecutiveId().getName());
 			areaList.add(areaModel);
 		});
 

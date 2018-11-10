@@ -9,10 +9,14 @@ import org.springframework.stereotype.Service;
 
 import com.rest.eskaysoftAPI.entity.Company;
 import com.rest.eskaysoftAPI.entity.CompanyGroup;
+import com.rest.eskaysoftAPI.entity.CustomerWiseDiscounts;
+import com.rest.eskaysoftAPI.entity.Product;
 import com.rest.eskaysoftAPI.exception.NotFoundException;
 import com.rest.eskaysoftAPI.model.CompanyDto;
 import com.rest.eskaysoftAPI.repository.CompanyGroupRepository;
 import com.rest.eskaysoftAPI.repository.CompanyRepository;
+import com.rest.eskaysoftAPI.repository.CustomerWiseDiscountsRepository;
+import com.rest.eskaysoftAPI.repository.ProductRepository;
 import com.rest.eskaysoftAPI.service.CompanyService;
 import com.rest.eskaysoftAPI.util.EskaysoftConstants;
 
@@ -24,14 +28,28 @@ public class CompanyServiceImpl implements CompanyService {
 
 	@Autowired
 	private CompanyGroupRepository compgrprepo;
+	
+	@Autowired
+	private CustomerWiseDiscountsRepository cuswiserepo;
+	
+	@Autowired
+	private ProductRepository prorepo;
 
 	@Override
 	public List<CompanyDto> listAllCompany() {
 		List<CompanyDto> companyList = new ArrayList<>();
 		cpmprepo.findAllByOrderByCompanyNameAsc().forEach(company -> {
-
 			CompanyDto companyModel = new CompanyDto();
 			BeanUtils.copyProperties(company, companyModel);
+			List<Product> prodList = prorepo.findBycompanyIdId(company.getId());
+			if(null == prodList || prodList.isEmpty()) {
+				companyModel.setDeleteFlag(true);
+			}else {
+				List<CustomerWiseDiscounts> cwdList = cuswiserepo.findByCompanyIdId(company.getId());
+				if(null == cwdList || cwdList.isEmpty()) {
+					companyModel.setDeleteFlag(true);
+				}
+			}
 			companyModel.setCompanyGroupName(company.getCompanyGroupId().getCompanyGroupName());
 			companyModel.setCompanyGroupId(company.getCompanyGroupId().getId());
 			companyModel.setTypeheadDisplay(company.getCompanyName() + EskaysoftConstants.SEPERATOR
@@ -60,11 +78,7 @@ public class CompanyServiceImpl implements CompanyService {
 				.orElseThrow(() -> new NotFoundException(
 						String.format("CompanyGroup %d not found", companyModel.getCompanyGroupId())));
 		Company company = new Company();
-		BeanUtils.copyProperties(companyModel, company);
-		if (companygroup.getDeleteFlag()) {
-			companygroup.setDeleteFlag(false);
-			compgrprepo.save(companygroup);
-		}
+		BeanUtils.copyProperties(companyModel, company);		
 		company.setCompanyGroupId(companygroup);
 		company = cpmprepo.save(company);
 		return companyModel;
@@ -78,12 +92,6 @@ public class CompanyServiceImpl implements CompanyService {
 		if (company != null) {
 			cpmprepo.delete(company);
 			status = true;
-			List<Company> com = cpmprepo.findByCompanyGroupIdId(company.getCompanyGroupId().getId());
-			if (null == com || com.isEmpty()) {
-				CompanyGroup cg = company.getCompanyGroupId();
-				cg.setDeleteFlag(true);
-				compgrprepo.save(cg);
-			}
 		}
 		return status;
 	}
@@ -94,11 +102,7 @@ public class CompanyServiceImpl implements CompanyService {
 				.orElseThrow(() -> new NotFoundException(
 						String.format("CompanyGroup %d not found", companyModel.getCompanyGroupId())));
 		Company company = new Company();
-		BeanUtils.copyProperties(companyModel, company);
-		if (companygroup.getDeleteFlag()) {
-			companygroup.setDeleteFlag(false);
-			compgrprepo.save(companygroup);
-		}
+		BeanUtils.copyProperties(companyModel, company);		
 		company.setCompanyGroupId(companygroup);
 		company = cpmprepo.save(company);
 		companyModel.setId(company.getId());

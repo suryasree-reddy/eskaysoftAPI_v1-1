@@ -7,10 +7,12 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.rest.eskaysoftAPI.entity.AccountInformation;
 import com.rest.eskaysoftAPI.entity.Districts;
 import com.rest.eskaysoftAPI.entity.States;
 import com.rest.eskaysoftAPI.exception.NotFoundException;
 import com.rest.eskaysoftAPI.model.DistrictsDto;
+import com.rest.eskaysoftAPI.repository.AccountInformationRepository;
 import com.rest.eskaysoftAPI.repository.DistrictsRepository;
 import com.rest.eskaysoftAPI.repository.StatesRepository;
 import com.rest.eskaysoftAPI.service.DistrictService;
@@ -24,6 +26,9 @@ public class DistrictServiceImpl implements DistrictService {
 
 	@Autowired
 	private StatesRepository statesRepo;
+	
+	@Autowired
+	private AccountInformationRepository acinfrRepo;
 
 	@Override
 	public List<DistrictsDto> listAllDistricts() {
@@ -31,6 +36,10 @@ public class DistrictServiceImpl implements DistrictService {
 		DisRepo.findAllByOrderByDistrictNameAsc().forEach(districts -> {
 			DistrictsDto districtsModel = new DistrictsDto();
 			BeanUtils.copyProperties(districts, districtsModel);
+			List<AccountInformation> aiList = acinfrRepo.findBydistrictIdId(districts.getId());
+			if(null == aiList || aiList.isEmpty()) {
+				districtsModel.setDeleteFlag(true);
+			}
 			districtsModel.setStateName(districts.getStateId().getStateName());
 			districtsModel.setStateId(districts.getStateId().getId());
 			districtsModel.setTypeheadDisplay(districts.getDistrictName()+EskaysoftConstants.SEPERATOR + districts.getStateId().getStateName());

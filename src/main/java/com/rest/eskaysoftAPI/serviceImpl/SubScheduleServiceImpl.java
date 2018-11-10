@@ -7,10 +7,12 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.rest.eskaysoftAPI.entity.AccountInformation;
 import com.rest.eskaysoftAPI.entity.Schedule;
 import com.rest.eskaysoftAPI.entity.SubSchedule;
 import com.rest.eskaysoftAPI.exception.NotFoundException;
 import com.rest.eskaysoftAPI.model.SubScheduleDto;
+import com.rest.eskaysoftAPI.repository.AccountInformationRepository;
 import com.rest.eskaysoftAPI.repository.ScheduleRepository;
 import com.rest.eskaysoftAPI.repository.SubScheduleRepository;
 import com.rest.eskaysoftAPI.service.SubScheduleService;
@@ -24,14 +26,20 @@ public class SubScheduleServiceImpl implements SubScheduleService {
 
 	@Autowired
 	private ScheduleRepository schedrepo;
+	
+	@Autowired
+	private AccountInformationRepository acinfrRepo;
 
 	@Override
 	public List<SubScheduleDto> listAllSubSchedules() {
 		List<SubScheduleDto> subschList = new ArrayList<>();
 		subschrepo.findAllByOrderBySubScheduleNameAsc().forEach(subschedule -> {
-
 			SubScheduleDto subschModel = new SubScheduleDto();
 			BeanUtils.copyProperties(subschedule, subschModel);
+			List<AccountInformation> aiList = acinfrRepo.findBysubScheduleIdId(subschedule.getId());
+			if(null == aiList || aiList.isEmpty()) {
+				subschModel.setDeleteFlag(true);
+			}
 			subschModel.setScheduleName(subschedule.getScheduleId().getScheduleName());
 			subschModel.setScheduleId(subschedule.getScheduleId().getId());
 			subschModel.setTypeheadDisplay(subschedule.getSubScheduleName() +EskaysoftConstants.SEPERATOR +subschedule.getScheduleId().getScheduleName());

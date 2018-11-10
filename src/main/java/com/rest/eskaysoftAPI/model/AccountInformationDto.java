@@ -59,7 +59,8 @@ public class AccountInformationDto implements Serializable {
 	private String openingType;
 	private String specialRemarks;
 	private String typeheadDisplay;
-		
+	private boolean deleteFlag = true;
+
 	
 	public Long getId() {
 		return this.id;
@@ -435,6 +436,14 @@ public class AccountInformationDto implements Serializable {
 
 	public void setTypeheadDisplay(String typeheadDisplay) {
 		this.typeheadDisplay = typeheadDisplay;
+	}
+
+	public boolean isDeleteFlag() {
+		return deleteFlag;
+	}
+
+	public void setDeleteFlag(boolean deleteFlag) {
+		this.deleteFlag = deleteFlag;
 	}
 
 }

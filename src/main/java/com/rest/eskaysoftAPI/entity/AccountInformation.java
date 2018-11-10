@@ -138,6 +138,10 @@ public class AccountInformation implements Serializable {
 
 	@Column(name = "specialRemarks", length = 60, nullable = false)
 	private String specialRemarks;
+	
+	@Column(name = "deleteFlag", nullable = false)
+	private boolean deleteFlag = true;
+
 
 	public Long getId() {
 		return this.id;
@@ -445,6 +449,14 @@ public class AccountInformation implements Serializable {
 
 	public void setSpecialRemarks(String specialRemarks) {
 		this.specialRemarks = specialRemarks;
+	}
+
+	public boolean isDeleteFlag() {
+		return deleteFlag;
+	}
+
+	public void setDeleteFlag(boolean deleteFlag) {
+		this.deleteFlag = deleteFlag;
 	}
 
 }

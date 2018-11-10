@@ -37,8 +37,8 @@ public class DistrictServiceImpl implements DistrictService {
 			DistrictsDto districtsModel = new DistrictsDto();
 			BeanUtils.copyProperties(districts, districtsModel);
 			List<AccountInformation> aiList = acinfrRepo.findBydistrictIdId(districts.getId());
-			if(null == aiList || aiList.isEmpty()) {
-				districtsModel.setDeleteFlag(true);
+			if(null != aiList) {
+				districtsModel.setDeleteFlag(false);
 			}
 			districtsModel.setStateName(districts.getStateId().getStateName());
 			districtsModel.setStateId(districts.getStateId().getId());

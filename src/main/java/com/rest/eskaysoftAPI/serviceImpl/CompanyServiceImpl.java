@@ -42,12 +42,12 @@ public class CompanyServiceImpl implements CompanyService {
 			CompanyDto companyModel = new CompanyDto();
 			BeanUtils.copyProperties(company, companyModel);
 			List<Product> prodList = prorepo.findBycompanyIdId(company.getId());
-			if(null == prodList || prodList.isEmpty()) {
-				companyModel.setDeleteFlag(true);
+			if(null != prodList) {
+				companyModel.setDeleteFlag(false);
 			}else {
 				List<CustomerWiseDiscounts> cwdList = cuswiserepo.findByCompanyIdId(company.getId());
-				if(null == cwdList || cwdList.isEmpty()) {
-					companyModel.setDeleteFlag(true);
+				if(null != cwdList) {
+					companyModel.setDeleteFlag(false);
 				}
 			}
 			companyModel.setCompanyGroupName(company.getCompanyGroupId().getCompanyGroupName());

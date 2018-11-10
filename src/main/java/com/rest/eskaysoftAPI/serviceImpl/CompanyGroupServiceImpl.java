@@ -29,7 +29,7 @@ public class CompanyGroupServiceImpl implements CompanyGroupService {
 	@Override
 	public List<CompanyGroupDto> listAllCompanygroup() {
 		List<CompanyGroupDto> companygroupList = new ArrayList<>();
-		compgrprepo.findAllByOrderByCompanyGroupNameAsc().forEach(companygroup -> {
+		compgrprepo.getCompanyGroup().forEach(companygroup -> {
 			CompanyGroupDto companygroupModel = new CompanyGroupDto();
 			BeanUtils.copyProperties(companygroup, companygroupModel);
 			companygroupList.add(companygroupModel);

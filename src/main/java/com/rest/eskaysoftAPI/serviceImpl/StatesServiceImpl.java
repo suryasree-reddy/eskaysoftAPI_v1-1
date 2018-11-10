@@ -27,7 +27,7 @@ public class StatesServiceImpl implements StatesService {
 	@Override
 	public List<StatesDto> listAllStates() {
 		List<StatesDto> stateList = new ArrayList<>();
-		statesRepo.findAllByOrderByStateNameAsc().forEach(states -> {
+		statesRepo.getStates().forEach(states -> {
 			StatesDto stateModel = new StatesDto();
 			BeanUtils.copyProperties(states, stateModel);
 			stateModel.setTypeheadDisplay(states.getStateName() + EskaysoftConstants.SEPERATOR + states.getStateCode());

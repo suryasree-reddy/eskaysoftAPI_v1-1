@@ -34,10 +34,11 @@ public class BusinessExecutiveServiceImpl implements BusinessExecutiveService {
 	@Override
 	public List<BusinessExecutiveDto> listAllBusinessExecutive() {
 		List<BusinessExecutiveDto> businessexecutiveList = new ArrayList<>();
-		busExrepo.findAllByOrderByNameAsc().forEach(businessexecutive -> {
+		busExrepo.getBusinessExecutives().forEach(businessexecutive -> {
 			BusinessExecutiveDto businessexecutiveModel = new BusinessExecutiveDto();
 			BeanUtils.copyProperties(businessexecutive, businessexecutiveModel);
-			businessexecutiveModel.setTypeheadDisplay(businessexecutive.getName()+EskaysoftConstants.SEPERATOR +businessexecutive.getTown());
+			businessexecutiveModel.setTypeheadDisplay(
+					businessexecutive.getName() + EskaysoftConstants.SEPERATOR + businessexecutive.getTown());
 			businessexecutiveList.add(businessexecutiveModel);
 		});
 

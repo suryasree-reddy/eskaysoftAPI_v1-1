@@ -62,10 +62,6 @@ public class AreaServiceImpl implements AreaService {
 						String.format("BusinessExecutive %d not found", areaModel.getBusinessExecutiveId())));
 		Area area = new Area();
 		BeanUtils.copyProperties(areaModel, area);
-		if (businessexecutive.getDeleteFlag()) {
-			businessexecutive.setDeleteFlag(false);
-			busExrepo.save(businessexecutive);
-		}
 		area.setBusinessExecutiveId(businessexecutive);
 		area = areaRepository.save(area);
 		return areaModel;
@@ -79,13 +75,6 @@ public class AreaServiceImpl implements AreaService {
 		if (area != null) {
 			areaRepository.delete(area);
 			status = true;
-			List<Area> areaList = areaRepository.findByBusinessExecutiveIdId(area.getBusinessExecutiveId().getId());
-			if (null == areaList || areaList.isEmpty()) {
-				BusinessExecutive bes = area.getBusinessExecutiveId();
-				bes.setDeleteFlag(true);
-				busExrepo.save(bes);
-			}
-
 		}
 		return status;
 	}
@@ -97,10 +86,6 @@ public class AreaServiceImpl implements AreaService {
 						String.format("BusinessExecutive %d not found", areaModel.getBusinessExecutiveId())));
 		Area area = new Area();
 		BeanUtils.copyProperties(areaModel, area);
-		if (businessexecutive.getDeleteFlag()) {
-			businessexecutive.setDeleteFlag(false);
-			busExrepo.save(businessexecutive);
-		}
 		area.setBusinessExecutiveId(businessexecutive);
 		area = areaRepository.save(area);
 		areaModel.setId(area.getId());

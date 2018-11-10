@@ -26,7 +26,7 @@ public class ProductGroupServiceImpl implements ProductGroupService {
 	@Override
 	public List<ProductgroupDto> listAllProductGroups() {
 		List<ProductgroupDto> productgroupList = new ArrayList<>();
-		proGrpRepo.findAllByOrderByProductGroupNameAsc().forEach(productgroups -> {
+		proGrpRepo.getProductgroups().forEach(productgroups -> {
 			ProductgroupDto productgroupModel = new ProductgroupDto();
 			BeanUtils.copyProperties(productgroups, productgroupModel);
 			productgroupList.add(productgroupModel);

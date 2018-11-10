@@ -26,7 +26,7 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 	@Override
 	public List<ProductCategoryDto> listAllProductcategories() {
 		List<ProductCategoryDto> productcategoryList = new ArrayList<>();
-		procatrepo.findAllByOrderByProductCategoryNameAsc().forEach(productcategories -> {
+		procatrepo.getProductCategory().forEach(productcategories -> {
 			ProductCategoryDto productcategoryModel = new ProductCategoryDto();
 			BeanUtils.copyProperties(productcategories, productcategoryModel);
 			productcategoryList.add(productcategoryModel);

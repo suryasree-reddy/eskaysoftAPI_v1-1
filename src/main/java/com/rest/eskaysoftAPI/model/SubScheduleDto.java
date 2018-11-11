@@ -13,7 +13,7 @@ public class SubScheduleDto implements Serializable {
 	private Long scheduleId;
 	private String typeheadDisplay;
 
-	private boolean deleteFlag = true;
+	private boolean deleteFlag;
 
 	public Long getId() {
 		return this.id;

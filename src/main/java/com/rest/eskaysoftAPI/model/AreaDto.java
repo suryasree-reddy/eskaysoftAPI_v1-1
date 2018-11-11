@@ -14,7 +14,7 @@ public class AreaDto implements Serializable {
 
 	private String businessExecutiveName;
 
-	private boolean deleteFlag = true;
+	private boolean deleteFlag;
 
 	private String typeheadDisplay;
 

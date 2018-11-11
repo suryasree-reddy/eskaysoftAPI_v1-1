@@ -14,7 +14,7 @@ public class DistrictsDto implements Serializable {
 
 	private String stateName;
 
-	private boolean deleteFlag = true;
+	private boolean deleteFlag;
 
 	private String typeheadDisplay;
 

@@ -48,8 +48,8 @@ public class AccountInformationServiceImpl implements AccountInformationService 
 			AccountInformationDto aimodel = new AccountInformationDto();
 			BeanUtils.copyProperties(ai, aimodel);
 			List<CustomerWiseDiscounts> cwdList = cuswiserepo.findByAccountInformationIdIdOrderByDiscAsc(ai.getId());
-			if(null == cwdList || cwdList.isEmpty()) {
-				aimodel.setDeleteFlag(true);
+			if(null != cwdList && !cwdList.isEmpty()) {
+				aimodel.setDeleteFlag(false);
 			}
 			aimodel.setScheduleName(ai.getSubscheduleId().getScheduleId().getScheduleName());
 			aimodel.setScheduleId(ai.getSubscheduleId().getScheduleId().getId());

@@ -24,7 +24,7 @@ public class CompanyDto implements Serializable {
 
 	private String companyGroupName;
 
-	private boolean deleteFlag = true;
+	private boolean deleteFlag;
 
 	private String typeheadDisplay;
 

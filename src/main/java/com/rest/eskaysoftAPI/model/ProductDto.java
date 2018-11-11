@@ -21,8 +21,6 @@ public class ProductDto implements Serializable {
 	private Long taxId;
 	private Long tax;
 
-	private boolean deleteFlag;
-
 	private String packing;
 
 	private Integer boxQty;
@@ -191,14 +189,6 @@ public class ProductDto implements Serializable {
 
 	public void setProductcode(String productcode) {
 		this.productcode = productcode;
-	}
-
-	public boolean isDeleteFlag() {
-		return this.deleteFlag;
-	}
-
-	public void setDeleteFlag(boolean deleteFlag) {
-		this.deleteFlag = deleteFlag;
 	}
 
 }

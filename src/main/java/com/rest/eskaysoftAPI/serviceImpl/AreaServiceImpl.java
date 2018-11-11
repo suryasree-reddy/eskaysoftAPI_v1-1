@@ -37,7 +37,7 @@ public class AreaServiceImpl implements AreaService {
 			AreaDto areaModel = new AreaDto();
 			BeanUtils.copyProperties(area, areaModel);
 			List<AccountInformation> aiList = acinfrRepo.findByareaIdId(area.getId());
-			if(null != aiList) {
+			if(null != aiList && !aiList.isEmpty()) {
 				areaModel.setDeleteFlag(false);
 			}
 			areaModel.setBusinessExecutiveName(area.getBusinessExecutiveId().getName());

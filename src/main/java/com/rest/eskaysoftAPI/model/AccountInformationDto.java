@@ -59,7 +59,7 @@ public class AccountInformationDto implements Serializable {
 	private String openingType;
 	private String specialRemarks;
 	private String typeheadDisplay;
-	private boolean deleteFlag = true;
+	private boolean deleteFlag;
 
 	
 	public Long getId() {

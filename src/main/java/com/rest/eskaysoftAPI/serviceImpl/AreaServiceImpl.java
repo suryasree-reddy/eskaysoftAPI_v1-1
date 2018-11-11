@@ -36,6 +36,7 @@ public class AreaServiceImpl implements AreaService {
 		areaRepository.findAllByOrderByAreaNameAsc().forEach(area -> {
 			AreaDto areaModel = new AreaDto();
 			BeanUtils.copyProperties(area, areaModel);
+			areaModel.setDeleteFlag(true);
 			List<AccountInformation> aiList = acinfrRepo.findByareaIdId(area.getId());
 			if(null != aiList && !aiList.isEmpty()) {
 				areaModel.setDeleteFlag(false);

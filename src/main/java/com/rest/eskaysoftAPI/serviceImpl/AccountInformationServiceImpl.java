@@ -47,6 +47,7 @@ public class AccountInformationServiceImpl implements AccountInformationService 
 		acinfrRepo.findAllByOrderByAccountNameAsc().forEach(ai -> {
 			AccountInformationDto aimodel = new AccountInformationDto();
 			BeanUtils.copyProperties(ai, aimodel);
+			aimodel.setDeleteFlag(true);
 			List<CustomerWiseDiscounts> cwdList = cuswiserepo.findByAccountInformationIdIdOrderByDiscAsc(ai.getId());
 			if(null != cwdList && !cwdList.isEmpty()) {
 				aimodel.setDeleteFlag(false);

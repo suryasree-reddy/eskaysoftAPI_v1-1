@@ -36,6 +36,7 @@ public class DistrictServiceImpl implements DistrictService {
 		DisRepo.findAllByOrderByDistrictNameAsc().forEach(districts -> {
 			DistrictsDto districtsModel = new DistrictsDto();
 			BeanUtils.copyProperties(districts, districtsModel);
+			districtsModel.setDeleteFlag(true);
 			List<AccountInformation> aiList = acinfrRepo.findBydistrictIdId(districts.getId());
 			if(null != aiList && !aiList.isEmpty()) {
 				districtsModel.setDeleteFlag(false);

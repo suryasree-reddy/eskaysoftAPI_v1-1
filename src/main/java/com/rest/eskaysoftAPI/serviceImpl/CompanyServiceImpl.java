@@ -41,6 +41,7 @@ public class CompanyServiceImpl implements CompanyService {
 		cpmprepo.findAllByOrderByCompanyNameAsc().forEach(company -> {
 			CompanyDto companyModel = new CompanyDto();
 			BeanUtils.copyProperties(company, companyModel);
+			companyModel.setDeleteFlag(true);
 			List<Product> prodList = prorepo.findBycompanyIdId(company.getId());
 			if(null != prodList && !prodList.isEmpty()) {
 				companyModel.setDeleteFlag(false);

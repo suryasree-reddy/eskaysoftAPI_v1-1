@@ -36,6 +36,7 @@ public class SubScheduleServiceImpl implements SubScheduleService {
 		subschrepo.findAllByOrderBySubScheduleNameAsc().forEach(subschedule -> {
 			SubScheduleDto subschModel = new SubScheduleDto();
 			BeanUtils.copyProperties(subschedule, subschModel);
+			subschModel.setDeleteFlag(true);
 			List<AccountInformation> aiList = acinfrRepo.findBysubScheduleIdId(subschedule.getId());
 			if(null != aiList && !aiList.isEmpty()) {
 				subschModel.setDeleteFlag(false);

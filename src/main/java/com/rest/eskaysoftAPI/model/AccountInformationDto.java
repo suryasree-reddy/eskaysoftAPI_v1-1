@@ -1,7 +1,7 @@
 package com.rest.eskaysoftAPI.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class AccountInformationDto implements Serializable {
 
@@ -36,13 +36,13 @@ public class AccountInformationDto implements Serializable {
 	private String shortName;
 	private String licNo1;
 	private String licNo2;
-	private Date licExpiry;
+	private LocalDate licExpiry;
 	private String retLicNo1;
 	private String retLicNo2;
-	private Date retExpiry;
+	private LocalDate retExpiry;
 	private String foodLicNo;
 	private String otherLicense;
-	private Date otherLicenseExpiry;
+	private LocalDate otherLicenseExpiry;
 	private String gstType;
 	private String gstIN;
 	private String natureOfGST;
@@ -61,7 +61,6 @@ public class AccountInformationDto implements Serializable {
 	private String typeheadDisplay;
 	private boolean deleteFlag;
 
-	
 	public Long getId() {
 		return this.id;
 	}
@@ -222,14 +221,6 @@ public class AccountInformationDto implements Serializable {
 		this.licNo2 = licNo2;
 	}
 
-	public Date getLicExpiry() {
-		return this.licExpiry;
-	}
-
-	public void setLicExpiry(Date licExpiry) {
-		this.licExpiry = licExpiry;
-	}
-
 	public String getRetLicNo1() {
 		return this.retLicNo1;
 	}
@@ -244,14 +235,6 @@ public class AccountInformationDto implements Serializable {
 
 	public void setRetLicNo2(String retLicNo2) {
 		this.retLicNo2 = retLicNo2;
-	}
-
-	public Date getRetExpiry() {
-		return this.retExpiry;
-	}
-
-	public void setRetExpiry(Date retExpiry) {
-		this.retExpiry = retExpiry;
 	}
 
 	public String getFoodLicNo() {
@@ -270,11 +253,27 @@ public class AccountInformationDto implements Serializable {
 		this.otherLicense = otherLicense;
 	}
 
-	public Date getOtherLicenseExpiry() {
-		return this.otherLicenseExpiry;
+	public LocalDate getLicExpiry() {
+		return licExpiry;
 	}
 
-	public void setOtherLicenseExpiry(Date otherLicenseExpiry) {
+	public void setLicExpiry(LocalDate licExpiry) {
+		this.licExpiry = licExpiry;
+	}
+
+	public LocalDate getRetExpiry() {
+		return retExpiry;
+	}
+
+	public void setRetExpiry(LocalDate retExpiry) {
+		this.retExpiry = retExpiry;
+	}
+
+	public LocalDate getOtherLicenseExpiry() {
+		return otherLicenseExpiry;
+	}
+
+	public void setOtherLicenseExpiry(LocalDate otherLicenseExpiry) {
 		this.otherLicenseExpiry = otherLicenseExpiry;
 	}
 

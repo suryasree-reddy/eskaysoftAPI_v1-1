@@ -1,7 +1,7 @@
 package com.rest.eskaysoftAPI.entity;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,11 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
-
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "accountInformation", uniqueConstraints = { @UniqueConstraint(columnNames = { "shortName" }) })
@@ -31,13 +27,9 @@ public class AccountInformation implements Serializable {
 	@Column(name = "accountName", length = 50, nullable = false)
 	private String accountName;
 
-	
-
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "subScheduleId", nullable = false)
 	private SubSchedule subScheduleId;
-
-	
 
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "districtId", nullable = false)
@@ -78,7 +70,7 @@ public class AccountInformation implements Serializable {
 	private String licNo2;
 
 	@Column(name = "licExpiry", nullable = false)
-	private Date licExpiry;
+	private LocalDate licExpiry;
 
 	@Column(name = "retLicNo1", length = 25, nullable = false)
 	private String retLicNo1;
@@ -87,9 +79,7 @@ public class AccountInformation implements Serializable {
 	private String retLicNo2;
 
 	@Column(name = "retExpiry", nullable = false)
-	@Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "MM/dd/YYYY")
-	private Date retExpiry;
+	private LocalDate retExpiry;
 
 	@Column(name = "foodLicNo", length = 25, nullable = false)
 	private String foodLicNo;
@@ -98,7 +88,7 @@ public class AccountInformation implements Serializable {
 	private String otherLicense;
 
 	@Column(name = "otherLicenseExpiry", nullable = false)
-	private Date otherLicenseExpiry;
+	private LocalDate otherLicenseExpiry;
 
 	@Column(name = "gstType", length = 5, nullable = false)
 	private String gstType;
@@ -144,10 +134,9 @@ public class AccountInformation implements Serializable {
 
 	@Column(name = "specialRemarks", length = 60, nullable = false)
 	private String specialRemarks;
-	
+
 	@Column(name = "deleteFlag", nullable = false)
 	private boolean deleteFlag = true;
-
 
 	public Long getId() {
 		return this.id;
@@ -173,8 +162,6 @@ public class AccountInformation implements Serializable {
 		this.subScheduleId = subScheduleId;
 	}
 
-	
-
 	public Districts getDistrictId() {
 		return this.districtId;
 	}
@@ -182,8 +169,6 @@ public class AccountInformation implements Serializable {
 	public void setDistrictId(Districts districtId) {
 		this.districtId = districtId;
 	}
-
-	
 
 	public SubSchedule getSubscheduleId() {
 		return this.subScheduleId;
@@ -281,14 +266,6 @@ public class AccountInformation implements Serializable {
 		this.licNo2 = licNo2;
 	}
 
-	public Date getLicExpiry() {
-		return this.licExpiry;
-	}
-
-	public void setLicExpiry(Date licExpiry) {
-		this.licExpiry = licExpiry;
-	}
-
 	public String getRetLicNo1() {
 		return this.retLicNo1;
 	}
@@ -305,14 +282,6 @@ public class AccountInformation implements Serializable {
 		this.retLicNo2 = retLicNo2;
 	}
 
-	public Date getRetExpiry() {
-		return this.retExpiry;
-	}
-
-	public void setRetExpiry(Date retExpiry) {
-		this.retExpiry = retExpiry;
-	}
-
 	public String getFoodLicNo() {
 		return this.foodLicNo;
 	}
@@ -327,14 +296,6 @@ public class AccountInformation implements Serializable {
 
 	public void setOtherLicense(String otherLicense) {
 		this.otherLicense = otherLicense;
-	}
-
-	public Date getOtherLicenseExpiry() {
-		return this.otherLicenseExpiry;
-	}
-
-	public void setOtherLicenseExpiry(Date otherLicenseExpiry) {
-		this.otherLicenseExpiry = otherLicenseExpiry;
 	}
 
 	public String getGstType() {
@@ -463,6 +424,30 @@ public class AccountInformation implements Serializable {
 
 	public void setDeleteFlag(boolean deleteFlag) {
 		this.deleteFlag = deleteFlag;
+	}
+
+	public LocalDate getLicExpiry() {
+		return licExpiry;
+	}
+
+	public void setLicExpiry(LocalDate licExpiry) {
+		this.licExpiry = licExpiry;
+	}
+
+	public LocalDate getRetExpiry() {
+		return retExpiry;
+	}
+
+	public void setRetExpiry(LocalDate retExpiry) {
+		this.retExpiry = retExpiry;
+	}
+
+	public LocalDate getOtherLicenseExpiry() {
+		return otherLicenseExpiry;
+	}
+
+	public void setOtherLicenseExpiry(LocalDate otherLicenseExpiry) {
+		this.otherLicenseExpiry = otherLicenseExpiry;
 	}
 
 }

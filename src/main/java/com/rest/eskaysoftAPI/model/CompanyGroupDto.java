@@ -10,6 +10,7 @@ public class CompanyGroupDto implements Serializable {
 	private String companyGroupName;
 	private boolean deleteFlag;
 
+
 	public Long getId() {
 		return this.id;
 	}

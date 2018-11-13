@@ -12,7 +12,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "accountInformation", uniqueConstraints = { @UniqueConstraint(columnNames = { "shortName" }) })
@@ -83,6 +87,8 @@ public class AccountInformation implements Serializable {
 	private String retLicNo2;
 
 	@Column(name = "retExpiry", nullable = false)
+	@Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "MM/dd/YYYY")
 	private Date retExpiry;
 
 	@Column(name = "foodLicNo", length = 25, nullable = false)

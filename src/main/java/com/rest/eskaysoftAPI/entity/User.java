@@ -43,6 +43,9 @@ public class User extends DateAudit {
     @NotBlank
     @Size(max = 100)
     private String password;
+    
+    @Column(name = "createdNew", nullable = false)
+	private boolean createdNew = true;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",
@@ -108,4 +111,13 @@ public class User extends DateAudit {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+
+	public boolean isCreatedNew() {
+		return createdNew;
+	}
+
+	public void setCreatedNew(boolean createdNew) {
+		this.createdNew = createdNew;
+	}
+    
 }

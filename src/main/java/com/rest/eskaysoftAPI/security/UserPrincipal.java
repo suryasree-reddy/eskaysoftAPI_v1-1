@@ -24,15 +24,19 @@ public class UserPrincipal implements UserDetails {
     private List<String> roles;
     
     private String password;
+    
+    private boolean createdNew;
 
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UserPrincipal(Long id, String name, String username, String email, String password, List<String> roles, Collection<? extends GrantedAuthority> authorities) {
+    public UserPrincipal(Long id, String name, String username, String email, String password, boolean createdNew, List<String> roles, 
+    		Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
         this.name = name;
         this.username = username;
         this.email = email;
         this.password = password;
+        this.createdNew = createdNew;
         this.roles = roles;
         this.authorities = authorities;
     }
@@ -49,6 +53,7 @@ public class UserPrincipal implements UserDetails {
                 user.getUsername(),
                 user.getEmail(),
                 user.getPassword(),
+                user.isCreatedNew(),
                 roles,
                 null
         );
@@ -65,6 +70,10 @@ public class UserPrincipal implements UserDetails {
     public String getEmail() {
         return email;
     }
+    
+    public boolean isCreatedNew() {
+		return createdNew;
+	}
 
     public List<String> getRoles() {
 		return roles;

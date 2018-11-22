@@ -1,11 +1,18 @@
 package com.rest.eskaysoftAPI.controller;
 
+import java.net.URI;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 import javax.validation.Valid;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,16 +20,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.rest.eskaysoftAPI.entity.Role;
 import com.rest.eskaysoftAPI.entity.User;
+import com.rest.eskaysoftAPI.exception.AppException;
 import com.rest.eskaysoftAPI.exception.ResourceNotFoundException;
 import com.rest.eskaysoftAPI.model.ApiResponse;
 import com.rest.eskaysoftAPI.model.LoginRequest;
 import com.rest.eskaysoftAPI.model.UserIdentityAvailability;
-import com.rest.eskaysoftAPI.model.UserSummary;
+import com.rest.eskaysoftAPI.model.UserInformation;
+import com.rest.eskaysoftAPI.repository.RoleRepository;
 import com.rest.eskaysoftAPI.repository.UserRepository;
-import com.rest.eskaysoftAPI.security.CurrentUser;
-import com.rest.eskaysoftAPI.security.UserPrincipal;
 
 @RestController
 @RequestMapping("/api")
@@ -34,12 +43,8 @@ public class UserController {
     @Autowired
 	PasswordEncoder passwordEncoder;
 
-    @GetMapping("/user")
-    @PreAuthorize("hasRole('USER')")
-    public UserSummary getCurrentUser(@CurrentUser UserPrincipal currentUser) {
-        UserSummary userSummary = new UserSummary(currentUser.getId(), currentUser.getUsername(), currentUser.getName());
-        return userSummary;
-    }
+    @Autowired
+	RoleRepository roleRepository;
 
     @GetMapping("/user/checkUsernameAvailability")
     public UserIdentityAvailability checkUsernameAvailability(@RequestParam(value = "username") String username) {
@@ -54,12 +59,13 @@ public class UserController {
     }
 
     @GetMapping("/users/{username}")
-    public UserSummary getUserProfile(@PathVariable(value = "username") String username) {
+    public UserInformation getUserProfile(@PathVariable(value = "username") String username) {
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new ResourceNotFoundException("User", "username", username));
+        UserInformation info = new UserInformation();
+        BeanUtils.copyProperties(user, info);
         
-        UserSummary userSummary = new UserSummary(user.getId(), user.getUsername(), user.getName());
-        return userSummary;
+        return info;
     }
     
     @PostMapping("/changePassword")
@@ -69,8 +75,62 @@ public class UserController {
                  .orElseThrow(() -> new ResourceNotFoundException("User", "username", loginRequest.getUsernameOrEmail()));
     	 
     	 user.setPassword(passwordEncoder.encode(loginRequest.getPassword()));
+    	 user.setCreatedNew(false);
     	 userRepository.save(user);
     	 
 		return ResponseEntity.ok().body(new ApiResponse(true, "Password changed successfully"));
 	}
+    
+    @PostMapping("/createUser")
+	public ResponseEntity<?> registerUser(@RequestBody UserInformation userproRequest) {
+		if (userRepository.existsByUsername(userproRequest.getUsername())) {
+			return new ResponseEntity(new ApiResponse(false, "Username is already taken!"), HttpStatus.BAD_REQUEST);
+		}
+
+		if (userRepository.existsByEmail(userproRequest.getEmail())) {
+			return new ResponseEntity(new ApiResponse(false, "Email Address already in use!"), HttpStatus.BAD_REQUEST);
+		}
+		
+		User user = new User();
+        BeanUtils.copyProperties(userproRequest, user);
+
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+		List<Role> userRoles = roleRepository.findByNameIn(userproRequest.getRoles())
+				.orElseThrow(() -> new AppException("User Role not set."));
+		Set<Role> roleNames = userRoles.stream().collect(Collectors.toSet());
+		user.setRoles(roleNames);
+
+		User result = userRepository.save(user);
+
+		URI location = ServletUriComponentsBuilder.fromCurrentContextPath().path("/users/{username}")
+				.buildAndExpand(result.getUsername()).toUri();
+
+		return ResponseEntity.created(location).body(new ApiResponse(true, "User registered successfully"));
+	}
+	
+	@PostMapping("/updateUser")
+	public ResponseEntity<?> updateUser(@Valid @RequestBody UserInformation userproRequest) {
+		
+		User user = new User();
+        BeanUtils.copyProperties(userproRequest, user);
+
+		List<Role> userRoles = roleRepository.findByNameIn(userproRequest.getRoles())
+				.orElseThrow(() -> new AppException("User Role not set."));
+		Set<Role> roleNames = userRoles.stream().collect(Collectors.toSet());
+		user.setRoles(roleNames);
+
+		userRepository.save(user);
+		
+		return ResponseEntity.ok().body(new ApiResponse(true, "User Updated successfully"));
+	}
+	
+	 @DeleteMapping("/users/{username}")
+	    public ResponseEntity<?>  deleteUser(@PathVariable(value = "username") String username) {
+	        User user = userRepository.findByUsername(username)
+	                .orElseThrow(() -> new ResourceNotFoundException("User", "username", username));
+	        userRepository.delete(user);
+	        
+	        return ResponseEntity.ok().body(new ApiResponse(true, "User Deleted successfully"));
+	    }
 }

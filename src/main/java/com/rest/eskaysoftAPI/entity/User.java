@@ -15,6 +15,11 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.NaturalId;
 
 import com.rest.eskaysoftAPI.audit.DateAudit;
 
@@ -35,13 +40,13 @@ public class User extends DateAudit {
 	@Column(name = "username", nullable = false, length = 15)
 	private String username;
 
-	@Column(name = "address1", nullable = false, length = 25)
+	@Column(name = "address1", nullable = false, length = 15)
 	private String address1;
 
 	@Column(name = "address2")
 	private String address2;
 
-	@Column(name = "town", nullable = false, length = 20)
+	@Column(name = "town", nullable = false, length = 10)
 	private String town;
 
 	@Column(name = "pin", nullable = false, length = 6)
@@ -56,7 +61,7 @@ public class User extends DateAudit {
 	@Column(name = "stateCode", nullable = false, length = 6)
 	private String stateCode;
 
-	@Column(name = "phone", nullable = false, length = 11)
+	@Column(name = "phone", nullable = false, length = 10)
 	private Long phone;
 
 	@Column(name = "mobile1", nullable = false, length = 10)
@@ -95,10 +100,14 @@ public class User extends DateAudit {
 	@Column(name = "designation", nullable = false, length = 10)
 	private String designation;
 
-	@Column(name = "email", nullable = false)
+	@NaturalId
+	@NotBlank
+	@Size(max = 40)
+	@Email
 	private String email;
 
-	@Column(name = "password", nullable = false)
+	@NotBlank
+	@Size(max = 100)
 	private String password;
 
 	@Column(name = "createdNew", nullable = false)
@@ -201,8 +210,6 @@ public class User extends DateAudit {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	
 
 	public String getPassword() {
 		return password;

@@ -3,125 +3,52 @@ package com.rest.eskaysoftAPI.model;
 import java.time.LocalDate;
 import java.util.Set;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
-
-import org.hibernate.annotations.NaturalId;
-
 import com.rest.eskaysoftAPI.entity.RoleName;
 
 public class UserInformation {
 
-	@NotBlank
-	@Size(min = 4, max = 40)
 	private String name;
-
-	@NotBlank
-	@Size(min = 4, max = 25)
 	private String username;
-
-	@NotBlank
-	@Size(max = 15)
 	private String address1;
-
 	private String address2;
-
-	@NotBlank
-	@Size(max = 20)
 	private String town;
-
-	@NotBlank
-	@Size(max = 6)
 	private String pin;
-
 	private String district;
 	private String state;
 	private String stateCode;
-
-	@NotBlank
-	@Size(min = 11, max = 11)
 	private Long phone;
-
-	@NotBlank
-	@Size(min = 10)
 	private Long mobile1;
-
-	@Size(min = 10)
 	private Long mobile2;
-
-	@NotBlank
 	private String contactPerson;
-
-	@NotBlank
-	@Size(min = 10)
 	private Long contactPersonMobile;
-
 	private String natureOfBusiness;
-
-	@NotBlank
-	@Size(min = 20)
 	private String bankName1;
-
-	@NotBlank
-	@Size(min = 16)
 	private Long bankAcNo1;
-
-	@NotBlank
-	@Size(min = 11)
 	private String bankIfscNo1;
-
 	private String bankName2;
 	private Long bankAcNo2;
 	private String bankIfscNo2;
-
 	private String designation;
-
-	@NaturalId
-	@NotBlank
-	@Size(max = 40)
-	@Email
 	private String email;
-
-	@NotBlank
-	@Size(min = 8, max = 100)
 	private String password;
-
 	private boolean createdNew = true;
-
-	@NotBlank
 	private String licNo1;
-
 	private String licNo2;
-
-	@NotBlank
 	private LocalDate licExpiry;
-
-	@NotBlank
 	private String retLicNo1;
 	private String retLicNo2;
-
-	@NotBlank
 	private LocalDate retExpiry;
-
 	private String foodLicNo;
 	private String otherLicense;
 	private LocalDate otherLicenseExpiry;
 	private String gstType;
 	private String gstIN;
 	private String natureOfGST;
-
-	@NotBlank
 	private String uin;
 	private String saleType;
-
-	@NotBlank
 	private String customerType;
 	private Double creditLimit;
-
-	@NotBlank
 	private Integer dueDays;
-
 	private Set<RoleName> roles;
 
 	public String getName() {

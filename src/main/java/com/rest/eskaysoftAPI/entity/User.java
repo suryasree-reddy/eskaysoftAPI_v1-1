@@ -202,13 +202,7 @@ public class User extends DateAudit {
 		this.email = email;
 	}
 
-	public String getConfirmPassword() {
-		return confirmPassword;
-	}
-
-	public void setConfirmPassword(String confirmPassword) {
-		this.confirmPassword = confirmPassword;
-	}
+	
 
 	public String getPassword() {
 		return password;

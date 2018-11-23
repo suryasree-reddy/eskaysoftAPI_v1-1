@@ -87,7 +87,6 @@ public class UserInformation {
 	@Size(min = 8, max = 100)
 	private String password;
 
-
 	private boolean createdNew = true;
 
 	@NotBlank
@@ -467,14 +466,6 @@ public class UserInformation {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getConfirmPassword() {
-		return confirmPassword;
-	}
-
-	public void setConfirmPassword(String confirmPassword) {
-		this.confirmPassword = confirmPassword;
 	}
 
 }

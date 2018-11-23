@@ -81,34 +81,7 @@ public class UserController {
 		return ResponseEntity.ok().body(new ApiResponse(true, "Password changed successfully"));
 	}
     
-    @PostMapping("/createUser")
-	public ResponseEntity<?> registerUser(@RequestBody UserInformation userproRequest) {
-		if (userRepository.existsByUsername(userproRequest.getUsername())) {
-			return new ResponseEntity(new ApiResponse(false, "Username is already taken!"), HttpStatus.BAD_REQUEST);
-		}
-
-		if (userRepository.existsByEmail(userproRequest.getEmail())) {
-			return new ResponseEntity(new ApiResponse(false, "Email Address already in use!"), HttpStatus.BAD_REQUEST);
-		}
-		
-		User user = new User();
-        BeanUtils.copyProperties(userproRequest, user);
-
-		user.setPassword(passwordEncoder.encode(user.getPassword()));
-
-		List<Role> userRoles = roleRepository.findByNameIn(userproRequest.getRoles())
-				.orElseThrow(() -> new AppException("User Role not set."));
-		Set<Role> roleNames = userRoles.stream().collect(Collectors.toSet());
-		user.setRoles(roleNames);
-
-		User result = userRepository.save(user);
-
-		URI location = ServletUriComponentsBuilder.fromCurrentContextPath().path("/users/{username}")
-				.buildAndExpand(result.getUsername()).toUri();
-
-		return ResponseEntity.created(location).body(new ApiResponse(true, "User registered successfully"));
-	}
-	
+   
 	@PostMapping("/updateUser")
 	public ResponseEntity<?> updateUser(@Valid @RequestBody UserInformation userproRequest) {
 		

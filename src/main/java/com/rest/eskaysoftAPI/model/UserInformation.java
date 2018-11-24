@@ -6,16 +6,17 @@ import java.util.Set;
 import com.rest.eskaysoftAPI.entity.RoleName;
 
 public class UserInformation {
-
+	private Long id;
 	private String name;
 	private String username;
 	private String address1;
 	private String address2;
 	private String town;
 	private String pin;
-	private String district;
+	private Long districtId;
+	private String districtName;
 	private String state;
-	private String stateCode;
+	private Long stateCode;
 	private Long phone;
 	private Long mobile1;
 	private Long mobile2;
@@ -99,12 +100,12 @@ public class UserInformation {
 		this.pin = pin;
 	}
 
-	public String getDistrict() {
-		return district;
+	public String getDistrictName() {
+		return districtName;
 	}
 
-	public void setDistrict(String district) {
-		this.district = district;
+	public void setDistrictName(String districtName) {
+		this.districtName = districtName;
 	}
 
 	public String getState() {
@@ -115,11 +116,11 @@ public class UserInformation {
 		this.state = state;
 	}
 
-	public String getStateCode() {
+	public Long getStateCode() {
 		return stateCode;
 	}
 
-	public void setStateCode(String stateCode) {
+	public void setStateCode(Long stateCode) {
 		this.stateCode = stateCode;
 	}
 
@@ -393,6 +394,22 @@ public class UserInformation {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public Long getDistrictId() {
+		return districtId;
+	}
+
+	public void setDistrictId(Long districtId) {
+		this.districtId = districtId;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 }

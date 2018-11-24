@@ -13,13 +13,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
-
-import org.hibernate.annotations.NaturalId;
 
 import com.rest.eskaysoftAPI.audit.DateAudit;
 
@@ -40,128 +36,119 @@ public class User extends DateAudit {
 	@Column(name = "username", nullable = false, length = 15)
 	private String username;
 
-	@Column(name = "address1", nullable = false, length = 15)
+	@Column(name = "address1", length = 15, nullable = false)
 	private String address1;
 
 	@Column(name = "address2")
 	private String address2;
 
-	@Column(name = "town", nullable = false, length = 10)
+	@Column(name = "town", nullable = false)
 	private String town;
 
-	@Column(name = "pin", nullable = false, length = 6)
+	@Column(name = "pin", nullable = false)
 	private String pin;
 
-	@Column(name = "district", nullable = false, length = 6)
-	private String district;
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "districtId")
+	private Districts districtId;
 
-	@Column(name = "state", nullable = false, length = 6)
-	private String state;
-
-	@Column(name = "stateCode", nullable = false, length = 6)
-	private String stateCode;
-
-	@Column(name = "phone", nullable = false, length = 10)
+	@Column(name = "phone", nullable = false)
 	private Long phone;
 
-	@Column(name = "mobile1", nullable = false, length = 10)
+	@Column(name = "mobile1", nullable = false)
 	private Long mobile1;
 
-	@Column(name = "mobile2", nullable = false, length = 10)
+	@Column(name = "mobile2")
 	private Long mobile2;
 
-	@Column(name = "contactPerson", nullable = false, length = 10)
+	@Column(name = "contactPerson")
 	private String contactPerson;
 
-	@Column(name = "contactPersonMobile", nullable = false, length = 10)
+	@Column(name = "contactPersonMobile")
 	private Long contactPersonMobile;
 
-	@Column(name = "natureOfBusiness", nullable = false, length = 10)
+	@Column(name = "natureOfBusiness")
 	private String natureOfBusiness;
 
-	@Column(name = "bankName1", nullable = false, length = 10)
+	@Column(name = "bankName1")
 	private String bankName1;
 
-	@Column(name = "bankAcNo1", nullable = false, length = 10)
+	@Column(name = "bankAcNo1")
 	private Long bankAcNo1;
 
-	@Column(name = "bankIfscNo1", nullable = false, length = 10)
+	@Column(name = "bankIfscNo1")
 	private String bankIfscNo1;
 
-	@Column(name = "bankName2", nullable = false, length = 10)
+	@Column(name = "bankName2")
 	private String bankName2;
 
-	@Column(name = "bankAcNo2", nullable = false, length = 10)
+	@Column(name = "bankAcNo2")
 	private Long bankAcNo2;
 
-	@Column(name = "bankIfscNo2", nullable = false, length = 10)
+	@Column(name = "bankIfscNo2")
 	private String bankIfscNo2;
 
-	@Column(name = "designation", nullable = false, length = 10)
+	@Column(name = "designation")
 	private String designation;
 
-	@NaturalId
-	@NotBlank
-	@Size(max = 40)
-	@Email
+	@Column(name = "email", nullable = false)
 	private String email;
 
-	@NotBlank
-	@Size(max = 100)
+	@Column(name = "password")
 	private String password;
 
-	@Column(name = "createdNew", nullable = false)
+	@Column(name = "createdNew")
 	private boolean createdNew = true;
 
-	@Column(name = "licNo1", nullable = false, length = 10)
+	@Column(name = "licNo1")
 	private String licNo1;
 
-	@Column(name = "licNo2", nullable = false, length = 10)
+	@Column(name = "licNo2")
 	private String licNo2;
 
-	@Column(name = "licExpiry", nullable = false)
+	@Column(name = "licExpiry")
 	private LocalDate licExpiry;
 
-	@Column(name = "retLicNo1", nullable = false, length = 10)
+	@Column(name = "retLicNo1")
 	private String retLicNo1;
 
-	@Column(name = "retLicNo2", nullable = false, length = 10)
+	@Column(name = "retLicNo2")
 	private String retLicNo2;
 
-	@Column(name = "retExpiry", nullable = false)
+	@Column(name = "retExpiry")
 	private LocalDate retExpiry;
 
-	@Column(name = "foodLicNo", nullable = false, length = 10)
+	@Column(name = "foodLicNo")
 	private String foodLicNo;
 
-	@Column(name = "otherLicense", nullable = false, length = 10)
+	@Column(name = "otherLicense")
 	private String otherLicense;
 
-	@Column(name = "otherLicenseExpiry", nullable = false)
+	@Column(name = "otherLicenseExpiry")
 	private LocalDate otherLicenseExpiry;
 
-	@Column(name = "gstType", nullable = false, length = 10)
+	@Column(name = "gstType")
 	private String gstType;
 
-	@Column(name = "gstIN", nullable = false, length = 10)
+	@Column(name = "gstIN")
 	private String gstIN;
 
-	@Column(name = "natureOfGST", nullable = false, length = 10)
+	@Column(name = "natureOfGST")
 	private String natureOfGST;
 
-	@Column(name = "uin", nullable = false, length = 10)
+	@Column(name = "uin")
 	private String uin;
 
-	@Column(name = "saleType", nullable = false, length = 10)
+	@Column(name = "saleType")
 	private String saleType;
 
-	@Column(name = "creditLimit", nullable = false)
+	@Column(name = "creditLimit")
 	private Double creditLimit;
 
-	@Column(name = "customerType", nullable = false, length = 10)
+	@Column(name = "customerType")
 	private String customerType;
 
-	@Column(name = "dueDays", nullable = false)
+	@Column(name = "dueDays")
 	private Integer dueDays;
 
 	@ManyToMany(fetch = FetchType.LAZY)
@@ -403,28 +390,12 @@ public class User extends DateAudit {
 		this.pin = pin;
 	}
 
-	public String getDistrict() {
-		return district;
+	public Districts getDistrictId() {
+		return districtId;
 	}
 
-	public void setDistrict(String district) {
-		this.district = district;
-	}
-
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
-	}
-
-	public String getStateCode() {
-		return stateCode;
-	}
-
-	public void setStateCode(String stateCode) {
-		this.stateCode = stateCode;
+	public void setDistrictId(Districts districtId) {
+		this.districtId = districtId;
 	}
 
 	public Long getPhone() {

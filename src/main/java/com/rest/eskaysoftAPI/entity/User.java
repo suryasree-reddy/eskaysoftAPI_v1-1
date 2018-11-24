@@ -91,7 +91,7 @@ public class User extends DateAudit {
 	@Column(name = "designation")
 	private String designation;
 
-	@Column(name = "email", nullable = false)
+	@Column(name = "email")
 	private String email;
 
 	@Column(name = "password")

@@ -87,7 +87,7 @@ public class UserController {
 	}
 
 	@GetMapping("/users")
-	public List<UserInformation> getUserProfile() {
+	public List<UserInformation> getAllUserProfile() {
 		List<UserInformation> users = new ArrayList<>();
 		userRepository.findAll().forEach(user -> {
 			UserInformation info = new UserInformation();

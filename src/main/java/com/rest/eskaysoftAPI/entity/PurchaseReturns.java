@@ -15,8 +15,9 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "purchaseOrder", uniqueConstraints = { @UniqueConstraint(columnNames = { "orderNumber" }) })
-public class PurchaseOrder implements Serializable {
+@Table(name = "purchaseReturns", uniqueConstraints = {
+		@UniqueConstraint(columnNames = { "purReturnNumber" }) })
+public class PurchaseReturns implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -24,10 +25,10 @@ public class PurchaseOrder implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "orderNumber", nullable = false, length = 40)
-	private Integer orderNumber;
+	@Column(name = "purReturnNumber", length = 30, nullable = false)
+	private Long purReturnNumber;
 
-	@Column(name = "date", nullable = false)
+	@Column(name = "date", nullable = false, length = 40)
 	private LocalDate date;
 
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
@@ -41,31 +42,25 @@ public class PurchaseOrder implements Serializable {
 	@JoinColumn(name = "productId", nullable = false)
 	private Product productId;
 
-	@Column(name = "pack", nullable = false, length = 10)
-	private String pack;
+	/*
+	 * @Column(name = "status", nullable = false) private Boolean status;
+	 */
+
+	@Column(name = "batch", nullable = false)
+	private Boolean batch;
 
 	@Column(name = "qty", nullable = false)
 	private Double qty;
 
 	@Column(name = "free", nullable = false)
-	private Double free;
+	private Integer free;
 
-	@Column(name = "rate", nullable = false)
-	private Double rate;
+	@Column(name = "pRate", nullable = false)
+	private Double pRate;
 
-	@Column(name = "bQty", nullable = false)
-	private Double bQty;
+	@Column(name = "ammount", nullable = false)
+	private Long ammount;
 
-	@Column(name = "bFree", nullable = false)
-	private Integer bFree;
-
-	@Column(name = "bRate", nullable = false)
-	private Double bRate;
-	
-	@Column(name = "value")
-	private Double value;
-
-	
 	public Long getId() {
 		return id;
 	}
@@ -74,12 +69,12 @@ public class PurchaseOrder implements Serializable {
 		this.id = id;
 	}
 
-	public Integer getOrderNumber() {
-		return orderNumber;
+	public Long getPurReturnNumber() {
+		return purReturnNumber;
 	}
 
-	public void setOrderNumber(Integer orderNumber) {
-		this.orderNumber = orderNumber;
+	public void setPurReturnNumber(Long purReturnNumber) {
+		this.purReturnNumber = purReturnNumber;
 	}
 
 	public LocalDate getDate() {
@@ -98,7 +93,6 @@ public class PurchaseOrder implements Serializable {
 		this.accountInformationId = accountInformationId;
 	}
 
-	
 	public String getRemarks() {
 		return remarks;
 	}
@@ -115,12 +109,18 @@ public class PurchaseOrder implements Serializable {
 		this.productId = productId;
 	}
 
-	public String getPack() {
-		return pack;
+	/*
+	 * public Boolean getStatus() { return status; }
+	 * 
+	 * public void setStatus(Boolean status) { this.status = status; }
+	 */
+
+	public Boolean getBatch() {
+		return batch;
 	}
 
-	public void setPack(String pack) {
-		this.pack = pack;
+	public void setBatch(Boolean batch) {
+		this.batch = batch;
 	}
 
 	public Double getQty() {
@@ -131,54 +131,28 @@ public class PurchaseOrder implements Serializable {
 		this.qty = qty;
 	}
 
-	public Double getFree() {
+	public Integer getFree() {
 		return free;
 	}
 
-	public void setFree(Double free) {
+	public void setFree(Integer free) {
 		this.free = free;
 	}
 
-	public Double getRate() {
-		return rate;
+	public Double getpRate() {
+		return pRate;
 	}
 
-	public void setRate(Double rate) {
-		this.rate = rate;
+	public void setpRate(Double pRate) {
+		this.pRate = pRate;
 	}
 
-	public Double getbQty() {
-		return bQty;
+	public Long getAmmount() {
+		return ammount;
 	}
 
-	public void setbQty(Double bQty) {
-		this.bQty = bQty;
+	public void setAmmount(Long ammount) {
+		this.ammount = ammount;
 	}
-
-	public Integer getbFree() {
-		return bFree;
-	}
-
-	public void setbFree(Integer bFree) {
-		this.bFree = bFree;
-	}
-
-	public Double getbRate() {
-		return bRate;
-	}
-
-	public void setbRate(Double bRate) {
-		this.bRate = bRate;
-	}
-
-	public Double getValue() {
-		return value;
-	}
-
-	public void setValue(Double value) {
-		this.value = value;
-	}
-
-	
 
 }

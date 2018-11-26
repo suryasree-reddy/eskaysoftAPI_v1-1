@@ -15,24 +15,26 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "purchaseOrder", uniqueConstraints = { @UniqueConstraint(columnNames = { "orderNumber" }) })
-public class PurchaseOrder implements Serializable {
+@Table(name = "salesOrder", uniqueConstraints = { @UniqueConstraint(columnNames = { "orderNumber" }) })
+public class SalesOrder implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -6855841992822428060L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "orderNumber", nullable = false, length = 40)
-	private Integer orderNumber;
+	@Column(name = "orderNumber", nullable = false)
+	private Long orderNumber;
 
 	@Column(name = "date", nullable = false)
 	private LocalDate date;
 
-	@ManyToOne(fetch = FetchType.EAGER, optional = false)
-	@JoinColumn(name = "accountInformationId", nullable = false)
-	private AccountInformation accountInformationId;
+	@Column(name = "customer", nullable = false, length = 40)
+	private String customer;
+
+	@Column(name = "rateType", nullable = false)
+	private String rateType;
 
 	@Column(name = "remarks", nullable = false, length = 40)
 	private String remarks;
@@ -41,31 +43,24 @@ public class PurchaseOrder implements Serializable {
 	@JoinColumn(name = "productId", nullable = false)
 	private Product productId;
 
-	@Column(name = "pack", nullable = false, length = 10)
-	private String pack;
+	@Column(name = "packing", nullable = false, length = 40)
+	private String packing;
 
-	@Column(name = "qty", nullable = false)
+	@Column(name = "qty", nullable = false, length = 40)
 	private Double qty;
 
-	@Column(name = "free", nullable = false)
+	@Column(name = "free", nullable = false, length = 40)
 	private Double free;
 
 	@Column(name = "rate", nullable = false)
 	private Double rate;
 
-	@Column(name = "bQty", nullable = false)
-	private Double bQty;
-
-	@Column(name = "bFree", nullable = false)
-	private Integer bFree;
-
-	@Column(name = "bRate", nullable = false)
-	private Double bRate;
-	
 	@Column(name = "value")
 	private Double value;
 
-	
+	@Column(name = "deleteFlag", nullable = false)
+	private boolean deleteFlag = true;
+
 	public Long getId() {
 		return id;
 	}
@@ -74,11 +69,11 @@ public class PurchaseOrder implements Serializable {
 		this.id = id;
 	}
 
-	public Integer getOrderNumber() {
+	public Long getOrderNumber() {
 		return orderNumber;
 	}
 
-	public void setOrderNumber(Integer orderNumber) {
+	public void setOrderNumber(Long orderNumber) {
 		this.orderNumber = orderNumber;
 	}
 
@@ -90,15 +85,22 @@ public class PurchaseOrder implements Serializable {
 		this.date = date;
 	}
 
-	public AccountInformation getAccountInformationId() {
-		return accountInformationId;
+	public String getCustomer() {
+		return customer;
 	}
 
-	public void setAccountInformationId(AccountInformation accountInformationId) {
-		this.accountInformationId = accountInformationId;
+	public void setCustomer(String customer) {
+		this.customer = customer;
 	}
 
-	
+	public String getRateType() {
+		return rateType;
+	}
+
+	public void setRateType(String rateType) {
+		this.rateType = rateType;
+	}
+
 	public String getRemarks() {
 		return remarks;
 	}
@@ -115,12 +117,12 @@ public class PurchaseOrder implements Serializable {
 		this.productId = productId;
 	}
 
-	public String getPack() {
-		return pack;
+	public String getPacking() {
+		return packing;
 	}
 
-	public void setPack(String pack) {
-		this.pack = pack;
+	public void setPacking(String packing) {
+		this.packing = packing;
 	}
 
 	public Double getQty() {
@@ -147,30 +149,6 @@ public class PurchaseOrder implements Serializable {
 		this.rate = rate;
 	}
 
-	public Double getbQty() {
-		return bQty;
-	}
-
-	public void setbQty(Double bQty) {
-		this.bQty = bQty;
-	}
-
-	public Integer getbFree() {
-		return bFree;
-	}
-
-	public void setbFree(Integer bFree) {
-		this.bFree = bFree;
-	}
-
-	public Double getbRate() {
-		return bRate;
-	}
-
-	public void setbRate(Double bRate) {
-		this.bRate = bRate;
-	}
-
 	public Double getValue() {
 		return value;
 	}
@@ -179,6 +157,14 @@ public class PurchaseOrder implements Serializable {
 		this.value = value;
 	}
 
-	
+	public boolean isDeleteFlag() {
+		return deleteFlag;
+	}
 
+	public void setDeleteFlag(boolean deleteFlag) {
+		this.deleteFlag = deleteFlag;
+	}
+
+	
+	
 }

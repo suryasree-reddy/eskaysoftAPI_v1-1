@@ -26,6 +26,7 @@ import com.rest.eskaysoftAPI.entity.Role;
 import com.rest.eskaysoftAPI.entity.User;
 import com.rest.eskaysoftAPI.exception.AppException;
 import com.rest.eskaysoftAPI.exception.NotFoundException;
+import com.rest.eskaysoftAPI.exception.ResourceNotFoundException;
 import com.rest.eskaysoftAPI.model.ApiResponse;
 import com.rest.eskaysoftAPI.model.JwtAuthenticationResponse;
 import com.rest.eskaysoftAPI.model.LoginRequest;
@@ -96,6 +97,19 @@ public class AuthController {
 				.buildAndExpand(result.getUsername()).toUri();
 
 		return ResponseEntity.created(location).body(new ApiResponse(true, "User registered successfully"));
+	}
+	
+	@PostMapping("/changePassword")
+	public ResponseEntity<?> changePassword(@Valid @RequestBody LoginRequest loginRequest) {
+
+		User user = userRepository.findByUsername(loginRequest.getUsernameOrEmail()).orElseThrow(
+				() -> new ResourceNotFoundException("User", "username", loginRequest.getUsernameOrEmail()));
+
+		user.setPassword(passwordEncoder.encode(loginRequest.getPassword()));
+		user.setCreatedNew(false);
+		userRepository.save(user);
+
+		return ResponseEntity.ok().body(new ApiResponse(true, "Password changed successfully"));
 	}
 
 }

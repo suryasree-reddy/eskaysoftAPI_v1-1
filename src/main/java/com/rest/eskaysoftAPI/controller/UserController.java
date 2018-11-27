@@ -106,19 +106,7 @@ public class UserController {
 		});
 		return users;
 	}
-
-	@PostMapping("/changePassword")
-	public ResponseEntity<?> changePassword(@Valid @RequestBody LoginRequest loginRequest) {
-
-		User user = userRepository.findByUsername(loginRequest.getUsernameOrEmail()).orElseThrow(
-				() -> new ResourceNotFoundException("User", "username", loginRequest.getUsernameOrEmail()));
-
-		user.setPassword(passwordEncoder.encode(loginRequest.getPassword()));
-		user.setCreatedNew(false);
-		userRepository.save(user);
-
-		return ResponseEntity.ok().body(new ApiResponse(true, "Password changed successfully"));
-	}
+	
 
 	@PutMapping("/updateUser")
 	public ResponseEntity<?> updateUser(@Valid @RequestBody UserInformation userproRequest) {

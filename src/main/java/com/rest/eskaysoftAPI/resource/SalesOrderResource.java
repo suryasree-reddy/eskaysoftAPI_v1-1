@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.rest.eskaysoftAPI.model.SalesOrderDto;
 import com.rest.eskaysoftAPI.service.SalesOrderService;
 
-@Resource(name = "salesService")
-@Path("/salesService")
+@Resource(name = "salesOrder")
+@Path("/salesOrder")
 public class SalesOrderResource {
 	private static final Logger logger = LoggerFactory.getLogger(SalesOrderResource.class);
 
@@ -61,7 +61,7 @@ public class SalesOrderResource {
 	@Produces("application/json")
 	public SalesOrderDto update(@RequestBody SalesOrderDto sales) {
 		if (logger.isDebugEnabled()) {
-			logger.debug("Requsted salesOderService = " + sales.getId());
+			logger.debug("Requsted salesOder = " + sales.getId());
 		}
 		return salesOderService.save(sales);
 	}

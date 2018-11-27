@@ -19,6 +19,8 @@ import com.rest.eskaysoftAPI.resource.ProductGroupResource;
 import com.rest.eskaysoftAPI.resource.ProductResource;
 import com.rest.eskaysoftAPI.resource.PurchaseEntryResource;
 import com.rest.eskaysoftAPI.resource.PurchaseOrderResource;
+import com.rest.eskaysoftAPI.resource.PurchaseReturnsResource;
+import com.rest.eskaysoftAPI.resource.SalesOrderResource;
 import com.rest.eskaysoftAPI.resource.ScheduleResource;
 import com.rest.eskaysoftAPI.resource.StatesResource;
 import com.rest.eskaysoftAPI.resource.SubScheduleResource;
@@ -47,5 +49,8 @@ public class AppConfig extends ResourceConfig {
 		register(DistrictsResource.class);
 		register(TaxResource.class);
 		register(PurchaseOrderResource.class);
+		register(PurchaseReturnsResource.class);
+		register(SalesOrderResource.class);
+		
 	}
 }

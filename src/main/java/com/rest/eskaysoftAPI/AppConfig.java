@@ -13,6 +13,7 @@ import com.rest.eskaysoftAPI.resource.CompanyGroupResource;
 import com.rest.eskaysoftAPI.resource.CompanyResource;
 import com.rest.eskaysoftAPI.resource.CustomerWiseDiscountsResource;
 import com.rest.eskaysoftAPI.resource.DistrictsResource;
+import com.rest.eskaysoftAPI.resource.InternalStockAdjustmentsResource;
 import com.rest.eskaysoftAPI.resource.ManfacturerResource;
 import com.rest.eskaysoftAPI.resource.ProductCategoryResource;
 import com.rest.eskaysoftAPI.resource.ProductGroupResource;
@@ -51,6 +52,7 @@ public class AppConfig extends ResourceConfig {
 		register(PurchaseOrderResource.class);
 		register(PurchaseReturnsResource.class);
 		register(SalesOrderResource.class);
-		
+		register(InternalStockAdjustmentsResource.class);
+
 	}
 }

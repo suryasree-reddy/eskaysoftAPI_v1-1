@@ -1,58 +1,113 @@
 package com.rest.eskaysoftAPI.serviceImpl;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.rest.eskaysoftAPI.entity.AccountInformation;
+import com.rest.eskaysoftAPI.entity.Product;
 import com.rest.eskaysoftAPI.entity.PurchaseEntry;
 import com.rest.eskaysoftAPI.exception.NotFoundException;
+import com.rest.eskaysoftAPI.model.PurchaseEntryDto;
+import com.rest.eskaysoftAPI.repository.AccountInformationRepository;
+import com.rest.eskaysoftAPI.repository.ProductRepository;
 import com.rest.eskaysoftAPI.repository.PurchaseEntryRepository;
 import com.rest.eskaysoftAPI.service.PurchaseEntryService;
+import com.rest.eskaysoftAPI.util.EskaysoftConstants;
 
 @Service
 public class PurchaseEntryServiceImpl implements PurchaseEntryService {
 
+	@Autowired
 	private PurchaseEntryRepository purchrepo;
 
 	@Autowired
-	public void setpurchaseEntryDao(PurchaseEntryRepository purchrepo) {
-		this.purchrepo = purchrepo;
+	private AccountInformationRepository acreo;
+
+	@Autowired
+	private ProductRepository prorepo;
+
+	@Override
+	public List<PurchaseEntryDto> listAllPurchaseEntry() {
+		List<PurchaseEntryDto> polist = new ArrayList<>();
+		purchrepo.findAllByOrderByPurchaseNumberAsc().forEach(pro -> {
+			PurchaseEntryDto pomodel = new PurchaseEntryDto();
+			BeanUtils.copyProperties(pro, pomodel);
+			pomodel.setProductId(pro.getProductId().getId());
+			pomodel.setProductcode(pro.getProductId().getProductcode());
+			pomodel.setProductName(pro.getProductId().getName());
+			pomodel.setAccountInformationId(pro.getAccountInformationId().getId());
+			pomodel.setSupplier(pro.getAccountInformationId().getAccountName());
+			
+			pomodel.setTypeheadDisplay(
+					pro.getProductId().getName() + EskaysoftConstants.SEPERATOR + pro.getProductId().getProductcode());
+			polist.add(pomodel);
+		});
+		return polist;
 	}
 
 	@Override
-	public Iterable<PurchaseEntry> listAllPurchaseEntries() {
-		return purchrepo.findAll();
+	public PurchaseEntryDto getPurchaseEntryById(Long id) {
+		PurchaseEntry pro = purchrepo.findById(id)
+				.orElseThrow(() -> new NotFoundException(String.format("PurchaseEntry %d not found", id)));
+
+		PurchaseEntryDto pomodel = new PurchaseEntryDto();
+		BeanUtils.copyProperties(pro, pomodel);
+		pomodel.setProductId(pro.getProductId().getId());
+		pomodel.setProductcode(pro.getProductId().getProductcode());
+		pomodel.setProductName(pro.getProductId().getName());
+		pomodel.setAccountInformationId(pro.getAccountInformationId().getId());
+		pomodel.setSupplier(pro.getAccountInformationId().getAccountName());
+
+		return pomodel;
 	}
 
 	@Override
-	public PurchaseEntry getPurchaseEntryById(Long id) {
-		System.out.println("****************" + id);
-		return purchrepo.findById(id)
-				.orElseThrow(() -> new NotFoundException(String.format("product %d not found", id)));
+	public PurchaseEntryDto savePurchaseEntry(PurchaseEntryDto purchaseEntry) {
+		AccountInformation ai = acreo.findById(purchaseEntry.getAccountInformationId())
+				.orElseThrow(() -> new NotFoundException(
+						String.format("AccountInformation %d not found", purchaseEntry.getAccountInformationId())));
+		Product product = prorepo.findById(purchaseEntry.getProductId()).orElseThrow(
+				() -> new NotFoundException(String.format("product %d not found", purchaseEntry.getProductId())));
+
+		PurchaseEntry po = new PurchaseEntry();
+		po.setAccountInformationId(ai);
+		po.setProductId(product);
+		BeanUtils.copyProperties(purchaseEntry, po);
+		po = purchrepo.save(po);
+		return purchaseEntry;
 	}
 
 	@Override
-	public PurchaseEntry savePurchaseEntry(PurchaseEntry purchaseEntry) {
-		return purchrepo.save(purchaseEntry);
+	public boolean deletePurchaseEntry(Long id) {
+		boolean status = false;
+		PurchaseEntry po = purchrepo.findById(id)
+				.orElseThrow(() -> new NotFoundException(String.format("PurchaseEntry %d not found", id)));
+
+		if (po != null) {
+			purchrepo.delete(po);
+			status = true;
+		}
+		return status;
 	}
 
 	@Override
-    public boolean deletePurchaseEntry(Long id) {
-    	boolean status = false;
-    	PurchaseEntry purchaseEntry = getPurchaseEntryById(id);
-        if(purchaseEntry != null){
-        	purchrepo.delete(purchaseEntry);
-        	status = true;
-        }
-        return status;
-    }
+	public PurchaseEntryDto create(PurchaseEntryDto purchaseEntry) {
+		PurchaseEntry po = new PurchaseEntry();
+		AccountInformation ai = acreo.findById(purchaseEntry.getAccountInformationId())
+				.orElseThrow(() -> new NotFoundException(
+						String.format("AccountInformation %d not found", purchaseEntry.getAccountInformationId())));
+		Product product = prorepo.findById(purchaseEntry.getProductId()).orElseThrow(
+				() -> new NotFoundException(String.format("Product %d not found", purchaseEntry.getProductId())));
+		po.setAccountInformationId(ai);
+		po.setProductId(product);
+		BeanUtils.copyProperties(purchaseEntry, po);
+		po = purchrepo.save(po);
+		purchaseEntry.setId(po.getId());
+		return purchaseEntry;
 
-
-
-
-	@Override
-	public PurchaseEntry create(PurchaseEntry purchaseEntry) {
-
-		return purchrepo.save(purchaseEntry);
 	}
-
 }

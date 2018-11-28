@@ -15,13 +15,13 @@ public class SalesOrderDto implements Serializable {
 
 	private String customer;
 
-	private String rateType;
-
 	private String remarks;
+
+	private String rateType;
 
 	private Long productId;
 
-	private String productCode;
+	private String productcode;
 
 	private String productName;
 
@@ -93,12 +93,12 @@ public class SalesOrderDto implements Serializable {
 		this.productId = productId;
 	}
 
-	public String getProductCode() {
-		return productCode;
+	public String getProductcode() {
+		return productcode;
 	}
 
-	public void setProductCode(String productCode) {
-		this.productCode = productCode;
+	public void setProductcode(String productcode) {
+		this.productcode = productcode;
 	}
 
 	public String getProductName() {

@@ -1,6 +1,7 @@
 package com.rest.eskaysoftAPI.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class PurchaseEntryDto implements Serializable {
@@ -8,22 +9,28 @@ public class PurchaseEntryDto implements Serializable {
 
 	private Long id;
 	private Integer purchaseNumber;
+	private LocalDate date;
 	private String invoiceNumber;
-	private Date date;
+	private LocalDate purDate;
+	private Long accountInformationId;
+	private String supplier;
 	private String gstin;
-	private String wayBill;
-	private String transport;
-	private Integer numberOfCases;
-	private Date invoiceDate;
 	private String mode;
+	private String wayBill;
 	private String lrNumber;
 	private Date lrDate;
+	private String transport;
 	private String delvFrom;
-	private String productCode;
+	private Integer numberOfCases;
+	private Date invoiceDate;
+	private Long productId;
 	private String productName;
+	private String productcode;
 	private String batch;
 	private Date expiry;
 	private Double qty;
+	private Double free;
+	private Double purRate;
 	private Double othCharges;
 	private Double grsValue;
 	private Double discount;
@@ -33,18 +40,17 @@ public class PurchaseEntryDto implements Serializable {
 	private Long hsn;
 	private Double mrp;
 	private String mfgName;
-	private Double purRate;
-	private Double free;
 	private Double grossValue;
 	private Double discountValue;
 	private Double taxValue;
 	private Double netValue;
 	private Double debitAdjustmentLedger;
-	private Double CreditAdjustmentLedger;
+	private Double creditAdjustmentLedger;
 	private String remarks;
-	private Double DebitAdjustmentValue;
+	private Double debitAdjustmentValue;
 	private Double creditAdjustmentValue;
 	private Double invoiceValue;
+	private String typeheadDisplay;
 
 	public Long getId() {
 		return id;
@@ -70,12 +76,68 @@ public class PurchaseEntryDto implements Serializable {
 		this.invoiceNumber = invoiceNumber;
 	}
 
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
+	}
+
+	public LocalDate getPurDate() {
+		return purDate;
+	}
+
+	public void setPurDate(LocalDate purDate) {
+		this.purDate = purDate;
+	}
+
+	public Long getAccountInformationId() {
+		return accountInformationId;
+	}
+
+	public void setAccountInformationId(Long accountInformationId) {
+		this.accountInformationId = accountInformationId;
+	}
+
+	public String getSupplier() {
+		return supplier;
+	}
+
+	public void setSupplier(String supplier) {
+		this.supplier = supplier;
+	}
+
+	public Long getProductId() {
+		return productId;
+	}
+
+	public void setProductId(Long productId) {
+		this.productId = productId;
+	}
+
+	public String getProductcode() {
+		return productcode;
+	}
+
+	public void setProductcode(String productcode) {
+		this.productcode = productcode;
+	}
+
+	public Double getCreditAdjustmentLedger() {
+		return creditAdjustmentLedger;
+	}
+
+	public void setCreditAdjustmentLedger(Double creditAdjustmentLedger) {
+		this.creditAdjustmentLedger = creditAdjustmentLedger;
+	}
+
+	public Double getDebitAdjustmentValue() {
+		return debitAdjustmentValue;
+	}
+
+	public void setDebitAdjustmentValue(Double debitAdjustmentValue) {
+		this.debitAdjustmentValue = debitAdjustmentValue;
 	}
 
 	public String getGstin() {
@@ -148,14 +210,6 @@ public class PurchaseEntryDto implements Serializable {
 
 	public void setDelvFrom(String delvFrom) {
 		this.delvFrom = delvFrom;
-	}
-
-	public String getProductCode() {
-		return productCode;
-	}
-
-	public void setProductCode(String productCode) {
-		this.productCode = productCode;
 	}
 
 	public String getProductName() {
@@ -318,28 +372,12 @@ public class PurchaseEntryDto implements Serializable {
 		this.debitAdjustmentLedger = debitAdjustmentLedger;
 	}
 
-	public Double getCreditAdjustmentLedger() {
-		return CreditAdjustmentLedger;
-	}
-
-	public void setCreditAdjustmentLedger(Double creditAdjustmentLedger) {
-		CreditAdjustmentLedger = creditAdjustmentLedger;
-	}
-
 	public String getRemarks() {
 		return remarks;
 	}
 
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
-	}
-
-	public Double getDebitAdjustmentValue() {
-		return DebitAdjustmentValue;
-	}
-
-	public void setDebitAdjustmentValue(Double debitAdjustmentValue) {
-		DebitAdjustmentValue = debitAdjustmentValue;
 	}
 
 	public Double getCreditAdjustmentValue() {
@@ -356,6 +394,14 @@ public class PurchaseEntryDto implements Serializable {
 
 	public void setInvoiceValue(Double invoiceValue) {
 		this.invoiceValue = invoiceValue;
+	}
+
+	public String getTypeheadDisplay() {
+		return typeheadDisplay;
+	}
+
+	public void setTypeheadDisplay(String typeheadDisplay) {
+		this.typeheadDisplay = typeheadDisplay;
 	}
 
 }

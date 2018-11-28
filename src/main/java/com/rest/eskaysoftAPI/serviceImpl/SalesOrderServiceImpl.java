@@ -29,7 +29,7 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 			SalesOrderDto salesOrderModel = new SalesOrderDto();
 			BeanUtils.copyProperties(salesOrder, salesOrderModel);
 			salesOrderModel.setProductId(salesOrder.getProductId().getId());
-			salesOrderModel.setProductCode(salesOrder.getProductId().getProductcode());
+			salesOrderModel.setProductcode(salesOrder.getProductId().getProductcode());
 			salesOrderModel.setProductName(salesOrder.getProductId().getName());
 			salesOrderList.add(salesOrderModel);
 		});
@@ -43,7 +43,7 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 				.orElseThrow(() -> new NotFoundException(String.format("SalesOrder %d not found", id)));
 		BeanUtils.copyProperties(salesOrderList, salesOrderModel);
 		salesOrderModel.setProductId(salesOrderList.getProductId().getId());
-		salesOrderModel.setProductCode(salesOrderList.getProductId().getProductcode());
+		salesOrderModel.setProductcode(salesOrderList.getProductId().getProductcode());
 		salesOrderModel.setProductName(salesOrderList.getProductId().getName());
 
 		return salesOrderModel;

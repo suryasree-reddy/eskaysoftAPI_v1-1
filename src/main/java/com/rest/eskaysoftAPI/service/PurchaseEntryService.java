@@ -1,16 +1,18 @@
 package com.rest.eskaysoftAPI.service;
 
-import com.rest.eskaysoftAPI.entity.PurchaseEntry;
+import java.util.List;
+
+import com.rest.eskaysoftAPI.model.PurchaseEntryDto;
 
 public interface PurchaseEntryService {
 
-    Iterable<PurchaseEntry> listAllPurchaseEntries();
+	List<PurchaseEntryDto> listAllPurchaseEntry();
 
-    PurchaseEntry getPurchaseEntryById(Long id);
+	PurchaseEntryDto getPurchaseEntryById(Long id);
 
-    PurchaseEntry savePurchaseEntry(PurchaseEntry purchaseEntry);
+	PurchaseEntryDto savePurchaseEntry(PurchaseEntryDto purchaseEntry);
 
-    boolean deletePurchaseEntry(Long id);
+	boolean deletePurchaseEntry(Long id);
 
-    PurchaseEntry create(PurchaseEntry purchaseEntry);
+	PurchaseEntryDto create(PurchaseEntryDto purchaseEntry);
 }

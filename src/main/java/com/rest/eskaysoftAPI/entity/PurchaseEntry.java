@@ -1,134 +1,143 @@
 package com.rest.eskaysoftAPI.entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "PurchaseEntry")
+@Table(name = "purchaseEntry")
 public class PurchaseEntry implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(name = "purchaseNumber", nullable = false)
 	private Integer purchaseNumber;
-	
-	@Column(name = "invoiceNumber", length = 16,nullable = false)
-	private String invoiceNumber;
 
 	@Column(name = "date", nullable = false)
-	private Date date;
-	
-	@Column(name = "gstin", nullable = false)
+	private LocalDate date;
+
+	@Column(name = "invoiceNumber", length = 16, nullable = false)
+	private String invoiceNumber;
+
+	@Column(name = "purDate", nullable = false)
+	private LocalDate purDate;
+
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "accountInformationId", nullable = false)
+	private AccountInformation accountInformationId;
+
+	@Column(name = "gstin", nullable = false, length = 16)
 	private String gstin;
-	
+
+	@Column(name = "mode", nullable = false, length = 6)
+	private String mode;
+
 	@Column(name = "wayBill", length = 15, nullable = false)
 	private String wayBill;
-	
+
+	@Column(name = "lrNumber", length = 15, nullable = false)
+	private String lrNumber;
+
+	@Column(name = "lrDate", nullable = false)
+	private Date lrDate;
+
 	@Column(name = "transport", length = 20, nullable = false)
 	private String transport;
-	
-	@Column(name = "numberOfCases",nullable = false)
+
+	@Column(name = "delvFrom", length = 20, nullable = false)
+	private String delvFrom;
+
+	@Column(name = "numberOfCases", nullable = false, length = 4)
 	private Integer numberOfCases;
-	
-	@Column(name = "invoiceDate",nullable = false)
+
+	@Column(name = "invoiceDate", nullable = false)
 	private Date invoiceDate;
 
-	@Column(name = "mode", length = 6,nullable = false)
-	private String mode;
-	
-	@Column(name = "lrNumber", length = 15,nullable = false)
-	private String lrNumber;
-	
-	@Column(name = "lrDate",nullable = false)
-	private Date lrDate;
-	
-	@Column(name = "delvFrom", length = 20,nullable = false)
-	private String delvFrom;
-	
-	@Column(name = "productCode", length = 5,nullable = false)
-	private String productCode;
-	
-	@Column(name = "productName", length = 30, nullable = false)
-	private String productName;
-	
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "productId", nullable = false)
+	private Product productId;
+
 	@Column(name = "batch", length = 12, nullable = false)
 	private String batch;
-	
+
 	@Column(name = "expiry", nullable = false)
-	private Date expiry;
-	
-	@Column(name = "qty",nullable = false)
+	private LocalDate expiry; /* ( mm-yyyy) */
+
+	@Column(name = "qty", nullable = false)
 	private Double qty;
-	
-	@Column(name = "othCharges",nullable = false)
-	private Double othCharges;
-	
-	@Column(name = "grsValue", nullable = false)
-	private Double grsValue;
-	
-	@Column(name = "discount", nullable = false)
-	private Double discount;
-	
-	@Column(name = "ptd", nullable = false)
-	private Double ptd;
-	
-	@Column(name = "saleRate",nullable = false)
-	private Double saleRate;
-	
-	@Column(name = "tax",nullable = false)
-	private Double tax;
-	
-	@Column(name = "hsn", nullable = false)
-	private Long hsn;
-	
-	@Column(name = "mrp", nullable = false)
-	private Double mrp;
-	
-	@Column(name = "mfgName", length = 20,nullable = false)
-	private String mfgName;
-	
-	@Column(name = "purRate", nullable = false)
-	private Double purRate;
-	
+
 	@Column(name = "free", nullable = false)
 	private Double free;
-	
-	@Column(name = "grossValue",nullable = false)
+
+	@Column(name = "purRate", nullable = false)
+	private Double purRate;
+
+	@Column(name = "othCharges", nullable = false)
+	private Double othCharges;
+
+	@Column(name = "grsValue", nullable = false)
+	private Double grsValue;
+
+	@Column(name = "discount", nullable = false)
+	private Double discount;
+
+	@Column(name = "ptd", nullable = false)
+	private Double ptd;
+
+	@Column(name = "saleRate", nullable = false)
+	private Double saleRate;
+
+	@Column(name = "tax", nullable = false)
+	private Double tax;
+
+	@Column(name = "hsn", nullable = false)
+	private Long hsn;
+
+	@Column(name = "mrp", nullable = false)
+	private Double mrp;
+
+	@Column(name = "mfgName", length = 20, nullable = false)
+	private String mfgName;
+
+	@Column(name = "grossValue", nullable = false)
 	private Double grossValue;
-	
+
 	@Column(name = "discountValue", nullable = false)
 	private Double discountValue;
-	
-	@Column(name = "taxValue",nullable = false)
+
+	@Column(name = "taxValue", nullable = false)
 	private Double taxValue;
-	
+
 	@Column(name = "netValue", nullable = false)
 	private Double netValue;
-	
+
 	@Column(name = "debitAdjustmentLedger", nullable = false)
 	private Double debitAdjustmentLedger;
-	
-	@Column(name = "creditAdjustmentLedger",nullable = false)
+
+	@Column(name = "creditAdjustmentLedger", nullable = false)
 	private Double creditAdjustmentLedger;
-	
-	@Column(name = "remarks", length = 50,nullable = false)
+
+	@Column(name = "remarks", length = 50, nullable = false)
 	private String remarks;
-	
+
 	@Column(name = "debitAdjustmentValue", nullable = false)
 	private Double debitAdjustmentValue;
-	
+
 	@Column(name = "creditAdjustmentValue", nullable = false)
 	private Double creditAdjustmentValue;
-	
+
 	@Column(name = "invoiceValue", nullable = false)
 	private Double invoiceValue;
 
@@ -156,12 +165,44 @@ public class PurchaseEntry implements Serializable {
 		this.invoiceNumber = invoiceNumber;
 	}
 
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
+	}
+
+	public LocalDate getPurDate() {
+		return purDate;
+	}
+
+	public void setPurDate(LocalDate purDate) {
+		this.purDate = purDate;
+	}
+
+	public AccountInformation getAccountInformationId() {
+		return accountInformationId;
+	}
+
+	public void setAccountInformationId(AccountInformation accountInformationId) {
+		this.accountInformationId = accountInformationId;
+	}
+
+	public Product getProductId() {
+		return productId;
+	}
+
+	public void setProductId(Product productId) {
+		this.productId = productId;
+	}
+
+	public LocalDate getExpiry() {
+		return expiry;
+	}
+
+	public void setExpiry(LocalDate expiry) {
+		this.expiry = expiry;
 	}
 
 	public String getGstin() {
@@ -236,36 +277,12 @@ public class PurchaseEntry implements Serializable {
 		this.delvFrom = delvFrom;
 	}
 
-	public String getProductCode() {
-		return productCode;
-	}
-
-	public void setProductCode(String productCode) {
-		this.productCode = productCode;
-	}
-
-	public String getProductName() {
-		return productName;
-	}
-
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
-
 	public String getBatch() {
 		return batch;
 	}
 
 	public void setBatch(String batch) {
 		this.batch = batch;
-	}
-
-	public Date getExpiry() {
-		return expiry;
-	}
-
-	public void setExpiry(Date expiry) {
-		this.expiry = expiry;
 	}
 
 	public Double getQty() {
@@ -404,8 +421,6 @@ public class PurchaseEntry implements Serializable {
 		this.debitAdjustmentLedger = debitAdjustmentLedger;
 	}
 
-	
-
 	public Double getCreditAdjustmentLedger() {
 		return creditAdjustmentLedger;
 	}
@@ -421,8 +436,6 @@ public class PurchaseEntry implements Serializable {
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
 	}
-
-	
 
 	public Double getDebitAdjustmentValue() {
 		return debitAdjustmentValue;

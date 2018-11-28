@@ -1,5 +1,7 @@
 package com.rest.eskaysoftAPI.resource;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -15,27 +17,27 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.rest.eskaysoftAPI.entity.PurchaseEntry;
+import com.rest.eskaysoftAPI.model.PurchaseEntryDto;
 import com.rest.eskaysoftAPI.service.PurchaseEntryService;
 
 @Resource(name = "purchaseentry")
 @Path("/purchaseentry")
 public class PurchaseEntryResource {
 	private static final Logger logger = LoggerFactory.getLogger(SubScheduleResource.class);
-	
+
 	@Autowired
 	PurchaseEntryService purchaseEntryService;
 
 	@GET
 	@Produces("application/json")
-	public Iterable<PurchaseEntry> findAll() {
-		return purchaseEntryService.listAllPurchaseEntries();
+	public List<PurchaseEntryDto> findAll() {
+		return purchaseEntryService.listAllPurchaseEntry();
 	}
 
 	@GET
 	@Path("/{id}")
 	@Produces("application/json")
-	public PurchaseEntry findOne(@PathParam("id") long id) {
+	public PurchaseEntryDto findOne(@PathParam("id") long id) {
 		if (logger.isDebugEnabled()) {
 			logger.debug("Requsted ID = " + id);
 		}
@@ -46,7 +48,7 @@ public class PurchaseEntryResource {
 	@POST
 	@Consumes("application/json")
 	@Produces("application/json")
-	public PurchaseEntry create(@RequestBody PurchaseEntry purchaseEntry) {
+	public PurchaseEntryDto create(@RequestBody PurchaseEntryDto purchaseEntry) {
 		if (logger.isDebugEnabled()) {
 			logger.debug("Requsted purchaseEntry = " + purchaseEntry.getMfgName());
 		}
@@ -56,7 +58,7 @@ public class PurchaseEntryResource {
 	@PUT
 	@Consumes("application/json")
 	@Produces("application/json")
-	public PurchaseEntry update(@RequestBody PurchaseEntry purchaseEntry) {
+	public PurchaseEntryDto save(@RequestBody PurchaseEntryDto purchaseEntry) {
 		if (logger.isDebugEnabled()) {
 			logger.debug("Requsted purchaseEntry = " + purchaseEntry.getId());
 		}
@@ -64,10 +66,9 @@ public class PurchaseEntryResource {
 	}
 
 	@DELETE
-    @Path("/{id}")
-    @Produces("application/json")
-    public boolean delete(@PathParam("id") long id)
-    {
-        return purchaseEntryService.deletePurchaseEntry(id);
-    }
+	@Path("/{id}")
+	@Produces("application/json")
+	public boolean delete(@PathParam("id") long id) {
+		return purchaseEntryService.deletePurchaseEntry(id);
+	}
 }

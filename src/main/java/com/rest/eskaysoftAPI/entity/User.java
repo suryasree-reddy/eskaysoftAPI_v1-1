@@ -20,7 +20,7 @@ import javax.persistence.UniqueConstraint;
 import com.rest.eskaysoftAPI.audit.UserDateAudit;
 
 @Entity
-@Table(name = "users", uniqueConstraints = { @UniqueConstraint(columnNames = { "username" })})
+@Table(name = "users", uniqueConstraints = { @UniqueConstraint(columnNames = { "username" }) })
 
 public class User extends UserDateAudit {
 	private static final long serialVersionUID = 6998881581402295916L;
@@ -45,7 +45,7 @@ public class User extends UserDateAudit {
 	private String town;
 
 	@Column(name = "pin", nullable = false)
-	private String pin;
+	private Long pin;
 
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "districtId")
@@ -93,7 +93,7 @@ public class User extends UserDateAudit {
 	@Column(name = "email")
 	private String email;
 
-	@Column(name = "password", nullable=false)
+	@Column(name = "password", nullable = false)
 	private String password;
 
 	@Column(name = "createdNew")
@@ -381,11 +381,11 @@ public class User extends UserDateAudit {
 		this.town = town;
 	}
 
-	public String getPin() {
+	public Long getPin() {
 		return pin;
 	}
 
-	public void setPin(String pin) {
+	public void setPin(Long pin) {
 		this.pin = pin;
 	}
 

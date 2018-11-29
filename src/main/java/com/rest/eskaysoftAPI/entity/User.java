@@ -17,13 +17,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-import com.rest.eskaysoftAPI.audit.DateAudit;
+import com.rest.eskaysoftAPI.audit.UserDateAudit;
 
 @Entity
-@Table(name = "users", uniqueConstraints = { @UniqueConstraint(columnNames = { "username" }),
-		@UniqueConstraint(columnNames = { "email" }) })
+@Table(name = "users", uniqueConstraints = { @UniqueConstraint(columnNames = { "username" })})
 
-public class User extends DateAudit {
+public class User extends UserDateAudit {
 	private static final long serialVersionUID = 6998881581402295916L;
 
 	@Id
@@ -94,7 +93,7 @@ public class User extends DateAudit {
 	@Column(name = "email")
 	private String email;
 
-	@Column(name = "password")
+	@Column(name = "password", nullable=false)
 	private String password;
 
 	@Column(name = "createdNew")

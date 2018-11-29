@@ -13,9 +13,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "purchaseEntry")
+@Table(name = "purchaseEntry", uniqueConstraints = { @UniqueConstraint(columnNames = { "purchaseNumber" }) })
+
 public class PurchaseEntry implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id

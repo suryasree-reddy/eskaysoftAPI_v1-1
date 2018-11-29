@@ -44,14 +44,14 @@ public class User extends UserDateAudit {
 	@Column(name = "town", nullable = false)
 	private String town;
 
-	@Column(name = "pin", nullable = false)
+	@Column(name = "pin")
 	private Long pin;
 
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "districtId")
 	private Districts districtId;
 
-	@Column(name = "phone", nullable = false)
+	@Column(name = "phone")
 	private Long phone;
 
 	@Column(name = "mobile1", nullable = false)

@@ -15,8 +15,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "purchaseReturns", uniqueConstraints = {
-		@UniqueConstraint(columnNames = { "purReturnNumber" }) })
+@Table(name = "purchaseReturns", uniqueConstraints = { @UniqueConstraint(columnNames = { "purReturnNumber" }) })
 public class PurchaseReturns implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -46,8 +45,8 @@ public class PurchaseReturns implements Serializable {
 	 * @Column(name = "status", nullable = false) private Boolean status;
 	 */
 
-	@Column(name = "batch", nullable = false)
-	private Boolean batch;
+	@Column(name = "batch", length = 12, nullable = false)
+	private String batch;
 
 	@Column(name = "qty", nullable = false)
 	private Double qty;
@@ -115,16 +114,16 @@ public class PurchaseReturns implements Serializable {
 	 * public void setStatus(Boolean status) { this.status = status; }
 	 */
 
-	public Boolean getBatch() {
+	public Double getQty() {
+		return qty;
+	}
+
+	public String getBatch() {
 		return batch;
 	}
 
-	public void setBatch(Boolean batch) {
+	public void setBatch(String batch) {
 		this.batch = batch;
-	}
-
-	public Double getQty() {
-		return qty;
 	}
 
 	public void setQty(Double qty) {

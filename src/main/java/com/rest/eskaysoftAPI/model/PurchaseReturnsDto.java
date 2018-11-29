@@ -18,7 +18,7 @@ public class PurchaseReturnsDto implements Serializable {
 	private String productName;
 	private String productcode;
 	// private Boolean status;
-	private Boolean batch;
+	private String batch;
 	private Double qty;
 	private Integer free;
 	private Double pRate;
@@ -102,16 +102,17 @@ public class PurchaseReturnsDto implements Serializable {
 	 * public Boolean getStatus() { return status; } public void setStatus(Boolean
 	 * status) { this.status = status; }
 	 */
-	public Boolean getBatch() {
-		return batch;
-	}
-
-	public void setBatch(Boolean batch) {
-		this.batch = batch;
-	}
 
 	public Double getQty() {
 		return qty;
+	}
+
+	public String getBatch() {
+		return batch;
+	}
+
+	public void setBatch(String batch) {
+		this.batch = batch;
 	}
 
 	public void setQty(Double qty) {

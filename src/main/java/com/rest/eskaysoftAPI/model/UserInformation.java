@@ -12,7 +12,7 @@ public class UserInformation {
 	private String address1;
 	private String address2;
 	private String town;
-	private String pin;
+	private Long pin;
 	private Long districtId;
 	private String districtName;
 	private String state;
@@ -92,11 +92,11 @@ public class UserInformation {
 		this.town = town;
 	}
 
-	public String getPin() {
+	public Long getPin() {
 		return pin;
 	}
 
-	public void setPin(String pin) {
+	public void setPin(Long pin) {
 		this.pin = pin;
 	}
 

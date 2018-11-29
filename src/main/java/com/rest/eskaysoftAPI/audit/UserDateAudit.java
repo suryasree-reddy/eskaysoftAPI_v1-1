@@ -1,16 +1,12 @@
 package com.rest.eskaysoftAPI.audit;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import javax.persistence.MappedSuperclass;
+
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.LastModifiedBy;
 
-import javax.persistence.MappedSuperclass;
-
 @MappedSuperclass
-@JsonIgnoreProperties(
-        value = {"createdBy", "updatedBy"},
-        allowGetters = true
-)
+
 public abstract class UserDateAudit extends DateAudit {
 
 	private static final long serialVersionUID = -4149494576159842144L;

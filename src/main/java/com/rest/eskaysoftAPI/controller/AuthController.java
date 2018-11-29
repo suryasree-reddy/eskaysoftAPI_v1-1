@@ -68,36 +68,6 @@ public class AuthController {
 		return ResponseEntity.ok(new JwtAuthenticationResponse(jwt));
 	}
 
-	@PostMapping("/createUser")
-	public ResponseEntity<?> registerUser(@RequestBody UserInformation userproRequest) {
-		if (userRepository.existsByUsername(userproRequest.getUsername())) {
-			return new ResponseEntity(new ApiResponse(false, "Username is already taken!"), HttpStatus.BAD_REQUEST);
-		}
-
-		if (userRepository.existsByEmail(userproRequest.getEmail())) {
-			return new ResponseEntity(new ApiResponse(false, "Email Address already in use!"), HttpStatus.BAD_REQUEST);
-		}
-
-		Districts dis = disrepo.findById(userproRequest.getDistrictId()).orElseThrow(
-				() -> new NotFoundException(String.format("Districts %d not found", userproRequest.getDistrictId())));
-
-		User user = new User();
-		BeanUtils.copyProperties(userproRequest, user);
-
-		user.setPassword(passwordEncoder.encode(user.getPassword()));
-
-		List<Role> userRoles = roleRepository.findByNameIn(userproRequest.getRoles())
-				.orElseThrow(() -> new AppException("User Role not set."));
-		Set<Role> roleNames = userRoles.stream().collect(Collectors.toSet());
-		user.setRoles(roleNames);
-		user.setDistrictId(dis);
-		User result = userRepository.save(user);
-
-		URI location = ServletUriComponentsBuilder.fromCurrentContextPath().path("/users/{username}")
-				.buildAndExpand(result.getUsername()).toUri();
-
-		return ResponseEntity.created(location).body(new ApiResponse(true, "User registered successfully"));
-	}
 	
 	@PostMapping("/changePassword")
 	public ResponseEntity<?> changePassword(@Valid @RequestBody LoginRequest loginRequest) {

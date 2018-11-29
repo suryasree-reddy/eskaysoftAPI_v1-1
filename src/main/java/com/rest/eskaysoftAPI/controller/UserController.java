@@ -1,5 +1,6 @@
 package com.rest.eskaysoftAPI.controller;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -10,16 +11,19 @@ import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.rest.eskaysoftAPI.entity.Districts;
 import com.rest.eskaysoftAPI.entity.Role;
@@ -132,5 +136,36 @@ public class UserController {
 		userRepository.delete(user);
 
 		return ResponseEntity.ok().body(new ApiResponse(true, "User Deleted successfully"));
+	}
+	
+	@PostMapping("/createUser")
+	public ResponseEntity<?> registerUser(@RequestBody UserInformation userproRequest) {
+		if (userRepository.existsByUsername(userproRequest.getUsername())) {
+			return new ResponseEntity(new ApiResponse(false, "Username is already taken!"), HttpStatus.BAD_REQUEST);
+		}
+
+		if (userRepository.existsByEmail(userproRequest.getEmail())) {
+			return new ResponseEntity(new ApiResponse(false, "Email Address already in use!"), HttpStatus.BAD_REQUEST);
+		}
+
+		Districts dis = disrepo.findById(userproRequest.getDistrictId()).orElseThrow(
+				() -> new NotFoundException(String.format("Districts %d not found", userproRequest.getDistrictId())));
+
+		User user = new User();
+		BeanUtils.copyProperties(userproRequest, user);
+
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+		List<Role> userRoles = roleRepository.findByNameIn(userproRequest.getRoles())
+				.orElseThrow(() -> new AppException("User Role not set."));
+		Set<Role> roleNames = userRoles.stream().collect(Collectors.toSet());
+		user.setRoles(roleNames);
+		user.setDistrictId(dis);
+		User result = userRepository.save(user);
+
+		URI location = ServletUriComponentsBuilder.fromCurrentContextPath().path("/users/{username}")
+				.buildAndExpand(result.getUsername()).toUri();
+
+		return ResponseEntity.created(location).body(new ApiResponse(true, "User registered successfully"));
 	}
 }

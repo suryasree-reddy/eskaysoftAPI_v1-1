@@ -3,6 +3,7 @@ package com.rest.eskaysoftAPI.audit;
 import java.io.Serializable;
 import java.time.Instant;
 
+import javax.persistence.Column;
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 
@@ -19,6 +20,7 @@ public abstract class DateAudit implements Serializable {
 	private static final long serialVersionUID = -3053417933236537295L;
 
 	@CreatedDate
+	@Column(updatable = false)
     private Instant createdAt;
 
     @LastModifiedDate

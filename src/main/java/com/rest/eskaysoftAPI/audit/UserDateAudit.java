@@ -1,5 +1,6 @@
 package com.rest.eskaysoftAPI.audit;
 
+import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
 import org.springframework.data.annotation.CreatedBy;
@@ -12,6 +13,7 @@ public abstract class UserDateAudit extends DateAudit {
 	private static final long serialVersionUID = -4149494576159842144L;
 
 	@CreatedBy
+	@Column(updatable = false)
     private Long createdBy;
 
     @LastModifiedBy

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.rest.eskaysoftAPI.entity.AccountInformation;
 import com.rest.eskaysoftAPI.entity.Product;
@@ -17,6 +18,7 @@ import com.rest.eskaysoftAPI.repository.PurchaseReturnsRepository;
 import com.rest.eskaysoftAPI.service.PurchaseReturnsService;
 import com.rest.eskaysoftAPI.util.EskaysoftConstants;
 
+@Service
 public class PurchaseReturnsServiceImpl implements PurchaseReturnsService {
 
 	@Autowired

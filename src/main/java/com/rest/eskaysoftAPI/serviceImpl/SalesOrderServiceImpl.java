@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.rest.eskaysoftAPI.entity.Product;
 import com.rest.eskaysoftAPI.entity.SalesOrder;
@@ -14,6 +15,8 @@ import com.rest.eskaysoftAPI.repository.ProductRepository;
 import com.rest.eskaysoftAPI.repository.SalesOrderRepository;
 import com.rest.eskaysoftAPI.service.SalesOrderService;
 
+
+@Service
 public class SalesOrderServiceImpl implements SalesOrderService {
 
 	@Autowired

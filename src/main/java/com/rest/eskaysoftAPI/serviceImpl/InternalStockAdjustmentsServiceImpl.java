@@ -3,6 +3,7 @@ package com.rest.eskaysoftAPI.serviceImpl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -14,6 +15,7 @@ import com.rest.eskaysoftAPI.repository.InternalStockAdjustmentsRepository;
 import com.rest.eskaysoftAPI.repository.ProductRepository;
 import com.rest.eskaysoftAPI.service.InternalStockAdjustmentsService;
 
+@Service
 public class InternalStockAdjustmentsServiceImpl implements InternalStockAdjustmentsService {
 
 	@Autowired

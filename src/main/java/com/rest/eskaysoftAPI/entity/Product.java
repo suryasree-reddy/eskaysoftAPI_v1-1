@@ -44,7 +44,7 @@ public class Product implements Serializable {
 	private Tax taxId;
 
 	@Column(name = "packing", length = 4, nullable = true)
-	private String packing;
+	private Integer packing;
 
 	@Column(name = "boxQty", nullable = false)
 	private Integer boxQty;
@@ -122,11 +122,11 @@ public class Product implements Serializable {
 		this.taxId = taxId;
 	}
 
-	public String getPacking() {
-		return this.packing;
+	public Integer getPacking() {
+		return packing;
 	}
 
-	public void setPacking(String packing) {
+	public void setPacking(Integer packing) {
 		this.packing = packing;
 	}
 

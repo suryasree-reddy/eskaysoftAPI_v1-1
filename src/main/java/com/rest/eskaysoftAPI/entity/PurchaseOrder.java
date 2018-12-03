@@ -42,30 +42,29 @@ public class PurchaseOrder implements Serializable {
 	private Product productId;
 
 	@Column(name = "pack", nullable = false, length = 10)
-	private String pack;
+	private Integer pack;
 
 	@Column(name = "qty", nullable = false)
-	private Double qty;
+	private Integer qty;
 
 	@Column(name = "free", nullable = false)
-	private Double free;
+	private Integer free;
 
 	@Column(name = "rate", nullable = false)
-	private Double rate;
+	private Integer rate;
 
 	@Column(name = "bQty", nullable = false)
-	private Double bQty;
+	private Integer bQty;
 
 	@Column(name = "bFree", nullable = false)
 	private Integer bFree;
 
 	@Column(name = "bRate", nullable = false)
-	private Double bRate;
+	private Integer bRate;
 	
 	@Column(name = "value")
 	private Double value;
 
-	
 	public Long getId() {
 		return id;
 	}
@@ -98,7 +97,6 @@ public class PurchaseOrder implements Serializable {
 		this.accountInformationId = accountInformationId;
 	}
 
-	
 	public String getRemarks() {
 		return remarks;
 	}
@@ -115,43 +113,43 @@ public class PurchaseOrder implements Serializable {
 		this.productId = productId;
 	}
 
-	public String getPack() {
+	public Integer getPack() {
 		return pack;
 	}
 
-	public void setPack(String pack) {
+	public void setPack(Integer pack) {
 		this.pack = pack;
 	}
 
-	public Double getQty() {
+	public Integer getQty() {
 		return qty;
 	}
 
-	public void setQty(Double qty) {
+	public void setQty(Integer qty) {
 		this.qty = qty;
 	}
 
-	public Double getFree() {
+	public Integer getFree() {
 		return free;
 	}
 
-	public void setFree(Double free) {
+	public void setFree(Integer free) {
 		this.free = free;
 	}
 
-	public Double getRate() {
+	public Integer getRate() {
 		return rate;
 	}
 
-	public void setRate(Double rate) {
+	public void setRate(Integer rate) {
 		this.rate = rate;
 	}
 
-	public Double getbQty() {
+	public Integer getbQty() {
 		return bQty;
 	}
 
-	public void setbQty(Double bQty) {
+	public void setbQty(Integer bQty) {
 		this.bQty = bQty;
 	}
 
@@ -163,11 +161,11 @@ public class PurchaseOrder implements Serializable {
 		this.bFree = bFree;
 	}
 
-	public Double getbRate() {
+	public Integer getbRate() {
 		return bRate;
 	}
 
-	public void setbRate(Double bRate) {
+	public void setbRate(Integer bRate) {
 		this.bRate = bRate;
 	}
 
@@ -180,5 +178,5 @@ public class PurchaseOrder implements Serializable {
 	}
 
 	
-
+	
 }

@@ -21,7 +21,7 @@ public class ProductDto implements Serializable {
 	private Long taxId;
 	private Long tax;
 
-	private String packing;
+	private Integer packing;
 
 	private Integer boxQty;
 
@@ -115,11 +115,11 @@ public class ProductDto implements Serializable {
 		this.tax = tax;
 	}
 
-	public String getPacking() {
-		return this.packing;
+	public Integer getPacking() {
+		return packing;
 	}
 
-	public void setPacking(String packing) {
+	public void setPacking(Integer packing) {
 		this.packing = packing;
 	}
 

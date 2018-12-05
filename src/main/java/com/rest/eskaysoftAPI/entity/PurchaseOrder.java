@@ -12,10 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "purchaseOrder", uniqueConstraints = { @UniqueConstraint(columnNames = { "orderNumber" }) })
+@Table(name = "purchaseOrder")
 public class PurchaseOrder implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -61,7 +60,7 @@ public class PurchaseOrder implements Serializable {
 
 	@Column(name = "bRate", nullable = false)
 	private Integer bRate;
-	
+
 	@Column(name = "value")
 	private Double value;
 
@@ -177,6 +176,4 @@ public class PurchaseOrder implements Serializable {
 		this.value = value;
 	}
 
-	
-	
 }

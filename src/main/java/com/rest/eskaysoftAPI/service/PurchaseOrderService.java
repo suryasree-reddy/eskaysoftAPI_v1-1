@@ -13,6 +13,8 @@ public interface PurchaseOrderService {
 	PurchaseOrderDto updatePurchaseOrder(PurchaseOrderDto purchaseorder);
 
 	boolean deletePurchaseOrder(Long id);
+	
+	boolean deletePurchaseOrderByOrderNum(Integer id);
 
 	PurchaseOrderDto create(PurchaseOrderDto purchaseorder);
 }

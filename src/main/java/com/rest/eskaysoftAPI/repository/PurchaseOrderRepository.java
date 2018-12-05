@@ -13,6 +13,8 @@ import com.rest.eskaysoftAPI.entity.PurchaseOrder;
 @Transactional
 public interface PurchaseOrderRepository extends JpaRepository<PurchaseOrder, Long> {
 	public List<PurchaseOrder> findAllByOrderByOrderNumberAsc();
+	
+	public List<PurchaseOrder> findByOrderNumber(Integer id);
 
 	public PurchaseOrder findByProductIdIdAndAccountInformationIdId(Long proId, Long AcctId);
 

@@ -91,7 +91,7 @@ public class UserController {
 	@GetMapping("/users")
 	public List<UserInformation> getAllUserProfile() {
 		List<UserInformation> users = new ArrayList<>();
-		userRepository.findAll().forEach(user -> {
+		userRepository.findAll().forEach(user -> {			
 			UserInformation info = new UserInformation();
 			BeanUtils.copyProperties(user, info);
 			info.setDistrictId(user.getDistrictId().getId());
@@ -99,13 +99,14 @@ public class UserController {
 			info.setState(user.getDistrictId().getStateId().getStateName());
 			info.setStateCode(user.getDistrictId().getStateId().getStateCode());
 			Set<RoleName> roles = new HashSet<>();
-			for (Role role : user.getRoles()) {
+			for (Role role : user.getRoles()) {				
 				roles.add(role.getName());
 			}
 
 			info.setRoles(roles);
 			users.add(info);
 		});
+		users.removeIf(userInfo -> userInfo.getRoles().contains(RoleName.ROLE_ADMIN));
 		return users;
 	}
 
@@ -159,6 +160,7 @@ public class UserController {
 		List<Role> userRoles = roleRepository.findByNameIn(userproRequest.getRoles())
 				.orElseThrow(() -> new AppException("User Role not set."));
 		Set<Role> roleNames = userRoles.stream().collect(Collectors.toSet());
+		user.setCreatedNew(false);
 		user.setRoles(roleNames);
 		user.setDistrictId(dis);
 		User result = userRepository.save(user);

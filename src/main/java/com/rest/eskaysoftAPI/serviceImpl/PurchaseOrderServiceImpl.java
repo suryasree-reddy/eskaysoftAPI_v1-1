@@ -40,8 +40,12 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 			pomodel.setProductcode(pro.getProductId().getProductcode());
 			pomodel.setProductName(pro.getProductId().getName());
 			pomodel.setAccountInformationId(pro.getAccountInformationId().getId());
-			pomodel.setSupplier(pro.getAccountInformationId().getAccountName());;
-			pomodel.setTypeheadDisplay(pro.getProductId().getName()+EskaysoftConstants.SEPERATOR +pro.getProductId().getProductcode());
+			pomodel.setSupplier(pro.getAccountInformationId().getAccountName());
+			pomodel.setFree(pro.getProductId().getFree());
+			pomodel.setPack(pro.getProductId().getPacking());
+			pomodel.setbQty(pro.getProductId().getBoxQty());
+			pomodel.setTypeheadDisplay(
+					pro.getProductId().getName() + EskaysoftConstants.SEPERATOR + pro.getProductId().getProductcode());
 			polist.add(pomodel);
 		});
 		return polist;
@@ -51,7 +55,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 	public PurchaseOrderDto getPurchaseOrderById(Long id) {
 		PurchaseOrder pro = porepo.findById(id)
 				.orElseThrow(() -> new NotFoundException(String.format("purchaseOrder %d not found", id)));
-		
+
 		PurchaseOrderDto pomodel = new PurchaseOrderDto();
 		BeanUtils.copyProperties(pro, pomodel);
 		pomodel.setProductId(pro.getProductId().getId());
@@ -59,23 +63,28 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 		pomodel.setProductName(pro.getProductId().getName());
 		pomodel.setAccountInformationId(pro.getAccountInformationId().getId());
 		pomodel.setSupplier(pro.getAccountInformationId().getAccountName());
-		
+		pomodel.setFree(pro.getProductId().getFree());
+		pomodel.setPack(pro.getProductId().getPacking());
+		pomodel.setbQty(pro.getProductId().getBoxQty());
 		return pomodel;
 	}
 
 	@Override
 	public PurchaseOrderDto updatePurchaseOrder(PurchaseOrderDto purchaseorder) {
 
-		AccountInformation ai = acreo.findById(purchaseorder.getAccountInformationId()).orElseThrow(() -> new NotFoundException(String.format("tax %d not found", purchaseorder.getAccountInformationId())));
-		Product product = prorepo.findById(purchaseorder.getProductId()).orElseThrow(() -> new NotFoundException(String.format("tax %d not found", purchaseorder.getProductId())));
-		
+		AccountInformation ai = acreo.findById(purchaseorder.getAccountInformationId())
+				.orElseThrow(() -> new NotFoundException(
+						String.format("tax %d not found", purchaseorder.getAccountInformationId())));
+		Product product = prorepo.findById(purchaseorder.getProductId()).orElseThrow(
+				() -> new NotFoundException(String.format("tax %d not found", purchaseorder.getProductId())));
+
 		PurchaseOrder po = new PurchaseOrder();
 		po.setAccountInformationId(ai);
 		po.setProductId(product);
 		BeanUtils.copyProperties(purchaseorder, po);
 		po = porepo.save(po);
 		return purchaseorder;
-		
+
 	}
 
 	@Override
@@ -92,17 +101,32 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 	}
 
 	@Override
+	public boolean deletePurchaseOrderByOrderNum(Integer id) {
+		boolean status = false;
+		List<PurchaseOrder> poList = porepo.findByOrderNumber(id);
+
+		if (poList != null && poList.isEmpty()) {
+			porepo.deleteAll(poList);
+			status = true;
+		}
+		return status;
+	}
+
+	@Override
 	public PurchaseOrderDto create(PurchaseOrderDto purchaseorder) {
 		PurchaseOrder po = new PurchaseOrder();
-		AccountInformation ai = acreo.findById(purchaseorder.getAccountInformationId()).orElseThrow(() -> new NotFoundException(String.format("tax %d not found", purchaseorder.getAccountInformationId())));
-		Product product = prorepo.findById(purchaseorder.getProductId()).orElseThrow(() -> new NotFoundException(String.format("tax %d not found", purchaseorder.getProductId())));
+		AccountInformation ai = acreo.findById(purchaseorder.getAccountInformationId())
+				.orElseThrow(() -> new NotFoundException(
+						String.format("tax %d not found", purchaseorder.getAccountInformationId())));
+		Product product = prorepo.findById(purchaseorder.getProductId()).orElseThrow(
+				() -> new NotFoundException(String.format("tax %d not found", purchaseorder.getProductId())));
 		po.setAccountInformationId(ai);
 		po.setProductId(product);
 		BeanUtils.copyProperties(purchaseorder, po);
 		po = porepo.save(po);
 		purchaseorder.setId(po.getId());
 		return purchaseorder;
-		
-		
+
 	}
+
 }

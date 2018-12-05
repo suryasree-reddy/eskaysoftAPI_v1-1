@@ -60,7 +60,7 @@ public class PurchaseOrderResource {
 	@Produces("application/json")
 	public PurchaseOrderDto update(@RequestBody PurchaseOrderDto purchaseorder) {
 		if (logger.isDebugEnabled()) {
-			logger.debug("Requsted Schedule = " + purchaseorder.getId());
+			logger.debug("Requsted purchaseorder = " + purchaseorder.getId());
 		}
 		return purchaseOrderService.updatePurchaseOrder(purchaseorder);
 	}
@@ -72,4 +72,12 @@ public class PurchaseOrderResource {
 		return purchaseOrderService.deletePurchaseOrder(id);
 	}
 
+	@DELETE
+	@Path("orderNumber/{id}")
+	@Produces("application/json")
+	public boolean deletePurchaseOrderByOrderNum(@PathParam("id") int id) {
+		return purchaseOrderService.deletePurchaseOrderByOrderNum(id);
+	}
+	
+	
 }

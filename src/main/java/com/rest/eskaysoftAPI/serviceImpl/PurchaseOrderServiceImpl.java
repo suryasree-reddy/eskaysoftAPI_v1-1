@@ -44,6 +44,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 			pomodel.setFree(pro.getProductId().getFree());
 			pomodel.setPack(pro.getProductId().getPacking());
 			pomodel.setbQty(pro.getProductId().getBoxQty());
+			pomodel.setNetRate(pro.getProductId().getNetRate());
 			pomodel.setTypeheadDisplay(
 					pro.getProductId().getName() + EskaysoftConstants.SEPERATOR + pro.getProductId().getProductcode());
 			polist.add(pomodel);
@@ -66,6 +67,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 		pomodel.setFree(pro.getProductId().getFree());
 		pomodel.setPack(pro.getProductId().getPacking());
 		pomodel.setbQty(pro.getProductId().getBoxQty());
+		pomodel.setNetRate(pro.getProductId().getNetRate());
 		return pomodel;
 	}
 

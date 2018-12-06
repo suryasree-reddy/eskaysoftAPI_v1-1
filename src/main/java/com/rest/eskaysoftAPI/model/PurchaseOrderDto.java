@@ -11,6 +11,7 @@ public class PurchaseOrderDto implements Serializable {
 	private LocalDate date;
 	private Long accountInformationId;
 	private String supplier;
+	private String town;
 	private String remarks;
 	private Long productId;
 	private String productName;
@@ -185,6 +186,14 @@ public class PurchaseOrderDto implements Serializable {
 
 	public void setNetRate(Double netRate) {
 		this.netRate = netRate;
+	}
+
+	public String getTown() {
+		return town;
+	}
+
+	public void setTown(String town) {
+		this.town = town;
 	}
 
 }

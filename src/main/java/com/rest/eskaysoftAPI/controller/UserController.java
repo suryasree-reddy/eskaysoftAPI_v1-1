@@ -121,7 +121,7 @@ public class UserController {
 		Set<Role> roleNames = userRoles.stream().collect(Collectors.toSet());
 		User user = new User();
 		BeanUtils.copyProperties(userproRequest, user);
-
+		user.setCreatedNew(false);
 		user.setRoles(roleNames);
 		user.setDistrictId(dis);
 
@@ -160,7 +160,7 @@ public class UserController {
 		List<Role> userRoles = roleRepository.findByNameIn(userproRequest.getRoles())
 				.orElseThrow(() -> new AppException("User Role not set."));
 		Set<Role> roleNames = userRoles.stream().collect(Collectors.toSet());
-		user.setCreatedNew(false);
+		user.setCreatedNew(true);
 		user.setRoles(roleNames);
 		user.setDistrictId(dis);
 		User result = userRepository.save(user);

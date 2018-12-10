@@ -3,9 +3,9 @@ package com.rest.eskaysoftAPI.serviceImpl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.stereotype.Service;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.rest.eskaysoftAPI.entity.InternalStockAdjustments;
 import com.rest.eskaysoftAPI.entity.Product;
@@ -33,6 +33,8 @@ public class InternalStockAdjustmentsServiceImpl implements InternalStockAdjustm
 			inStockModel.setProductId(instocks.getProductId().getId());
 			inStockModel.setProductcode(instocks.getProductId().getProductcode());
 			inStockModel.setProductName(instocks.getProductId().getName());
+			inStockModel.setFree(instocks.getProductId().getFree());
+			inStockModel.setPack(instocks.getProductId().getPacking());
 			inStockListdto.add(inStockModel);
 		});
 		return inStockListdto;
@@ -47,7 +49,8 @@ public class InternalStockAdjustmentsServiceImpl implements InternalStockAdjustm
 		inModel.setProductId(inStockList.getProductId().getId());
 		inModel.setProductcode(inStockList.getProductId().getProductcode());
 		inModel.setProductName(inStockList.getProductId().getName());
-
+		inModel.setFree(inStockList.getProductId().getFree());
+		inModel.setPack(inStockList.getProductId().getPacking());
 		return inModel;
 	}
 
@@ -76,11 +79,12 @@ public class InternalStockAdjustmentsServiceImpl implements InternalStockAdjustm
 
 	@Override
 	public InternalStockAdjustmentsDto create(InternalStockAdjustmentsDto internalStockAdjustmentsModel) {
-		Product pro = proRepo.findById(internalStockAdjustmentsModel.getId()).orElseThrow(() -> new NotFoundException(
-				String.format("InternalStockAdjustments %d not found", internalStockAdjustmentsModel.getId())));
 		InternalStockAdjustments in = new InternalStockAdjustments();
-		BeanUtils.copyProperties(internalStockAdjustmentsModel, in);
+		Product pro = proRepo.findById(internalStockAdjustmentsModel.getProductId())
+				.orElseThrow(() -> new NotFoundException(String.format("InternalStockAdjustments %d not found",
+						internalStockAdjustmentsModel.getProductId())));
 		in.setProductId(pro);
+		BeanUtils.copyProperties(internalStockAdjustmentsModel, in);
 		in = inStockRepo.save(in);
 		internalStockAdjustmentsModel.setId(in.getId());
 		return internalStockAdjustmentsModel;

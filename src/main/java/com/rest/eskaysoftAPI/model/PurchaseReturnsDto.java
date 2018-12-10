@@ -17,14 +17,24 @@ public class PurchaseReturnsDto implements Serializable {
 	private Long productId;
 	private String productName;
 	private String productcode;
-	// private Boolean status;
-	private String batch;
-	private Double qty;
 	private Integer free;
+	private Double netRate;
+
+	public Double getNetRate() {
+		return netRate;
+	}
+
+	public void setNetRate(Double netRate) {
+		this.netRate = netRate;
+	}
+
+	private boolean deleteFlag;
+	private String batch;
+	private Integer qty;
+
 	private Double pRate;
 	private Long ammount;
 	private String typeheadDisplay;
-	private boolean deleteFlag;
 
 	public Long getId() {
 		return id;
@@ -98,15 +108,6 @@ public class PurchaseReturnsDto implements Serializable {
 		this.productcode = productcode;
 	}
 
-	/*
-	 * public Boolean getStatus() { return status; } public void setStatus(Boolean
-	 * status) { this.status = status; }
-	 */
-
-	public Double getQty() {
-		return qty;
-	}
-
 	public String getBatch() {
 		return batch;
 	}
@@ -115,7 +116,11 @@ public class PurchaseReturnsDto implements Serializable {
 		this.batch = batch;
 	}
 
-	public void setQty(Double qty) {
+	public Integer getQty() {
+		return qty;
+	}
+
+	public void setQty(Integer qty) {
 		this.qty = qty;
 	}
 

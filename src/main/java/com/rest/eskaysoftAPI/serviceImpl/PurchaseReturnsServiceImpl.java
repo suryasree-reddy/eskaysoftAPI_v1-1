@@ -36,9 +36,12 @@ public class PurchaseReturnsServiceImpl implements PurchaseReturnsService {
 		porepo.findAllByOrderByPurReturnNumberAsc().forEach(pr -> {
 			PurchaseReturnsDto prmodel = new PurchaseReturnsDto();
 			BeanUtils.copyProperties(pr, prmodel);
+			prmodel.setDeleteFlag(true);
 			prmodel.setProductId(pr.getProductId().getId());
 			prmodel.setProductcode(pr.getProductId().getProductcode());
 			prmodel.setProductName(pr.getProductId().getName());
+			prmodel.setFree(pr.getProductId().getFree());
+			prmodel.setNetRate(pr.getProductId().getNetRate());
 			prmodel.setAccountInformationId(pr.getAccountInformationId().getId());
 			prmodel.setSupplier(pr.getAccountInformationId().getAccountName());
 
@@ -59,9 +62,10 @@ public class PurchaseReturnsServiceImpl implements PurchaseReturnsService {
 		pomodel.setProductId(pr.getProductId().getId());
 		pomodel.setProductcode(pr.getProductId().getProductcode());
 		pomodel.setProductName(pr.getProductId().getName());
+		pomodel.setFree(pr.getProductId().getFree());
 		pomodel.setAccountInformationId(pr.getAccountInformationId().getId());
 		pomodel.setSupplier(pr.getAccountInformationId().getAccountName());
-
+		pomodel.setNetRate(pr.getProductId().getNetRate());
 		return pomodel;
 	}
 
@@ -69,9 +73,9 @@ public class PurchaseReturnsServiceImpl implements PurchaseReturnsService {
 	public PurchaseReturnsDto savePurchaseReturns(PurchaseReturnsDto pr) {
 
 		AccountInformation ai = acreo.findById(pr.getAccountInformationId()).orElseThrow(
-				() -> new NotFoundException(String.format("tax %d not found", pr.getAccountInformationId())));
+				() -> new NotFoundException(String.format("AccountInformation %d not found", pr.getAccountInformationId())));
 		Product product = prorepo.findById(pr.getProductId())
-				.orElseThrow(() -> new NotFoundException(String.format("tax %d not found", pr.getProductId())));
+				.orElseThrow(() -> new NotFoundException(String.format("Product %d not found", pr.getProductId())));
 
 		PurchaseReturns po = new PurchaseReturns();
 		po.setAccountInformationId(ai);
@@ -99,9 +103,9 @@ public class PurchaseReturnsServiceImpl implements PurchaseReturnsService {
 		PurchaseReturns po = new PurchaseReturns();
 		AccountInformation ai = acreo.findById(purchaseReturns.getAccountInformationId())
 				.orElseThrow(() -> new NotFoundException(
-						String.format("tax %d not found", purchaseReturns.getAccountInformationId())));
+						String.format("AccountInformation %d not found", purchaseReturns.getAccountInformationId())));
 		Product product = prorepo.findById(purchaseReturns.getProductId()).orElseThrow(
-				() -> new NotFoundException(String.format("tax %d not found", purchaseReturns.getProductId())));
+				() -> new NotFoundException(String.format("product %d not found", purchaseReturns.getProductId())));
 		po.setAccountInformationId(ai);
 		po.setProductId(product);
 		BeanUtils.copyProperties(purchaseReturns, po);

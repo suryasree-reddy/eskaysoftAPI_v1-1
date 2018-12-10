@@ -16,18 +16,26 @@ public class InternalStockAdjustmentsDto implements Serializable {
 	private String remarks;
 
 	private Long productId;
-	
+
 	private String productName;
 
 	private String productcode;
 
-	private String pack;
+	private Integer pack;
 
-	private Double qty;
+	public Integer getPack() {
+		return pack;
+	}
 
-	private Double free;
+	public void setPack(Integer pack) {
+		this.pack = pack;
+	}
 
-	private Boolean batch;
+	private Integer free;
+
+	private Integer qty;
+
+	private String batch;
 
 	private String type;
 
@@ -81,37 +89,7 @@ public class InternalStockAdjustmentsDto implements Serializable {
 		this.productcode = productcode;
 	}
 
-	public String getPack() {
-		return pack;
-	}
-
-	public void setPack(String pack) {
-		this.pack = pack;
-	}
-
-	public Double getQty() {
-		return qty;
-	}
-
-	public void setQty(Double qty) {
-		this.qty = qty;
-	}
-
-	public Double getFree() {
-		return free;
-	}
-
-	public void setFree(Double free) {
-		this.free = free;
-	}
-
-	public Boolean getBatch() {
-		return batch;
-	}
-
-	public void setBatch(Boolean batch) {
-		this.batch = batch;
-	}
+	
 
 	public String getType() {
 		return type;
@@ -135,6 +113,30 @@ public class InternalStockAdjustmentsDto implements Serializable {
 
 	public void setProductId(Long productId) {
 		this.productId = productId;
+	}
+
+	public Integer getFree() {
+		return free;
+	}
+
+	public void setFree(Integer free) {
+		this.free = free;
+	}
+
+	public Integer getQty() {
+		return qty;
+	}
+
+	public void setQty(Integer qty) {
+		this.qty = qty;
+	}
+
+	public String getBatch() {
+		return batch;
+	}
+
+	public void setBatch(String batch) {
+		this.batch = batch;
 	}
 
 }

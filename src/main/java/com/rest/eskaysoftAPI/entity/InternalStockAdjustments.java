@@ -12,10 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "internalStockAdjustments", uniqueConstraints = { @UniqueConstraint(columnNames = { "number" }) })
+@Table(name = "internalStockAdjustments")
 public class InternalStockAdjustments implements Serializable {
 
 	private static final long serialVersionUID = -6855841992822428060L;
@@ -24,6 +23,7 @@ public class InternalStockAdjustments implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "number", nullable = false)
 	private Long number;
 
@@ -37,17 +37,13 @@ public class InternalStockAdjustments implements Serializable {
 	@JoinColumn(name = "productId", nullable = false)
 	private Product productId;
 
-	@Column(name = "pack", nullable = false, length = 40)
-	private String pack;
+	
 
 	@Column(name = "qty", nullable = false, length = 40)
-	private Double qty;
-
-	@Column(name = "free", nullable = false, length = 40)
-	private Double free;
+	private Integer qty;
 
 	@Column(name = "batch", nullable = false)
-	private Boolean batch;
+	private String batch;
 
 	@Column(name = "type", nullable = false)
 	private String type;
@@ -95,37 +91,7 @@ public class InternalStockAdjustments implements Serializable {
 		this.productId = productId;
 	}
 
-	public String getPack() {
-		return pack;
-	}
-
-	public void setPack(String pack) {
-		this.pack = pack;
-	}
-
-	public Double getQty() {
-		return qty;
-	}
-
-	public void setQty(Double qty) {
-		this.qty = qty;
-	}
-
-	public Double getFree() {
-		return free;
-	}
-
-	public void setFree(Double free) {
-		this.free = free;
-	}
-
-	public Boolean getBatch() {
-		return batch;
-	}
-
-	public void setBatch(Boolean batch) {
-		this.batch = batch;
-	}
+	
 
 	public String getType() {
 		return type;
@@ -141,6 +107,22 @@ public class InternalStockAdjustments implements Serializable {
 
 	public void setDeleteFlag(boolean deleteFlag) {
 		this.deleteFlag = deleteFlag;
+	}
+
+	public Integer getQty() {
+		return qty;
+	}
+
+	public void setQty(Integer qty) {
+		this.qty = qty;
+	}
+
+	public String getBatch() {
+		return batch;
+	}
+
+	public void setBatch(String batch) {
+		this.batch = batch;
 	}
 
 }

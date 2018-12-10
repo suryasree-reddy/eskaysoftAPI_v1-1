@@ -12,10 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "purchaseReturns", uniqueConstraints = { @UniqueConstraint(columnNames = { "purReturnNumber" }) })
+@Table(name = "purchaseReturns")
 public class PurchaseReturns implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -24,7 +23,8 @@ public class PurchaseReturns implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "purReturnNumber", length = 30, nullable = false)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "purReturnNumber", nullable = false)
 	private Long purReturnNumber;
 
 	@Column(name = "date", nullable = false, length = 40)
@@ -41,23 +41,19 @@ public class PurchaseReturns implements Serializable {
 	@JoinColumn(name = "productId", nullable = false)
 	private Product productId;
 
-	/*
-	 * @Column(name = "status", nullable = false) private Boolean status;
-	 */
+	@Column(name = "deleteFlag", nullable = false)
+	private boolean deleteFlag = true;
 
 	@Column(name = "batch", length = 12, nullable = false)
 	private String batch;
 
 	@Column(name = "qty", nullable = false)
-	private Double qty;
-
-	@Column(name = "free", nullable = false)
-	private Integer free;
+	private Integer qty;
 
 	@Column(name = "pRate", nullable = false)
 	private Double pRate;
 
-	@Column(name = "ammount", nullable = false)
+	@Column(name = "ammount")
 	private Long ammount;
 
 	public Long getId() {
@@ -108,14 +104,12 @@ public class PurchaseReturns implements Serializable {
 		this.productId = productId;
 	}
 
-	/*
-	 * public Boolean getStatus() { return status; }
-	 * 
-	 * public void setStatus(Boolean status) { this.status = status; }
-	 */
+	public boolean isDeleteFlag() {
+		return deleteFlag;
+	}
 
-	public Double getQty() {
-		return qty;
+	public void setDeleteFlag(boolean deleteFlag) {
+		this.deleteFlag = deleteFlag;
 	}
 
 	public String getBatch() {
@@ -126,17 +120,15 @@ public class PurchaseReturns implements Serializable {
 		this.batch = batch;
 	}
 
-	public void setQty(Double qty) {
+	public Integer getQty() {
+		return qty;
+	}
+
+	public void setQty(Integer qty) {
 		this.qty = qty;
 	}
 
-	public Integer getFree() {
-		return free;
-	}
-
-	public void setFree(Integer free) {
-		this.free = free;
-	}
+	
 
 	public Double getpRate() {
 		return pRate;

@@ -37,8 +37,6 @@ public class InternalStockAdjustments implements Serializable {
 	@JoinColumn(name = "productId", nullable = false)
 	private Product productId;
 
-	
-
 	@Column(name = "qty", nullable = false, length = 40)
 	private Integer qty;
 

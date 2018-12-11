@@ -10,10 +10,10 @@ public interface SalesOrderService {
 
 	SalesOrderDto getSalesOrderById(Long id);
 
-	SalesOrderDto save(SalesOrderDto salesOrder);
+	SalesOrderDto saveSalesOrder(SalesOrderDto salesOrder);
 
-	boolean delete(Long id);
+	boolean deleteSalesOrder(Long id);
 
-	SalesOrderDto create(SalesOrderDto salesOrder);
+	SalesOrderDto createSalesOrder(SalesOrderDto salesOrder);
 
 }

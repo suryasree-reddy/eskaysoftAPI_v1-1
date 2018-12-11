@@ -12,10 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "salesOrder", uniqueConstraints = { @UniqueConstraint(columnNames = { "orderNumber" }) })
+@Table(name = "salesOrder")
 public class SalesOrder implements Serializable {
 
 	private static final long serialVersionUID = -6855841992822428060L;
@@ -24,14 +23,16 @@ public class SalesOrder implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "orderNumber", nullable = false)
-	private Long orderNumber;
+	private Integer orderNumber;
 
 	@Column(name = "date", nullable = false)
 	private LocalDate date;
 
-	@Column(name = "customer", nullable = false, length = 40)
-	private String customer;
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "accountInformationId", nullable = false)
+	private AccountInformation accountInformationId;
 
 	@Column(name = "rateType", nullable = false)
 	private String rateType;
@@ -43,21 +44,15 @@ public class SalesOrder implements Serializable {
 	@JoinColumn(name = "productId", nullable = false)
 	private Product productId;
 
-	@Column(name = "packing", nullable = false, length = 40)
-	private String packing;
-
 	@Column(name = "qty", nullable = false, length = 40)
-	private Double qty;
-
-	@Column(name = "free", nullable = false, length = 40)
-	private Double free;
+	private Integer qty;
 
 	@Column(name = "rate", nullable = false)
-	private Double rate;
+	private Integer rate;
 
 	@Column(name = "value")
 	private Double value;
-
+	
 	@Column(name = "deleteFlag", nullable = false)
 	private boolean deleteFlag = true;
 
@@ -69,11 +64,11 @@ public class SalesOrder implements Serializable {
 		this.id = id;
 	}
 
-	public Long getOrderNumber() {
+	public Integer getOrderNumber() {
 		return orderNumber;
 	}
 
-	public void setOrderNumber(Long orderNumber) {
+	public void setOrderNumber(Integer orderNumber) {
 		this.orderNumber = orderNumber;
 	}
 
@@ -85,12 +80,12 @@ public class SalesOrder implements Serializable {
 		this.date = date;
 	}
 
-	public String getCustomer() {
-		return customer;
+	public AccountInformation getAccountInformationId() {
+		return accountInformationId;
 	}
 
-	public void setCustomer(String customer) {
-		this.customer = customer;
+	public void setAccountInformationId(AccountInformation accountInformationId) {
+		this.accountInformationId = accountInformationId;
 	}
 
 	public String getRateType() {
@@ -117,35 +112,19 @@ public class SalesOrder implements Serializable {
 		this.productId = productId;
 	}
 
-	public String getPacking() {
-		return packing;
-	}
-
-	public void setPacking(String packing) {
-		this.packing = packing;
-	}
-
-	public Double getQty() {
+	public Integer getQty() {
 		return qty;
 	}
 
-	public void setQty(Double qty) {
+	public void setQty(Integer qty) {
 		this.qty = qty;
 	}
 
-	public Double getFree() {
-		return free;
-	}
-
-	public void setFree(Double free) {
-		this.free = free;
-	}
-
-	public Double getRate() {
+	public Integer getRate() {
 		return rate;
 	}
 
-	public void setRate(Double rate) {
+	public void setRate(Integer rate) {
 		this.rate = rate;
 	}
 
@@ -165,6 +144,4 @@ public class SalesOrder implements Serializable {
 		this.deleteFlag = deleteFlag;
 	}
 
-	
-	
 }

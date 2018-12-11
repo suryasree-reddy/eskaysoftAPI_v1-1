@@ -123,9 +123,9 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 		PurchaseOrder po = new PurchaseOrder();
 		AccountInformation ai = acreo.findById(purchaseorder.getAccountInformationId())
 				.orElseThrow(() -> new NotFoundException(
-						String.format("tax %d not found", purchaseorder.getAccountInformationId())));
+						String.format("AccountInformation %d not found", purchaseorder.getAccountInformationId())));
 		Product product = prorepo.findById(purchaseorder.getProductId()).orElseThrow(
-				() -> new NotFoundException(String.format("tax %d not found", purchaseorder.getProductId())));
+				() -> new NotFoundException(String.format("AccountInformation %d not found", purchaseorder.getProductId())));
 		po.setAccountInformationId(ai);
 		po.setProductId(product);
 		BeanUtils.copyProperties(purchaseorder, po);

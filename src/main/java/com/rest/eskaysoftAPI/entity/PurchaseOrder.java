@@ -24,6 +24,7 @@ public class PurchaseOrder implements Serializable {
 	private Long id;
 
 	@Column(name = "orderNumber", nullable = false, length = 40)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer orderNumber;
 
 	@Column(name = "date", nullable = false)
@@ -40,20 +41,11 @@ public class PurchaseOrder implements Serializable {
 	@JoinColumn(name = "productId", nullable = false)
 	private Product productId;
 
-	@Column(name = "pack", nullable = false, length = 10)
-	private Integer pack;
-
 	@Column(name = "qty", nullable = false)
 	private Integer qty;
 
-	@Column(name = "free", nullable = false)
-	private Integer free;
-
 	@Column(name = "rate", nullable = false)
 	private Integer rate;
-
-	@Column(name = "bQty", nullable = false)
-	private Integer bQty;
 
 	@Column(name = "bFree", nullable = false)
 	private Integer bFree;
@@ -112,14 +104,6 @@ public class PurchaseOrder implements Serializable {
 		this.productId = productId;
 	}
 
-	public Integer getPack() {
-		return pack;
-	}
-
-	public void setPack(Integer pack) {
-		this.pack = pack;
-	}
-
 	public Integer getQty() {
 		return qty;
 	}
@@ -128,28 +112,12 @@ public class PurchaseOrder implements Serializable {
 		this.qty = qty;
 	}
 
-	public Integer getFree() {
-		return free;
-	}
-
-	public void setFree(Integer free) {
-		this.free = free;
-	}
-
 	public Integer getRate() {
 		return rate;
 	}
 
 	public void setRate(Integer rate) {
 		this.rate = rate;
-	}
-
-	public Integer getbQty() {
-		return bQty;
-	}
-
-	public void setbQty(Integer bQty) {
-		this.bQty = bQty;
 	}
 
 	public Integer getbFree() {

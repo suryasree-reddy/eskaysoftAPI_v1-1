@@ -23,13 +23,7 @@ public class InternalStockAdjustmentsDto implements Serializable {
 
 	private Integer pack;
 
-	public Integer getPack() {
-		return pack;
-	}
-
-	public void setPack(Integer pack) {
-		this.pack = pack;
-	}
+	
 
 	private Integer free;
 
@@ -64,7 +58,13 @@ public class InternalStockAdjustmentsDto implements Serializable {
 	public void setDate(LocalDate date) {
 		this.date = date;
 	}
+	public Integer getPack() {
+		return pack;
+	}
 
+	public void setPack(Integer pack) {
+		this.pack = pack;
+	}
 	public String getRemarks() {
 		return remarks;
 	}

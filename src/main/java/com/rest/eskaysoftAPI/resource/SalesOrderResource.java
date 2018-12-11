@@ -49,28 +49,28 @@ public class SalesOrderResource {
 	@POST
 	@Consumes("application/json")
 	@Produces("application/json")
-	public SalesOrderDto create(@RequestBody SalesOrderDto sales) {
+	public SalesOrderDto createSalesOrder(@RequestBody SalesOrderDto sales) {
 		if (logger.isDebugEnabled()) {
 			logger.debug("Requsted SalesOrder = " + sales.getProductName());
 		}
-		return salesOderService.create(sales);
+		return salesOderService.createSalesOrder(sales);
 	}
 
 	@PUT
 	@Consumes("application/json")
 	@Produces("application/json")
-	public SalesOrderDto update(@RequestBody SalesOrderDto sales) {
+	public SalesOrderDto saveSalesOrder(@RequestBody SalesOrderDto sales) {
 		if (logger.isDebugEnabled()) {
 			logger.debug("Requsted salesOder = " + sales.getId());
 		}
-		return salesOderService.save(sales);
+		return salesOderService.saveSalesOrder(sales);
 	}
 
 	@DELETE
 	@Path("/{id}")
 	@Produces("application/json")
-	public boolean delete(@PathParam("id") long id) {
-		return salesOderService.delete(id);
+	public boolean deleteSalesOrder(@PathParam("id") long id) {
+		return salesOderService.deleteSalesOrder(id);
 	}
 
 }

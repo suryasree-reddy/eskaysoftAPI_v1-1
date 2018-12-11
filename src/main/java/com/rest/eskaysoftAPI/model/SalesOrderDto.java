@@ -8,34 +8,24 @@ public class SalesOrderDto implements Serializable {
 	private static final long serialVersionUID = -6855841992822428060L;
 
 	private Long id;
-
-	private Long orderNumber;
-
+	private Integer orderNumber;
 	private LocalDate date;
-
+	private Long accountInformationId;
 	private String customer;
-
+	private String town;
 	private String remarks;
-
 	private String rateType;
-
 	private Long productId;
-
-	private String productcode;
-
 	private String productName;
-
-	private String packing;
-
-	private Double qty;
-
-	private Double free;
-
-	private Double rate;
-
-	private Double value;
-
-	private boolean deleteFlag = true;
+	private String productcode;
+	private Integer pack;
+	private Integer qty;
+	private Integer free;
+	private Integer rate;
+	private Integer value;
+	private Double netRate;
+	private String typeheadDisplay;
+	private boolean deleteFlag;
 
 	public Long getId() {
 		return id;
@@ -45,11 +35,11 @@ public class SalesOrderDto implements Serializable {
 		this.id = id;
 	}
 
-	public Long getOrderNumber() {
+	public Integer getOrderNumber() {
 		return orderNumber;
 	}
 
-	public void setOrderNumber(Long orderNumber) {
+	public void setOrderNumber(Integer orderNumber) {
 		this.orderNumber = orderNumber;
 	}
 
@@ -61,6 +51,14 @@ public class SalesOrderDto implements Serializable {
 		this.date = date;
 	}
 
+	public Long getAccountInformationId() {
+		return accountInformationId;
+	}
+
+	public void setAccountInformationId(Long accountInformationId) {
+		this.accountInformationId = accountInformationId;
+	}
+
 	public String getCustomer() {
 		return customer;
 	}
@@ -69,12 +67,12 @@ public class SalesOrderDto implements Serializable {
 		this.customer = customer;
 	}
 
-	public String getRateType() {
-		return rateType;
+	public String getTown() {
+		return town;
 	}
 
-	public void setRateType(String rateType) {
-		this.rateType = rateType;
+	public void setTown(String town) {
+		this.town = town;
 	}
 
 	public String getRemarks() {
@@ -93,14 +91,6 @@ public class SalesOrderDto implements Serializable {
 		this.productId = productId;
 	}
 
-	public String getProductcode() {
-		return productcode;
-	}
-
-	public void setProductcode(String productcode) {
-		this.productcode = productcode;
-	}
-
 	public String getProductName() {
 		return productName;
 	}
@@ -109,44 +99,68 @@ public class SalesOrderDto implements Serializable {
 		this.productName = productName;
 	}
 
-	public String getPacking() {
-		return packing;
+	public String getProductcode() {
+		return productcode;
 	}
 
-	public void setPacking(String packing) {
-		this.packing = packing;
+	public void setProductcode(String productcode) {
+		this.productcode = productcode;
 	}
 
-	public Double getQty() {
+	public Integer getPack() {
+		return pack;
+	}
+
+	public void setPack(Integer pack) {
+		this.pack = pack;
+	}
+
+	public Integer getQty() {
 		return qty;
 	}
 
-	public void setQty(Double qty) {
+	public void setQty(Integer qty) {
 		this.qty = qty;
 	}
 
-	public Double getFree() {
+	public Integer getFree() {
 		return free;
 	}
 
-	public void setFree(Double free) {
+	public void setFree(Integer free) {
 		this.free = free;
 	}
 
-	public Double getRate() {
+	public Integer getRate() {
 		return rate;
 	}
 
-	public void setRate(Double rate) {
+	public void setRate(Integer rate) {
 		this.rate = rate;
 	}
 
-	public Double getValue() {
+	public Integer getValue() {
 		return value;
 	}
 
-	public void setValue(Double value) {
+	public void setValue(Integer value) {
 		this.value = value;
+	}
+
+	public Double getNetRate() {
+		return netRate;
+	}
+
+	public void setNetRate(Double netRate) {
+		this.netRate = netRate;
+	}
+
+	public String getTypeheadDisplay() {
+		return typeheadDisplay;
+	}
+
+	public void setTypeheadDisplay(String typeheadDisplay) {
+		this.typeheadDisplay = typeheadDisplay;
 	}
 
 	public boolean isDeleteFlag() {
@@ -155,6 +169,14 @@ public class SalesOrderDto implements Serializable {
 
 	public void setDeleteFlag(boolean deleteFlag) {
 		this.deleteFlag = deleteFlag;
+	}
+
+	public String getRateType() {
+		return rateType;
+	}
+
+	public void setRateType(String rateType) {
+		this.rateType = rateType;
 	}
 
 }

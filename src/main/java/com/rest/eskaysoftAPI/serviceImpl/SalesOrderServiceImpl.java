@@ -78,8 +78,8 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 		AccountInformation ai = acreo.findById(salesOrderModel.getAccountInformationId())
 				.orElseThrow(() -> new NotFoundException(
 						String.format("AccountInformation %d not found", salesOrderModel.getAccountInformationId())));
-		Product pro = proRepo.findById(salesOrderModel.getId()).orElseThrow(
-				() -> new NotFoundException(String.format("SalesOrder %d not found", salesOrderModel.getId())));
+		Product pro = proRepo.findById(salesOrderModel.getProductId()).orElseThrow(
+				() -> new NotFoundException(String.format("SalesOrder %d not found", salesOrderModel.getProductId())));
 		SalesOrder in = new SalesOrder();
 		in.setAccountInformationId(ai);
 		in.setProductId(pro);

@@ -9,9 +9,9 @@ public class SalesReturnsDto implements Serializable {
 
 	private Long id;
 
-	private Integer salesReturnNumber;
+	private Integer salesReturnNo;
 
-	private LocalDate salesRetdate;
+	private LocalDate salesReturnDate;
 
 	private Long accountInformationId;
 	private String customer;
@@ -23,13 +23,13 @@ public class SalesReturnsDto implements Serializable {
 	private Long productId;
 	private String productcode;
 	private String productName;
-	private Integer Free;
+	private Integer free;
 	private String batch;
 	private LocalDate expiry; /* ( mm-yyyy) */
 	private Integer qty;
 	private Integer sRate;
-	private Double discount;
-	private Double gstp;
+	private Integer disc;
+	private Integer gstp;
 	private boolean deleteFlag;
 
 	public Long getId() {
@@ -40,20 +40,20 @@ public class SalesReturnsDto implements Serializable {
 		this.id = id;
 	}
 
-	public Integer getSalesReturnNumber() {
-		return salesReturnNumber;
+	public Integer getSalesReturnNo() {
+		return salesReturnNo;
 	}
 
-	public void setSalesReturnNumber(Integer salesReturnNumber) {
-		this.salesReturnNumber = salesReturnNumber;
+	public void setSalesReturnNo(Integer salesReturnNo) {
+		this.salesReturnNo = salesReturnNo;
 	}
 
-	public LocalDate getSalesRetdate() {
-		return salesRetdate;
+	public LocalDate getSalesReturnDate() {
+		return salesReturnDate;
 	}
 
-	public void setSalesRetdate(LocalDate salesRetdate) {
-		this.salesRetdate = salesRetdate;
+	public void setSalesReturnDate(LocalDate salesReturnDate) {
+		this.salesReturnDate = salesReturnDate;
 	}
 
 	public Long getAccountInformationId() {
@@ -121,11 +121,11 @@ public class SalesReturnsDto implements Serializable {
 	}
 
 	public Integer getFree() {
-		return Free;
+		return free;
 	}
 
 	public void setFree(Integer free) {
-		Free = free;
+		this.free = free;
 	}
 
 	public String getBatch() {
@@ -160,19 +160,21 @@ public class SalesReturnsDto implements Serializable {
 		this.sRate = sRate;
 	}
 
-	public Double getDiscount() {
-		return discount;
+	
+
+	public Integer getDisc() {
+		return disc;
 	}
 
-	public void setDiscount(Double discount) {
-		this.discount = discount;
+	public void setDisc(Integer disc) {
+		this.disc = disc;
 	}
 
-	public Double getGstp() {
+	public Integer getGstp() {
 		return gstp;
 	}
 
-	public void setGstp(Double gstp) {
+	public void setGstp(Integer gstp) {
 		this.gstp = gstp;
 	}
 

@@ -7,12 +7,12 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.rest.eskaysoftAPI.entity.Company;
+import com.rest.eskaysoftAPI.entity.AccountInformation;
 import com.rest.eskaysoftAPI.entity.Product;
 import com.rest.eskaysoftAPI.entity.QuatationEntry;
 import com.rest.eskaysoftAPI.exception.NotFoundException;
 import com.rest.eskaysoftAPI.model.QuatationEntryDto;
-import com.rest.eskaysoftAPI.repository.CompanyRepository;
+import com.rest.eskaysoftAPI.repository.AccountInformationRepository;
 import com.rest.eskaysoftAPI.repository.ProductRepository;
 import com.rest.eskaysoftAPI.repository.QuatationEntryRepository;
 import com.rest.eskaysoftAPI.service.QuatationEntryService;
@@ -22,9 +22,8 @@ public class QuatationEntryServiceImpl implements QuatationEntryService {
 
 	@Autowired
 	private QuatationEntryRepository qtRepo;
-
 	@Autowired
-	private CompanyRepository comRepo;
+	private AccountInformationRepository acreo;
 
 	@Autowired
 	private ProductRepository proRepo;;
@@ -38,9 +37,9 @@ public class QuatationEntryServiceImpl implements QuatationEntryService {
 			qtModel.setProductId(qto.getProductId().getId());
 			qtModel.setProductcode(qto.getProductId().getProductcode());
 			qtModel.setProductName(qto.getProductId().getName());
-			qtModel.setCompanyId(qto.getCompanyId().getId());
-			qtModel.setCompanyName(qto.getCompanyId().getCompanyName());
-			qtModel.setCompanyCode(qto.getCompanyId().getCompanyCode());
+			qtModel.setPacking(qto.getProductId().getPacking());
+			qtModel.setAccountInformationId(qto.getAccountInformationId().getId());
+			qtModel.setCustomer(qto.getAccountInformationId().getAccountName());
 
 			polist.add(qtModel);
 		});
@@ -50,30 +49,32 @@ public class QuatationEntryServiceImpl implements QuatationEntryService {
 	@Override
 	public QuatationEntryDto getquatationEntryById(Long id) {
 
-		QuatationEntry qtc = qtRepo.findById(id)
+		QuatationEntry qto = qtRepo.findById(id)
 				.orElseThrow(() -> new NotFoundException(String.format("QuatationEntry %d not found", id)));
 
-		QuatationEntryDto pomodel = new QuatationEntryDto();
-		BeanUtils.copyProperties(qtc, pomodel);
-		pomodel.setProductId(qtc.getProductId().getId());
-		pomodel.setProductcode(qtc.getProductId().getProductcode());
-		pomodel.setProductName(qtc.getProductId().getName());
-		pomodel.setCompanyId(qtc.getCompanyId().getId());
-		pomodel.setCompanyCode(qtc.getCompanyId().getCompanyCode());
-		pomodel.setCompanyName(qtc.getCompanyId().getCompanyName());
-		return pomodel;
+		QuatationEntryDto qtModel = new QuatationEntryDto();
+		BeanUtils.copyProperties(qto, qtModel);
+		qtModel.setProductId(qto.getProductId().getId());
+		qtModel.setProductcode(qto.getProductId().getProductcode());
+		qtModel.setProductName(qto.getProductId().getName());
+		qtModel.setPacking(qto.getProductId().getPacking());
+		qtModel.setAccountInformationId(qto.getAccountInformationId().getId());
+		qtModel.setCustomer(qto.getAccountInformationId().getAccountName());
+		return qtModel;
 	}
 
 	@Override
 	public QuatationEntryDto updatequatationEntry(QuatationEntryDto quatationEntry) {
 
-		Company com = comRepo.findById(quatationEntry.getCompanyId()).orElseThrow(() -> new NotFoundException(
-				String.format("quatationEntry %d not found", quatationEntry.getCompanyId())));
+		AccountInformation ai = acreo.findById(quatationEntry.getAccountInformationId())
+				.orElseThrow(() -> new NotFoundException(
+						String.format("AccountInformation %d not found", quatationEntry.getAccountInformationId())));
+
 		Product product = proRepo.findById(quatationEntry.getProductId()).orElseThrow(() -> new NotFoundException(
 				String.format("quatationEntry %d not found", quatationEntry.getProductId())));
 
 		QuatationEntry qt = new QuatationEntry();
-		qt.setCompanyId(com);
+		qt.setAccountInformationId(ai);
 		qt.setProductId(product);
 		BeanUtils.copyProperties(quatationEntry, qt);
 		qt = qtRepo.save(qt);
@@ -97,11 +98,14 @@ public class QuatationEntryServiceImpl implements QuatationEntryService {
 	@Override
 	public QuatationEntryDto create(QuatationEntryDto quatationEntry) {
 		QuatationEntry qt = new QuatationEntry();
-		Company com = comRepo.findById(quatationEntry.getCompanyId()).orElseThrow(
-				() -> new NotFoundException(String.format("tax %d not found", quatationEntry.getCompanyId())));
+
+		AccountInformation ai = acreo.findById(quatationEntry.getAccountInformationId())
+				.orElseThrow(() -> new NotFoundException(
+						String.format("AccountInformation %d not found", quatationEntry.getAccountInformationId())));
+
 		Product product = proRepo.findById(quatationEntry.getProductId()).orElseThrow(() -> new NotFoundException(
 				String.format("quatationEntry %d not found", quatationEntry.getProductId())));
-		qt.setCompanyId(com);
+		qt.setAccountInformationId(ai);
 		qt.setProductId(product);
 		BeanUtils.copyProperties(quatationEntry, qt);
 		qt = qtRepo.save(qt);

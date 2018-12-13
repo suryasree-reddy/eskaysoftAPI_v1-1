@@ -10,22 +10,19 @@ public class QuatationEntryDto implements Serializable {
 	private Integer orderNumber;
 	private LocalDate date;
 
-	private Long companyId;
-	private String companyName;
-	private String companyCode;
+	private Long accountInformationId;
+	private String customer;
 
 	private String remarks;
 
 	private Long productId;
 	private String productName;
 	private String productcode;
-
-	private String packing;
+	private Integer packing;
 	private Double qty;
 	private Double rate;
 	private Double ammount;
 	private String typeheadDisplay;
-	private boolean deleteFlag;
 
 	public Long getId() {
 		return id;
@@ -49,30 +46,6 @@ public class QuatationEntryDto implements Serializable {
 
 	public void setDate(LocalDate date) {
 		this.date = date;
-	}
-
-	public Long getCompanyId() {
-		return companyId;
-	}
-
-	public void setCompanyId(Long companyId) {
-		this.companyId = companyId;
-	}
-
-	public String getCompanyName() {
-		return companyName;
-	}
-
-	public void setCompanyName(String companyName) {
-		this.companyName = companyName;
-	}
-
-	public String getCompanyCode() {
-		return companyCode;
-	}
-
-	public void setCompanyCode(String companyCode) {
-		this.companyCode = companyCode;
 	}
 
 	public String getRemarks() {
@@ -107,11 +80,11 @@ public class QuatationEntryDto implements Serializable {
 		this.productcode = productcode;
 	}
 
-	public String getPacking() {
+	public Integer getPacking() {
 		return packing;
 	}
 
-	public void setPacking(String packing) {
+	public void setPacking(Integer packing) {
 		this.packing = packing;
 	}
 
@@ -147,12 +120,20 @@ public class QuatationEntryDto implements Serializable {
 		this.typeheadDisplay = typeheadDisplay;
 	}
 
-	public boolean isDeleteFlag() {
-		return deleteFlag;
+	public Long getAccountInformationId() {
+		return accountInformationId;
 	}
 
-	public void setDeleteFlag(boolean deleteFlag) {
-		this.deleteFlag = deleteFlag;
+	public void setAccountInformationId(Long accountInformationId) {
+		this.accountInformationId = accountInformationId;
+	}
+
+	public String getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(String customer) {
+		this.customer = customer;
 	}
 
 }

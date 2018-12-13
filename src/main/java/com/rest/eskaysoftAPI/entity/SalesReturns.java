@@ -24,11 +24,11 @@ public class SalesReturns implements Serializable {
 	private Long id;
 
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "salesReturnNumber", nullable = false)
-	private Integer salesReturnNumber;
+	@Column(name = "salesReturnNo", nullable = false)
+	private Integer salesReturnNo;
 
-	@Column(name = "salesRetdate", nullable = false)
-	private LocalDate salesRetdate;
+	@Column(name = "salesReturnDate", nullable = false)
+	private LocalDate salesReturnDate;
 
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "accountInformationId", nullable = false)
@@ -56,11 +56,11 @@ public class SalesReturns implements Serializable {
 	@Column(name = "sRate", nullable = false)
 	private Integer sRate;
 
-	@Column(name = "discount", nullable = false)
-	private Double discount;
+	@Column(name = "disc", nullable = false)
+	private Integer disc;
 
 	@Column(name = "gstp", nullable = false)
-	private Double gstp;
+	private Integer gstp;
 
 	@Column(name = "deleteFlag", nullable = false)
 	private boolean deleteFlag = true;
@@ -73,20 +73,20 @@ public class SalesReturns implements Serializable {
 		this.id = id;
 	}
 
-	public Integer getSalesReturnNumber() {
-		return salesReturnNumber;
+	public Integer getSalesReturnNo() {
+		return salesReturnNo;
 	}
 
-	public void setSalesReturnNumber(Integer salesReturnNumber) {
-		this.salesReturnNumber = salesReturnNumber;
+	public void setSalesReturnNo(Integer salesReturnNo) {
+		this.salesReturnNo = salesReturnNo;
 	}
 
-	public LocalDate getSalesRetdate() {
-		return salesRetdate;
+	public LocalDate getSalesReturnDate() {
+		return salesReturnDate;
 	}
 
-	public void setSalesRetdate(LocalDate salesRetdate) {
-		this.salesRetdate = salesRetdate;
+	public void setSalesReturnDate(LocalDate salesReturnDate) {
+		this.salesReturnDate = salesReturnDate;
 	}
 
 	public AccountInformation getAccountInformationId() {
@@ -153,19 +153,21 @@ public class SalesReturns implements Serializable {
 		this.sRate = sRate;
 	}
 
-	public Double getDiscount() {
-		return discount;
+	
+
+	public Integer getDisc() {
+		return disc;
 	}
 
-	public void setDiscount(Double discount) {
-		this.discount = discount;
+	public void setDisc(Integer disc) {
+		this.disc = disc;
 	}
 
-	public Double getGstp() {
+	public Integer getGstp() {
 		return gstp;
 	}
 
-	public void setGstp(Double gstp) {
+	public void setGstp(Integer gstp) {
 		this.gstp = gstp;
 	}
 

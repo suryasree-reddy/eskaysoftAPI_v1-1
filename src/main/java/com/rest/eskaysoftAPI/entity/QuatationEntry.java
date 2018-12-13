@@ -12,10 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "quatationEntry", uniqueConstraints = { @UniqueConstraint(columnNames = { "orderNumber" }) })
+@Table(name = "quatationEntry")
 public class QuatationEntry implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -31,18 +30,15 @@ public class QuatationEntry implements Serializable {
 	private LocalDate date;
 
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
-	@JoinColumn(name = "companyId", nullable = false)
-	private Company companyId;
+	@JoinColumn(name = "accountInformationId", nullable = false)
+	private AccountInformation accountInformationId;
 
-	@Column(name = "remarks", nullable = false, length = 40)
+	@Column(name = "remarks", length = 40)
 	private String remarks;
 
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "productId", nullable = false)
 	private Product productId;
-
-	@Column(name = "packing", nullable = false, length = 10)
-	private String packing;
 
 	@Column(name = "qty", nullable = false)
 	private Double qty;
@@ -109,20 +105,12 @@ public class QuatationEntry implements Serializable {
 		this.rate = rate;
 	}
 
-	public Company getCompanyId() {
-		return companyId;
+	public AccountInformation getAccountInformationId() {
+		return accountInformationId;
 	}
 
-	public void setCompanyId(Company companyId) {
-		this.companyId = companyId;
-	}
-
-	public String getPacking() {
-		return packing;
-	}
-
-	public void setPacking(String packing) {
-		this.packing = packing;
+	public void setAccountInformationId(AccountInformation accountInformationId) {
+		this.accountInformationId = accountInformationId;
 	}
 
 	public Double getAmmount() {

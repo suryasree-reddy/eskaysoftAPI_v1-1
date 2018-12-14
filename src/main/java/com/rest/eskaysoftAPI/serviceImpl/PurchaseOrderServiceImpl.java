@@ -111,7 +111,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 		boolean status = false;
 		List<PurchaseOrder> poList = porepo.findByOrderNumber(id);
 
-		if (poList != null && poList.isEmpty()) {
+		if (poList != null && !poList.isEmpty()) {
 			porepo.deleteAll(poList);
 			status = true;
 		}

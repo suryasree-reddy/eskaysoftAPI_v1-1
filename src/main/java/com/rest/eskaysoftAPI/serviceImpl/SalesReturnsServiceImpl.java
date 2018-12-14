@@ -35,6 +35,7 @@ public class SalesReturnsServiceImpl implements SalesReturnsService {
 		salesRetRepo.findAllByOrderBySalesReturnNoAsc().forEach(salesReturn -> {
 			SalesReturnsDto saleRetmodel = new SalesReturnsDto();
 			BeanUtils.copyProperties(salesReturn, saleRetmodel);
+			saleRetmodel.setDeleteFlag(true);
 			saleRetmodel.setAccountInformationId(salesReturn.getAccountInformationId().getId());
 			saleRetmodel.setCustomer(salesReturn.getAccountInformationId().getAccountName());
 			saleRetmodel.setGstIN(salesReturn.getAccountInformationId().getGstIN());
@@ -54,6 +55,7 @@ public class SalesReturnsServiceImpl implements SalesReturnsService {
 				.orElseThrow(() -> new NotFoundException(String.format("SalesReturns %d not found", id)));
 		SalesReturnsDto saleRetmodel = new SalesReturnsDto();
 		BeanUtils.copyProperties(salesReturn, saleRetmodel);
+		saleRetmodel.setDeleteFlag(true);
 		saleRetmodel.setAccountInformationId(salesReturn.getAccountInformationId().getId());
 		saleRetmodel.setCustomer(salesReturn.getAccountInformationId().getAccountName());
 		saleRetmodel.setGstIN(salesReturn.getAccountInformationId().getGstIN());
@@ -74,7 +76,7 @@ public class SalesReturnsServiceImpl implements SalesReturnsService {
 		SalesReturns salesReturn = new SalesReturns();
 		salesReturn.setAccountInformationId(ai);
 		salesReturn.setProductId(pro);
-		BeanUtils.copyProperties(salesReturn, salesReturnsModel);
+		BeanUtils.copyProperties(salesReturnsModel, salesReturn);
 		salesReturn = salesRetRepo.save(salesReturn);
 		return salesReturnsModel;
 

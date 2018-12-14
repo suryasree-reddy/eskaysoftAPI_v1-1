@@ -12,10 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "gSTChallanEntry", uniqueConstraints = { @UniqueConstraint(columnNames = { "dcNo" }) })
+@Table(name = "gSTChallanEntry")
 public class GSTChallanEntry implements Serializable {
 
 	private static final long serialVersionUID = -6855841992822428060L;
@@ -27,12 +26,11 @@ public class GSTChallanEntry implements Serializable {
 	@Column(name = "gstType", nullable = false)
 	private String gstType;
 
-	@Column(name = "customer", nullable = false)
-	private String customer;
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "accountInformationId", nullable = false)
+	private AccountInformation accountInformationId;
 
-	@Column(name = "gstin", nullable = false, length = 16)
-	private String gstin;
-
+	
 	@Column(name = "dcNo", nullable = false)
 	private String dcNo;
 
@@ -56,19 +54,17 @@ public class GSTChallanEntry implements Serializable {
 	private LocalDate expiry;
 
 	@Column(name = "qty", nullable = false)
-	private Double qty;
+	private Integer qty;
 
-	@Column(name = "free", nullable = false)
-	private Double free;
-
-	@Column(name = "sRate", nullable = false)
-	private Double sRate;
+	
+	@Column(name = "sRate")
+	private Integer sRate;
 
 	@Column(name = "disc", nullable = false)
-	private Double disc;
+	private Integer disc;
 
 	@Column(name = "gstp", nullable = false)
-	private Double gstp;
+	private Integer gstp;
 
 	@Column(name = "deleteFlag", nullable = false)
 	private boolean deleteFlag = true;
@@ -89,22 +85,7 @@ public class GSTChallanEntry implements Serializable {
 		this.gstType = gstType;
 	}
 
-	public String getCustomer() {
-		return customer;
-	}
-
-	public void setCustomer(String customer) {
-		this.customer = customer;
-	}
-
-	public String getGstin() {
-		return gstin;
-	}
-
-	public void setGstin(String gstin) {
-		this.gstin = gstin;
-	}
-
+	
 	public String getDcNo() {
 		return dcNo;
 	}
@@ -161,43 +142,35 @@ public class GSTChallanEntry implements Serializable {
 		this.expiry = expiry;
 	}
 
-	public Double getQty() {
+	public Integer getQty() {
 		return qty;
 	}
 
-	public void setQty(Double qty) {
+	public void setQty(Integer qty) {
 		this.qty = qty;
 	}
 
-	public Double getFree() {
-		return free;
-	}
-
-	public void setFree(Double free) {
-		this.free = free;
-	}
-
-	public Double getsRate() {
+	public Integer getsRate() {
 		return sRate;
 	}
 
-	public void setsRate(Double sRate) {
+	public void setsRate(Integer sRate) {
 		this.sRate = sRate;
 	}
 
-	public Double getDisc() {
+	public Integer getDisc() {
 		return disc;
 	}
 
-	public void setDisc(Double disc) {
+	public void setDisc(Integer disc) {
 		this.disc = disc;
 	}
 
-	public Double getGstp() {
+	public Integer getGstp() {
 		return gstp;
 	}
 
-	public void setGstp(Double gstp) {
+	public void setGstp(Integer gstp) {
 		this.gstp = gstp;
 	}
 
@@ -207,6 +180,14 @@ public class GSTChallanEntry implements Serializable {
 
 	public void setDeleteFlag(boolean deleteFlag) {
 		this.deleteFlag = deleteFlag;
+	}
+
+	public AccountInformation getAccountInformationId() {
+		return accountInformationId;
+	}
+
+	public void setAccountInformationId(AccountInformation accountInformationId) {
+		this.accountInformationId = accountInformationId;
 	}
 
 }

@@ -18,7 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.rest.eskaysoftAPI.model.InternalStockAdjustmentsDto;
-import com.rest.eskaysoftAPI.model.PurchaseReturnsDto;
 import com.rest.eskaysoftAPI.service.InternalStockAdjustmentsService;
 
 @Resource(name = "internalStockAdjustments")
@@ -46,7 +45,7 @@ public class InternalStockAdjustmentsResource {
 		return internalStockAdjustmentsService.getInternalStockAdjustmentsById(id);
 
 	}
-	
+
 	@POST
 	@Consumes("application/json")
 	@Produces("application/json")

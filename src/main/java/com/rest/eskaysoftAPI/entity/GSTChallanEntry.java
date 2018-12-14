@@ -18,7 +18,6 @@ import javax.persistence.Table;
 public class GSTChallanEntry implements Serializable {
 
 	private static final long serialVersionUID = -6855841992822428060L;
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -30,7 +29,6 @@ public class GSTChallanEntry implements Serializable {
 	@JoinColumn(name = "accountInformationId", nullable = false)
 	private AccountInformation accountInformationId;
 
-	
 	@Column(name = "dcNo", nullable = false)
 	private String dcNo;
 
@@ -56,7 +54,6 @@ public class GSTChallanEntry implements Serializable {
 	@Column(name = "qty", nullable = false)
 	private Integer qty;
 
-	
 	@Column(name = "sRate")
 	private Integer sRate;
 
@@ -85,7 +82,6 @@ public class GSTChallanEntry implements Serializable {
 		this.gstType = gstType;
 	}
 
-	
 	public String getDcNo() {
 		return dcNo;
 	}

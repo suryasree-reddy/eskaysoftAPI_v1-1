@@ -47,7 +47,6 @@ public class GSTChallanServiceImpl implements GSTChallanService {
 		});
 		return challanList;
 	}
-
 	@Override
 	public GSTChallanEntryDto getGSTChallanById(Long id) {
 		GSTChallanEntryDto challanModel = new GSTChallanEntryDto();

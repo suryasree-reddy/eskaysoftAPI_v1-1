@@ -44,7 +44,7 @@ public class SalesReturns implements Serializable {
 	@JoinColumn(name = "productId", nullable = false)
 	private Product productId;
 
-	@Column(name = "batch",nullable = false, length = 12)
+	@Column(name = "batch", nullable = false, length = 12)
 	private String batch;
 
 	@Column(name = "expiry", nullable = false)
@@ -53,13 +53,13 @@ public class SalesReturns implements Serializable {
 	@Column(name = "qty", nullable = false, length = 40)
 	private Integer qty;
 
-	@Column(name = "sRate",nullable = false)
+	@Column(name = "sRate", nullable = false)
 	private Integer sRate;
 
-	@Column(name = "disc",nullable = false)
+	@Column(name = "disc", nullable = false)
 	private Integer disc;
 
-	@Column(name = "gstp",nullable = false)
+	@Column(name = "gstp", nullable = false)
 	private Integer gstp;
 
 	@Column(name = "deleteFlag")
@@ -152,8 +152,6 @@ public class SalesReturns implements Serializable {
 	public void setsRate(Integer sRate) {
 		this.sRate = sRate;
 	}
-
-	
 
 	public Integer getDisc() {
 		return disc;

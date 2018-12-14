@@ -31,6 +31,7 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 	@Autowired
 	private ProductRepository proRepo;
 
+	
 	@Override
 	public List<SalesOrderDto> listAllSalesOrder() {
 		List<SalesOrderDto> salesOrderList = new ArrayList<>();

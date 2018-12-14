@@ -52,7 +52,7 @@ public class SalesOrder implements Serializable {
 
 	@Column(name = "value")
 	private Double value;
-	
+
 	@Column(name = "deleteFlag", nullable = false)
 	private boolean deleteFlag = true;
 

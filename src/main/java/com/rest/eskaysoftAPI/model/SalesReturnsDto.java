@@ -8,11 +8,8 @@ public class SalesReturnsDto implements Serializable {
 	private static final long serialVersionUID = -6855841992822428060L;
 
 	private Long id;
-
 	private Integer salesReturnNo;
-
 	private LocalDate salesReturnDate;
-
 	private Long accountInformationId;
 	private String customer;
 	private String gstIN;

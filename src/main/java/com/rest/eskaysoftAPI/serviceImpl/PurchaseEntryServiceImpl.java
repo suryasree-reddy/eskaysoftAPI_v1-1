@@ -39,12 +39,16 @@ public class PurchaseEntryServiceImpl implements PurchaseEntryService {
 			pomodel.setProductId(pro.getProductId().getId());
 			pomodel.setProductcode(pro.getProductId().getProductcode());
 			pomodel.setProductName(pro.getProductId().getName());
+			pomodel.setFree(pro.getProductId().getFree());
+			
 			pomodel.setAccountInformationId(pro.getAccountInformationId().getId());
 			pomodel.setSupplier(pro.getAccountInformationId().getAccountName());
-			
+			pomodel.setGstIN(pro.getAccountInformationId().getGstIN());
+			polist.add(pomodel);
 			pomodel.setTypeheadDisplay(
 					pro.getProductId().getName() + EskaysoftConstants.SEPERATOR + pro.getProductId().getProductcode());
-			polist.add(pomodel);
+			
+			pomodel.setTypeheadDisplay(pro.getAccountInformationId().getAccountName() + EskaysoftConstants.SEPERATOR + pro.getAccountInformationId().getTown());
 		});
 		return polist;
 	}
@@ -59,9 +63,15 @@ public class PurchaseEntryServiceImpl implements PurchaseEntryService {
 		pomodel.setProductId(pro.getProductId().getId());
 		pomodel.setProductcode(pro.getProductId().getProductcode());
 		pomodel.setProductName(pro.getProductId().getName());
+		pomodel.setFree(pro.getProductId().getFree());
 		pomodel.setAccountInformationId(pro.getAccountInformationId().getId());
 		pomodel.setSupplier(pro.getAccountInformationId().getAccountName());
-
+		pomodel.setGstIN(pro.getAccountInformationId().getGstIN());
+		pomodel.setTypeheadDisplay(
+				pro.getProductId().getName() + EskaysoftConstants.SEPERATOR + pro.getProductId().getProductcode());
+		
+		pomodel.setTypeheadDisplay(pro.getAccountInformationId().getAccountName() + EskaysoftConstants.SEPERATOR + pro.getAccountInformationId().getTown());
+	
 		return pomodel;
 	}
 

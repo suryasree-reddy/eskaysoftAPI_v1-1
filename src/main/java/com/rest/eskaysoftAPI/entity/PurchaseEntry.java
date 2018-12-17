@@ -13,10 +13,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "purchaseEntry", uniqueConstraints = { @UniqueConstraint(columnNames = { "purchaseNumber" }) })
+@Table(name = "purchaseEntry")
 
 public class PurchaseEntry implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -27,121 +26,139 @@ public class PurchaseEntry implements Serializable {
 	@Column(name = "purchaseNumber", nullable = false)
 	private Integer purchaseNumber;
 
-	@Column(name = "date", nullable = false)
-	private LocalDate date;
-
-	@Column(name = "invoiceNumber", length = 16, nullable = false)
-	private String invoiceNumber;
-
 	@Column(name = "purDate", nullable = false)
 	private LocalDate purDate;
 
-	@ManyToOne(fetch = FetchType.EAGER, optional = false)
-	@JoinColumn(name = "accountInformationId", nullable = false)
-	private AccountInformation accountInformationId;
-
-	@Column(name = "gstin", nullable = false, length = 16)
-	private String gstin;
-
-	@Column(name = "mode", nullable = false, length = 6)
-	private String mode;
-
-	@Column(name = "wayBill", length = 15, nullable = false)
-	private String wayBill;
-
-	@Column(name = "lrNumber", length = 15, nullable = false)
-	private String lrNumber;
-
-	@Column(name = "lrDate", nullable = false)
-	private Date lrDate;
-
-	@Column(name = "transport", length = 20, nullable = false)
-	private String transport;
-
-	@Column(name = "delvFrom", length = 20, nullable = false)
-	private String delvFrom;
-
-	@Column(name = "numberOfCases", nullable = false, length = 4)
-	private Integer numberOfCases;
+	@Column(name = "invoiceNumber", length = 16, nullable = false)
+	private String invoiceNumber;
 
 	@Column(name = "invoiceDate", nullable = false)
 	private Date invoiceDate;
 
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "accountInformationId", nullable = false)
+	private AccountInformation accountInformationId;
+
+	@Column(name = "mode", nullable = false)
+	private String mode;
+
+	@Column(name = "wayBill", nullable = false)
+	private String wayBill;
+
+	@Column(name = "lrNumber", nullable = false)
+	private String lrNumber;
+
+	@Column(name = "lrDate", nullable = false)
+	private Date lrDate;
+
+	@Column(name = "transport", nullable = false)
+	private String transport;
+
+	@Column(name = "delvFrom", nullable = false)
+	private String delvFrom;
+
+	@Column(name = "numberOfCases", nullable = false)
+	private Integer numberOfCases;
+
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "productId", nullable = false)
 	private Product productId;
 
-	@Column(name = "batch", length = 12, nullable = false)
+	@Column(name = "batch", nullable = false)
 	private String batch;
 
 	@Column(name = "expiry", nullable = false)
 	private LocalDate expiry; /* ( mm-yyyy) */
 
 	@Column(name = "qty", nullable = false)
-	private Double qty;
+	private Integer qty;
 
 	@Column(name = "free", nullable = false)
-	private Double free;
+	private Integer free;
 
 	@Column(name = "purRate", nullable = false)
-	private Double purRate;
+	private Integer purRate;
 
 	@Column(name = "othCharges", nullable = false)
-	private Double othCharges;
+	private Integer othCharges;
 
 	@Column(name = "grsValue", nullable = false)
-	private Double grsValue;
+	private Integer grsValue;
 
 	@Column(name = "discount", nullable = false)
-	private Double discount;
+	private Integer discount;
 
 	@Column(name = "ptd", nullable = false)
-	private Double ptd;
+	private Integer ptd;
 
 	@Column(name = "saleRate", nullable = false)
-	private Double saleRate;
+	private Integer saleRate;
 
 	@Column(name = "tax", nullable = false)
-	private Double tax;
+	private Integer tax;
 
 	@Column(name = "hsn", nullable = false)
 	private Long hsn;
 
 	@Column(name = "mrp", nullable = false)
-	private Double mrp;
+	private Integer mrp;
 
-	@Column(name = "mfgName", length = 20, nullable = false)
+	@Column(name = "mfgName", nullable = false)
 	private String mfgName;
 
 	@Column(name = "grossValue", nullable = false)
-	private Double grossValue;
+	private Integer grossValue;
 
 	@Column(name = "discountValue", nullable = false)
-	private Double discountValue;
+	private Integer discountValue;
 
 	@Column(name = "taxValue", nullable = false)
-	private Double taxValue;
+	private Integer taxValue;
 
 	@Column(name = "netValue", nullable = false)
-	private Double netValue;
+	private Integer netValue;
 
 	@Column(name = "debitAdjustmentLedger", nullable = false)
-	private Double debitAdjustmentLedger;
+	private Integer debitAdjustmentLedger;
 
 	@Column(name = "creditAdjustmentLedger", nullable = false)
-	private Double creditAdjustmentLedger;
-
-	@Column(name = "remarks", length = 50, nullable = false)
-	private String remarks;
+	private Integer creditAdjustmentLedger;
 
 	@Column(name = "debitAdjustmentValue", nullable = false)
-	private Double debitAdjustmentValue;
+	private Integer debitAdjustmentValue;
 
 	@Column(name = "creditAdjustmentValue", nullable = false)
-	private Double creditAdjustmentValue;
+	private Integer creditAdjustmentValue;
 
 	@Column(name = "invoiceValue", nullable = false)
-	private Double invoiceValue;
+	private Integer invoiceValue;
+
+	@Column(name = "remarks", nullable = false)
+	private String remarks;
+
+	@Column(name = "gstPercent", nullable = false)
+	private Integer gstPercent;
+
+	@Column(name = "taxable", nullable = false)
+	private Integer taxable;
+
+	@Column(name = "cgstAmt", nullable = false)
+	private Integer cgstAmt;
+
+	@Column(name = "sgstAmt", nullable = false)
+	private Integer sgstAmt;
+
+	@Column(name = "inGstPercent", nullable = false)
+	private Integer inGstPercent;
+
+	@Column(name = "inTaxable", nullable = false)
+	private Integer inTaxable;
+
+	@Column(name = "inCgstAmt", nullable = false)
+	private Integer inCgstAmt;
+
+	@Column(name = "inSgstAmt", nullable = false)
+	private Integer inSgstAmt;
 
 	public Long getId() {
 		return id;
@@ -159,22 +176,6 @@ public class PurchaseEntry implements Serializable {
 		this.purchaseNumber = purchaseNumber;
 	}
 
-	public String getInvoiceNumber() {
-		return invoiceNumber;
-	}
-
-	public void setInvoiceNumber(String invoiceNumber) {
-		this.invoiceNumber = invoiceNumber;
-	}
-
-	public LocalDate getDate() {
-		return date;
-	}
-
-	public void setDate(LocalDate date) {
-		this.date = date;
-	}
-
 	public LocalDate getPurDate() {
 		return purDate;
 	}
@@ -183,60 +184,12 @@ public class PurchaseEntry implements Serializable {
 		this.purDate = purDate;
 	}
 
-	public AccountInformation getAccountInformationId() {
-		return accountInformationId;
+	public String getInvoiceNumber() {
+		return invoiceNumber;
 	}
 
-	public void setAccountInformationId(AccountInformation accountInformationId) {
-		this.accountInformationId = accountInformationId;
-	}
-
-	public Product getProductId() {
-		return productId;
-	}
-
-	public void setProductId(Product productId) {
-		this.productId = productId;
-	}
-
-	public LocalDate getExpiry() {
-		return expiry;
-	}
-
-	public void setExpiry(LocalDate expiry) {
-		this.expiry = expiry;
-	}
-
-	public String getGstin() {
-		return gstin;
-	}
-
-	public void setGstin(String gstin) {
-		this.gstin = gstin;
-	}
-
-	public String getWayBill() {
-		return wayBill;
-	}
-
-	public void setWayBill(String wayBill) {
-		this.wayBill = wayBill;
-	}
-
-	public String getTransport() {
-		return transport;
-	}
-
-	public void setTransport(String transport) {
-		this.transport = transport;
-	}
-
-	public Integer getNumberOfCases() {
-		return numberOfCases;
-	}
-
-	public void setNumberOfCases(Integer numberOfCases) {
-		this.numberOfCases = numberOfCases;
+	public void setInvoiceNumber(String invoiceNumber) {
+		this.invoiceNumber = invoiceNumber;
 	}
 
 	public Date getInvoiceDate() {
@@ -247,12 +200,28 @@ public class PurchaseEntry implements Serializable {
 		this.invoiceDate = invoiceDate;
 	}
 
+	public AccountInformation getAccountInformationId() {
+		return accountInformationId;
+	}
+
+	public void setAccountInformationId(AccountInformation accountInformationId) {
+		this.accountInformationId = accountInformationId;
+	}
+
 	public String getMode() {
 		return mode;
 	}
 
 	public void setMode(String mode) {
 		this.mode = mode;
+	}
+
+	public String getWayBill() {
+		return wayBill;
+	}
+
+	public void setWayBill(String wayBill) {
+		this.wayBill = wayBill;
 	}
 
 	public String getLrNumber() {
@@ -271,12 +240,36 @@ public class PurchaseEntry implements Serializable {
 		this.lrDate = lrDate;
 	}
 
+	public String getTransport() {
+		return transport;
+	}
+
+	public void setTransport(String transport) {
+		this.transport = transport;
+	}
+
 	public String getDelvFrom() {
 		return delvFrom;
 	}
 
 	public void setDelvFrom(String delvFrom) {
 		this.delvFrom = delvFrom;
+	}
+
+	public Integer getNumberOfCases() {
+		return numberOfCases;
+	}
+
+	public void setNumberOfCases(Integer numberOfCases) {
+		this.numberOfCases = numberOfCases;
+	}
+
+	public Product getProductId() {
+		return productId;
+	}
+
+	public void setProductId(Product productId) {
+		this.productId = productId;
 	}
 
 	public String getBatch() {
@@ -287,59 +280,83 @@ public class PurchaseEntry implements Serializable {
 		this.batch = batch;
 	}
 
-	public Double getQty() {
+	public LocalDate getExpiry() {
+		return expiry;
+	}
+
+	public void setExpiry(LocalDate expiry) {
+		this.expiry = expiry;
+	}
+
+	public Integer getQty() {
 		return qty;
 	}
 
-	public void setQty(Double qty) {
+	public void setQty(Integer qty) {
 		this.qty = qty;
 	}
 
-	public Double getOthCharges() {
+	public Integer getFree() {
+		return free;
+	}
+
+	public void setFree(Integer free) {
+		this.free = free;
+	}
+
+	public Integer getPurRate() {
+		return purRate;
+	}
+
+	public void setPurRate(Integer purRate) {
+		this.purRate = purRate;
+	}
+
+	public Integer getOthCharges() {
 		return othCharges;
 	}
 
-	public void setOthCharges(Double othCharges) {
+	public void setOthCharges(Integer othCharges) {
 		this.othCharges = othCharges;
 	}
 
-	public Double getGrsValue() {
+	public Integer getGrsValue() {
 		return grsValue;
 	}
 
-	public void setGrsValue(Double grsValue) {
+	public void setGrsValue(Integer grsValue) {
 		this.grsValue = grsValue;
 	}
 
-	public Double getDiscount() {
+	public Integer getDiscount() {
 		return discount;
 	}
 
-	public void setDiscount(Double discount) {
+	public void setDiscount(Integer discount) {
 		this.discount = discount;
 	}
 
-	public Double getPtd() {
+	public Integer getPtd() {
 		return ptd;
 	}
 
-	public void setPtd(Double ptd) {
+	public void setPtd(Integer ptd) {
 		this.ptd = ptd;
 	}
 
-	public Double getSaleRate() {
+	public Integer getSaleRate() {
 		return saleRate;
 	}
 
-	public void setSaleRate(Double saleRate) {
+	public void setSaleRate(Integer saleRate) {
 		this.saleRate = saleRate;
 	}
 
-	public Double getTax() {
+	public Integer getTax() {
 		return tax;
 	}
 
-	public void setTax(Double tax) {
+	public void setTax(Integer tax) {
 		this.tax = tax;
 	}
 
@@ -351,11 +368,11 @@ public class PurchaseEntry implements Serializable {
 		this.hsn = hsn;
 	}
 
-	public Double getMrp() {
+	public Integer getMrp() {
 		return mrp;
 	}
 
-	public void setMrp(Double mrp) {
+	public void setMrp(Integer mrp) {
 		this.mrp = mrp;
 	}
 
@@ -367,68 +384,76 @@ public class PurchaseEntry implements Serializable {
 		this.mfgName = mfgName;
 	}
 
-	public Double getPurRate() {
-		return purRate;
-	}
-
-	public void setPurRate(Double purRate) {
-		this.purRate = purRate;
-	}
-
-	public Double getFree() {
-		return free;
-	}
-
-	public void setFree(Double free) {
-		this.free = free;
-	}
-
-	public Double getGrossValue() {
+	public Integer getGrossValue() {
 		return grossValue;
 	}
 
-	public void setGrossValue(Double grossValue) {
+	public void setGrossValue(Integer grossValue) {
 		this.grossValue = grossValue;
 	}
 
-	public Double getDiscountValue() {
+	public Integer getDiscountValue() {
 		return discountValue;
 	}
 
-	public void setDiscountValue(Double discountValue) {
+	public void setDiscountValue(Integer discountValue) {
 		this.discountValue = discountValue;
 	}
 
-	public Double getTaxValue() {
+	public Integer getTaxValue() {
 		return taxValue;
 	}
 
-	public void setTaxValue(Double taxValue) {
+	public void setTaxValue(Integer taxValue) {
 		this.taxValue = taxValue;
 	}
 
-	public Double getNetValue() {
+	public Integer getNetValue() {
 		return netValue;
 	}
 
-	public void setNetValue(Double netValue) {
+	public void setNetValue(Integer netValue) {
 		this.netValue = netValue;
 	}
 
-	public Double getDebitAdjustmentLedger() {
+	public Integer getDebitAdjustmentLedger() {
 		return debitAdjustmentLedger;
 	}
 
-	public void setDebitAdjustmentLedger(Double debitAdjustmentLedger) {
+	public void setDebitAdjustmentLedger(Integer debitAdjustmentLedger) {
 		this.debitAdjustmentLedger = debitAdjustmentLedger;
 	}
 
-	public Double getCreditAdjustmentLedger() {
+	public Integer getCreditAdjustmentLedger() {
 		return creditAdjustmentLedger;
 	}
 
-	public void setCreditAdjustmentLedger(Double creditAdjustmentLedger) {
+	public void setCreditAdjustmentLedger(Integer creditAdjustmentLedger) {
 		this.creditAdjustmentLedger = creditAdjustmentLedger;
+	}
+
+	public Integer getDebitAdjustmentValue() {
+		return debitAdjustmentValue;
+	}
+
+	public void setDebitAdjustmentValue(Integer debitAdjustmentValue) {
+		this.debitAdjustmentValue = debitAdjustmentValue;
+	}
+
+	public Integer getCreditAdjustmentValue() {
+		return creditAdjustmentValue;
+	}
+
+	public void setCreditAdjustmentValue(Integer creditAdjustmentValue) {
+		this.creditAdjustmentValue = creditAdjustmentValue;
+	}
+
+	public Integer getInvoiceValue() {
+		return invoiceValue;
+	}
+
+	public void setInvoiceValue(Integer invoiceValue) {
+		this.invoiceValue = invoiceValue;
 	}
 
 	public String getRemarks() {
@@ -439,28 +464,68 @@ public class PurchaseEntry implements Serializable {
 		this.remarks = remarks;
 	}
 
-	public Double getDebitAdjustmentValue() {
-		return debitAdjustmentValue;
+	public Integer getGstPercent() {
+		return gstPercent;
 	}
 
-	public void setDebitAdjustmentValue(Double debitAdjustmentValue) {
-		this.debitAdjustmentValue = debitAdjustmentValue;
+	public void setGstPercent(Integer gstPercent) {
+		this.gstPercent = gstPercent;
 	}
 
-	public Double getCreditAdjustmentValue() {
-		return creditAdjustmentValue;
+	public Integer getTaxable() {
+		return taxable;
 	}
 
-	public void setCreditAdjustmentValue(Double creditAdjustmentValue) {
-		this.creditAdjustmentValue = creditAdjustmentValue;
+	public void setTaxable(Integer taxable) {
+		this.taxable = taxable;
 	}
 
-	public Double getInvoiceValue() {
-		return invoiceValue;
+	public Integer getCgstAmt() {
+		return cgstAmt;
 	}
 
-	public void setInvoiceValue(Double invoiceValue) {
-		this.invoiceValue = invoiceValue;
+	public void setCgstAmt(Integer cgstAmt) {
+		this.cgstAmt = cgstAmt;
+	}
+
+	public Integer getSgstAmt() {
+		return sgstAmt;
+	}
+
+	public void setSgstAmt(Integer sgstAmt) {
+		this.sgstAmt = sgstAmt;
+	}
+
+	public Integer getInGstPercent() {
+		return inGstPercent;
+	}
+
+	public void setInGstPercent(Integer inGstPercent) {
+		this.inGstPercent = inGstPercent;
+	}
+
+	public Integer getInTaxable() {
+		return inTaxable;
+	}
+
+	public void setInTaxable(Integer inTaxable) {
+		this.inTaxable = inTaxable;
+	}
+
+	public Integer getInCgstAmt() {
+		return inCgstAmt;
+	}
+
+	public void setInCgstAmt(Integer inCgstAmt) {
+		this.inCgstAmt = inCgstAmt;
+	}
+
+	public Integer getInSgstAmt() {
+		return inSgstAmt;
+	}
+
+	public void setInSgstAmt(Integer inSgstAmt) {
+		this.inSgstAmt = inSgstAmt;
 	}
 
 }

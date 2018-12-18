@@ -20,6 +20,7 @@ public class PurchaseEntryDto implements Serializable {
 	private Long accountInformationId;
 	private String supplier;
 	private String gstIN;
+	private Long hsnCode;
 
 	private String mode;
 
@@ -39,7 +40,6 @@ public class PurchaseEntryDto implements Serializable {
 	private String productcode;
 	private String productName;
 
-	
 	private String batch;
 
 	private LocalDate expiry; /* ( mm-yyyy) */
@@ -60,9 +60,8 @@ public class PurchaseEntryDto implements Serializable {
 
 	private Integer saleRate;
 
-	private Integer tax;
-
-	private Long hsn;
+	private Long taxId;
+	private Long tax;
 
 	private Integer mrp;
 
@@ -330,20 +329,28 @@ public class PurchaseEntryDto implements Serializable {
 		this.saleRate = saleRate;
 	}
 
-	public Integer getTax() {
+	public Long getTaxId() {
+		return taxId;
+	}
+
+	public void setTaxId(Long taxId) {
+		this.taxId = taxId;
+	}
+
+	public Long getTax() {
 		return tax;
 	}
 
-	public void setTax(Integer tax) {
+	public void setTax(Long tax) {
 		this.tax = tax;
 	}
 
-	public Long getHsn() {
-		return hsn;
+	public Long getHsnCode() {
+		return hsnCode;
 	}
 
-	public void setHsn(Long hsn) {
-		this.hsn = hsn;
+	public void setHsnCode(Long hsnCode) {
+		this.hsnCode = hsnCode;
 	}
 
 	public Integer getMrp() {

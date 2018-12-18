@@ -94,11 +94,9 @@ public class PurchaseEntry implements Serializable {
 	@Column(name = "saleRate", nullable = false)
 	private Integer saleRate;
 
-	@Column(name = "tax", nullable = false)
-	private Integer tax;
-
-	@Column(name = "hsn", nullable = false)
-	private Long hsn;
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "taxId", nullable = false)
+	private Tax taxId;
 
 	@Column(name = "mrp", nullable = false)
 	private Integer mrp;
@@ -352,20 +350,12 @@ public class PurchaseEntry implements Serializable {
 		this.saleRate = saleRate;
 	}
 
-	public Integer getTax() {
-		return tax;
+	public Tax getTaxId() {
+		return taxId;
 	}
 
-	public void setTax(Integer tax) {
-		this.tax = tax;
-	}
-
-	public Long getHsn() {
-		return hsn;
-	}
-
-	public void setHsn(Long hsn) {
-		this.hsn = hsn;
+	public void setTaxId(Tax taxId) {
+		this.taxId = taxId;
 	}
 
 	public Integer getMrp() {

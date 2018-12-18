@@ -75,6 +75,7 @@ public class ProductServiceImpl implements ProductService {
 		prodModel.setProductGroupName(product.getProductgroupId().getProductGroupName());
 		prodModel.setProductCategoryName(product.getProductcategoryId().getProductCategoryName());
 		prodModel.setProductcategoryId(product.getProductcategoryId().getId());
+		
 
 		return prodModel;
 	}

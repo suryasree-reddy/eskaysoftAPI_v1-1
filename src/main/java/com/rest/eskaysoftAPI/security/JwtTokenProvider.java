@@ -66,7 +66,7 @@ public class JwtTokenProvider {
 		)
 		.collect(Collectors.toList());
         UserPrincipal userPrincipal = new UserPrincipal(Long.parseLong(claims.getSubject()), (String)claims.get("name"),(String)claims.get("userName"),
-        		(String)claims.get("email"),null,(Long)claims.get("stateCode"),(boolean)claims.get("isNew"), roles, authorities);
+        		(String)claims.get("email"),null,null,(boolean)claims.get("isNew"), roles, authorities);
        
         return userPrincipal;
     }

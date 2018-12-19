@@ -24,7 +24,6 @@ public class PurchaseOrder implements Serializable {
 	private Long id;
 
 	@Column(name = "orderNumber", nullable = false, length = 40)
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer orderNumber;
 
 	@Column(name = "date", nullable = false)

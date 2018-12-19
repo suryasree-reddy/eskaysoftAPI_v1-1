@@ -105,9 +105,10 @@ public class QuatationEntryServiceImpl implements QuatationEntryService {
 
 		Product product = proRepo.findById(quatationEntry.getProductId()).orElseThrow(() -> new NotFoundException(
 				String.format("quatationEntry %d not found", quatationEntry.getProductId())));
+		BeanUtils.copyProperties(quatationEntry, qt);
 		qt.setAccountInformationId(ai);
 		qt.setProductId(product);
-		BeanUtils.copyProperties(quatationEntry, qt);
+		
 		qt = qtRepo.save(qt);
 		quatationEntry.setId(qt.getId());
 		return quatationEntry;

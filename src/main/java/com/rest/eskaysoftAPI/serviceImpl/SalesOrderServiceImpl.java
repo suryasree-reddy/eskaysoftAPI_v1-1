@@ -109,9 +109,10 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 				.orElseThrow(() -> new NotFoundException(
 						String.format("AccountInformation %d not found", salesOrderModel.getAccountInformationId())));
 		SalesOrder in = new SalesOrder();
+		BeanUtils.copyProperties(salesOrderModel, in);
 		in.setProductId(pro);
 		in.setAccountInformationId(ai);
-		BeanUtils.copyProperties(salesOrderModel, in);
+		
 		in = salesOrderRepo.save(in);
 		salesOrderModel.setId(in.getId());
 		return salesOrderModel;

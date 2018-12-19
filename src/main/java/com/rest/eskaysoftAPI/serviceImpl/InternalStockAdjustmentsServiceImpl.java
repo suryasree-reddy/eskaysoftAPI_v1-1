@@ -83,8 +83,8 @@ public class InternalStockAdjustmentsServiceImpl implements InternalStockAdjustm
 		Product pro = proRepo.findById(internalStockAdjustmentsModel.getProductId())
 				.orElseThrow(() -> new NotFoundException(String.format("InternalStockAdjustments %d not found",
 						internalStockAdjustmentsModel.getProductId())));
-		in.setProductId(pro);
 		BeanUtils.copyProperties(internalStockAdjustmentsModel, in);
+		in.setProductId(pro);
 		in = inStockRepo.save(in);
 		internalStockAdjustmentsModel.setId(in.getId());
 		return internalStockAdjustmentsModel;

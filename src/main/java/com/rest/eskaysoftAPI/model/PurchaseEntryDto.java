@@ -21,7 +21,7 @@ public class PurchaseEntryDto implements Serializable {
 	private String supplier;
 	private String gstIN;
 	private Long hsnCode;
-
+	private Long stateCode;
 	private String mode;
 
 	private String wayBill;
@@ -111,6 +111,14 @@ public class PurchaseEntryDto implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Long getStateCode() {
+		return stateCode;
+	}
+
+	public void setStateCode(Long stateCode) {
+		this.stateCode = stateCode;
 	}
 
 	public Integer getPurchaseNumber() {

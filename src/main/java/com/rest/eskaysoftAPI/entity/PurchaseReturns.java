@@ -23,7 +23,6 @@ public class PurchaseReturns implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "purReturnNumber", nullable = false)
 	private Long purReturnNumber;
 
@@ -127,8 +126,6 @@ public class PurchaseReturns implements Serializable {
 	public void setQty(Integer qty) {
 		this.qty = qty;
 	}
-
-	
 
 	public Double getpRate() {
 		return pRate;

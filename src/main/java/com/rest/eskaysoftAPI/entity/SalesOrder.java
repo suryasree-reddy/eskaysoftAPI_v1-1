@@ -23,7 +23,6 @@ public class SalesOrder implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "orderNumber", nullable = false)
 	private Integer orderNumber;
 

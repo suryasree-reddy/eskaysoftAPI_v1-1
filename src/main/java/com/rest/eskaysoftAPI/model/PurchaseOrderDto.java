@@ -23,7 +23,7 @@ public class PurchaseOrderDto implements Serializable {
 	private Integer bQty;
 	private Integer bFree;
 	private Integer bRate;
-	private Integer value;
+	private Double value;
 	private Double netRate;
 	private String typeheadDisplay;
 	private boolean deleteFlag;
@@ -156,11 +156,11 @@ public class PurchaseOrderDto implements Serializable {
 		this.bRate = bRate;
 	}
 
-	public Integer getValue() {
+	public Double getValue() {
 		return value;
 	}
 
-	public void setValue(Integer value) {
+	public void setValue(Double value) {
 		this.value = value;
 	}
 

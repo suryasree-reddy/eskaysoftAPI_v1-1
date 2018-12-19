@@ -78,9 +78,10 @@ public class PurchaseReturnsServiceImpl implements PurchaseReturnsService {
 				.orElseThrow(() -> new NotFoundException(String.format("Product %d not found", pr.getProductId())));
 
 		PurchaseReturns po = new PurchaseReturns();
+		BeanUtils.copyProperties(pr, po);
 		po.setAccountInformationId(ai);
 		po.setProductId(product);
-		BeanUtils.copyProperties(pr, po);
+		
 		po = porepo.save(po);
 		return pr;
 	}

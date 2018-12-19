@@ -100,9 +100,10 @@ public class GSTChallanServiceImpl implements GSTChallanService {
 		Product pro = proRepo.findById(gstChallanModel.getProductId()).orElseThrow(
 				() -> new NotFoundException(String.format("challan %d not found", gstChallanModel.getProductId())));
 		GSTChallanEntry gst = new GSTChallanEntry();
+		BeanUtils.copyProperties(gstChallanModel, gst);
 		gst.setProductId(pro);
 		gst.setAccountInformationId(ai);
-		BeanUtils.copyProperties(gstChallanModel, gst);
+		
 		gst = challanRepo.save(gst);
 		gstChallanModel.setId(gst.getId());
 		return gstChallanModel;

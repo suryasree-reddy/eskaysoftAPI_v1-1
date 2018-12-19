@@ -103,9 +103,10 @@ public class SalesReturnsServiceImpl implements SalesReturnsService {
 				.orElseThrow(() -> new NotFoundException(
 						String.format("AccountInformation %d not found", salesReturnsModel.getAccountInformationId())));
 		SalesReturns salesReturn = new SalesReturns();
+		BeanUtils.copyProperties(salesReturnsModel, salesReturn);
 		salesReturn.setAccountInformationId(ai);
 		salesReturn.setProductId(pro);
-		BeanUtils.copyProperties(salesReturnsModel, salesReturn);
+		
 		salesReturn = salesRetRepo.save(salesReturn);
 		return salesReturnsModel;
 

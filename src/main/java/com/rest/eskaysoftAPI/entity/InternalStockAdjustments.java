@@ -23,7 +23,6 @@ public class InternalStockAdjustments implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "number", nullable = false)
 	private Long number;
 

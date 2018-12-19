@@ -126,9 +126,9 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 						String.format("AccountInformation %d not found", purchaseorder.getAccountInformationId())));
 		Product product = prorepo.findById(purchaseorder.getProductId()).orElseThrow(
 				() -> new NotFoundException(String.format("AccountInformation %d not found", purchaseorder.getProductId())));
-		po.setAccountInformationId(ai);
-		po.setProductId(product);
 		BeanUtils.copyProperties(purchaseorder, po);
+		po.setAccountInformationId(ai);
+		po.setProductId(product);		
 		po = porepo.save(po);
 		purchaseorder.setId(po.getId());
 		return purchaseorder;

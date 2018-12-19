@@ -48,9 +48,10 @@ public class PurchaseEntryServiceImpl implements PurchaseEntryService {
 			pomodel.setTaxId(pro.getTaxId().getTax());
 			pomodel.setTax(pro.getTaxId().getTax());
 			pomodel.setAccountInformationId(pro.getAccountInformationId().getId());
+			pomodel.setStateCode(pro.getAccountInformationId().getDistrictId().getStateId().getStateCode()); // pro.getAccountInformationId().getDistrictId().getStateId().getStateCode();
 			pomodel.setSupplier(pro.getAccountInformationId().getAccountName());
 			pomodel.setGstIN(pro.getAccountInformationId().getGstIN());
-			pomodel.setHsn(pro.getAccountInformationId().getHsnCode());
+			pomodel.setHsnCode(pro.getAccountInformationId().getHsnCode());
 
 			polist.add(pomodel);
 			pomodel.setTypeheadDisplay(
@@ -76,7 +77,8 @@ public class PurchaseEntryServiceImpl implements PurchaseEntryService {
 		pomodel.setAccountInformationId(pro.getAccountInformationId().getId());
 		pomodel.setSupplier(pro.getAccountInformationId().getAccountName());
 		pomodel.setGstIN(pro.getAccountInformationId().getGstIN());
-		pomodel.setHsn(pro.getAccountInformationId().getHsnCode());
+		pomodel.setStateCode(pro.getAccountInformationId().getDistrictId().getStateId().getStateCode());
+		pomodel.setHsnCode(pro.getAccountInformationId().getHsnCode());
 		pomodel.setTaxId(pro.getTaxId().getTax());
 		pomodel.setTax(pro.getTaxId().getTax());
 		pomodel.setTypeheadDisplay(
@@ -129,10 +131,11 @@ public class PurchaseEntryServiceImpl implements PurchaseEntryService {
 				() -> new NotFoundException(String.format("Product %d not found", purchaseEntry.getProductId())));
 		Tax tax = taxRepo.findById(purchaseEntry.getTaxId())
 				.orElseThrow(() -> new NotFoundException(String.format("Tax %d not found", purchaseEntry.getTaxId())));
+		BeanUtils.copyProperties(purchaseEntry, po);
 		po.setAccountInformationId(ai);
 		po.setProductId(product);
 		po.setTaxId(tax);
-		BeanUtils.copyProperties(purchaseEntry, po);
+		
 		po = purchrepo.save(po);
 		purchaseEntry.setId(po.getId());
 		return purchaseEntry;

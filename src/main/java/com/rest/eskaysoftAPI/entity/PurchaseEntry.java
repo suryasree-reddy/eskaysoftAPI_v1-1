@@ -2,7 +2,6 @@ package com.rest.eskaysoftAPI.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,7 +32,15 @@ public class PurchaseEntry implements Serializable {
 	private String invoiceNumber;
 
 	@Column(name = "invoiceDate", nullable = false)
-	private Date invoiceDate;
+	private LocalDate invoiceDate;
+
+	public LocalDate getInvoiceDate() {
+		return invoiceDate;
+	}
+
+	public void setInvoiceDate(LocalDate invoiceDate) {
+		this.invoiceDate = invoiceDate;
+	}
 
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "accountInformationId", nullable = false)
@@ -49,7 +56,7 @@ public class PurchaseEntry implements Serializable {
 	private String lrNumber;
 
 	@Column(name = "lrDate", nullable = false)
-	private Date lrDate;
+	private LocalDate lrDate;
 
 	@Column(name = "transport", nullable = false)
 	private String transport;
@@ -190,13 +197,7 @@ public class PurchaseEntry implements Serializable {
 		this.invoiceNumber = invoiceNumber;
 	}
 
-	public Date getInvoiceDate() {
-		return invoiceDate;
-	}
-
-	public void setInvoiceDate(Date invoiceDate) {
-		this.invoiceDate = invoiceDate;
-	}
+	
 
 	public AccountInformation getAccountInformationId() {
 		return accountInformationId;
@@ -230,11 +231,12 @@ public class PurchaseEntry implements Serializable {
 		this.lrNumber = lrNumber;
 	}
 
-	public Date getLrDate() {
+
+	public LocalDate getLrDate() {
 		return lrDate;
 	}
 
-	public void setLrDate(Date lrDate) {
+	public void setLrDate(LocalDate lrDate) {
 		this.lrDate = lrDate;
 	}
 

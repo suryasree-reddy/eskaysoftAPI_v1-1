@@ -28,7 +28,7 @@ public class PurchaseEntryDto implements Serializable {
 
 	private String lrNumber;
 
-	private Date lrDate;
+	private LocalDate lrDate;
 
 	private String transport;
 
@@ -201,11 +201,11 @@ public class PurchaseEntryDto implements Serializable {
 		this.lrNumber = lrNumber;
 	}
 
-	public Date getLrDate() {
+	public LocalDate getLrDate() {
 		return lrDate;
 	}
 
-	public void setLrDate(Date lrDate) {
+	public void setLrDate(LocalDate lrDate) {
 		this.lrDate = lrDate;
 	}
 

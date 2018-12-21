@@ -19,8 +19,12 @@ public class PurchaseOrder implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Column(name = "id")
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	@Column(name = "serialNumber", nullable = false)
+	private Long serialNumber;
 
 	@Column(name = "orderNumber", nullable = false, length = 40)
 	private Integer orderNumber;
@@ -140,6 +144,14 @@ public class PurchaseOrder implements Serializable {
 
 	public void setValue(Double value) {
 		this.value = value;
+	}
+
+	public Long getSerialNumber() {
+		return serialNumber;
+	}
+
+	public void setSerialNumber(Long serialNumber) {
+		this.serialNumber = serialNumber;
 	}
 
 }

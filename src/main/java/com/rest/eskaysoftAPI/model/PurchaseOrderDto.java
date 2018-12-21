@@ -7,6 +7,7 @@ public class PurchaseOrderDto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
+	private Long serialNumber;
 	private Integer orderNumber;
 	private LocalDate date;
 	private Long accountInformationId;
@@ -186,6 +187,14 @@ public class PurchaseOrderDto implements Serializable {
 
 	public void setNetRate(Double netRate) {
 		this.netRate = netRate;
+	}
+
+	public Long getSerialNumber() {
+		return serialNumber;
+	}
+
+	public void setSerialNumber(Long serialNumber) {
+		this.serialNumber = serialNumber;
 	}
 
 	public String getTown() {

@@ -66,7 +66,7 @@ public class SalesReturns implements Serializable {
 	private boolean deleteFlag = true;
 
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Long id) {
@@ -74,7 +74,7 @@ public class SalesReturns implements Serializable {
 	}
 
 	public Integer getSalesReturnNo() {
-		return salesReturnNo;
+		return this.salesReturnNo;
 	}
 
 	public void setSalesReturnNo(Integer salesReturnNo) {
@@ -82,7 +82,7 @@ public class SalesReturns implements Serializable {
 	}
 
 	public LocalDate getSalesReturnDate() {
-		return salesReturnDate;
+		return this.salesReturnDate;
 	}
 
 	public void setSalesReturnDate(LocalDate salesReturnDate) {
@@ -90,7 +90,7 @@ public class SalesReturns implements Serializable {
 	}
 
 	public AccountInformation getAccountInformationId() {
-		return accountInformationId;
+		return this.accountInformationId;
 	}
 
 	public void setAccountInformationId(AccountInformation accountInformationId) {
@@ -98,7 +98,7 @@ public class SalesReturns implements Serializable {
 	}
 
 	public String getGstType() {
-		return gstType;
+		return this.gstType;
 	}
 
 	public void setGstType(String gstType) {
@@ -106,7 +106,7 @@ public class SalesReturns implements Serializable {
 	}
 
 	public String getMode() {
-		return mode;
+		return this.mode;
 	}
 
 	public void setMode(String mode) {
@@ -114,7 +114,7 @@ public class SalesReturns implements Serializable {
 	}
 
 	public Product getProductId() {
-		return productId;
+		return this.productId;
 	}
 
 	public void setProductId(Product productId) {
@@ -122,7 +122,7 @@ public class SalesReturns implements Serializable {
 	}
 
 	public String getBatch() {
-		return batch;
+		return this.batch;
 	}
 
 	public void setBatch(String batch) {
@@ -130,7 +130,7 @@ public class SalesReturns implements Serializable {
 	}
 
 	public LocalDate getExpiry() {
-		return expiry;
+		return this.expiry;
 	}
 
 	public void setExpiry(LocalDate expiry) {
@@ -138,7 +138,7 @@ public class SalesReturns implements Serializable {
 	}
 
 	public Integer getQty() {
-		return qty;
+		return this.qty;
 	}
 
 	public void setQty(Integer qty) {
@@ -146,7 +146,7 @@ public class SalesReturns implements Serializable {
 	}
 
 	public Integer getsRate() {
-		return sRate;
+		return this.sRate;
 	}
 
 	public void setsRate(Integer sRate) {
@@ -154,7 +154,7 @@ public class SalesReturns implements Serializable {
 	}
 
 	public Integer getDisc() {
-		return disc;
+		return this.disc;
 	}
 
 	public void setDisc(Integer disc) {
@@ -162,7 +162,7 @@ public class SalesReturns implements Serializable {
 	}
 
 	public Integer getGstp() {
-		return gstp;
+		return this.gstp;
 	}
 
 	public void setGstp(Integer gstp) {
@@ -170,7 +170,7 @@ public class SalesReturns implements Serializable {
 	}
 
 	public boolean isDeleteFlag() {
-		return deleteFlag;
+		return this.deleteFlag;
 	}
 
 	public void setDeleteFlag(boolean deleteFlag) {

@@ -11,7 +11,7 @@ public class BankInformationDto implements Serializable{
 	private String address;
 
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Long id) {
@@ -19,7 +19,7 @@ public class BankInformationDto implements Serializable{
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public void setName(String name) {
@@ -27,7 +27,7 @@ public class BankInformationDto implements Serializable{
 	}
 
 	public String getAddress() {
-		return address;
+		return this.address;
 	}
 
 	public void setAddress(String address) {

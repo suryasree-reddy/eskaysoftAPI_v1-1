@@ -59,7 +59,7 @@ public class PurchaseOrder implements Serializable {
 	private Double value;
 
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Long id) {
@@ -67,7 +67,7 @@ public class PurchaseOrder implements Serializable {
 	}
 
 	public Integer getOrderNumber() {
-		return orderNumber;
+		return this.orderNumber;
 	}
 
 	public void setOrderNumber(Integer orderNumber) {
@@ -75,7 +75,7 @@ public class PurchaseOrder implements Serializable {
 	}
 
 	public LocalDate getDate() {
-		return date;
+		return this.date;
 	}
 
 	public void setDate(LocalDate date) {
@@ -83,7 +83,7 @@ public class PurchaseOrder implements Serializable {
 	}
 
 	public AccountInformation getAccountInformationId() {
-		return accountInformationId;
+		return this.accountInformationId;
 	}
 
 	public void setAccountInformationId(AccountInformation accountInformationId) {
@@ -91,7 +91,7 @@ public class PurchaseOrder implements Serializable {
 	}
 
 	public String getRemarks() {
-		return remarks;
+		return this.remarks;
 	}
 
 	public void setRemarks(String remarks) {
@@ -99,7 +99,7 @@ public class PurchaseOrder implements Serializable {
 	}
 
 	public Product getProductId() {
-		return productId;
+		return this.productId;
 	}
 
 	public void setProductId(Product productId) {
@@ -107,7 +107,7 @@ public class PurchaseOrder implements Serializable {
 	}
 
 	public Integer getQty() {
-		return qty;
+		return this.qty;
 	}
 
 	public void setQty(Integer qty) {
@@ -115,7 +115,7 @@ public class PurchaseOrder implements Serializable {
 	}
 
 	public Integer getRate() {
-		return rate;
+		return this.rate;
 	}
 
 	public void setRate(Integer rate) {
@@ -123,7 +123,7 @@ public class PurchaseOrder implements Serializable {
 	}
 
 	public Integer getbFree() {
-		return bFree;
+		return this.bFree;
 	}
 
 	public void setbFree(Integer bFree) {
@@ -131,7 +131,7 @@ public class PurchaseOrder implements Serializable {
 	}
 
 	public Integer getbRate() {
-		return bRate;
+		return this.bRate;
 	}
 
 	public void setbRate(Integer bRate) {
@@ -139,7 +139,7 @@ public class PurchaseOrder implements Serializable {
 	}
 
 	public Double getValue() {
-		return value;
+		return this.value;
 	}
 
 	public void setValue(Double value) {
@@ -147,7 +147,7 @@ public class PurchaseOrder implements Serializable {
 	}
 
 	public Integer getSerialNumber() {
-		return serialNumber;
+		return this.serialNumber;
 	}
 
 	public void setSerialNumber(Integer serialNumber) {

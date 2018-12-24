@@ -58,7 +58,7 @@ public class QuatationEntry implements Serializable {
 	}
 
 	public Integer getOrderNumber() {
-		return orderNumber;
+		return this.orderNumber;
 	}
 
 	public void setOrderNumber(Integer orderNumber) {
@@ -66,7 +66,7 @@ public class QuatationEntry implements Serializable {
 	}
 
 	public LocalDate getDate() {
-		return date;
+		return this.date;
 	}
 
 	public void setDate(LocalDate date) {
@@ -74,7 +74,7 @@ public class QuatationEntry implements Serializable {
 	}
 
 	public String getRemarks() {
-		return remarks;
+		return this.remarks;
 	}
 
 	public void setRemarks(String remarks) {
@@ -82,7 +82,7 @@ public class QuatationEntry implements Serializable {
 	}
 
 	public Product getProductId() {
-		return productId;
+		return this.productId;
 	}
 
 	public void setProductId(Product productId) {
@@ -90,7 +90,7 @@ public class QuatationEntry implements Serializable {
 	}
 
 	public Double getQty() {
-		return qty;
+		return this.qty;
 	}
 
 	public void setQty(Double qty) {
@@ -98,7 +98,7 @@ public class QuatationEntry implements Serializable {
 	}
 
 	public Double getRate() {
-		return rate;
+		return this.rate;
 	}
 
 	public void setRate(Double rate) {
@@ -106,7 +106,7 @@ public class QuatationEntry implements Serializable {
 	}
 
 	public AccountInformation getAccountInformationId() {
-		return accountInformationId;
+		return this.accountInformationId;
 	}
 
 	public void setAccountInformationId(AccountInformation accountInformationId) {
@@ -114,7 +114,7 @@ public class QuatationEntry implements Serializable {
 	}
 
 	public Double getAmmount() {
-		return ammount;
+		return this.ammount;
 	}
 
 	public void setAmmount(Double ammount) {

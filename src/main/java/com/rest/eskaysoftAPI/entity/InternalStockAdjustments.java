@@ -49,7 +49,7 @@ public class InternalStockAdjustments implements Serializable {
 	private boolean deleteFlag = true;
 
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Long id) {
@@ -57,7 +57,7 @@ public class InternalStockAdjustments implements Serializable {
 	}
 
 	public Long getNumber() {
-		return number;
+		return this.number;
 	}
 
 	public void setNumber(Long number) {
@@ -65,7 +65,7 @@ public class InternalStockAdjustments implements Serializable {
 	}
 
 	public LocalDate getDate() {
-		return date;
+		return this.date;
 	}
 
 	public void setDate(LocalDate date) {
@@ -73,7 +73,7 @@ public class InternalStockAdjustments implements Serializable {
 	}
 
 	public String getRemarks() {
-		return remarks;
+		return this.remarks;
 	}
 
 	public void setRemarks(String remarks) {
@@ -81,7 +81,7 @@ public class InternalStockAdjustments implements Serializable {
 	}
 
 	public Product getProductId() {
-		return productId;
+		return this.productId;
 	}
 
 	public void setProductId(Product productId) {
@@ -91,7 +91,7 @@ public class InternalStockAdjustments implements Serializable {
 	
 
 	public String getType() {
-		return type;
+		return this.type;
 	}
 
 	public void setType(String type) {
@@ -99,7 +99,7 @@ public class InternalStockAdjustments implements Serializable {
 	}
 
 	public boolean isDeleteFlag() {
-		return deleteFlag;
+		return this.deleteFlag;
 	}
 
 	public void setDeleteFlag(boolean deleteFlag) {
@@ -107,7 +107,7 @@ public class InternalStockAdjustments implements Serializable {
 	}
 
 	public Integer getQty() {
-		return qty;
+		return this.qty;
 	}
 
 	public void setQty(Integer qty) {
@@ -115,7 +115,7 @@ public class InternalStockAdjustments implements Serializable {
 	}
 
 	public String getBatch() {
-		return batch;
+		return this.batch;
 	}
 
 	public void setBatch(String batch) {

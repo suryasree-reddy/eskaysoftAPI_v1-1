@@ -11,7 +11,7 @@ public class ProductCategoryDto implements Serializable {
 	private boolean deleteFlag;
 
 	public boolean isDeleteFlag() {
-		return deleteFlag;
+		return this.deleteFlag;
 	}
 
 	public void setDeleteFlag(boolean deleteFlag) {

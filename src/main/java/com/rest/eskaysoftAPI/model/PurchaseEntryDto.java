@@ -23,6 +23,8 @@ public class PurchaseEntryDto implements Serializable {
 	private Long hsnCode;
 	private Long stateCode;
 	private String mode;
+	private String debitAdjustmentLedger;
+	private String creditAdjustmentLedger;
 
 	private String wayBill;
 
@@ -65,7 +67,8 @@ public class PurchaseEntryDto implements Serializable {
 
 	private Integer mrp;
 
-	private String mfgName;
+	private Long macfacturerId;
+	private String manfacturerName;
 
 	private Integer grossValue;
 
@@ -74,10 +77,6 @@ public class PurchaseEntryDto implements Serializable {
 	private Integer taxValue;
 
 	private Integer netValue;
-
-	private Integer debitAdjustmentLedger;
-
-	private Integer creditAdjustmentLedger;
 
 	private Integer debitAdjustmentValue;
 
@@ -369,12 +368,20 @@ public class PurchaseEntryDto implements Serializable {
 		this.mrp = mrp;
 	}
 
-	public String getMfgName() {
-		return mfgName;
+	public Long getMacfacturerId() {
+		return macfacturerId;
 	}
 
-	public void setMfgName(String mfgName) {
-		this.mfgName = mfgName;
+	public void setMacfacturerId(Long macfacturerId) {
+		this.macfacturerId = macfacturerId;
+	}
+
+	public String getManfacturerName() {
+		return manfacturerName;
+	}
+
+	public void setManfacturerName(String manfacturerName) {
+		this.manfacturerName = manfacturerName;
 	}
 
 	public Integer getGrossValue() {
@@ -409,24 +416,24 @@ public class PurchaseEntryDto implements Serializable {
 		this.netValue = netValue;
 	}
 
-	public Integer getDebitAdjustmentLedger() {
-		return debitAdjustmentLedger;
+	public String getDebitAdjustmentLedger() {
+		return this.debitAdjustmentLedger;
 	}
 
-	public void setDebitAdjustmentLedger(Integer debitAdjustmentLedger) {
+	public void setDebitAdjustmentLedger(String debitAdjustmentLedger) {
 		this.debitAdjustmentLedger = debitAdjustmentLedger;
 	}
 
-	public Integer getCreditAdjustmentLedger() {
-		return creditAdjustmentLedger;
+	public String getCreditAdjustmentLedger() {
+		return this.creditAdjustmentLedger;
 	}
 
-	public void setCreditAdjustmentLedger(Integer creditAdjustmentLedger) {
+	public void setCreditAdjustmentLedger(String creditAdjustmentLedger) {
 		this.creditAdjustmentLedger = creditAdjustmentLedger;
 	}
 
 	public Integer getDebitAdjustmentValue() {
-		return debitAdjustmentValue;
+		return this.debitAdjustmentValue;
 	}
 
 	public void setDebitAdjustmentValue(Integer debitAdjustmentValue) {
@@ -434,7 +441,7 @@ public class PurchaseEntryDto implements Serializable {
 	}
 
 	public Integer getCreditAdjustmentValue() {
-		return creditAdjustmentValue;
+		return this.creditAdjustmentValue;
 	}
 
 	public void setCreditAdjustmentValue(Integer creditAdjustmentValue) {
@@ -442,7 +449,7 @@ public class PurchaseEntryDto implements Serializable {
 	}
 
 	public Integer getInvoiceValue() {
-		return invoiceValue;
+		return this.invoiceValue;
 	}
 
 	public void setInvoiceValue(Integer invoiceValue) {
@@ -450,7 +457,7 @@ public class PurchaseEntryDto implements Serializable {
 	}
 
 	public String getRemarks() {
-		return remarks;
+		return this.remarks;
 	}
 
 	public void setRemarks(String remarks) {
@@ -458,7 +465,7 @@ public class PurchaseEntryDto implements Serializable {
 	}
 
 	public Integer getGstPercent() {
-		return gstPercent;
+		return this.gstPercent;
 	}
 
 	public void setGstPercent(Integer gstPercent) {
@@ -466,7 +473,7 @@ public class PurchaseEntryDto implements Serializable {
 	}
 
 	public Integer getTaxable() {
-		return taxable;
+		return this.taxable;
 	}
 
 	public void setTaxable(Integer taxable) {
@@ -474,7 +481,7 @@ public class PurchaseEntryDto implements Serializable {
 	}
 
 	public Integer getCgstAmt() {
-		return cgstAmt;
+		return this.cgstAmt;
 	}
 
 	public void setCgstAmt(Integer cgstAmt) {
@@ -482,7 +489,7 @@ public class PurchaseEntryDto implements Serializable {
 	}
 
 	public Integer getSgstAmt() {
-		return sgstAmt;
+		return this.sgstAmt;
 	}
 
 	public void setSgstAmt(Integer sgstAmt) {
@@ -490,7 +497,7 @@ public class PurchaseEntryDto implements Serializable {
 	}
 
 	public Integer getInGstPercent() {
-		return inGstPercent;
+		return this.inGstPercent;
 	}
 
 	public void setInGstPercent(Integer inGstPercent) {
@@ -498,7 +505,7 @@ public class PurchaseEntryDto implements Serializable {
 	}
 
 	public Integer getInTaxable() {
-		return inTaxable;
+		return this.inTaxable;
 	}
 
 	public void setInTaxable(Integer inTaxable) {
@@ -506,7 +513,7 @@ public class PurchaseEntryDto implements Serializable {
 	}
 
 	public Integer getInCgstAmt() {
-		return inCgstAmt;
+		return this.inCgstAmt;
 	}
 
 	public void setInCgstAmt(Integer inCgstAmt) {
@@ -514,7 +521,7 @@ public class PurchaseEntryDto implements Serializable {
 	}
 
 	public Integer getInSgstAmt() {
-		return inSgstAmt;
+		return this.inSgstAmt;
 	}
 
 	public void setInSgstAmt(Integer inSgstAmt) {
@@ -522,7 +529,7 @@ public class PurchaseEntryDto implements Serializable {
 	}
 
 	public String getTypeheadDisplay() {
-		return typeheadDisplay;
+		return this.typeheadDisplay;
 	}
 
 	public void setTypeheadDisplay(String typeheadDisplay) {

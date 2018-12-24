@@ -25,7 +25,7 @@ public class QuatationEntryDto implements Serializable {
 	private String typeheadDisplay;
 
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Long id) {
@@ -33,7 +33,7 @@ public class QuatationEntryDto implements Serializable {
 	}
 
 	public Integer getOrderNumber() {
-		return orderNumber;
+		return this.orderNumber;
 	}
 
 	public void setOrderNumber(Integer orderNumber) {
@@ -41,7 +41,7 @@ public class QuatationEntryDto implements Serializable {
 	}
 
 	public LocalDate getDate() {
-		return date;
+		return this.date;
 	}
 
 	public void setDate(LocalDate date) {
@@ -49,7 +49,7 @@ public class QuatationEntryDto implements Serializable {
 	}
 
 	public String getRemarks() {
-		return remarks;
+		return this.remarks;
 	}
 
 	public void setRemarks(String remarks) {
@@ -57,7 +57,7 @@ public class QuatationEntryDto implements Serializable {
 	}
 
 	public Long getProductId() {
-		return productId;
+		return this.productId;
 	}
 
 	public void setProductId(Long productId) {
@@ -65,7 +65,7 @@ public class QuatationEntryDto implements Serializable {
 	}
 
 	public String getProductName() {
-		return productName;
+		return this.productName;
 	}
 
 	public void setProductName(String productName) {
@@ -73,7 +73,7 @@ public class QuatationEntryDto implements Serializable {
 	}
 
 	public String getProductcode() {
-		return productcode;
+		return this.productcode;
 	}
 
 	public void setProductcode(String productcode) {
@@ -81,7 +81,7 @@ public class QuatationEntryDto implements Serializable {
 	}
 
 	public Integer getPacking() {
-		return packing;
+		return this.packing;
 	}
 
 	public void setPacking(Integer packing) {
@@ -89,7 +89,7 @@ public class QuatationEntryDto implements Serializable {
 	}
 
 	public Double getQty() {
-		return qty;
+		return this.qty;
 	}
 
 	public void setQty(Double qty) {
@@ -97,7 +97,7 @@ public class QuatationEntryDto implements Serializable {
 	}
 
 	public Double getRate() {
-		return rate;
+		return this.rate;
 	}
 
 	public void setRate(Double rate) {
@@ -105,7 +105,7 @@ public class QuatationEntryDto implements Serializable {
 	}
 
 	public Double getAmmount() {
-		return ammount;
+		return this.ammount;
 	}
 
 	public void setAmmount(Double ammount) {
@@ -113,7 +113,7 @@ public class QuatationEntryDto implements Serializable {
 	}
 
 	public String getTypeheadDisplay() {
-		return typeheadDisplay;
+		return this.typeheadDisplay;
 	}
 
 	public void setTypeheadDisplay(String typeheadDisplay) {
@@ -121,7 +121,7 @@ public class QuatationEntryDto implements Serializable {
 	}
 
 	public Long getAccountInformationId() {
-		return accountInformationId;
+		return this.accountInformationId;
 	}
 
 	public void setAccountInformationId(Long accountInformationId) {
@@ -129,7 +129,7 @@ public class QuatationEntryDto implements Serializable {
 	}
 
 	public String getCustomer() {
-		return customer;
+		return this.customer;
 	}
 
 	public void setCustomer(String customer) {

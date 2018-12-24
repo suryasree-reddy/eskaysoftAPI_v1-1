@@ -19,7 +19,7 @@ public class DistrictsDto implements Serializable {
 	private String typeheadDisplay;
 
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Long id) {
@@ -27,7 +27,7 @@ public class DistrictsDto implements Serializable {
 	}
 
 	public String getStateName() {
-		return stateName;
+		return this.stateName;
 	}
 
 	public void setStateName(String stateName) {

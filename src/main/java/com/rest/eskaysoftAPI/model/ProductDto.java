@@ -88,7 +88,7 @@ public class ProductDto implements Serializable {
 	}
 
 	public String getProductGroupName() {
-		return productGroupName;
+		return this.productGroupName;
 	}
 
 	public void setProductGroupName(String productGroupName) {
@@ -116,7 +116,7 @@ public class ProductDto implements Serializable {
 	}
 
 	public Integer getPacking() {
-		return packing;
+		return this.packing;
 	}
 
 	public void setPacking(Integer packing) {

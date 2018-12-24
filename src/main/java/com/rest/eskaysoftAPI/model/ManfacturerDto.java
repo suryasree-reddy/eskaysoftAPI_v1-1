@@ -10,7 +10,7 @@ public class ManfacturerDto implements Serializable {
 	private String manfacturerName;
 
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Long id) {
@@ -18,7 +18,7 @@ public class ManfacturerDto implements Serializable {
 	}
 
 	public String getManfacturerName() {
-		return manfacturerName;
+		return this.manfacturerName;
 	}
 
 	public void setManfacturerName(String manfacturerName) {

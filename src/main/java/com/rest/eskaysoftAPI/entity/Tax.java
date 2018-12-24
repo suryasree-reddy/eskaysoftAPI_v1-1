@@ -69,7 +69,7 @@ public class Tax implements Serializable {
 	private boolean deleteFlag = true;
 
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Long id) {
@@ -77,7 +77,7 @@ public class Tax implements Serializable {
 	}
 
 	public Date getWefdate() {
-		return wefdate;
+		return this.wefdate;
 	}
 
 	public void setWefdate(Date wefdate) {
@@ -85,7 +85,7 @@ public class Tax implements Serializable {
 	}
 
 	public String getIgstpur() {
-		return igstpur;
+		return this.igstpur;
 	}
 
 	public void setIgstpur(String igstpur) {
@@ -93,7 +93,7 @@ public class Tax implements Serializable {
 	}
 
 	public String getIgstpit() {
-		return igstpit;
+		return this.igstpit;
 	}
 
 	public void setIgstpit(String igstpit) {
@@ -101,7 +101,7 @@ public class Tax implements Serializable {
 	}
 
 	public String getIgstsale() {
-		return igstsale;
+		return this.igstsale;
 	}
 
 	public void setIgstsale(String igstsale) {
@@ -109,7 +109,7 @@ public class Tax implements Serializable {
 	}
 
 	public String getIgstsot() {
-		return igstsot;
+		return this.igstsot;
 	}
 
 	public void setIgstsot(String igstsot) {
@@ -117,7 +117,7 @@ public class Tax implements Serializable {
 	}
 
 	public String getWpurch() {
-		return wpurch;
+		return this.wpurch;
 	}
 
 	public void setWpurch(String wpurch) {
@@ -125,7 +125,7 @@ public class Tax implements Serializable {
 	}
 
 	public String getCgstpit() {
-		return cgstpit;
+		return this.cgstpit;
 	}
 
 	public void setCgstpit(String cgstpit) {
@@ -133,7 +133,7 @@ public class Tax implements Serializable {
 	}
 
 	public String getSgstpit() {
-		return sgstpit;
+		return this.sgstpit;
 	}
 
 	public void setSgstpit(String sgstpit) {
@@ -141,7 +141,7 @@ public class Tax implements Serializable {
 	}
 
 	public String getWsale() {
-		return wsale;
+		return this.wsale;
 	}
 
 	public void setWsale(String wsale) {
@@ -149,7 +149,7 @@ public class Tax implements Serializable {
 	}
 
 	public String getCgstsot() {
-		return cgstsot;
+		return this.cgstsot;
 	}
 
 	public void setCgstsot(String cgstsot) {
@@ -157,7 +157,7 @@ public class Tax implements Serializable {
 	}
 
 	public String getSgstsot() {
-		return sgstsot;
+		return this.sgstsot;
 	}
 
 	public void setSgstsot(String sgstsot) {
@@ -165,7 +165,7 @@ public class Tax implements Serializable {
 	}
 
 	public Long getTax() {
-		return tax;
+		return this.tax;
 	}
 
 	public void setTax(Long tax) {
@@ -173,7 +173,7 @@ public class Tax implements Serializable {
 	}
 
 	public Long getCgst() {
-		return cgst;
+		return this.cgst;
 	}
 
 	public void setCgst(Long cgst) {
@@ -181,7 +181,7 @@ public class Tax implements Serializable {
 	}
 
 	public Long getSgst() {
-		return sgst;
+		return this.sgst;
 	}
 
 	public void setSgst(Long sgst) {
@@ -189,7 +189,7 @@ public class Tax implements Serializable {
 	}
 
 	public Boolean getStatus() {
-		return status;
+		return this.status;
 	}
 
 	public void setStatus(Boolean status) {

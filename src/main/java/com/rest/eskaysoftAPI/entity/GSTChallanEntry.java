@@ -67,7 +67,7 @@ public class GSTChallanEntry implements Serializable {
 	private boolean deleteFlag = true;
 
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Long id) {
@@ -75,7 +75,7 @@ public class GSTChallanEntry implements Serializable {
 	}
 
 	public String getGstType() {
-		return gstType;
+		return this.gstType;
 	}
 
 	public void setGstType(String gstType) {
@@ -83,7 +83,7 @@ public class GSTChallanEntry implements Serializable {
 	}
 
 	public String getDcNo() {
-		return dcNo;
+		return this.dcNo;
 	}
 
 	public void setDcNo(String dcNo) {
@@ -91,7 +91,7 @@ public class GSTChallanEntry implements Serializable {
 	}
 
 	public String getDeliverTo() {
-		return deliverTo;
+		return this.deliverTo;
 	}
 
 	public void setDeliverTo(String deliverTo) {
@@ -103,7 +103,7 @@ public class GSTChallanEntry implements Serializable {
 	}
 
 	public LocalDate getDate() {
-		return date;
+		return this.date;
 	}
 
 	public void setDate(LocalDate date) {
@@ -111,7 +111,7 @@ public class GSTChallanEntry implements Serializable {
 	}
 
 	public String getMode() {
-		return mode;
+		return this.mode;
 	}
 
 	public void setMode(String mode) {
@@ -119,7 +119,7 @@ public class GSTChallanEntry implements Serializable {
 	}
 
 	public Product getProductId() {
-		return productId;
+		return this.productId;
 	}
 
 	public void setProductId(Product productId) {
@@ -127,11 +127,11 @@ public class GSTChallanEntry implements Serializable {
 	}
 
 	public String getBatch() {
-		return batch;
+		return this.batch;
 	}
 
 	public LocalDate getExpiry() {
-		return expiry;
+		return this.expiry;
 	}
 
 	public void setExpiry(LocalDate expiry) {
@@ -139,7 +139,7 @@ public class GSTChallanEntry implements Serializable {
 	}
 
 	public Integer getQty() {
-		return qty;
+		return this.qty;
 	}
 
 	public void setQty(Integer qty) {
@@ -147,7 +147,7 @@ public class GSTChallanEntry implements Serializable {
 	}
 
 	public Integer getsRate() {
-		return sRate;
+		return this.sRate;
 	}
 
 	public void setsRate(Integer sRate) {
@@ -155,7 +155,7 @@ public class GSTChallanEntry implements Serializable {
 	}
 
 	public Integer getDisc() {
-		return disc;
+		return this.disc;
 	}
 
 	public void setDisc(Integer disc) {
@@ -163,7 +163,7 @@ public class GSTChallanEntry implements Serializable {
 	}
 
 	public Integer getGstp() {
-		return gstp;
+		return this.gstp;
 	}
 
 	public void setGstp(Integer gstp) {
@@ -171,7 +171,7 @@ public class GSTChallanEntry implements Serializable {
 	}
 
 	public boolean isDeleteFlag() {
-		return deleteFlag;
+		return this.deleteFlag;
 	}
 
 	public void setDeleteFlag(boolean deleteFlag) {
@@ -179,7 +179,7 @@ public class GSTChallanEntry implements Serializable {
 	}
 
 	public AccountInformation getAccountInformationId() {
-		return accountInformationId;
+		return this.accountInformationId;
 	}
 
 	public void setAccountInformationId(AccountInformation accountInformationId) {

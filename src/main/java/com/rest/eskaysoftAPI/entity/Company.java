@@ -75,7 +75,7 @@ public class Company implements Serializable {
 	}
 
 	public String getCompanyName() {
-		return companyName;
+		return this.companyName;
 	}
 
 	public void setCompanyName(String companyName) {
@@ -83,7 +83,7 @@ public class Company implements Serializable {
 	}
 
 	public CompanyGroup getCompanyGroupId() {
-		return companyGroupId;
+		return this.companyGroupId;
 	}
 
 	public void setCompanyGroupId(CompanyGroup companyGroupId) {

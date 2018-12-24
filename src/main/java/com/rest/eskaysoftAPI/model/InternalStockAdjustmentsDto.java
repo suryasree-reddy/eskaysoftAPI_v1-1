@@ -36,7 +36,7 @@ public class InternalStockAdjustmentsDto implements Serializable {
 	private boolean deleteFlag;
 
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Long id) {
@@ -44,7 +44,7 @@ public class InternalStockAdjustmentsDto implements Serializable {
 	}
 
 	public Long getNumber() {
-		return number;
+		return this.number;
 	}
 
 	public void setNumber(Long number) {
@@ -52,21 +52,21 @@ public class InternalStockAdjustmentsDto implements Serializable {
 	}
 
 	public LocalDate getDate() {
-		return date;
+		return this.date;
 	}
 
 	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 	public Integer getPack() {
-		return pack;
+		return this.pack;
 	}
 
 	public void setPack(Integer pack) {
 		this.pack = pack;
 	}
 	public String getRemarks() {
-		return remarks;
+		return this.remarks;
 	}
 
 	public void setRemarks(String remarks) {
@@ -74,7 +74,7 @@ public class InternalStockAdjustmentsDto implements Serializable {
 	}
 
 	public String getProductName() {
-		return productName;
+		return this.productName;
 	}
 
 	public void setProductName(String productName) {
@@ -82,7 +82,7 @@ public class InternalStockAdjustmentsDto implements Serializable {
 	}
 
 	public String getProductcode() {
-		return productcode;
+		return this.productcode;
 	}
 
 	public void setProductcode(String productcode) {
@@ -92,7 +92,7 @@ public class InternalStockAdjustmentsDto implements Serializable {
 	
 
 	public String getType() {
-		return type;
+		return this.type;
 	}
 
 	public void setType(String type) {
@@ -100,7 +100,7 @@ public class InternalStockAdjustmentsDto implements Serializable {
 	}
 
 	public boolean isDeleteFlag() {
-		return deleteFlag;
+		return this.deleteFlag;
 	}
 
 	public void setDeleteFlag(boolean deleteFlag) {
@@ -108,7 +108,7 @@ public class InternalStockAdjustmentsDto implements Serializable {
 	}
 
 	public Long getProductId() {
-		return productId;
+		return this.productId;
 	}
 
 	public void setProductId(Long productId) {
@@ -116,7 +116,7 @@ public class InternalStockAdjustmentsDto implements Serializable {
 	}
 
 	public Integer getFree() {
-		return free;
+		return this.free;
 	}
 
 	public void setFree(Integer free) {
@@ -124,7 +124,7 @@ public class InternalStockAdjustmentsDto implements Serializable {
 	}
 
 	public Integer getQty() {
-		return qty;
+		return this.qty;
 	}
 
 	public void setQty(Integer qty) {
@@ -132,7 +132,7 @@ public class InternalStockAdjustmentsDto implements Serializable {
 	}
 
 	public String getBatch() {
-		return batch;
+		return this.batch;
 	}
 
 	public void setBatch(String batch) {

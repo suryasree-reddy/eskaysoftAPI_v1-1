@@ -36,7 +36,7 @@ public class SalesOrder implements Serializable {
 	@Column(name = "rateType", nullable = false)
 	private String rateType;
 
-	@Column(name = "remarks", nullable = false, length = 40)
+	@Column(name = "remarks", length = 40)
 	private String remarks;
 
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
@@ -56,7 +56,7 @@ public class SalesOrder implements Serializable {
 	private boolean deleteFlag = true;
 
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Long id) {
@@ -64,7 +64,7 @@ public class SalesOrder implements Serializable {
 	}
 
 	public Integer getOrderNumber() {
-		return orderNumber;
+		return this.orderNumber;
 	}
 
 	public void setOrderNumber(Integer orderNumber) {
@@ -72,7 +72,7 @@ public class SalesOrder implements Serializable {
 	}
 
 	public LocalDate getDate() {
-		return date;
+		return this.date;
 	}
 
 	public void setDate(LocalDate date) {
@@ -80,7 +80,7 @@ public class SalesOrder implements Serializable {
 	}
 
 	public AccountInformation getAccountInformationId() {
-		return accountInformationId;
+		return this.accountInformationId;
 	}
 
 	public void setAccountInformationId(AccountInformation accountInformationId) {
@@ -88,7 +88,7 @@ public class SalesOrder implements Serializable {
 	}
 
 	public String getRateType() {
-		return rateType;
+		return this.rateType;
 	}
 
 	public void setRateType(String rateType) {
@@ -96,7 +96,7 @@ public class SalesOrder implements Serializable {
 	}
 
 	public String getRemarks() {
-		return remarks;
+		return this.remarks;
 	}
 
 	public void setRemarks(String remarks) {
@@ -104,7 +104,7 @@ public class SalesOrder implements Serializable {
 	}
 
 	public Product getProductId() {
-		return productId;
+		return this.productId;
 	}
 
 	public void setProductId(Product productId) {
@@ -112,7 +112,7 @@ public class SalesOrder implements Serializable {
 	}
 
 	public Integer getQty() {
-		return qty;
+		return this.qty;
 	}
 
 	public void setQty(Integer qty) {
@@ -120,7 +120,7 @@ public class SalesOrder implements Serializable {
 	}
 
 	public Integer getRate() {
-		return rate;
+		return this.rate;
 	}
 
 	public void setRate(Integer rate) {
@@ -128,7 +128,7 @@ public class SalesOrder implements Serializable {
 	}
 
 	public Double getValue() {
-		return value;
+		return this.value;
 	}
 
 	public void setValue(Double value) {
@@ -136,7 +136,7 @@ public class SalesOrder implements Serializable {
 	}
 
 	public boolean isDeleteFlag() {
-		return deleteFlag;
+		return this.deleteFlag;
 	}
 
 	public void setDeleteFlag(boolean deleteFlag) {

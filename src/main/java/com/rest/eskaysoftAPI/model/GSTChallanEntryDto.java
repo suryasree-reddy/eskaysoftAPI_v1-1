@@ -28,7 +28,7 @@ public class GSTChallanEntryDto implements Serializable {
 	private boolean deleteFlag;
 
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Long id) {
@@ -44,7 +44,7 @@ public class GSTChallanEntryDto implements Serializable {
 	}
 
 	public String getMode() {
-		return mode;
+		return this.mode;
 	}
 
 	public void setMode(String mode) {
@@ -52,7 +52,7 @@ public class GSTChallanEntryDto implements Serializable {
 	}
 
 	public String getProductName() {
-		return productName;
+		return this.productName;
 	}
 
 	public void setProductName(String productName) {
@@ -60,7 +60,7 @@ public class GSTChallanEntryDto implements Serializable {
 	}
 
 	public String getProductcode() {
-		return productcode;
+		return this.productcode;
 	}
 
 	public void setProductcode(String productcode) {
@@ -68,7 +68,7 @@ public class GSTChallanEntryDto implements Serializable {
 	}
 
 	public Long getAccountInformationId() {
-		return accountInformationId;
+		return this.accountInformationId;
 	}
 
 	public void setAccountInformationId(Long accountInformationId) {
@@ -84,7 +84,7 @@ public class GSTChallanEntryDto implements Serializable {
 	}
 
 	public String getCustomer() {
-		return customer;
+		return this.customer;
 	}
 
 	public void setCustomer(String customer) {
@@ -93,7 +93,7 @@ public class GSTChallanEntryDto implements Serializable {
 
 	
 	public String getGstIN() {
-		return gstIN;
+		return this.gstIN;
 	}
 
 	public void setGstIN(String gstIN) {
@@ -101,7 +101,7 @@ public class GSTChallanEntryDto implements Serializable {
 	}
 
 	public String getDcNo() {
-		return dcNo;
+		return this.dcNo;
 	}
 
 	public void setDcNo(String dcNo) {
@@ -109,7 +109,7 @@ public class GSTChallanEntryDto implements Serializable {
 	}
 
 	public String getDeliverTo() {
-		return deliverTo;
+		return this.deliverTo;
 	}
 
 	public void setDeliverTo(String deliverTo) {
@@ -117,7 +117,7 @@ public class GSTChallanEntryDto implements Serializable {
 	}
 
 	public LocalDate getDate() {
-		return date;
+		return this.date;
 	}
 
 	public void setDate(LocalDate date) {
@@ -126,7 +126,7 @@ public class GSTChallanEntryDto implements Serializable {
 
 	
 	public String getBatch() {
-		return batch;
+		return this.batch;
 	}
 
 	public void setBatch(String batch) {
@@ -134,7 +134,7 @@ public class GSTChallanEntryDto implements Serializable {
 	}
 
 	public LocalDate getExpiry() {
-		return expiry;
+		return this.expiry;
 	}
 
 	public void setExpiry(LocalDate expiry) {
@@ -142,7 +142,7 @@ public class GSTChallanEntryDto implements Serializable {
 	}
 
 	public Integer getQty() {
-		return qty;
+		return this.qty;
 	}
 
 	public void setQty(Integer qty) {
@@ -150,7 +150,7 @@ public class GSTChallanEntryDto implements Serializable {
 	}
 
 	public Integer getFree() {
-		return free;
+		return this.free;
 	}
 
 	public void setFree(Integer free) {
@@ -158,7 +158,7 @@ public class GSTChallanEntryDto implements Serializable {
 	}
 
 	public Integer getsRate() {
-		return sRate;
+		return this.sRate;
 	}
 
 	public void setsRate(Integer sRate) {
@@ -166,7 +166,7 @@ public class GSTChallanEntryDto implements Serializable {
 	}
 
 	public Integer getDisc() {
-		return disc;
+		return this.disc;
 	}
 
 	public void setDisc(Integer disc) {
@@ -174,7 +174,7 @@ public class GSTChallanEntryDto implements Serializable {
 	}
 
 	public Integer getGstp() {
-		return gstp;
+		return this.gstp;
 	}
 
 	public void setGstp(Integer gstp) {
@@ -182,7 +182,7 @@ public class GSTChallanEntryDto implements Serializable {
 	}
 
 	public boolean isDeleteFlag() {
-		return deleteFlag;
+		return this.deleteFlag;
 	}
 
 	public void setDeleteFlag(boolean deleteFlag) {

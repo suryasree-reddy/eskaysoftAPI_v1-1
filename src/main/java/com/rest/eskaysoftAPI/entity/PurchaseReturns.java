@@ -33,7 +33,7 @@ public class PurchaseReturns implements Serializable {
 	@JoinColumn(name = "accountInformationId", nullable = false)
 	private AccountInformation accountInformationId;
 
-	@Column(name = "remarks", nullable = false, length = 40)
+	@Column(name = "remarks", length = 40)
 	private String remarks;
 
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
@@ -56,7 +56,7 @@ public class PurchaseReturns implements Serializable {
 	private Long ammount;
 
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Long id) {
@@ -64,7 +64,7 @@ public class PurchaseReturns implements Serializable {
 	}
 
 	public Long getPurReturnNumber() {
-		return purReturnNumber;
+		return this.purReturnNumber;
 	}
 
 	public void setPurReturnNumber(Long purReturnNumber) {
@@ -72,7 +72,7 @@ public class PurchaseReturns implements Serializable {
 	}
 
 	public LocalDate getDate() {
-		return date;
+		return this.date;
 	}
 
 	public void setDate(LocalDate date) {
@@ -80,7 +80,7 @@ public class PurchaseReturns implements Serializable {
 	}
 
 	public AccountInformation getAccountInformationId() {
-		return accountInformationId;
+		return this.accountInformationId;
 	}
 
 	public void setAccountInformationId(AccountInformation accountInformationId) {
@@ -88,7 +88,7 @@ public class PurchaseReturns implements Serializable {
 	}
 
 	public String getRemarks() {
-		return remarks;
+		return this.remarks;
 	}
 
 	public void setRemarks(String remarks) {
@@ -96,7 +96,7 @@ public class PurchaseReturns implements Serializable {
 	}
 
 	public Product getProductId() {
-		return productId;
+		return this.productId;
 	}
 
 	public void setProductId(Product productId) {
@@ -104,7 +104,7 @@ public class PurchaseReturns implements Serializable {
 	}
 
 	public boolean isDeleteFlag() {
-		return deleteFlag;
+		return this.deleteFlag;
 	}
 
 	public void setDeleteFlag(boolean deleteFlag) {
@@ -112,7 +112,7 @@ public class PurchaseReturns implements Serializable {
 	}
 
 	public String getBatch() {
-		return batch;
+		return this.batch;
 	}
 
 	public void setBatch(String batch) {
@@ -120,7 +120,7 @@ public class PurchaseReturns implements Serializable {
 	}
 
 	public Integer getQty() {
-		return qty;
+		return this.qty;
 	}
 
 	public void setQty(Integer qty) {
@@ -128,7 +128,7 @@ public class PurchaseReturns implements Serializable {
 	}
 
 	public Double getpRate() {
-		return pRate;
+		return this.pRate;
 	}
 
 	public void setpRate(Double pRate) {
@@ -136,7 +136,7 @@ public class PurchaseReturns implements Serializable {
 	}
 
 	public Long getAmmount() {
-		return ammount;
+		return this.ammount;
 	}
 
 	public void setAmmount(Long ammount) {

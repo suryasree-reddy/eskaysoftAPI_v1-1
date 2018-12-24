@@ -34,7 +34,7 @@ public class Districts implements Serializable {
 	private boolean deleteFlag = true;
 
 	public boolean isDeleteFlag() {
-		return deleteFlag;
+		return this.deleteFlag;
 	}
 
 	public void setDeleteFlag(boolean deleteFlag) {
@@ -58,7 +58,7 @@ public class Districts implements Serializable {
 	}
 
 	public States getStateId() {
-		return stateId;
+		return this.stateId;
 	}
 
 	public void setStateId(States stateId) {

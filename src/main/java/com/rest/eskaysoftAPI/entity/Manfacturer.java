@@ -21,14 +21,15 @@ public class Manfacturer implements Serializable {
 	private Long id;
 	@Column(name = "manfacturerName", nullable = false, length = 20)
 	private String manfacturerName;
+	
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getManfacturerName() {
-		return manfacturerName;
+		return this.manfacturerName;
 	}
 	public void setManfacturerName(String manfacturerName) {
 		this.manfacturerName = manfacturerName;

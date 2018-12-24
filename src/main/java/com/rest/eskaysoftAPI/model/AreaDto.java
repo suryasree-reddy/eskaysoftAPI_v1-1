@@ -19,7 +19,7 @@ public class AreaDto implements Serializable {
 	private String typeheadDisplay;
 
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Long id) {
@@ -27,7 +27,7 @@ public class AreaDto implements Serializable {
 	}
 
 	public Long getBusinessExecutiveId() {
-		return businessExecutiveId;
+		return this.businessExecutiveId;
 	}
 
 	public void setBusinessExecutiveId(Long businessExecutiveId) {
@@ -51,7 +51,7 @@ public class AreaDto implements Serializable {
 	}
 
 	public boolean isDeleteFlag() {
-		return deleteFlag;
+		return this.deleteFlag;
 	}
 
 	public void setDeleteFlag(boolean deleteFlag) {
@@ -59,7 +59,7 @@ public class AreaDto implements Serializable {
 	}
 
 	public String getTypeheadDisplay() {
-		return typeheadDisplay;
+		return this.typeheadDisplay;
 	}
 
 	public void setTypeheadDisplay(String typeheadDisplay) {

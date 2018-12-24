@@ -29,7 +29,7 @@ public class CompanyDto implements Serializable {
 	private String typeheadDisplay;
 
 	public String getTypeheadDisplay() {
-		return typeheadDisplay;
+		return this.typeheadDisplay;
 	}
 
 	public void setTypeheadDisplay(String typeheadDisplay) {
@@ -37,7 +37,7 @@ public class CompanyDto implements Serializable {
 	}
 
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Long id) {
@@ -61,7 +61,7 @@ public class CompanyDto implements Serializable {
 	}
 
 	public Long getCompanyGroupId() {
-		return companyGroupId;
+		return this.companyGroupId;
 	}
 
 	public void setCompanyGroupId(Long companyGroupId) {
@@ -69,7 +69,7 @@ public class CompanyDto implements Serializable {
 	}
 
 	public String getCompanyGroupName() {
-		return companyGroupName;
+		return this.companyGroupName;
 	}
 
 	public void setCompanyGroupName(String companyGroupName) {

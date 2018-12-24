@@ -21,7 +21,7 @@ public class PurchaseReturnsDto implements Serializable {
 	private Double netRate;
 
 	public Double getNetRate() {
-		return netRate;
+		return this.netRate;
 	}
 
 	public void setNetRate(Double netRate) {
@@ -45,7 +45,7 @@ public class PurchaseReturnsDto implements Serializable {
 	}
 
 	public Long getPurReturnNumber() {
-		return purReturnNumber;
+		return this.purReturnNumber;
 	}
 
 	public void setPurReturnNumber(Long purReturnNumber) {
@@ -53,7 +53,7 @@ public class PurchaseReturnsDto implements Serializable {
 	}
 
 	public LocalDate getDate() {
-		return date;
+		return this.date;
 	}
 
 	public void setDate(LocalDate date) {
@@ -61,7 +61,7 @@ public class PurchaseReturnsDto implements Serializable {
 	}
 
 	public Long getAccountInformationId() {
-		return accountInformationId;
+		return this.accountInformationId;
 	}
 
 	public void setAccountInformationId(Long accountInformationId) {
@@ -69,7 +69,7 @@ public class PurchaseReturnsDto implements Serializable {
 	}
 
 	public String getSupplier() {
-		return supplier;
+		return this.supplier;
 	}
 
 	public void setSupplier(String supplier) {
@@ -77,7 +77,7 @@ public class PurchaseReturnsDto implements Serializable {
 	}
 
 	public String getRemarks() {
-		return remarks;
+		return this.remarks;
 	}
 
 	public void setRemarks(String remarks) {
@@ -85,7 +85,7 @@ public class PurchaseReturnsDto implements Serializable {
 	}
 
 	public Long getProductId() {
-		return productId;
+		return this.productId;
 	}
 
 	public void setProductId(Long productId) {
@@ -93,7 +93,7 @@ public class PurchaseReturnsDto implements Serializable {
 	}
 
 	public String getProductName() {
-		return productName;
+		return this.productName;
 	}
 
 	public void setProductName(String productName) {
@@ -101,7 +101,7 @@ public class PurchaseReturnsDto implements Serializable {
 	}
 
 	public String getProductcode() {
-		return productcode;
+		return this.productcode;
 	}
 
 	public void setProductcode(String productcode) {
@@ -109,7 +109,7 @@ public class PurchaseReturnsDto implements Serializable {
 	}
 
 	public String getBatch() {
-		return batch;
+		return this.batch;
 	}
 
 	public void setBatch(String batch) {
@@ -125,7 +125,7 @@ public class PurchaseReturnsDto implements Serializable {
 	}
 
 	public Integer getFree() {
-		return free;
+		return this.free;
 	}
 
 	public void setFree(Integer free) {
@@ -133,7 +133,7 @@ public class PurchaseReturnsDto implements Serializable {
 	}
 
 	public Double getpRate() {
-		return pRate;
+		return this.pRate;
 	}
 
 	public void setpRate(Double pRate) {
@@ -141,7 +141,7 @@ public class PurchaseReturnsDto implements Serializable {
 	}
 
 	public Long getAmmount() {
-		return ammount;
+		return this.ammount;
 	}
 
 	public void setAmmount(Long ammount) {
@@ -149,7 +149,7 @@ public class PurchaseReturnsDto implements Serializable {
 	}
 
 	public String getTypeheadDisplay() {
-		return typeheadDisplay;
+		return this.typeheadDisplay;
 	}
 
 	public void setTypeheadDisplay(String typeheadDisplay) {
@@ -157,7 +157,7 @@ public class PurchaseReturnsDto implements Serializable {
 	}
 
 	public boolean isDeleteFlag() {
-		return deleteFlag;
+		return this.deleteFlag;
 	}
 
 	public void setDeleteFlag(boolean deleteFlag) {

@@ -123,7 +123,7 @@ public class Product implements Serializable {
 	}
 
 	public Integer getPacking() {
-		return packing;
+		return this.packing;
 	}
 
 	public void setPacking(Integer packing) {

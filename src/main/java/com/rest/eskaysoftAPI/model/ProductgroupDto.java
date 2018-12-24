@@ -13,7 +13,7 @@ public class ProductgroupDto implements Serializable {
 	private boolean deleteFlag;
 
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Long id) {
@@ -29,7 +29,7 @@ public class ProductgroupDto implements Serializable {
 	}
 
 	public boolean isDeleteFlag() {
-		return deleteFlag;
+		return this.deleteFlag;
 	}
 
 	public void setDeleteFlag(boolean deleteFlag) {

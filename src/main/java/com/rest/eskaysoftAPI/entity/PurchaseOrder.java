@@ -23,8 +23,8 @@ public class PurchaseOrder implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "serialNumber", nullable = false)
-	private Long serialNumber;
+	@Column(name = "serialNumber")
+	private Integer serialNumber;
 
 	@Column(name = "orderNumber", nullable = false, length = 40)
 	private Integer orderNumber;
@@ -36,7 +36,7 @@ public class PurchaseOrder implements Serializable {
 	@JoinColumn(name = "accountInformationId", nullable = false)
 	private AccountInformation accountInformationId;
 
-	@Column(name = "remarks", nullable = false, length = 40)
+	@Column(name = "remarks", length = 40)
 	private String remarks;
 
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
@@ -146,12 +146,13 @@ public class PurchaseOrder implements Serializable {
 		this.value = value;
 	}
 
-	public Long getSerialNumber() {
+	public Integer getSerialNumber() {
 		return serialNumber;
 	}
 
-	public void setSerialNumber(Long serialNumber) {
+	public void setSerialNumber(Integer serialNumber) {
 		this.serialNumber = serialNumber;
 	}
 
+	
 }

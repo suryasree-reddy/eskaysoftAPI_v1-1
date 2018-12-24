@@ -29,7 +29,7 @@ public class InternalStockAdjustments implements Serializable {
 	@Column(name = "date", nullable = false)
 	private LocalDate date;
 
-	@Column(name = "remarks", nullable = false, length = 40)
+	@Column(name = "remarks", length = 40)
 	private String remarks;
 
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)

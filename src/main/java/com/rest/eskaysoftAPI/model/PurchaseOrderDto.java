@@ -30,7 +30,7 @@ public class PurchaseOrderDto implements Serializable {
 	private boolean deleteFlag;
 
 	public Long getId() {
-		return this.id;
+		return id;
 	}
 
 	public void setId(Long id) {
@@ -38,7 +38,7 @@ public class PurchaseOrderDto implements Serializable {
 	}
 
 	public Integer getOrderNumber() {
-		return this.orderNumber;
+		return orderNumber;
 	}
 
 	public void setOrderNumber(Integer orderNumber) {
@@ -46,7 +46,7 @@ public class PurchaseOrderDto implements Serializable {
 	}
 
 	public LocalDate getDate() {
-		return this.date;
+		return date;
 	}
 
 	public void setDate(LocalDate date) {
@@ -54,7 +54,7 @@ public class PurchaseOrderDto implements Serializable {
 	}
 
 	public Long getAccountInformationId() {
-		return this.accountInformationId;
+		return accountInformationId;
 	}
 
 	public void setAccountInformationId(Long accountInformationId) {
@@ -62,7 +62,7 @@ public class PurchaseOrderDto implements Serializable {
 	}
 
 	public String getSupplier() {
-		return this.supplier;
+		return supplier;
 	}
 
 	public void setSupplier(String supplier) {
@@ -70,7 +70,7 @@ public class PurchaseOrderDto implements Serializable {
 	}
 
 	public String getRemarks() {
-		return this.remarks;
+		return remarks;
 	}
 
 	public void setRemarks(String remarks) {
@@ -78,7 +78,7 @@ public class PurchaseOrderDto implements Serializable {
 	}
 
 	public Long getProductId() {
-		return this.productId;
+		return productId;
 	}
 
 	public void setProductId(Long productId) {
@@ -86,7 +86,7 @@ public class PurchaseOrderDto implements Serializable {
 	}
 
 	public String getProductName() {
-		return this.productName;
+		return productName;
 	}
 
 	public void setProductName(String productName) {
@@ -94,7 +94,7 @@ public class PurchaseOrderDto implements Serializable {
 	}
 
 	public String getProductcode() {
-		return this.productcode;
+		return productcode;
 	}
 
 	public void setProductcode(String productcode) {
@@ -102,7 +102,7 @@ public class PurchaseOrderDto implements Serializable {
 	}
 
 	public Integer getPack() {
-		return this.pack;
+		return pack;
 	}
 
 	public void setPack(Integer pack) {
@@ -110,7 +110,7 @@ public class PurchaseOrderDto implements Serializable {
 	}
 
 	public Integer getQty() {
-		return this.qty;
+		return qty;
 	}
 
 	public void setQty(Integer qty) {
@@ -118,7 +118,7 @@ public class PurchaseOrderDto implements Serializable {
 	}
 
 	public Integer getFree() {
-		return this.free;
+		return free;
 	}
 
 	public void setFree(Integer free) {
@@ -126,7 +126,7 @@ public class PurchaseOrderDto implements Serializable {
 	}
 
 	public Integer getRate() {
-		return this.rate;
+		return rate;
 	}
 
 	public void setRate(Integer rate) {
@@ -134,7 +134,7 @@ public class PurchaseOrderDto implements Serializable {
 	}
 
 	public Integer getbQty() {
-		return this.bQty;
+		return bQty;
 	}
 
 	public void setbQty(Integer bQty) {
@@ -142,7 +142,7 @@ public class PurchaseOrderDto implements Serializable {
 	}
 
 	public Integer getbFree() {
-		return this.bFree;
+		return bFree;
 	}
 
 	public void setbFree(Integer bFree) {
@@ -150,7 +150,7 @@ public class PurchaseOrderDto implements Serializable {
 	}
 
 	public Integer getbRate() {
-		return this.bRate;
+		return bRate;
 	}
 
 	public void setbRate(Integer bRate) {
@@ -158,7 +158,7 @@ public class PurchaseOrderDto implements Serializable {
 	}
 
 	public Double getValue() {
-		return this.value;
+		return value;
 	}
 
 	public void setValue(Double value) {
@@ -166,7 +166,7 @@ public class PurchaseOrderDto implements Serializable {
 	}
 
 	public String getTypeheadDisplay() {
-		return this.typeheadDisplay;
+		return typeheadDisplay;
 	}
 
 	public void setTypeheadDisplay(String typeheadDisplay) {
@@ -174,7 +174,7 @@ public class PurchaseOrderDto implements Serializable {
 	}
 
 	public boolean isDeleteFlag() {
-		return this.deleteFlag;
+		return deleteFlag;
 	}
 
 	public void setDeleteFlag(boolean deleteFlag) {
@@ -182,7 +182,7 @@ public class PurchaseOrderDto implements Serializable {
 	}
 
 	public Double getNetRate() {
-		return this.netRate;
+		return netRate;
 	}
 
 	public void setNetRate(Double netRate) {
@@ -190,7 +190,7 @@ public class PurchaseOrderDto implements Serializable {
 	}
 
 	public Integer getSerialNumber() {
-		return this.serialNumber;
+		return serialNumber;
 	}
 
 	public void setSerialNumber(Integer serialNumber) {
@@ -198,7 +198,7 @@ public class PurchaseOrderDto implements Serializable {
 	}
 
 	public String getTown() {
-		return this.town;
+		return town;
 	}
 
 	public void setTown(String town) {

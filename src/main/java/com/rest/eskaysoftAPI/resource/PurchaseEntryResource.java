@@ -50,7 +50,7 @@ public class PurchaseEntryResource {
 	@Produces("application/json")
 	public PurchaseEntryDto create(@RequestBody PurchaseEntryDto purchaseEntry) {
 		if (logger.isDebugEnabled()) {
-			logger.debug("Requsted purchaseEntry = " + purchaseEntry.getManfacturerName());
+			logger.debug("Requsted purchaseEntry = " + purchaseEntry.getMfgName());
 		}
 		return purchaseEntryService.create(purchaseEntry);
 	}

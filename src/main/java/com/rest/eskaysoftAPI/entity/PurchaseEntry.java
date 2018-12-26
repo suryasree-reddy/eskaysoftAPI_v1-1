@@ -71,6 +71,10 @@ public class PurchaseEntry implements Serializable {
 	@JoinColumn(name = "productId", nullable = false)
 	private Product productId;
 
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "manfacturerId", nullable = false)
+	private Manfacturer manfacturerId;
+
 	@Column(name = "batch", nullable = false)
 	private String batch;
 
@@ -108,10 +112,6 @@ public class PurchaseEntry implements Serializable {
 	@Column(name = "mrp", nullable = false)
 	private Integer mrp;
 
-	@ManyToOne(fetch = FetchType.EAGER, optional = false)
-	@JoinColumn(name = "manfacturerId", nullable = false)
-	private Manfacturer manfacturerId;
-
 	@Column(name = "grossValue", nullable = false)
 	private Integer grossValue;
 
@@ -124,7 +124,6 @@ public class PurchaseEntry implements Serializable {
 	@Column(name = "netValue", nullable = false)
 	private Integer netValue;
 
-	
 	@Column(name = "debitAdjustmentValue", nullable = false)
 	private Integer debitAdjustmentValue;
 
@@ -134,7 +133,7 @@ public class PurchaseEntry implements Serializable {
 	@Column(name = "invoiceValue", nullable = false)
 	private Integer invoiceValue;
 
-	@Column(name = "remarks")
+	@Column(name = "remarks", nullable = false)
 	private String remarks;
 
 	@Column(name = "gstPercent", nullable = false)
@@ -162,7 +161,7 @@ public class PurchaseEntry implements Serializable {
 	private Integer inSgstAmt;
 
 	public Long getId() {
-		return this.id;
+		return id;
 	}
 
 	public void setId(Long id) {
@@ -170,7 +169,7 @@ public class PurchaseEntry implements Serializable {
 	}
 
 	public Integer getPurchaseNumber() {
-		return this.purchaseNumber;
+		return purchaseNumber;
 	}
 
 	public void setPurchaseNumber(Integer purchaseNumber) {
@@ -178,7 +177,7 @@ public class PurchaseEntry implements Serializable {
 	}
 
 	public LocalDate getPurDate() {
-		return this.purDate;
+		return purDate;
 	}
 
 	public void setPurDate(LocalDate purDate) {
@@ -186,7 +185,7 @@ public class PurchaseEntry implements Serializable {
 	}
 
 	public String getInvoiceNumber() {
-		return this.invoiceNumber;
+		return invoiceNumber;
 	}
 
 	public void setInvoiceNumber(String invoiceNumber) {
@@ -194,7 +193,7 @@ public class PurchaseEntry implements Serializable {
 	}
 
 	public AccountInformation getAccountInformationId() {
-		return this.accountInformationId;
+		return accountInformationId;
 	}
 
 	public void setAccountInformationId(AccountInformation accountInformationId) {
@@ -202,7 +201,7 @@ public class PurchaseEntry implements Serializable {
 	}
 
 	public String getMode() {
-		return this.mode;
+		return mode;
 	}
 
 	public void setMode(String mode) {
@@ -210,7 +209,7 @@ public class PurchaseEntry implements Serializable {
 	}
 
 	public String getWayBill() {
-		return this.wayBill;
+		return wayBill;
 	}
 
 	public void setWayBill(String wayBill) {
@@ -218,7 +217,7 @@ public class PurchaseEntry implements Serializable {
 	}
 
 	public String getLrNumber() {
-		return this.lrNumber;
+		return lrNumber;
 	}
 
 	public void setLrNumber(String lrNumber) {
@@ -226,7 +225,7 @@ public class PurchaseEntry implements Serializable {
 	}
 
 	public LocalDate getLrDate() {
-		return this.lrDate;
+		return lrDate;
 	}
 
 	public void setLrDate(LocalDate lrDate) {
@@ -234,7 +233,7 @@ public class PurchaseEntry implements Serializable {
 	}
 
 	public String getTransport() {
-		return this.transport;
+		return transport;
 	}
 
 	public void setTransport(String transport) {
@@ -242,7 +241,7 @@ public class PurchaseEntry implements Serializable {
 	}
 
 	public String getDelvFrom() {
-		return this.delvFrom;
+		return delvFrom;
 	}
 
 	public void setDelvFrom(String delvFrom) {
@@ -250,7 +249,7 @@ public class PurchaseEntry implements Serializable {
 	}
 
 	public Integer getNumberOfCases() {
-		return this.numberOfCases;
+		return numberOfCases;
 	}
 
 	public void setNumberOfCases(Integer numberOfCases) {
@@ -258,7 +257,7 @@ public class PurchaseEntry implements Serializable {
 	}
 
 	public Product getProductId() {
-		return this.productId;
+		return productId;
 	}
 
 	public void setProductId(Product productId) {
@@ -266,7 +265,7 @@ public class PurchaseEntry implements Serializable {
 	}
 
 	public String getBatch() {
-		return this.batch;
+		return batch;
 	}
 
 	public void setBatch(String batch) {
@@ -274,7 +273,7 @@ public class PurchaseEntry implements Serializable {
 	}
 
 	public LocalDate getExpiry() {
-		return this.expiry;
+		return expiry;
 	}
 
 	public void setExpiry(LocalDate expiry) {
@@ -282,7 +281,7 @@ public class PurchaseEntry implements Serializable {
 	}
 
 	public Integer getQty() {
-		return this.qty;
+		return qty;
 	}
 
 	public void setQty(Integer qty) {
@@ -290,7 +289,7 @@ public class PurchaseEntry implements Serializable {
 	}
 
 	public Integer getFree() {
-		return this.free;
+		return free;
 	}
 
 	public void setFree(Integer free) {
@@ -298,7 +297,7 @@ public class PurchaseEntry implements Serializable {
 	}
 
 	public Integer getPurRate() {
-		return this.purRate;
+		return purRate;
 	}
 
 	public void setPurRate(Integer purRate) {
@@ -306,7 +305,7 @@ public class PurchaseEntry implements Serializable {
 	}
 
 	public Integer getOthCharges() {
-		return this.othCharges;
+		return othCharges;
 	}
 
 	public void setOthCharges(Integer othCharges) {
@@ -314,7 +313,7 @@ public class PurchaseEntry implements Serializable {
 	}
 
 	public Integer getGrsValue() {
-		return this.grsValue;
+		return grsValue;
 	}
 
 	public void setGrsValue(Integer grsValue) {
@@ -322,7 +321,7 @@ public class PurchaseEntry implements Serializable {
 	}
 
 	public Integer getDiscount() {
-		return this.discount;
+		return discount;
 	}
 
 	public void setDiscount(Integer discount) {
@@ -330,7 +329,7 @@ public class PurchaseEntry implements Serializable {
 	}
 
 	public Integer getPtd() {
-		return this.ptd;
+		return ptd;
 	}
 
 	public void setPtd(Integer ptd) {
@@ -338,7 +337,7 @@ public class PurchaseEntry implements Serializable {
 	}
 
 	public Integer getSaleRate() {
-		return this.saleRate;
+		return saleRate;
 	}
 
 	public void setSaleRate(Integer saleRate) {
@@ -346,7 +345,7 @@ public class PurchaseEntry implements Serializable {
 	}
 
 	public Tax getTaxId() {
-		return this.taxId;
+		return taxId;
 	}
 
 	public void setTaxId(Tax taxId) {
@@ -354,23 +353,15 @@ public class PurchaseEntry implements Serializable {
 	}
 
 	public Integer getMrp() {
-		return this.mrp;
+		return mrp;
 	}
 
 	public void setMrp(Integer mrp) {
 		this.mrp = mrp;
 	}
 
-	public Manfacturer getManfacturerId() {
-		return this.manfacturerId;
-	}
-
-	public void setManfacturerId(Manfacturer manfacturerId) {
-		this.manfacturerId = manfacturerId;
-	}
-
 	public Integer getGrossValue() {
-		return this.grossValue;
+		return grossValue;
 	}
 
 	public void setGrossValue(Integer grossValue) {
@@ -386,7 +377,7 @@ public class PurchaseEntry implements Serializable {
 	}
 
 	public Integer getTaxValue() {
-		return this.taxValue;
+		return taxValue;
 	}
 
 	public void setTaxValue(Integer taxValue) {
@@ -394,7 +385,7 @@ public class PurchaseEntry implements Serializable {
 	}
 
 	public Integer getNetValue() {
-		return this.netValue;
+		return netValue;
 	}
 
 	public void setNetValue(Integer netValue) {
@@ -418,7 +409,7 @@ public class PurchaseEntry implements Serializable {
 	}
 
 	public Integer getInvoiceValue() {
-		return this.invoiceValue;
+		return invoiceValue;
 	}
 
 	public void setInvoiceValue(Integer invoiceValue) {
@@ -426,7 +417,7 @@ public class PurchaseEntry implements Serializable {
 	}
 
 	public String getRemarks() {
-		return this.remarks;
+		return remarks;
 	}
 
 	public void setRemarks(String remarks) {
@@ -434,7 +425,7 @@ public class PurchaseEntry implements Serializable {
 	}
 
 	public Integer getGstPercent() {
-		return this.gstPercent;
+		return gstPercent;
 	}
 
 	public void setGstPercent(Integer gstPercent) {
@@ -442,7 +433,7 @@ public class PurchaseEntry implements Serializable {
 	}
 
 	public Integer getTaxable() {
-		return this.taxable;
+		return taxable;
 	}
 
 	public void setTaxable(Integer taxable) {
@@ -450,7 +441,7 @@ public class PurchaseEntry implements Serializable {
 	}
 
 	public Integer getCgstAmt() {
-		return this.cgstAmt;
+		return cgstAmt;
 	}
 
 	public void setCgstAmt(Integer cgstAmt) {
@@ -458,7 +449,7 @@ public class PurchaseEntry implements Serializable {
 	}
 
 	public Integer getSgstAmt() {
-		return this.sgstAmt;
+		return sgstAmt;
 	}
 
 	public void setSgstAmt(Integer sgstAmt) {
@@ -466,7 +457,7 @@ public class PurchaseEntry implements Serializable {
 	}
 
 	public Integer getInGstPercent() {
-		return this.inGstPercent;
+		return inGstPercent;
 	}
 
 	public void setInGstPercent(Integer inGstPercent) {
@@ -474,7 +465,7 @@ public class PurchaseEntry implements Serializable {
 	}
 
 	public Integer getInTaxable() {
-		return this.inTaxable;
+		return inTaxable;
 	}
 
 	public void setInTaxable(Integer inTaxable) {
@@ -482,7 +473,7 @@ public class PurchaseEntry implements Serializable {
 	}
 
 	public Integer getInCgstAmt() {
-		return this.inCgstAmt;
+		return inCgstAmt;
 	}
 
 	public void setInCgstAmt(Integer inCgstAmt) {
@@ -495,6 +486,14 @@ public class PurchaseEntry implements Serializable {
 
 	public void setInSgstAmt(Integer inSgstAmt) {
 		this.inSgstAmt = inSgstAmt;
+	}
+
+	public Manfacturer getManfacturerId() {
+		return manfacturerId;
+	}
+
+	public void setManfacturerId(Manfacturer manfacturerId) {
+		this.manfacturerId = manfacturerId;
 	}
 
 }

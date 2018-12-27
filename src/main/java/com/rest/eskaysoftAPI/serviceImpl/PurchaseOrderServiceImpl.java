@@ -48,8 +48,9 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 			pomodel.setTown(pro.getAccountInformationId().getTown());
 			pomodel.setTypeheadDisplay(
 					pro.getProductId().getName() + EskaysoftConstants.SEPERATOR + pro.getProductId().getProductcode());
-			pomodel.setTypeheadDisplay(pro.getAccountInformationId().getAccountName() + EskaysoftConstants.SEPERATOR +
-					pro.getAccountInformationId().getTown());
+			pomodel.setTypeheadDisplay(pro.getAccountInformationId().getAccountName() + EskaysoftConstants.SEPERATOR
+					+ pro.getAccountInformationId().getTown() + EskaysoftConstants.SEPERATOR
+					+ pro.getAccountInformationId().getShortName());
 			polist.add(pomodel);
 		});
 		return polist;
@@ -72,6 +73,12 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 		pomodel.setbQty(pro.getProductId().getBoxQty());
 		pomodel.setNetRate(pro.getProductId().getNetRate());
 		pomodel.setTown(pro.getAccountInformationId().getTown());
+		pomodel.setTypeheadDisplay(pro.getAccountInformationId().getAccountName() + EskaysoftConstants.SEPERATOR
+				+ pro.getAccountInformationId().getTown() + EskaysoftConstants.SEPERATOR
+				+ pro.getAccountInformationId().getShortName());
+		pomodel.setTypeheadDisplay(
+				pro.getProductId().getName() + EskaysoftConstants.SEPERATOR + pro.getProductId().getProductcode());
+		
 		return pomodel;
 	}
 

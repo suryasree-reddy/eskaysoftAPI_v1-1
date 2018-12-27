@@ -56,7 +56,7 @@ public class InternalStockAdjustmentsServiceImpl implements InternalStockAdjustm
 
 	@Override
 	public InternalStockAdjustmentsDto save(InternalStockAdjustmentsDto internalStockAdjustmentsModel) {
-		Product pro = proRepo.findById(internalStockAdjustmentsModel.getId()).orElseThrow(() -> new NotFoundException(
+		Product pro = proRepo.findById(internalStockAdjustmentsModel.getProductId()).orElseThrow(() -> new NotFoundException(
 				String.format("InternalStockAdjustments %d not found", internalStockAdjustmentsModel.getId())));
 		InternalStockAdjustments in = new InternalStockAdjustments();
 		BeanUtils.copyProperties(internalStockAdjustmentsModel, in);

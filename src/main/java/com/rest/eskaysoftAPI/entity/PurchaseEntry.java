@@ -136,17 +136,29 @@ public class PurchaseEntry implements Serializable {
 	@Column(name = "remarks", nullable = false)
 	private String remarks;
 
-	@Column(name = "gstPercent", nullable = false)
-	private Integer gstPercent;
+	@Column(name = "gstp1", nullable = false)
+	private Integer gstp1;
 
-	@Column(name = "taxable", nullable = false)
-	private Integer taxable;
+	@Column(name = "gstp2", nullable = false)
+	private Integer gstp2;
 
-	@Column(name = "cgstAmt", nullable = false)
-	private Integer cgstAmt;
+	@Column(name = "taxable1", nullable = false)
+	private Integer taxable1;
 
-	@Column(name = "sgstAmt", nullable = false)
-	private Integer sgstAmt;
+	@Column(name = "taxable2", nullable = false)
+	private Integer taxable2;
+
+	@Column(name = "cgstAmt1", nullable = false)
+	private Integer cgstAmt1;
+
+	@Column(name = "cgstAmt2", nullable = false)
+	private Integer cgstAmt2;
+
+	@Column(name = "sgstAmt1", nullable = false)
+	private Integer sgstAmt1;
+
+	@Column(name = "sgstAmt2", nullable = false)
+	private Integer sgstAmt2;
 
 	@Column(name = "inGstPercent", nullable = false)
 	private Integer inGstPercent;
@@ -424,36 +436,68 @@ public class PurchaseEntry implements Serializable {
 		this.remarks = remarks;
 	}
 
-	public Integer getGstPercent() {
-		return gstPercent;
+	public Integer getGstp1() {
+		return gstp1;
 	}
 
-	public void setGstPercent(Integer gstPercent) {
-		this.gstPercent = gstPercent;
+	public void setGstp1(Integer gstp1) {
+		this.gstp1 = gstp1;
 	}
 
-	public Integer getTaxable() {
-		return taxable;
+	public Integer getGstp2() {
+		return gstp2;
 	}
 
-	public void setTaxable(Integer taxable) {
-		this.taxable = taxable;
+	public void setGstp2(Integer gstp2) {
+		this.gstp2 = gstp2;
 	}
 
-	public Integer getCgstAmt() {
-		return cgstAmt;
+	public Integer getTaxable1() {
+		return taxable1;
 	}
 
-	public void setCgstAmt(Integer cgstAmt) {
-		this.cgstAmt = cgstAmt;
+	public void setTaxable1(Integer taxable1) {
+		this.taxable1 = taxable1;
 	}
 
-	public Integer getSgstAmt() {
-		return sgstAmt;
+	public Integer getTaxable2() {
+		return taxable2;
 	}
 
-	public void setSgstAmt(Integer sgstAmt) {
-		this.sgstAmt = sgstAmt;
+	public void setTaxable2(Integer taxable2) {
+		this.taxable2 = taxable2;
+	}
+
+	public Integer getCgstAmt1() {
+		return cgstAmt1;
+	}
+
+	public void setCgstAmt1(Integer cgstAmt1) {
+		this.cgstAmt1 = cgstAmt1;
+	}
+
+	public Integer getCgstAmt2() {
+		return cgstAmt2;
+	}
+
+	public void setCgstAmt2(Integer cgstAmt2) {
+		this.cgstAmt2 = cgstAmt2;
+	}
+
+	public Integer getSgstAmt1() {
+		return sgstAmt1;
+	}
+
+	public void setSgstAmt1(Integer sgstAmt1) {
+		this.sgstAmt1 = sgstAmt1;
+	}
+
+	public Integer getSgstAmt2() {
+		return sgstAmt2;
+	}
+
+	public void setSgstAmt2(Integer sgstAmt2) {
+		this.sgstAmt2 = sgstAmt2;
 	}
 
 	public Integer getInGstPercent() {

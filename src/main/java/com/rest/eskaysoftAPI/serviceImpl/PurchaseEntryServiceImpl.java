@@ -35,7 +35,7 @@ public class PurchaseEntryServiceImpl implements PurchaseEntryService {
 	private ProductRepository prorepo;
 
 	@Autowired
-	private TaxRepository taxRepo;
+	private TaxRepository taxrepo;
 
 	@Autowired
 	private ManfacturerRepository manRepo;
@@ -50,7 +50,7 @@ public class PurchaseEntryServiceImpl implements PurchaseEntryService {
 			pomodel.setProductcode(pro.getProductId().getProductcode());
 			pomodel.setProductName(pro.getProductId().getName());
 			pomodel.setFree(pro.getProductId().getFree());
-			pomodel.setTaxId(pro.getTaxId().getTax());
+			pomodel.setTaxId(pro.getTaxId().getId());
 			pomodel.setTax(pro.getTaxId().getTax());
 			pomodel.setAccountInformationId(pro.getAccountInformationId().getId());
 			pomodel.setStateCode(pro.getAccountInformationId().getDistrictId().getStateId().getStateCode()); // pro.getAccountInformationId().getDistrictId().getStateId().getStateCode();
@@ -92,7 +92,7 @@ public class PurchaseEntryServiceImpl implements PurchaseEntryService {
 		pomodel.setGstIN(pro.getAccountInformationId().getGstIN());
 		pomodel.setStateCode(pro.getAccountInformationId().getDistrictId().getStateId().getStateCode());
 		pomodel.setHsnCode(pro.getAccountInformationId().getHsnCode());
-		pomodel.setTaxId(pro.getTaxId().getTax());
+		pomodel.setTaxId(pro.getTaxId().getId());
 		pomodel.setTax(pro.getTaxId().getTax());
 		pomodel.setTypeheadDisplay(
 				pro.getProductId().getName() + EskaysoftConstants.SEPERATOR + pro.getProductId().getProductcode());
@@ -110,17 +110,18 @@ public class PurchaseEntryServiceImpl implements PurchaseEntryService {
 						String.format("AccountInformation %d not found", purchaseEntry.getAccountInformationId())));
 		Product product = prorepo.findById(purchaseEntry.getProductId()).orElseThrow(
 				() -> new NotFoundException(String.format("product %d not found", purchaseEntry.getProductId())));
-		Tax tax = taxRepo.findById(purchaseEntry.getTaxId())
+		Tax tax = taxrepo.findById(purchaseEntry.getTaxId())
 				.orElseThrow(() -> new NotFoundException(String.format("Tax %d not found", purchaseEntry.getTaxId())));
 		Manfacturer man = manRepo.findById(purchaseEntry.getManfacturerId()).orElseThrow(() -> new NotFoundException(
 				String.format("Manfacturer %d not found", purchaseEntry.getManfacturerId())));
-		
+
 		PurchaseEntry po = new PurchaseEntry();
+		
+		BeanUtils.copyProperties(purchaseEntry, po);
 		po.setAccountInformationId(ai);
 		po.setProductId(product);
 		po.setTaxId(tax);
 		po.setManfacturerId(man);
-		BeanUtils.copyProperties(purchaseEntry, po);
 		po = purchrepo.save(po);
 		return purchaseEntry;
 	}
@@ -146,11 +147,13 @@ public class PurchaseEntryServiceImpl implements PurchaseEntryService {
 						String.format("AccountInformation %d not found", purchaseEntry.getAccountInformationId())));
 		Product product = prorepo.findById(purchaseEntry.getProductId()).orElseThrow(
 				() -> new NotFoundException(String.format("Product %d not found", purchaseEntry.getProductId())));
-		Tax tax = taxRepo.findById(purchaseEntry.getTaxId())
-				.orElseThrow(() -> new NotFoundException(String.format("Tax %d not found", purchaseEntry.getTaxId())));
+		
+		Tax tax = taxrepo.findById(purchaseEntry.getTaxId()).orElseThrow(
+				() -> new NotFoundException(String.format("tax %d not found", purchaseEntry.getTaxId())));
+
 		Manfacturer man = manRepo.findById(purchaseEntry.getManfacturerId()).orElseThrow(() -> new NotFoundException(
 				String.format("Manfacturer %d not found", purchaseEntry.getManfacturerId())));
-		
+
 		BeanUtils.copyProperties(purchaseEntry, po);
 		po.setAccountInformationId(ai);
 		po.setProductId(product);

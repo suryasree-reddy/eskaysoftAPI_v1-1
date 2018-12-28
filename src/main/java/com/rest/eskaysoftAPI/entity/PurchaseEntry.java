@@ -34,13 +34,7 @@ public class PurchaseEntry implements Serializable {
 	@Column(name = "invoiceDate", nullable = false)
 	private LocalDate invoiceDate;
 
-	public LocalDate getInvoiceDate() {
-		return invoiceDate;
-	}
-
-	public void setInvoiceDate(LocalDate invoiceDate) {
-		this.invoiceDate = invoiceDate;
-	}
+	
 
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "accountInformationId", nullable = false)
@@ -133,44 +127,35 @@ public class PurchaseEntry implements Serializable {
 	@Column(name = "invoiceValue", nullable = false)
 	private Integer invoiceValue;
 
-	@Column(name = "remarks", nullable = false)
+	@Column(name = "remarks")
 	private String remarks;
 
-	@Column(name = "gstp1", nullable = false)
-	private Integer gstp1;
+	@Column(name = "asPerSwgstp", nullable = false)
+	private Integer asPerSwgstp;
 
-	@Column(name = "gstp2", nullable = false)
-	private Integer gstp2;
+	@Column(name = "asPerInvgstp", nullable = false)
+	private Integer asPerInvgstp;
 
-	@Column(name = "taxable1", nullable = false)
-	private Integer taxable1;
+	@Column(name = "asPerSwtaxable", nullable = false)
+	private Integer asPerSwtaxable;
 
-	@Column(name = "taxable2", nullable = false)
-	private Integer taxable2;
+	@Column(name = "asPerInvtaxable", nullable = false)
+	private Integer asPerInvtaxable;
 
-	@Column(name = "cgstAmt1", nullable = false)
-	private Integer cgstAmt1;
+	@Column(name = "asPerSwcgstAmt", nullable = false)
+	private Integer asPerSwcgstAmt;
 
-	@Column(name = "cgstAmt2", nullable = false)
-	private Integer cgstAmt2;
+	
+	@Column(name = "asPerInvcgstAmt", nullable = false)
+	private Integer asPerInvcgstAmt;
 
-	@Column(name = "sgstAmt1", nullable = false)
-	private Integer sgstAmt1;
+	@Column(name = "asPerSwsgstAmt", nullable = false)
+	private Integer asPerSwsgstAmt;
 
-	@Column(name = "sgstAmt2", nullable = false)
-	private Integer sgstAmt2;
+	@Column(name = "asPerInvsgstAmt", nullable = false)
+	private Integer asPerInvsgstAmt;
 
-	@Column(name = "inGstPercent", nullable = false)
-	private Integer inGstPercent;
-
-	@Column(name = "inTaxable", nullable = false)
-	private Integer inTaxable;
-
-	@Column(name = "inCgstAmt", nullable = false)
-	private Integer inCgstAmt;
-
-	@Column(name = "inSgstAmt", nullable = false)
-	private Integer inSgstAmt;
+	
 
 	public Long getId() {
 		return id;
@@ -436,108 +421,82 @@ public class PurchaseEntry implements Serializable {
 		this.remarks = remarks;
 	}
 
-	public Integer getGstp1() {
-		return gstp1;
-	}
-
-	public void setGstp1(Integer gstp1) {
-		this.gstp1 = gstp1;
-	}
-
-	public Integer getGstp2() {
-		return gstp2;
-	}
-
-	public void setGstp2(Integer gstp2) {
-		this.gstp2 = gstp2;
-	}
-
-	public Integer getTaxable1() {
-		return taxable1;
-	}
-
-	public void setTaxable1(Integer taxable1) {
-		this.taxable1 = taxable1;
-	}
-
-	public Integer getTaxable2() {
-		return taxable2;
-	}
-
-	public void setTaxable2(Integer taxable2) {
-		this.taxable2 = taxable2;
-	}
-
-	public Integer getCgstAmt1() {
-		return cgstAmt1;
-	}
-
-	public void setCgstAmt1(Integer cgstAmt1) {
-		this.cgstAmt1 = cgstAmt1;
-	}
-
-	public Integer getCgstAmt2() {
-		return cgstAmt2;
-	}
-
-	public void setCgstAmt2(Integer cgstAmt2) {
-		this.cgstAmt2 = cgstAmt2;
-	}
-
-	public Integer getSgstAmt1() {
-		return sgstAmt1;
-	}
-
-	public void setSgstAmt1(Integer sgstAmt1) {
-		this.sgstAmt1 = sgstAmt1;
-	}
-
-	public Integer getSgstAmt2() {
-		return sgstAmt2;
-	}
-
-	public void setSgstAmt2(Integer sgstAmt2) {
-		this.sgstAmt2 = sgstAmt2;
-	}
-
-	public Integer getInGstPercent() {
-		return inGstPercent;
-	}
-
-	public void setInGstPercent(Integer inGstPercent) {
-		this.inGstPercent = inGstPercent;
-	}
-
-	public Integer getInTaxable() {
-		return inTaxable;
-	}
-
-	public void setInTaxable(Integer inTaxable) {
-		this.inTaxable = inTaxable;
-	}
-
-	public Integer getInCgstAmt() {
-		return inCgstAmt;
-	}
-
-	public void setInCgstAmt(Integer inCgstAmt) {
-		this.inCgstAmt = inCgstAmt;
-	}
-
-	public Integer getInSgstAmt() {
-		return inSgstAmt;
-	}
-
-	public void setInSgstAmt(Integer inSgstAmt) {
-		this.inSgstAmt = inSgstAmt;
-	}
-
 	public Manfacturer getManfacturerId() {
 		return manfacturerId;
 	}
 
 	public void setManfacturerId(Manfacturer manfacturerId) {
 		this.manfacturerId = manfacturerId;
+	}
+
+	public Integer getAsPerSwgstp() {
+		return asPerSwgstp;
+	}
+
+	public void setAsPerSwgstp(Integer asPerSwgstp) {
+		this.asPerSwgstp = asPerSwgstp;
+	}
+
+	public Integer getAsPerInvgstp() {
+		return asPerInvgstp;
+	}
+
+	public void setAsPerInvgstp(Integer asPerInvgstp) {
+		this.asPerInvgstp = asPerInvgstp;
+	}
+
+	public Integer getAsPerSwtaxable() {
+		return asPerSwtaxable;
+	}
+
+	public void setAsPerSwtaxable(Integer asPerSwtaxable) {
+		this.asPerSwtaxable = asPerSwtaxable;
+	}
+
+	public Integer getAsPerInvtaxable() {
+		return asPerInvtaxable;
+	}
+
+	public void setAsPerInvtaxable(Integer asPerInvtaxable) {
+		this.asPerInvtaxable = asPerInvtaxable;
+	}
+
+	public Integer getAsPerSwcgstAmt() {
+		return asPerSwcgstAmt;
+	}
+
+	public void setAsPerSwcgstAmt(Integer asPerSwcgstAmt) {
+		this.asPerSwcgstAmt = asPerSwcgstAmt;
+	}
+
+	public Integer getAsPerInvcgstAmt() {
+		return asPerInvcgstAmt;
+	}
+
+	public void setAsPerInvcgstAmt(Integer asPerInvcgstAmt) {
+		this.asPerInvcgstAmt = asPerInvcgstAmt;
+	}
+	public LocalDate getInvoiceDate() {
+		return invoiceDate;
+	}
+
+	public void setInvoiceDate(LocalDate invoiceDate) {
+		this.invoiceDate = invoiceDate;
+	}
+	public Integer getAsPerSwsgstAmt() {
+		return asPerSwsgstAmt;
+	}
+
+	public void setAsPerSwsgstAmt(Integer asPerSwsgstAmt) {
+		this.asPerSwsgstAmt = asPerSwsgstAmt;
+	}
+
+	public Integer getAsPerInvsgstAmt() {
+		return asPerInvsgstAmt;
+	}
+
+	public void setAsPerInvsgstAmt(Integer asPerInvsgstAmt) {
+		this.asPerInvsgstAmt = asPerInvsgstAmt;
 	}
 
 }

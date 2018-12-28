@@ -84,30 +84,23 @@ public class PurchaseEntryDto implements Serializable {
 
 	private String remarks;
 
-	private Integer gstp1;
+	private Integer asPerSwgstp;
 
-	private Integer gstp2;
+	private Integer asPerInvgstp;
 
-	private Integer taxable1;
+	private Integer asPerSwtaxable;
 
-	private Integer taxable2;
+	private Integer asPerInvtaxable;
 
-	private Integer cgstAmt1;
+	private Integer asPerSwcgstAmt;
 
-	private Integer cgstAmt2;
+	private Integer asPerInvcgstAmt;
 
-	private Integer sgstAmt1;
+	private Integer asPerSwsgstAmt;
 
-	private Integer sgstAmt2;
+	private Integer asPerInvsgstAmt;
 
-	private Integer inGstPercent;
-
-	private Integer inTaxable;
-
-	private Integer inCgstAmt;
-
-	private Integer inSgstAmt;
-
+	
 	private String typeheadDisplay;
 
 	public Long getId() {
@@ -121,7 +114,6 @@ public class PurchaseEntryDto implements Serializable {
 	public Long getStateCode() {
 		return stateCode;
 	}
-
 	public void setStateCode(Long stateCode) {
 		this.stateCode = stateCode;
 	}
@@ -342,22 +334,7 @@ public class PurchaseEntryDto implements Serializable {
 		this.saleRate = saleRate;
 	}
 
-	public Long getTaxId() {
-		return taxId;
-	}
-
-	public void setTaxId(Long taxId) {
-		this.taxId = taxId;
-	}
-
-	public Long getTax() {
-		return tax;
-	}
-
-	public void setTax(Long tax) {
-		this.tax = tax;
-	}
-
+	
 	public Long getHsnCode() {
 		return hsnCode;
 	}
@@ -462,101 +439,71 @@ public class PurchaseEntryDto implements Serializable {
 		this.remarks = remarks;
 	}
 
-	public Integer getGstp1() {
-		return gstp1;
+	public Integer getAsPerSwgstp() {
+		return asPerSwgstp;
 	}
 
-	public void setGstp1(Integer gstp1) {
-		this.gstp1 = gstp1;
+	public void setAsPerSwgstp(Integer asPerSwgstp) {
+		this.asPerSwgstp = asPerSwgstp;
 	}
 
-	public Integer getGstp2() {
-		return gstp2;
+	public Integer getAsPerInvgstp() {
+		return asPerInvgstp;
 	}
 
-	public void setGstp2(Integer gstp2) {
-		this.gstp2 = gstp2;
+	public void setAsPerInvgstp(Integer asPerInvgstp) {
+		this.asPerInvgstp = asPerInvgstp;
 	}
 
-	public Integer getTaxable1() {
-		return taxable1;
+	public Integer getAsPerSwtaxable() {
+		return asPerSwtaxable;
 	}
 
-	public void setTaxable1(Integer taxable1) {
-		this.taxable1 = taxable1;
+	public void setAsPerSwtaxable(Integer asPerSwtaxable) {
+		this.asPerSwtaxable = asPerSwtaxable;
 	}
 
-	public Integer getTaxable2() {
-		return taxable2;
+	public Integer getAsPerInvtaxable() {
+		return asPerInvtaxable;
 	}
 
-	public void setTaxable2(Integer taxable2) {
-		this.taxable2 = taxable2;
+	public void setAsPerInvtaxable(Integer asPerInvtaxable) {
+		this.asPerInvtaxable = asPerInvtaxable;
 	}
 
-	public Integer getCgstAmt1() {
-		return cgstAmt1;
+	public Integer getAsPerSwcgstAmt() {
+		return asPerSwcgstAmt;
 	}
 
-	public void setCgstAmt1(Integer cgstAmt1) {
-		this.cgstAmt1 = cgstAmt1;
+	public void setAsPerSwcgstAmt(Integer asPerSwcgstAmt) {
+		this.asPerSwcgstAmt = asPerSwcgstAmt;
 	}
 
-	public Integer getCgstAmt2() {
-		return cgstAmt2;
+	public Integer getAsPerInvcgstAmt() {
+		return asPerInvcgstAmt;
 	}
 
-	public void setCgstAmt2(Integer cgstAmt2) {
-		this.cgstAmt2 = cgstAmt2;
+	public void setAsPerInvcgstAmt(Integer asPerInvcgstAmt) {
+		this.asPerInvcgstAmt = asPerInvcgstAmt;
 	}
 
-	public Integer getSgstAmt1() {
-		return sgstAmt1;
+	public Integer getAsPerSwsgstAmt() {
+		return asPerSwsgstAmt;
 	}
 
-	public void setSgstAmt1(Integer sgstAmt1) {
-		this.sgstAmt1 = sgstAmt1;
+	public void setAsPerSwsgstAmt(Integer asPerSwsgstAmt) {
+		this.asPerSwsgstAmt = asPerSwsgstAmt;
 	}
 
-	public Integer getSgstAmt2() {
-		return sgstAmt2;
+	public Integer getAsPerInvsgstAmt() {
+		return asPerInvsgstAmt;
 	}
 
-	public void setSgstAmt2(Integer sgstAmt2) {
-		this.sgstAmt2 = sgstAmt2;
+	public void setAsPerInvsgstAmt(Integer asPerInvsgstAmt) {
+		this.asPerInvsgstAmt = asPerInvsgstAmt;
 	}
 
-	public Integer getInGstPercent() {
-		return inGstPercent;
-	}
-
-	public void setInGstPercent(Integer inGstPercent) {
-		this.inGstPercent = inGstPercent;
-	}
-
-	public Integer getInTaxable() {
-		return inTaxable;
-	}
-
-	public void setInTaxable(Integer inTaxable) {
-		this.inTaxable = inTaxable;
-	}
-
-	public Integer getInCgstAmt() {
-		return inCgstAmt;
-	}
-
-	public void setInCgstAmt(Integer inCgstAmt) {
-		this.inCgstAmt = inCgstAmt;
-	}
-
-	public Integer getInSgstAmt() {
-		return inSgstAmt;
-	}
-
-	public void setInSgstAmt(Integer inSgstAmt) {
-		this.inSgstAmt = inSgstAmt;
-	}
+	
 
 	public String getTypeheadDisplay() {
 		return typeheadDisplay;
@@ -572,6 +519,22 @@ public class PurchaseEntryDto implements Serializable {
 
 	public void setManfacturerId(Long manfacturerId) {
 		this.manfacturerId = manfacturerId;
+	}
+
+	public Long getTaxId() {
+		return taxId;
+	}
+
+	public void setTaxId(Long taxId) {
+		this.taxId = taxId;
+	}
+
+	public Long getTax() {
+		return tax;
+	}
+
+	public void setTax(Long tax) {
+		this.tax = tax;
 	}
 
 }

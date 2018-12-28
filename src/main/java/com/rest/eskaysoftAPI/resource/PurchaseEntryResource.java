@@ -23,7 +23,7 @@ import com.rest.eskaysoftAPI.service.PurchaseEntryService;
 @Resource(name = "purchaseentry")
 @Path("/purchaseentry")
 public class PurchaseEntryResource {
-	private static final Logger logger = LoggerFactory.getLogger(SubScheduleResource.class);
+	private static final Logger logger = LoggerFactory.getLogger(PurchaseEntryResource.class);
 
 	@Autowired
 	PurchaseEntryService purchaseEntryService;

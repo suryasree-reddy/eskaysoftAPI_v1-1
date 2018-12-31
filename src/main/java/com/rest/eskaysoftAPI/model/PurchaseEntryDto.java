@@ -84,6 +84,10 @@ public class PurchaseEntryDto implements Serializable {
 
 	private String remarks;
 
+	private Integer asPerSwIgst;
+
+	private Integer asPerInvIgst;
+
 	private Integer asPerSwgstp;
 
 	private Integer asPerInvgstp;
@@ -100,8 +104,23 @@ public class PurchaseEntryDto implements Serializable {
 
 	private Integer asPerInvsgstAmt;
 
-	
 	private String typeheadDisplay;
+
+	public Integer getAsPerSwIgst() {
+		return asPerSwIgst;
+	}
+
+	public void setAsPerSwIgst(Integer asPerSwIgst) {
+		this.asPerSwIgst = asPerSwIgst;
+	}
+
+	public Integer getAsPerInvIgst() {
+		return asPerInvIgst;
+	}
+
+	public void setAsPerInvIgst(Integer asPerInvIgst) {
+		this.asPerInvIgst = asPerInvIgst;
+	}
 
 	public Long getId() {
 		return id;
@@ -114,6 +133,7 @@ public class PurchaseEntryDto implements Serializable {
 	public Long getStateCode() {
 		return stateCode;
 	}
+
 	public void setStateCode(Long stateCode) {
 		this.stateCode = stateCode;
 	}
@@ -334,7 +354,6 @@ public class PurchaseEntryDto implements Serializable {
 		this.saleRate = saleRate;
 	}
 
-	
 	public Long getHsnCode() {
 		return hsnCode;
 	}
@@ -502,8 +521,6 @@ public class PurchaseEntryDto implements Serializable {
 	public void setAsPerInvsgstAmt(Integer asPerInvsgstAmt) {
 		this.asPerInvsgstAmt = asPerInvsgstAmt;
 	}
-
-	
 
 	public String getTypeheadDisplay() {
 		return typeheadDisplay;

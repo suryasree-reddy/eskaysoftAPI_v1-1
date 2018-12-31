@@ -34,8 +34,6 @@ public class PurchaseEntry implements Serializable {
 	@Column(name = "invoiceDate", nullable = false)
 	private LocalDate invoiceDate;
 
-	
-
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "accountInformationId", nullable = false)
 	private AccountInformation accountInformationId;
@@ -130,6 +128,12 @@ public class PurchaseEntry implements Serializable {
 	@Column(name = "remarks")
 	private String remarks;
 
+	@Column(name = "asPerSwIgst", nullable = false)
+	private Integer asPerSwIgst;
+
+	@Column(name = "asPerInvIgst", nullable = false)
+	private Integer asPerInvIgst;
+
 	@Column(name = "asPerSwgstp", nullable = false)
 	private Integer asPerSwgstp;
 
@@ -145,7 +149,6 @@ public class PurchaseEntry implements Serializable {
 	@Column(name = "asPerSwcgstAmt", nullable = false)
 	private Integer asPerSwcgstAmt;
 
-	
 	@Column(name = "asPerInvcgstAmt", nullable = false)
 	private Integer asPerInvcgstAmt;
 
@@ -155,7 +158,21 @@ public class PurchaseEntry implements Serializable {
 	@Column(name = "asPerInvsgstAmt", nullable = false)
 	private Integer asPerInvsgstAmt;
 
-	
+	public Integer getAsPerInvIgst() {
+		return asPerInvIgst;
+	}
+
+	public void setAsPerInvIgst(Integer asPerInvIgst) {
+		this.asPerInvIgst = asPerInvIgst;
+	}
+
+	public Integer getAsPerSwIgst() {
+		return asPerSwIgst;
+	}
+
+	public void setAsPerSwIgst(Integer asPerSwIgst) {
+		this.asPerSwIgst = asPerSwIgst;
+	}
 
 	public Long getId() {
 		return id;
@@ -476,6 +493,7 @@ public class PurchaseEntry implements Serializable {
 	public void setAsPerInvcgstAmt(Integer asPerInvcgstAmt) {
 		this.asPerInvcgstAmt = asPerInvcgstAmt;
 	}
+
 	public LocalDate getInvoiceDate() {
 		return invoiceDate;
 	}
@@ -483,6 +501,7 @@ public class PurchaseEntry implements Serializable {
 	public void setInvoiceDate(LocalDate invoiceDate) {
 		this.invoiceDate = invoiceDate;
 	}
+
 	public Integer getAsPerSwsgstAmt() {
 		return asPerSwsgstAmt;
 	}

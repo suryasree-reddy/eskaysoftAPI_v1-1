@@ -37,6 +37,10 @@ public class PurchaseEntry implements Serializable {
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "accountInformationId", nullable = false)
 	private AccountInformation accountInformationId;
+	
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "userId", nullable = false)
+	private User userId;
 
 	@Column(name = "mode", nullable = false)
 	private String mode;
@@ -128,34 +132,34 @@ public class PurchaseEntry implements Serializable {
 	@Column(name = "remarks")
 	private String remarks;
 
-	@Column(name = "asPerSwIgst", nullable = false)
+	@Column(name = "asPerSwIgst")
 	private Integer asPerSwIgst;
 
-	@Column(name = "asPerInvIgst", nullable = false)
+	@Column(name = "asPerInvIgst")
 	private Integer asPerInvIgst;
 
-	@Column(name = "asPerSwgstp", nullable = false)
+	@Column(name = "asPerSwgstp")
 	private Integer asPerSwgstp;
 
-	@Column(name = "asPerInvgstp", nullable = false)
+	@Column(name = "asPerInvgstp")
 	private Integer asPerInvgstp;
 
-	@Column(name = "asPerSwtaxable", nullable = false)
+	@Column(name = "asPerSwtaxable")
 	private Integer asPerSwtaxable;
 
-	@Column(name = "asPerInvtaxable", nullable = false)
+	@Column(name = "asPerInvtaxable")
 	private Integer asPerInvtaxable;
 
-	@Column(name = "asPerSwcgstAmt", nullable = false)
+	@Column(name = "asPerSwcgstAmt")
 	private Integer asPerSwcgstAmt;
 
-	@Column(name = "asPerInvcgstAmt", nullable = false)
+	@Column(name = "asPerInvcgstAmt")
 	private Integer asPerInvcgstAmt;
 
-	@Column(name = "asPerSwsgstAmt", nullable = false)
+	@Column(name = "asPerSwsgstAmt")
 	private Integer asPerSwsgstAmt;
 
-	@Column(name = "asPerInvsgstAmt", nullable = false)
+	@Column(name = "asPerInvsgstAmt")
 	private Integer asPerInvsgstAmt;
 
 	public Integer getAsPerInvIgst() {
@@ -518,4 +522,13 @@ public class PurchaseEntry implements Serializable {
 		this.asPerInvsgstAmt = asPerInvsgstAmt;
 	}
 
+	public User getUserId() {
+		return userId;
+	}
+
+	public void setUserId(User userId) {
+		this.userId = userId;
+	}
+
+	
 }

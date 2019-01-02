@@ -37,10 +37,6 @@ public class PurchaseEntry implements Serializable {
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "accountInformationId", nullable = false)
 	private AccountInformation accountInformationId;
-	
-	@ManyToOne(fetch = FetchType.EAGER, optional = false)
-	@JoinColumn(name = "userId", nullable = false)
-	private User userId;
 
 	@Column(name = "mode", nullable = false)
 	private String mode;
@@ -522,13 +518,4 @@ public class PurchaseEntry implements Serializable {
 		this.asPerInvsgstAmt = asPerInvsgstAmt;
 	}
 
-	public User getUserId() {
-		return userId;
-	}
-
-	public void setUserId(User userId) {
-		this.userId = userId;
-	}
-
-	
 }

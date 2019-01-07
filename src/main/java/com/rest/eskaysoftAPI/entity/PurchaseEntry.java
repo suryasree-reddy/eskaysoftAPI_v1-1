@@ -36,7 +36,15 @@ public class PurchaseEntry implements Serializable {
 
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "accountInformationId", nullable = false)
-	private AccountInformation accountInformationId;
+	private AccountInformation suplierId;
+
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "crAdjLedjerId", nullable = false)
+	private AccountInformation crAdjLedjerId;
+
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "drAdjLedjerId", nullable = false)
+	private AccountInformation drAdjLedjerId;
 
 	@Column(name = "mode", nullable = false)
 	private String mode;
@@ -158,6 +166,9 @@ public class PurchaseEntry implements Serializable {
 	@Column(name = "asPerInvsgstAmt")
 	private Integer asPerInvsgstAmt;
 
+	@Column(name = "deleteFlag", nullable = false)
+	private boolean deleteFlag = true;
+
 	public Integer getAsPerInvIgst() {
 		return asPerInvIgst;
 	}
@@ -206,12 +217,30 @@ public class PurchaseEntry implements Serializable {
 		this.invoiceNumber = invoiceNumber;
 	}
 
-	public AccountInformation getAccountInformationId() {
-		return accountInformationId;
+	
+
+	public AccountInformation getSuplierId() {
+		return suplierId;
 	}
 
-	public void setAccountInformationId(AccountInformation accountInformationId) {
-		this.accountInformationId = accountInformationId;
+	public void setSuplierId(AccountInformation suplierId) {
+		this.suplierId = suplierId;
+	}
+
+	public AccountInformation getCrAdjLedjerId() {
+		return crAdjLedjerId;
+	}
+
+	public void setCrAdjLedjerId(AccountInformation crAdjLedjerId) {
+		this.crAdjLedjerId = crAdjLedjerId;
+	}
+
+	public AccountInformation getDrAdjLedjerId() {
+		return drAdjLedjerId;
+	}
+
+	public void setDrAdjLedjerId(AccountInformation drAdjLedjerId) {
+		this.drAdjLedjerId = drAdjLedjerId;
 	}
 
 	public String getMode() {
@@ -516,6 +545,14 @@ public class PurchaseEntry implements Serializable {
 
 	public void setAsPerInvsgstAmt(Integer asPerInvsgstAmt) {
 		this.asPerInvsgstAmt = asPerInvsgstAmt;
+	}
+
+	public boolean isDeleteFlag() {
+		return deleteFlag;
+	}
+
+	public void setDeleteFlag(boolean deleteFlag) {
+		this.deleteFlag = deleteFlag;
 	}
 
 }

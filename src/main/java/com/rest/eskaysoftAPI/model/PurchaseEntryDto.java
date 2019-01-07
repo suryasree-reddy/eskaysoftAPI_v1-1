@@ -16,7 +16,9 @@ public class PurchaseEntryDto implements Serializable {
 
 	private LocalDate invoiceDate;
 
-	private Long accountInformationId;
+	private Long suplierId;
+	private Long crAdjLedjerId;
+	private Long drAdjLedjerId;
 	private String supplier;
 	private String gstIN;
 	private Long hsnCode;
@@ -106,6 +108,8 @@ public class PurchaseEntryDto implements Serializable {
 
 	private String typeheadDisplay;
 
+	private boolean deleteFlag;
+
 	public Integer getAsPerSwIgst() {
 		return asPerSwIgst;
 	}
@@ -170,12 +174,28 @@ public class PurchaseEntryDto implements Serializable {
 		this.invoiceDate = invoiceDate;
 	}
 
-	public Long getAccountInformationId() {
-		return accountInformationId;
+	public Long getSuplierId() {
+		return suplierId;
 	}
 
-	public void setAccountInformationId(Long accountInformationId) {
-		this.accountInformationId = accountInformationId;
+	public void setSuplierId(Long suplierId) {
+		this.suplierId = suplierId;
+	}
+
+	public Long getCrAdjLedjerId() {
+		return crAdjLedjerId;
+	}
+
+	public void setCrAdjLedjerId(Long crAdjLedjerId) {
+		this.crAdjLedjerId = crAdjLedjerId;
+	}
+
+	public Long getDrAdjLedjerId() {
+		return drAdjLedjerId;
+	}
+
+	public void setDrAdjLedjerId(Long drAdjLedjerId) {
+		this.drAdjLedjerId = drAdjLedjerId;
 	}
 
 	public String getSupplier() {
@@ -552,6 +572,14 @@ public class PurchaseEntryDto implements Serializable {
 
 	public void setTax(Long tax) {
 		this.tax = tax;
+	}
+
+	public boolean isDeleteFlag() {
+		return deleteFlag;
+	}
+
+	public void setDeleteFlag(boolean deleteFlag) {
+		this.deleteFlag = deleteFlag;
 	}
 
 }

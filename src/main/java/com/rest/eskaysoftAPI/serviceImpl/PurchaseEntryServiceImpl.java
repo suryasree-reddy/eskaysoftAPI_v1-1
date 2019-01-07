@@ -46,28 +46,31 @@ public class PurchaseEntryServiceImpl implements PurchaseEntryService {
 		purchrepo.findAllByOrderByPurchaseNumberAsc().forEach(pro -> {
 			PurchaseEntryDto pomodel = new PurchaseEntryDto();
 			BeanUtils.copyProperties(pro, pomodel);
+			pomodel.setDeleteFlag(true);
 			pomodel.setProductId(pro.getProductId().getId());
 			pomodel.setProductcode(pro.getProductId().getProductcode());
 			pomodel.setProductName(pro.getProductId().getName());
 			pomodel.setFree(pro.getProductId().getFree());
 			pomodel.setTaxId(pro.getTaxId().getId());
 			pomodel.setTax(pro.getTaxId().getTax());
-			pomodel.setAccountInformationId(pro.getAccountInformationId().getId());
-			pomodel.setStateCode(pro.getAccountInformationId().getDistrictId().getStateId().getStateCode()); // pro.getAccountInformationId().getDistrictId().getStateId().getStateCode();
-			pomodel.setSupplier(pro.getAccountInformationId().getAccountName());
+			pomodel.setSuplierId(pro.getSuplierId().getId());
+			pomodel.setStateCode(pro.getSuplierId().getDistrictId().getStateId().getStateCode()); // pro.getAccountInformationId().getDistrictId().getStateId().getStateCode();
+			pomodel.setSupplier(pro.getSuplierId().getAccountName());
 			pomodel.setManfacturerId(pro.getManfacturerId().getId());
 			pomodel.setMfgName(pro.getManfacturerId().getManfacturerName());
-			pomodel.setCreditAdjustmentLedger(pro.getAccountInformationId().getAccountName());
-			pomodel.setDebitAdjustmentLedger(pro.getAccountInformationId().getAccountName());
-			pomodel.setGstIN(pro.getAccountInformationId().getGstIN());
-			pomodel.setHsnCode(pro.getAccountInformationId().getHsnCode());
+			pomodel.setCrAdjLedjerId(pro.getCrAdjLedjerId().getId());
+			pomodel.setCreditAdjustmentLedger(pro.getCrAdjLedjerId().getAccountName());
+			pomodel.setDrAdjLedjerId(pro.getDrAdjLedjerId().getId());
+			pomodel.setDebitAdjustmentLedger(pro.getDrAdjLedjerId().getAccountName());
+			pomodel.setGstIN(pro.getSuplierId().getGstIN());
+			pomodel.setHsnCode(pro.getSuplierId().getHsnCode());
 
 			polist.add(pomodel);
 			pomodel.setTypeheadDisplay(
 					pro.getProductId().getName() + EskaysoftConstants.SEPERATOR + pro.getProductId().getProductcode());
 
-			pomodel.setTypeheadDisplay(pro.getAccountInformationId().getAccountName() + EskaysoftConstants.SEPERATOR
-					+ pro.getAccountInformationId().getTown());
+			pomodel.setTypeheadDisplay(
+					pro.getSuplierId().getAccountName() + EskaysoftConstants.SEPERATOR + pro.getSuplierId().getTown());
 		});
 		return polist;
 	}
@@ -83,31 +86,36 @@ public class PurchaseEntryServiceImpl implements PurchaseEntryService {
 		pomodel.setProductcode(pro.getProductId().getProductcode());
 		pomodel.setProductName(pro.getProductId().getName());
 		pomodel.setFree(pro.getProductId().getFree());
-		pomodel.setAccountInformationId(pro.getAccountInformationId().getId());
-		pomodel.setSupplier(pro.getAccountInformationId().getAccountName());
-		pomodel.setCreditAdjustmentLedger(pro.getAccountInformationId().getAccountName());
-		pomodel.setDebitAdjustmentLedger(pro.getAccountInformationId().getAccountName());
+		pomodel.setSuplierId(pro.getSuplierId().getId());
+		pomodel.setSupplier(pro.getSuplierId().getAccountName());
+		pomodel.setCrAdjLedjerId(pro.getCrAdjLedjerId().getId());
+		pomodel.setCreditAdjustmentLedger(pro.getCrAdjLedjerId().getAccountName());
+		pomodel.setDrAdjLedjerId(pro.getDrAdjLedjerId().getId());
+		pomodel.setDebitAdjustmentLedger(pro.getDrAdjLedjerId().getAccountName());
 		pomodel.setMfgName(pro.getManfacturerId().getManfacturerName());
 		pomodel.setManfacturerId(pro.getManfacturerId().getId());
-		pomodel.setGstIN(pro.getAccountInformationId().getGstIN());
-		pomodel.setStateCode(pro.getAccountInformationId().getDistrictId().getStateId().getStateCode());
-		pomodel.setHsnCode(pro.getAccountInformationId().getHsnCode());
+		pomodel.setGstIN(pro.getSuplierId().getGstIN());
+		pomodel.setStateCode(pro.getSuplierId().getDistrictId().getStateId().getStateCode());
+		pomodel.setHsnCode(pro.getSuplierId().getHsnCode());
 		pomodel.setTaxId(pro.getTaxId().getId());
 		pomodel.setTax(pro.getTaxId().getTax());
 		pomodel.setTypeheadDisplay(
 				pro.getProductId().getName() + EskaysoftConstants.SEPERATOR + pro.getProductId().getProductcode());
 
-		pomodel.setTypeheadDisplay(pro.getAccountInformationId().getAccountName() + EskaysoftConstants.SEPERATOR
-				+ pro.getAccountInformationId().getTown());
+		pomodel.setTypeheadDisplay(
+				pro.getSuplierId().getAccountName() + EskaysoftConstants.SEPERATOR + pro.getSuplierId().getTown());
 
 		return pomodel;
 	}
 
 	@Override
 	public PurchaseEntryDto savePurchaseEntry(PurchaseEntryDto purchaseEntry) {
-		AccountInformation ai = acreo.findById(purchaseEntry.getAccountInformationId())
-				.orElseThrow(() -> new NotFoundException(
-						String.format("AccountInformation %d not found", purchaseEntry.getAccountInformationId())));
+		AccountInformation ai = acreo.findById(purchaseEntry.getSuplierId()).orElseThrow(() -> new NotFoundException(
+				String.format("AccountInformation %d not found", purchaseEntry.getSuplierId())));
+	AccountInformation cr = acreo.findById(purchaseEntry.getCrAdjLedjerId()).orElseThrow(() -> new NotFoundException(
+						String.format("AccountInformation %d not found", purchaseEntry.getCrAdjLedjerId())));
+	AccountInformation dr = acreo.findById(purchaseEntry.getDrAdjLedjerId()).orElseThrow(() -> new NotFoundException(
+						String.format("AccountInformation %d not found", purchaseEntry.getDrAdjLedjerId())));
 		Product product = prorepo.findById(purchaseEntry.getProductId()).orElseThrow(
 				() -> new NotFoundException(String.format("product %d not found", purchaseEntry.getProductId())));
 		Tax tax = taxrepo.findById(purchaseEntry.getTaxId())
@@ -116,9 +124,11 @@ public class PurchaseEntryServiceImpl implements PurchaseEntryService {
 				String.format("Manfacturer %d not found", purchaseEntry.getManfacturerId())));
 
 		PurchaseEntry po = new PurchaseEntry();
-		
+
 		BeanUtils.copyProperties(purchaseEntry, po);
-		po.setAccountInformationId(ai);
+		po.setSuplierId(ai);
+		po.setCrAdjLedjerId(cr);
+		po.setDrAdjLedjerId(dr);
 		po.setProductId(product);
 		po.setTaxId(tax);
 		po.setManfacturerId(man);
@@ -142,20 +152,25 @@ public class PurchaseEntryServiceImpl implements PurchaseEntryService {
 	@Override
 	public PurchaseEntryDto create(PurchaseEntryDto purchaseEntry) {
 		PurchaseEntry po = new PurchaseEntry();
-		AccountInformation ai = acreo.findById(purchaseEntry.getAccountInformationId())
-				.orElseThrow(() -> new NotFoundException(
-						String.format("AccountInformation %d not found", purchaseEntry.getAccountInformationId())));
+		AccountInformation ai = acreo.findById(purchaseEntry.getSuplierId()).orElseThrow(() -> new NotFoundException(
+				String.format("AccountInformation %d not found", purchaseEntry.getSuplierId())));
+		AccountInformation cr = acreo.findById(purchaseEntry.getCrAdjLedjerId()).orElseThrow(() -> new NotFoundException(
+						String.format("AccountInformation %d not found", purchaseEntry.getCrAdjLedjerId())));
+		AccountInformation dr = acreo.findById(purchaseEntry.getDrAdjLedjerId()).orElseThrow(() -> new NotFoundException(
+						String.format("AccountInformation %d not found", purchaseEntry.getDrAdjLedjerId())));
 		Product product = prorepo.findById(purchaseEntry.getProductId()).orElseThrow(
 				() -> new NotFoundException(String.format("Product %d not found", purchaseEntry.getProductId())));
-		
-		Tax tax = taxrepo.findById(purchaseEntry.getTaxId()).orElseThrow(
-				() -> new NotFoundException(String.format("tax %d not found", purchaseEntry.getTaxId())));
+
+		Tax tax = taxrepo.findById(purchaseEntry.getTaxId())
+				.orElseThrow(() -> new NotFoundException(String.format("tax %d not found", purchaseEntry.getTaxId())));
 
 		Manfacturer man = manRepo.findById(purchaseEntry.getManfacturerId()).orElseThrow(() -> new NotFoundException(
 				String.format("Manfacturer %d not found", purchaseEntry.getManfacturerId())));
 
 		BeanUtils.copyProperties(purchaseEntry, po);
-		po.setAccountInformationId(ai);
+		po.setSuplierId(ai);
+		po.setCrAdjLedjerId(cr);
+		po.setDrAdjLedjerId(dr);
 		po.setProductId(product);
 		po.setTaxId(tax);
 		po.setManfacturerId(man);

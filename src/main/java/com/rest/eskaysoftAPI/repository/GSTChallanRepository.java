@@ -10,4 +10,6 @@ public interface GSTChallanRepository extends JpaRepository<GSTChallanEntry, Lon
 
 	public List<GSTChallanEntry> findAllByOrderByDcNoAsc();
 
+	public List<GSTChallanEntry> findByDcNo(Integer id);
+
 }

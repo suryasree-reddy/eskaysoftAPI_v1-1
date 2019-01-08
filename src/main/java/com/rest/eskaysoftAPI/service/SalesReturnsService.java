@@ -15,5 +15,7 @@ public interface SalesReturnsService {
 	boolean deleteSalesReturns(Long id);
 
 	SalesReturnsDto createSalesReturns(SalesReturnsDto salesReturns);
+	
+	boolean deleteSalesReturnsBysalesReturnNo(Integer id);
 
 }

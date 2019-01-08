@@ -14,7 +14,8 @@ public class GSTChallanEntryDto implements Serializable {
 	private String gstType;
 	private String customer;
 	private String gstIN;
-	private String dcNo;
+	private Integer dcNo;
+	private Integer serialNumber;
 	private String mode;
 	private String deliverTo;
 	private LocalDate date;
@@ -33,6 +34,14 @@ public class GSTChallanEntryDto implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Integer getSerialNumber() {
+		return serialNumber;
+	}
+
+	public void setSerialNumber(Integer serialNumber) {
+		this.serialNumber = serialNumber;
 	}
 
 	public Long getProductId() {
@@ -91,7 +100,6 @@ public class GSTChallanEntryDto implements Serializable {
 		this.customer = customer;
 	}
 
-	
 	public String getGstIN() {
 		return this.gstIN;
 	}
@@ -100,11 +108,11 @@ public class GSTChallanEntryDto implements Serializable {
 		this.gstIN = gstIN;
 	}
 
-	public String getDcNo() {
-		return this.dcNo;
+	public Integer getDcNo() {
+		return dcNo;
 	}
 
-	public void setDcNo(String dcNo) {
+	public void setDcNo(Integer dcNo) {
 		this.dcNo = dcNo;
 	}
 
@@ -124,7 +132,6 @@ public class GSTChallanEntryDto implements Serializable {
 		this.date = date;
 	}
 
-	
 	public String getBatch() {
 		return this.batch;
 	}

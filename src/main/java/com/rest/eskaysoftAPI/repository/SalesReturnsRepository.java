@@ -14,5 +14,7 @@ import com.rest.eskaysoftAPI.entity.SalesReturns;
 public interface SalesReturnsRepository extends JpaRepository<SalesReturns, Long> {
 
 	public List<SalesReturns> findAllByOrderBySalesReturnNoAsc();
-
+	
+	public List<SalesReturns> findBySalesReturnNo(Integer id);
+	
 }

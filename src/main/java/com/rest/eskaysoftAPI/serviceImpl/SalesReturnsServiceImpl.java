@@ -81,7 +81,6 @@ public class SalesReturnsServiceImpl implements SalesReturnsService {
 		return salesReturnsModel;
 
 	}
-	
 
 	@Override
 	public boolean deleteSalesReturns(Long id) {
@@ -90,6 +89,18 @@ public class SalesReturnsServiceImpl implements SalesReturnsService {
 				.orElseThrow(() -> new NotFoundException(String.format("salesReturn %d not found", id)));
 		if (salesReturn != null) {
 			salesRetRepo.delete(salesReturn);
+			status = true;
+		}
+		return status;
+	}
+
+	@Override
+	public boolean deleteSalesReturnsBysalesReturnNo(Integer id) {
+		boolean status = false;
+		List<SalesReturns> poList = salesRetRepo.findBySalesReturnNo(id);
+
+		if (poList != null && !poList.isEmpty()) {
+			salesRetRepo.deleteAll(poList);
 			status = true;
 		}
 		return status;
@@ -106,7 +117,7 @@ public class SalesReturnsServiceImpl implements SalesReturnsService {
 		BeanUtils.copyProperties(salesReturnsModel, salesReturn);
 		salesReturn.setAccountInformationId(ai);
 		salesReturn.setProductId(pro);
-		
+
 		salesReturn = salesRetRepo.save(salesReturn);
 		return salesReturnsModel;
 

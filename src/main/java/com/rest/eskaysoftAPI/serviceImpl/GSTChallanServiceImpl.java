@@ -70,8 +70,8 @@ public class GSTChallanServiceImpl implements GSTChallanService {
 		AccountInformation ai = acreo.findById(gstChallan.getAccountInformationId())
 				.orElseThrow(() -> new NotFoundException(
 						String.format("AccountInformation %d not found", gstChallan.getAccountInformationId())));
-		Product pro = proRepo.findById(gstChallan.getId())
-				.orElseThrow(() -> new NotFoundException(String.format("challan %d not found", gstChallan.getId())));
+		Product pro = proRepo.findById(gstChallan.getProductId())
+				.orElseThrow(() -> new NotFoundException(String.format("challan %d not found", gstChallan.getProductId())));
 		GSTChallanEntry gstChallanEntryList = new GSTChallanEntry();
 		gstChallanEntryList.setProductId(pro);
 		gstChallanEntryList.setAccountInformationId(ai);
@@ -91,7 +91,19 @@ public class GSTChallanServiceImpl implements GSTChallanService {
 		}
 		return status;
 	}
-
+	
+	@Override
+	public boolean deleteDelvChallanByOrderNum(Integer id) {
+		boolean status = false;
+		List<GSTChallanEntry> poList = challanRepo.findByDcNo(id);
+		if (poList != null && !poList.isEmpty()) {
+			challanRepo.deleteAll(poList);
+			status = true;
+		}
+		return status;
+	}
+	
+	
 	@Override
 	public GSTChallanEntryDto create(GSTChallanEntryDto gstChallanModel) {
 		AccountInformation ai = acreo.findById(gstChallanModel.getAccountInformationId())

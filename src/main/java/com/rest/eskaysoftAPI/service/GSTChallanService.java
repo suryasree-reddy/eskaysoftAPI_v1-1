@@ -16,4 +16,6 @@ public interface GSTChallanService {
 
 	GSTChallanEntryDto create(GSTChallanEntryDto gstChallan);
 
+	boolean deleteDelvChallanByOrderNum(Integer id);
+
 }

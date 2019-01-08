@@ -72,4 +72,10 @@ public class SalesReturnsResource {
 		return salesReturnsService.deleteSalesReturns(id);
 	}
 
+	@DELETE
+	@Path("returnNo/{id}")
+	@Produces("application/json")
+	public boolean deleteSalesReturnsBysalesReturnNo(@PathParam("id") int id) {
+		return salesReturnsService.deleteSalesReturnsBysalesReturnNo(id);
+	}
 }

@@ -29,9 +29,12 @@ public class GSTChallanEntry implements Serializable {
 	@JoinColumn(name = "accountInformationId", nullable = false)
 	private AccountInformation accountInformationId;
 
-	@Column(name = "dcNo", nullable = false)
-	private String dcNo;
+	@Column(name = "dcNo", nullable = false, length = 40)
+	private Integer dcNo;
 
+	@Column(name = "serialNumber")
+	private Integer serialNumber;
+	
 	@Column(name = "deliverTo", nullable = false)
 	private String deliverTo;
 
@@ -82,11 +85,21 @@ public class GSTChallanEntry implements Serializable {
 		this.gstType = gstType;
 	}
 
-	public String getDcNo() {
-		return this.dcNo;
+	
+
+	public Integer getSerialNumber() {
+		return serialNumber;
 	}
 
-	public void setDcNo(String dcNo) {
+	public void setSerialNumber(Integer serialNumber) {
+		this.serialNumber = serialNumber;
+	}
+
+	public Integer getDcNo() {
+		return dcNo;
+	}
+
+	public void setDcNo(Integer dcNo) {
 		this.dcNo = dcNo;
 	}
 

@@ -72,5 +72,11 @@ public class GSTChallanResource {
 	public boolean delete(@PathParam("id") long id) {
 		return gstChallanService.delete(id);
 	}
-
+	
+	@DELETE
+	@Path("dcno/{id}")
+	@Produces("application/json")
+	public boolean deleteDelvChallanByOrderNum(@PathParam("id") int id) {
+		return gstChallanService.deleteDelvChallanByOrderNum(id);
+	}
 }

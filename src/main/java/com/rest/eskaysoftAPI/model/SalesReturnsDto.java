@@ -9,6 +9,7 @@ public class SalesReturnsDto implements Serializable {
 
 	private Long id;
 	private Integer salesReturnNo;
+	private Integer serialNumber;
 	private LocalDate salesReturnDate;
 	private Long accountInformationId;
 	private String customer;
@@ -35,6 +36,14 @@ public class SalesReturnsDto implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Integer getSerialNumber() {
+		return serialNumber;
+	}
+
+	public void setSerialNumber(Integer serialNumber) {
+		this.serialNumber = serialNumber;
 	}
 
 	public Integer getSalesReturnNo() {
@@ -156,8 +165,6 @@ public class SalesReturnsDto implements Serializable {
 	public void setsRate(Integer sRate) {
 		this.sRate = sRate;
 	}
-
-	
 
 	public Integer getDisc() {
 		return this.disc;

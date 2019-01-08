@@ -23,8 +23,10 @@ public class SalesReturns implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "salesReturnNo", nullable = false)
+	@Column(name = "serialNumber")
+	private Integer serialNumber;
+
+	@Column(name = "salesReturnNo", nullable = false, length = 40)
 	private Integer salesReturnNo;
 
 	@Column(name = "salesReturnDate", nullable = false)
@@ -71,6 +73,14 @@ public class SalesReturns implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Integer getSerialNumber() {
+		return serialNumber;
+	}
+
+	public void setSerialNumber(Integer serialNumber) {
+		this.serialNumber = serialNumber;
 	}
 
 	public Integer getSalesReturnNo() {

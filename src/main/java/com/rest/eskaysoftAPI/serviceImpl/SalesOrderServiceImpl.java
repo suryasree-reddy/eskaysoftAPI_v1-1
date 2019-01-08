@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.rest.eskaysoftAPI.entity.AccountInformation;
 import com.rest.eskaysoftAPI.entity.Product;
-import com.rest.eskaysoftAPI.entity.PurchaseOrder;
 import com.rest.eskaysoftAPI.entity.SalesOrder;
 import com.rest.eskaysoftAPI.exception.NotFoundException;
 import com.rest.eskaysoftAPI.model.SalesOrderDto;
@@ -87,8 +86,7 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 		in = salesOrderRepo.save(in);
 		return salesOrderModel;
 	}
-	
-	
+
 	@Override
 	public boolean deleteSalesOrder(Long id) {
 		boolean status = false;
@@ -100,7 +98,7 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 		}
 		return status;
 	}
-	
+
 	@Override
 	public boolean deleteSaleseOrderByOrderNum(Integer id) {
 		boolean status = false;

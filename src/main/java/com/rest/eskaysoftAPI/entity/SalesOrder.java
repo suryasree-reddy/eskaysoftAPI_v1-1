@@ -26,6 +26,9 @@ public class SalesOrder implements Serializable {
 	@Column(name = "orderNumber", nullable = false)
 	private Integer orderNumber;
 
+	@Column(name = "serialNumber")
+	private Integer serialNumber;
+
 	@Column(name = "date", nullable = false)
 	private LocalDate date;
 
@@ -61,6 +64,14 @@ public class SalesOrder implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Integer getSerialNumber() {
+		return serialNumber;
+	}
+
+	public void setSerialNumber(Integer serialNumber) {
+		this.serialNumber = serialNumber;
 	}
 
 	public Integer getOrderNumber() {

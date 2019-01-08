@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.rest.eskaysoftAPI.entity.AccountInformation;
 import com.rest.eskaysoftAPI.entity.Product;
+import com.rest.eskaysoftAPI.entity.PurchaseOrder;
 import com.rest.eskaysoftAPI.entity.SalesOrder;
 import com.rest.eskaysoftAPI.exception.NotFoundException;
 import com.rest.eskaysoftAPI.model.SalesOrderDto;
@@ -17,7 +18,6 @@ import com.rest.eskaysoftAPI.repository.ProductRepository;
 import com.rest.eskaysoftAPI.repository.SalesOrderRepository;
 import com.rest.eskaysoftAPI.service.SalesOrderService;
 import com.rest.eskaysoftAPI.util.EskaysoftConstants;
-
 
 @Service
 public class SalesOrderServiceImpl implements SalesOrderService {
@@ -31,7 +31,6 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 	@Autowired
 	private ProductRepository proRepo;
 
-	
 	@Override
 	public List<SalesOrderDto> listAllSalesOrder() {
 		List<SalesOrderDto> salesOrderList = new ArrayList<>();
@@ -47,10 +46,10 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 			salesOrderModel.setAccountInformationId(salesOrder.getAccountInformationId().getId());
 			salesOrderModel.setTown(salesOrder.getAccountInformationId().getTown());
 			salesOrderModel.setCustomer(salesOrder.getAccountInformationId().getAccountName());
-			salesOrderModel.setTypeheadDisplay(
-					salesOrder.getProductId().getName() + EskaysoftConstants.SEPERATOR + salesOrder.getProductId().getProductcode());
-			salesOrderModel.setTypeheadDisplay(salesOrder.getAccountInformationId().getAccountName() + EskaysoftConstants.SEPERATOR +
-					salesOrder.getAccountInformationId().getTown());
+			salesOrderModel.setTypeheadDisplay(salesOrder.getProductId().getName() + EskaysoftConstants.SEPERATOR
+					+ salesOrder.getProductId().getProductcode());
+			salesOrderModel.setTypeheadDisplay(salesOrder.getAccountInformationId().getAccountName()
+					+ EskaysoftConstants.SEPERATOR + salesOrder.getAccountInformationId().getTown());
 			salesOrderList.add(salesOrderModel);
 		});
 		return salesOrderList;
@@ -88,7 +87,8 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 		in = salesOrderRepo.save(in);
 		return salesOrderModel;
 	}
-
+	
+	
 	@Override
 	public boolean deleteSalesOrder(Long id) {
 		boolean status = false;
@@ -96,6 +96,17 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 				.orElseThrow(() -> new NotFoundException(String.format("salesOrder %d not found", id)));
 		if (in != null) {
 			salesOrderRepo.delete(in);
+			status = true;
+		}
+		return status;
+	}
+	
+	@Override
+	public boolean deleteSaleseOrderByOrderNum(Integer id) {
+		boolean status = false;
+		List<SalesOrder> poList = salesOrderRepo.findByOrderNumber(id);
+		if (poList != null && !poList.isEmpty()) {
+			salesOrderRepo.deleteAll(poList);
 			status = true;
 		}
 		return status;
@@ -112,7 +123,7 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 		BeanUtils.copyProperties(salesOrderModel, in);
 		in.setProductId(pro);
 		in.setAccountInformationId(ai);
-		
+
 		in = salesOrderRepo.save(in);
 		salesOrderModel.setId(in.getId());
 		return salesOrderModel;

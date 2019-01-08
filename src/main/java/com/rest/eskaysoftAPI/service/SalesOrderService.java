@@ -16,4 +16,6 @@ public interface SalesOrderService {
 
 	SalesOrderDto createSalesOrder(SalesOrderDto salesOrder);
 
+	boolean deleteSaleseOrderByOrderNum(Integer id);
+
 }

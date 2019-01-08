@@ -9,6 +9,7 @@ public class SalesOrderDto implements Serializable {
 
 	private Long id;
 	private Integer orderNumber;
+	private Integer serialNumber;
 	private LocalDate date;
 	private Long accountInformationId;
 	private String customer;
@@ -22,7 +23,7 @@ public class SalesOrderDto implements Serializable {
 	private Integer qty;
 	private Integer free;
 	private Integer rate;
-	private Integer value;
+	private Double value;
 	private Double netRate;
 	private String typeheadDisplay;
 	private boolean deleteFlag;
@@ -33,6 +34,14 @@ public class SalesOrderDto implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Integer getSerialNumber() {
+		return serialNumber;
+	}
+
+	public void setSerialNumber(Integer serialNumber) {
+		this.serialNumber = serialNumber;
 	}
 
 	public Integer getOrderNumber() {
@@ -139,11 +148,13 @@ public class SalesOrderDto implements Serializable {
 		this.rate = rate;
 	}
 
-	public Integer getValue() {
-		return this.value;
+	
+
+	public Double getValue() {
+		return value;
 	}
 
-	public void setValue(Integer value) {
+	public void setValue(Double value) {
 		this.value = value;
 	}
 

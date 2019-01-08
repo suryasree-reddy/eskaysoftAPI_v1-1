@@ -73,4 +73,12 @@ public class SalesOrderResource {
 		return salesOderService.deleteSalesOrder(id);
 	}
 
+	@DELETE
+	@Path("orderNumber/{id}")
+	@Produces("application/json")
+	public boolean deleteSalesOrderByOrderNum(@PathParam("id") int id) {
+		return salesOderService.deleteSaleseOrderByOrderNum(id);
+	}
+	
+	
 }

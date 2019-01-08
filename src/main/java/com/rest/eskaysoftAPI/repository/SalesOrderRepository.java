@@ -10,4 +10,6 @@ public interface SalesOrderRepository extends JpaRepository<SalesOrder, Long> {
 
 	public List<SalesOrder> findAllByOrderByOrderNumberAsc();
 
+	public List<SalesOrder> findByOrderNumber(Integer id);
+
 }

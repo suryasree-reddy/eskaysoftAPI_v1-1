@@ -14,4 +14,5 @@ import com.rest.eskaysoftAPI.entity.QuatationEntry;
 public interface QuatationEntryRepository extends JpaRepository<QuatationEntry, Long> {
 	public List<QuatationEntry> findAllByOrderByOrderNumberAsc();
 
+	public List<QuatationEntry> findByOrderNumber(Integer id);
 }

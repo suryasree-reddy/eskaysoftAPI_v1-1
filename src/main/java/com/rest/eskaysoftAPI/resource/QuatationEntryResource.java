@@ -72,4 +72,11 @@ public class QuatationEntryResource {
 		return quatationEntryService.deletequatationEntryService(id);
 	}
 
+	
+	@DELETE
+	@Path("orderNumber/{id}")
+	@Produces("application/json")
+	public boolean deleteQuatationByOrderNum(@PathParam("id") int id) {
+		return quatationEntryService.deleteQuatationByOrderNum(id);
+	}
 }

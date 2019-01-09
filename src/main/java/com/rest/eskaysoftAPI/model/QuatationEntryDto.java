@@ -8,6 +8,7 @@ public class QuatationEntryDto implements Serializable {
 
 	private Long id;
 	private Integer orderNumber;
+	private Integer serialNumber;
 	private LocalDate date;
 
 	private Long accountInformationId;
@@ -19,8 +20,8 @@ public class QuatationEntryDto implements Serializable {
 	private String productName;
 	private String productcode;
 	private Integer packing;
-	private Double qty;
-	private Double rate;
+	private Integer qty;
+	private Integer rate;
 	private Double ammount;
 	private String typeheadDisplay;
 
@@ -88,19 +89,21 @@ public class QuatationEntryDto implements Serializable {
 		this.packing = packing;
 	}
 
-	public Double getQty() {
-		return this.qty;
+	public Integer getQty() {
+		return qty;
 	}
 
-	public void setQty(Double qty) {
+	public void setQty(Integer qty) {
 		this.qty = qty;
 	}
 
-	public Double getRate() {
-		return this.rate;
+	
+
+	public Integer getRate() {
+		return rate;
 	}
 
-	public void setRate(Double rate) {
+	public void setRate(Integer rate) {
 		this.rate = rate;
 	}
 
@@ -134,6 +137,14 @@ public class QuatationEntryDto implements Serializable {
 
 	public void setCustomer(String customer) {
 		this.customer = customer;
+	}
+
+	public Integer getSerialNumber() {
+		return serialNumber;
+	}
+
+	public void setSerialNumber(Integer serialNumber) {
+		this.serialNumber = serialNumber;
 	}
 
 }

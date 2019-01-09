@@ -96,6 +96,17 @@ public class QuatationEntryServiceImpl implements QuatationEntryService {
 	}
 
 	@Override
+	public boolean deleteQuatationByOrderNum(Integer id) {
+		boolean status = false;
+		List<QuatationEntry> poList = qtRepo.findByOrderNumber(id);
+		if (poList != null && !poList.isEmpty()) {
+			qtRepo.deleteAll(poList);
+			status = true;
+		}
+		return status;
+	}
+
+	@Override
 	public QuatationEntryDto create(QuatationEntryDto quatationEntry) {
 		QuatationEntry qt = new QuatationEntry();
 
@@ -108,7 +119,7 @@ public class QuatationEntryServiceImpl implements QuatationEntryService {
 		BeanUtils.copyProperties(quatationEntry, qt);
 		qt.setAccountInformationId(ai);
 		qt.setProductId(product);
-		
+
 		qt = qtRepo.save(qt);
 		quatationEntry.setId(qt.getId());
 		return quatationEntry;

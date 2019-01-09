@@ -15,4 +15,6 @@ public interface QuatationEntryService {
 	boolean deletequatationEntryService(Long id);
 
 	QuatationEntryDto create(QuatationEntryDto quatationEntry);
+
+	boolean deleteQuatationByOrderNum(Integer id);
 }

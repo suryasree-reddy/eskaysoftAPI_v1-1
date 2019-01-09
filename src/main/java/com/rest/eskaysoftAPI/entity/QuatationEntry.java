@@ -26,6 +26,9 @@ public class QuatationEntry implements Serializable {
 	@Column(name = "orderNumber", nullable = false, length = 40)
 	private Integer orderNumber;
 
+	@Column(name = "serialNumber")
+	private Integer serialNumber;
+
 	@Column(name = "date", nullable = false)
 	private LocalDate date;
 
@@ -41,10 +44,10 @@ public class QuatationEntry implements Serializable {
 	private Product productId;
 
 	@Column(name = "qty", nullable = false)
-	private Double qty;
+	private Integer qty;
 
-	@Column(name = "rate", nullable = false)
-	private Double rate;
+	@Column(name = "rate")
+	private Integer rate;
 
 	@Column(name = "ammount")
 	private Double ammount;
@@ -89,19 +92,19 @@ public class QuatationEntry implements Serializable {
 		this.productId = productId;
 	}
 
-	public Double getQty() {
-		return this.qty;
+	public Integer getQty() {
+		return qty;
 	}
 
-	public void setQty(Double qty) {
+	public void setQty(Integer qty) {
 		this.qty = qty;
 	}
 
-	public Double getRate() {
-		return this.rate;
+	public Integer getRate() {
+		return rate;
 	}
 
-	public void setRate(Double rate) {
+	public void setRate(Integer rate) {
 		this.rate = rate;
 	}
 
@@ -119,6 +122,14 @@ public class QuatationEntry implements Serializable {
 
 	public void setAmmount(Double ammount) {
 		this.ammount = ammount;
+	}
+
+	public Integer getSerialNumber() {
+		return serialNumber;
+	}
+
+	public void setSerialNumber(Integer serialNumber) {
+		this.serialNumber = serialNumber;
 	}
 
 }

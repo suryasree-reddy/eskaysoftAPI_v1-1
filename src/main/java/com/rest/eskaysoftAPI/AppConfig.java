@@ -23,6 +23,7 @@ import com.rest.eskaysoftAPI.resource.PurchaseEntryResource;
 import com.rest.eskaysoftAPI.resource.PurchaseOrderResource;
 import com.rest.eskaysoftAPI.resource.PurchaseReturnsResource;
 import com.rest.eskaysoftAPI.resource.QuatationEntryResource;
+import com.rest.eskaysoftAPI.resource.SalesInvoiceResource;
 import com.rest.eskaysoftAPI.resource.SalesOrderResource;
 import com.rest.eskaysoftAPI.resource.SalesReturnsResource;
 import com.rest.eskaysoftAPI.resource.ScheduleResource;
@@ -59,6 +60,7 @@ public class AppConfig extends ResourceConfig {
 		register(GSTChallanResource.class);
 		register(QuatationEntryResource.class);
 		register(SalesReturnsResource.class);
+		register(SalesInvoiceResource.class);
 
 	}
 }
